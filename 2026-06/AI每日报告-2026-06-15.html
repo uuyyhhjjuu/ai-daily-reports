@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026-06-15</title>
+<style>
+:root {
+  --bg: #f8fafc; --card-bg: #fff; --text: #1e293b;
+  --text-secondary: #64748b; --text-muted: #94a3b8; --border: #e2e8f0;
+  --primary: #6366f1; --primary-light: #eef2ff;
+  --c-industry: #f59e0b; --c-opinion: #10b981; --c-model: #8b5cf6;
+  --c-tech: #06b6d4; --c-report: #3b82f6; --c-funding: #f97316;
+  --shadow: 0 1px 3px rgba(0,0,0,.08); --shadow-hover: 0 10px 25px rgba(0,0,0,.1);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+.container { max-width:960px; margin:0 auto; padding:32px 20px 60px; }
+
+.header { background:linear-gradient(135deg,#6366f1 0%,#4f46e5 50%,#7c3aed 100%); border-radius:16px; padding:36px 40px; color:#fff; margin-bottom:28px; box-shadow:0 8px 30px rgba(99,102,241,.3); }
+.header .date { font-size:14px; opacity:.85; margin-bottom:6px; }
+.header h1 { font-size:28px; font-weight:700; letter-spacing:-.5px; }
+.header .meta { display:flex; gap:20px; margin-top:14px; flex-wrap:wrap; }
+.header .meta-item { background:rgba(255,255,255,.18); backdrop-filter:blur(6px); padding:6px 14px; border-radius:20px; font-size:13px; }
+.header .meta-item strong { font-weight:700; }
+
+.stats-bar { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:12px; margin-bottom:28px; }
+.stat-card { background:var(--card-bg); border-radius:12px; padding:16px; text-align:center; box-shadow:var(--shadow); border:1px solid var(--border); }
+.stat-card .num { font-size:28px; font-weight:800; color:var(--primary); }
+.stat-card .label { font-size:12px; color:var(--text-secondary); margin-top:4px; }
+
+.section { margin-bottom:32px; }
+.section-header { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+.section-header .dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; }
+.section-header h2 { font-size:18px; font-weight:700; }
+.section-header .count { font-size:13px; color:var(--text-muted); margin-left:auto; }
+
+.card { background:var(--card-bg); border-radius:12px; padding:20px 24px; margin-bottom:12px; box-shadow:var(--shadow); border-left:4px solid transparent; transition:box-shadow .2s,transform .15s; }
+.card:hover { box-shadow:var(--shadow-hover); transform:translateY(-1px); }
+.card.industry { border-left-color:var(--c-industry); }
+.card.opinion { border-left-color:var(--c-opinion); }
+.card.model { border-left-color:var(--c-model); }
+.card.tech { border-left-color:var(--c-tech); }
+.card.report { border-left-color:var(--c-report); }
+.card.funding { border-left-color:var(--c-funding); }
+
+.card-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:8px; }
+.card-title { font-size:15px; font-weight:700; color:var(--text); line-height:1.5; }
+.card-title a { color:inherit; text-decoration:none; }
+.card-title a:hover { color:var(--primary); text-decoration:underline; }
+.card-tag { font-size:11px; font-weight:600; padding:3px 10px; border-radius:10px; white-space:nowrap; flex-shrink:0; background:#f1f5f9; color:var(--text-secondary); }
+.card-meta { font-size:12px; color:var(--text-muted); margin-bottom:8px; display:flex; gap:12px; flex-wrap:wrap; }
+.card-meta .source { font-weight:600; color:var(--text-secondary); }
+.card-summary { font-size:13.5px; color:var(--text-secondary); line-height:1.7; }
+.card-link { display:inline-block; margin-top:8px; font-size:12px; color:var(--primary); text-decoration:none; font-weight:600; }
+.card-link:hover { text-decoration:underline; }
+
+.flash-tag { display:inline-block; font-size:10px; font-weight:700; padding:2px 8px; border-radius:6px; margin-right:6px; vertical-align:middle; }
+.flash-hot { background:#fee2e2; color:#dc2626; }
+.flash-reg { background:#fef3c7; color:#d97706; }
+.flash-new { background:#dbeafe; color:#2563eb; }
+.flash-ipo { background:#fef3c7; color:#d97706; }
+
+.summary-box { background:linear-gradient(135deg,#eef2ff 0%,#f5f3ff 100%); border:1px solid #c7d2fe; border-radius:16px; padding:28px 32px; margin-top:36px; }
+.summary-box h2 { font-size:20px; font-weight:700; color:var(--primary); margin-bottom:16px; }
+.summary-box ul { padding-left:20px; }
+.summary-box li { font-size:14px; color:var(--text); margin-bottom:10px; line-height:1.7; }
+.summary-box li::marker { color:var(--primary); }
+.highlight { background:#fef3c7; padding:2px 6px; border-radius:4px; font-weight:600; }
+
+.footer { text-align:center; margin-top:48px; padding-top:24px; border-top:1px solid var(--border); color:var(--text-muted); font-size:12px; }
+.footer a { color:var(--primary); text-decoration:none; }
+
+@media (max-width:640px) { .container { padding:16px 12px 40px; } .header { padding:24px 20px; } .header h1 { font-size:22px; } .card { padding:16px 18px; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <div class="date">2026 年 6 月 15 日 · 星期一</div>
+  <h1>🌐 AI 每日全景报告</h1>
+  <div class="meta">
+    <div class="meta-item">⏱ 覆盖时段：6/14 22:00 ~ 6/15 22:00（北京时间）</div>
+    <div class="meta-item">📊 共收录 <strong>21</strong> 条要闻</div>
+    <div class="meta-item">🌍 双语信源 · 多渠道交叉验证</div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-card"><div class="num">7</div><div class="label">🏭 行业动态</div></div>
+  <div class="stat-card"><div class="num">5</div><div class="label">💬 大V观点</div></div>
+  <div class="stat-card"><div class="num">3</div><div class="label">🚀 模型/产品</div></div>
+  <div class="stat-card"><div class="num">2</div><div class="label">🔬 技术/论文</div></div>
+  <div class="stat-card"><div class="num">2</div><div class="label">💡 深度报告</div></div>
+  <div class="stat-card"><div class="num">2</div><div class="label">💰 投融资</div></div>
+</div>
+
+<!-- ====== 行业动态 ====== -->
+<div class="section">
+  <div class="section-header"><div class="dot" style="background:var(--c-industry);"></div><h2>🏭 行业动态</h2><span class="count">7 条</span></div>
+
+  <div class="card industry">
+    <div class="card-header">
+      <div class="card-title"><span class="flash-tag flash-hot">头条</span><a href="https://news.qq.com/rain/a/20260614A00TPC00" target="_blank">Anthropic Fable 5 / Mythos 5 全球下架：美国商务部出口管制令全面生效</a></div>
+      <span class="card-tag">地缘博弈</span>
+    </div>
+    <div class="card-meta"><span class="source">腾讯新闻 / Semafor</span><span>6月15日 21:28（北京时间）</span></div>
+    <div class="card-summary">因担忧中国关联团体通过知识蒸馏窃取模型能力，白宫决定对 Anthropic 的 Mythos 模型施加出口限制。此前 6 月 12 日美东时间下午 5:21，商务部长卢特尼克签署出口管制指令，要求立即切断所有外国人访问 Claude Fable 5 和 Mythos 5——这是美国首次对已商业化的通用大模型实施全面出口禁令。Anthropic 反驳称越狱并非普遍性，其他公开模型也能提供类似能力，限制将持续至美国政府加强国家安全系统。</div>
+    <a class="card-link" href="https://news.qq.com/rain/a/20260614A00TPC00" target="_blank">📎 腾讯新闻：Fable/Mythos 5全球下架详情</a>
+    <a class="card-link" href="https://x.com/rohanpaul_ai/status/2066513228218150988" target="_blank" style="margin-left:12px;">📎 Semafor 报道（英文）</a>
+  </div>
+
+  <div class="card industry">
+    <div class="card-header">
+      <div class="card-title"><span class="flash-tag flash-reg">监管</span><a href="https://garymarcus.substack.com/p/what-washington-must-do" target="_blank">白宫 AI 监管决定被指偏袒 OpenAI 与亚马逊，Anthropic 遭压制</a></div>
+      <span class="card-tag">政策博弈</span>
+    </div>
+    <div class="card-meta"><span class="source">Gary Marcus · Substack</span><span>今天 00:15（北京时间）</span></div>
+    <div class="card-summary">白宫周五快速做出的 AI 监管决定被 Gary Marcus、Dean W Ball 及卡托研究所专家批评为缺乏透明度。对 Anthropic 施压不足 24 小时，被指偏袒 OpenAI 和亚马逊等企业。Anthropic 声明称政府应在法定程序中基于技术事实阻止不安全部署。Marcus 呼吁建立独立机构负责 AI 监管，警告当前做法可能促使各国加速发展"主权 AI"。</div>
+    <a class="card-link" href="https://garymarcus.substack.com/p/what-washington-must-do" target="_blank">📎 Gary Marcus 原文</a>
+    <a class="card-link" href="https://finance.sina.com.cn/roll/2026-06-14/doc-inickrit5640334.shtml" target="_blank" style="margin-left:12px;">📎 新浪财经：亚马逊被指打小报告</a>
+  </div>
+
+  <div class="card industry">
+    <div class="card-header">
+      <div class="card-title"><span class="flash-tag flash-hot">社会</span><a href="https://techcrunch.com/2026/06/15/the-ai-layoff-wave-is-becoming-a-powder-keg" target="_blank">AI 裁员浪潮成为火药桶：日均 974 人，15 万人已裁，连续三月 AI 为首要原因</a></div>
+      <span class="card-tag">劳动力冲击</span>
+    </div>
+    <div class="card-meta"><span class="source">TechCrunch</span><span>今天 15:25（北京时间）</span></div>
+    <div class="card-summary">今年科技公司已累计裁员约 15 万人，日均 974 人，速度比去年快 44%。上月裁员近 4 万创两年新高。Block 裁掉近半数员工（CEO Jack Dorsey 否认 AI 是根源），Meta 在扎克伯格购入 1.7 亿美元豪宅后宣布裁员 8000 人，Uber 裁撤 23% 人事部门（此前 CTO 透露 AI 编码预算四个月内耗尽）。民调显示 65% 选民认为中产阶级生活遥不可及，76% 美国人将生活成本列为首要经济问题。与此同时 AI 芯片商 Cerebras 上市市值 670 亿美元、SpaceX 上市市值 2.1 万亿、Anthropic 和 OpenAI 估值均约 1 万亿美元——财富两端的分化正在加剧。</div>
+    <a class="card-link" href="https://techcrunch.com/2026/06/15/the-ai-layoff-wave-is-becoming-a-powder-keg" target="_blank">📎 TechCrunch 原文</a>
+  </div>
+
+  <div class="card industry">
+    <div class="card-header">
+      <div class="card-title"><span class="flash-tag flash-new">生态</span><a href="https://openai.com/index/introducing-openai-partner-network" target="_blank">OpenAI 推出合作伙伴网络，投资 1.5 亿美元构建销售交付生态</a></div>
+      <span class="card-tag">OpenAI</span>
+    </div>
+    <div class="card-meta"><span class="source">OpenAI 官网</span><span>今天 01:00（北京时间）</span></div>
+    <div class="card-summary">OpenAI 推出三级合作伙伴体系（Select/Advanced/Elite），投资 1.5 亿美元支持全球合作伙伴构建、销售和交付 AI 解决方案。设立 Codex、网络安全、智能体等专业方向认证，试点 Forward Deployed Experts 项目。目标在年底前培训认证 30 万名顾问。Paychex 借助 Bain+OpenAI 方案将等待时间降低 80%、人工审核时间减少 30%。</div>
+    <a class="card-link" href="https://openai.com/index/introducing-openai-partner-network" target="_blank">📎 OpenAI 官网原文</a>
+  </div>
+
+  <div class="card industry">
+    <div class="card-header">
+      <div class="card-title"><a href="https://www.theverge.com/podcast/949195/skydio-ceo-adam-bry-autonmous-drones-china-red-lines-military" target="_blank">Skydio CEO：硅谷不应为自主无人机画红线，中产无人机已基本消失</a></div>
+      <span class="card-tag">军事 AI</span>
+    </div>
+    <div class="card-meta"><span class="source">The Verge</span><span>今天 22:00（北京时间）</span></div>
+    <div class="card-summary">美国最大无人机制造商 Skydio CEO Adam Bry 表示，特朗普政府去年底禁止中国产无人机后，廉价消费级无人机几乎消失，Skydio 成为主要替代方案。他认为无人机正从工具转向自主基础设施，通过机库、远程操控和软件整合实现规模化应用，AI 在其中扮演关键角色。访谈还涉及 Skydio 与军方合作态度——"硅谷不应给自主系统画红线"。</div>
+    <a class="card-link" href="https://www.theverge.com/podcast/949195/skydio-ceo-adam-bry-autonmous-drones-china-red-lines-military" target="_blank">📎 The Verge 播客原文</a>
+  </div>
+
+  <div class="card industry">
+    <div class="card-header">
+      <div class="card-title">Anthropic 秘密提交 IPO 申请，估值 9650 亿美元超越 OpenAI 成全球最高 AI 创业公司</div>
+      <span class="card-tag">IPO</span>
+    </div>
+    <div class="card-meta"><span class="source">Bloomberg / 搜狐科技</span><span>6月初至今持续报道</span></div>
+    <div class="card-summary">6 月 1 日，Anthropic 宣布已向 SEC 秘密递交 S-1 注册声明，启动上市进程。此前 5 月 28 日完成 650 亿美元 H 轮融资，投后估值飙升至 9650 亿美元（约 6.5 万亿人民币），正式超越 OpenAI（3 月完成 1220 亿美元融资，估值约 1 万亿美元）。最快可能在秋季上市。</div>
+    <a class="card-link" href="https://www.sohu.com/a/1030997278_100157908" target="_blank">📎 搜狐科技：Anthropic IPO 深度分析</a>
+  </div>
+
+  <div class="card industry">
+    <div class="card-header">
+      <div class="card-title">美国政府与 Anthropic 监管博弈升级：五大 AI 实验室全纳入安全审查体系</div>
+      <span class="card-tag">监管</span>
+    </div>
+    <div class="card-meta"><span class="source">雪球 / NIST</span><span>持续追踪</span></div>
+    <div class="card-summary">NIST 下属 AI 标准与创新中心已与 Google DeepMind、微软、xAI 签署协议，加上此前签约的 Anthropic 和 OpenAI，美国五大 AI 实验室全部纳入联邦"模型上线前安全审查"体系。本轮 Anthropic 出口管制事件表明该体系正从协议走向强力执行。</div>
+    <a class="card-link" href="https://xueqiu.com/1527849020/387965819" target="_blank">📎 雪球：五实验室安全审查深度分析</a>
+  </div>
+</div>
+
+<!-- ====== 大V观点 ====== -->
+<div class="section">
+  <div class="section-header"><div class="dot" style="background:var(--c-opinion);"></div><h2>💬 大V观点 & 深度见解</h2><span class="count">5 条</span></div>
+
+  <div class="card opinion">
+    <div class="card-header">
+      <div class="card-title"><a href="https://x.com/satyanadella/status/2066182223213293753" target="_blank">Satya Nadella：没有生态的前沿不稳定——每家企业应有自己的 AI 学习循环</a></div>
+      <span class="card-tag">微软 CEO</span>
+    </div>
+    <div class="card-meta"><span class="source">X · @satyanadella</span><span>昨天 23:33（北京时间）</span></div>
+    <div class="card-summary">核心论断：企业需同时构建"人力资本+token 资本"复合增长的学习循环——能替换通用模型而不丢失已内化的专家知识，通过私有评估和强化学习让模型从内部真实轨迹中持续提升。警告"若所有价值被少数模型吞噬，将重演全球化空心化悲剧"，呼吁让每家企业、行业和国家拥有自己的 AI 学习循环。</div>
+    <a class="card-link" href="https://x.com/satyanadella/status/2066182223213293753" target="_blank">📎 X 原文</a>
+  </div>
+
+  <div class="card opinion">
+    <div class="card-header">
+      <div class="card-title"><a href="https://garymarcus.substack.com/p/what-washington-must-do" target="_blank">Gary Marcus：华盛顿必须建立独立 AI 监管机构，当前闭门决策带腐败嫌疑</a></div>
+      <span class="card-tag">AI 学者</span>
+    </div>
+    <div class="card-meta"><span class="source">Substack · Gary Marcus</span><span>今天 00:15（北京时间）</span></div>
+    <div class="card-summary">批评白宫 AI 监管决策由少数人闭门、在不到 24 小时内快速做出；认为偏袒 OpenAI、亚马逊等企业同时过度打压 Anthropic；警告这种做法可能促使各国加速发展"主权 AI"甚至中国 AI，并导致美国人才流失。</div>
+    <a class="card-link" href="https://garymarcus.substack.com/p/what-washington-must-do" target="_blank">📎 Substack 原文</a>
+  </div>
+
+  <div class="card opinion">
+    <div class="card-header">
+      <div class="card-title">Jack Dorsey 回应 Block 裁员：AI 不是根源；Marc Andreessen：AI 只是"银弹借口"</div>
+      <span class="card-tag">CEO 回应</span>
+    </div>
+    <div class="card-meta"><span class="source">TechCrunch 引用</span><span>今天 15:25（北京时间）</span></div>
+    <div class="card-summary">Block 裁掉近半数员工后，CEO Jack Dorsey 公开否认 AI 是裁员根源。a16z 创始人 Marc Andreessen 则称 AI 只是企业裁员的"银弹借口"，真实原因更多是管理决策和战略调整。但 Uber 案例显示 CTO 此前透露 AI 编码预算四个月内耗尽，暗示 AI 替代确实在发生——两方观点形成鲜明对照。</div>
+    <a class="card-link" href="https://techcrunch.com/2026/06/15/the-ai-layoff-wave-is-becoming-a-powder-keg" target="_blank">📎 TechCrunch 原文</a>
+  </div>
+
+  <div class="card opinion">
+    <div class="card-header">
+      <div class="card-title"><a href="https://x.com/vista8/status/2066165703443726749" target="_blank">开源乔木小说创作 Skill 发布——AI 创意工具民主化持续推进</a></div>
+      <span class="card-tag">开源社区</span>
+    </div>
+    <div class="card-meta"><span class="source">X · @vista8</span><span>昨天 22:27（北京时间）</span></div>
+    <div class="card-summary">用户只需说"我想写一个小说"或指定风格，AI 自动生成剧情梗概、人物设定、冲突升级和结尾，目标是"低 AI 味"创作。安装命令 `npx skills add joeseesun/qiaomu-novel-generator`，体现 AI 创意工具从封闭走向开源的民主化趋势。</div>
+    <a class="card-link" href="https://x.com/vista8/status/2066165703443726749" target="_blank">📎 X 原文 + GitHub</a>
+  </div>
+
+  <div class="card opinion">
+    <div class="card-header">
+      <div class="card-title"><a href="https://finance.sina.com.cn/roll/2026-06-14/doc-inickrit5640334.shtml" target="_blank">亚马逊被指在 Anthropic 出口管制背后"打小报告"——政府内部信源披露 24 小时急行军</a></div>
+      <span class="card-tag">政企博弈</span>
+    </div>
+    <div class="card-meta"><span class="source">新浪财经 / Politico</span><span>6月14日</span></div>
+    <div class="card-summary">美政府内部信源披露：特朗普政府对 Anthropic 实施出口管制前，高级官员展开了长达 24 小时的紧急行动，试图说服该公司主动撤回刚发布的 Fable 5/Mythos 5。亚马逊被指在其中扮演了关键角色——"在背后打小报告"。这一内幕揭示了 AI 监管决策中企业游说和商业竞争的巨大影响力。</div>
+    <a class="card-link" href="https://finance.sina.com.cn/roll/2026-06-14/doc-inickrit5640334.shtml" target="_blank">📎 新浪财经：亚马逊打小报告内幕</a>
+  </div>
+</div>
+
+<!-- ====== 模型/产品 ====== -->
+<div class="section">
+  <div class="section-header"><div class="dot" style="background:var(--c-model);"></div><h2>🚀 模型 / 产品 / 应用更新</h2><span class="count">3 条</span></div>
+
+  <div class="card model">
+    <div class="card-header">
+      <div class="card-title"><a href="https://mp.weixin.qq.com/s/p87ebkY1xqKtkGZ2N3DGSw" target="_blank">Kimi K2.7 Code 高速版上线：输出速度提升 6 倍，API 定价仅 2 倍</a></div>
+      <span class="card-tag">月之暗面</span>
+    </div>
+    <div class="card-meta"><span class="source">公众号：月之暗面（Kimi）</span><span>今天 18:26（北京时间）</span></div>
+    <div class="card-summary">与普通版为同一模型，输出速度约 5-6 倍：常规编程场景约 180 Token/s，短上下文可达 260 Token/s。API 定价为普通版 2 倍（输入 6.5 元/百万 token、输出 27 元、缓存 1.3 元）。相比 K2.6，K2.7 Code 在长上下文编程指令遵循、长程任务性能提升，平均 token 消耗减少 30%。庆祝发布推出三周充赠活动。</div>
+    <a class="card-link" href="https://mp.weixin.qq.com/s/p87ebkY1xqKtkGZ2N3DGSw" target="_blank">📎 Kimi 官方公众号</a>
+  </div>
+
+  <div class="card model">
+    <div class="card-header">
+      <div class="card-title">Google Gemini 2.5 Pro Ultra：强化 Agent 自主执行能力，支持跨应用任务编排</div>
+      <span class="card-tag">Google</span>
+    </div>
+    <div class="card-meta"><span class="source">zglg.work / Google DeepMind</span><span>今天（北京时间）</span></div>
+    <div class="card-summary">Google DeepMind 发布 Gemini 2.5 Pro Ultra 版本，重点增强自主智能体（Agentic）执行能力，支持跨应用任务编排和深度研究模式。模型在 GAIA 基准测试中得分突破 85%，并集成至 Google 搜索、Android 和 Chrome 生态中。</div>
+  </div>
+
+  <div class="card model">
+    <div class="card-header">
+      <div class="card-title"><a href="https://x.com/vista8/status/2066165703443726749" target="_blank">乔木小说创作 Skill 开源发布：AI 自动生成完整小说</a></div>
+      <span class="card-tag">开源工具</span>
+    </div>
+    <div class="card-meta"><span class="source">X · GitHub</span><span>昨天 22:27（北京时间）</span></div>
+    <div class="card-summary">用户只需指定风格，AI 自动生成剧情梗概、人物设定、冲突升级和结尾。目标是实现"低 AI 味"创作体验，一键安装使用。</div>
+    <a class="card-link" href="https://x.com/vista8/status/2066165703443726749" target="_blank">📎 X 原文</a>
+  </div>
+</div>
+
+<!-- ====== 技术/论文 ====== -->
+<div class="section">
+  <div class="section-header"><div class="dot" style="background:var(--c-tech);"></div><h2>🔬 技术进展 & 论文</h2><span class="count">2 条</span></div>
+
+  <div class="card tech">
+    <div class="card-header">
+      <div class="card-title"><a href="https://www.marktechpost.com/2026/06/15/meet-flash-kmeans-an-io-aware-exact-k-means-that-runs-over-200x-faster-than-faiss-on-gpus" target="_blank">Flash-KMeans：IO 感知精确 K-Means，GPU 上比 FAISS 快 200 倍以上</a></div>
+      <span class="card-tag">开源</span>
+    </div>
+    <div class="card-meta"><span class="source">MarkTechPost / UC Berkeley</span><span>今天 17:16（北京时间）</span></div>
+    <div class="card-summary">UC Berkeley 与 UT Austin 团队开源（Apache 2.0，`pip install flash-kmeans`），精确实现标准 Lloyd's K-Means。在 NVIDIA H200 上端到端比最佳基线快 17.9×、比 FAISS 快 200×以上。通过 FlashAssign 核避免物化 N×K 距离矩阵，将 IO 复杂度从 O(NK) 降至 O(Nd+Kd)。支持 10 亿数据点+32,768 聚类的 out-of-core 处理。适用于向量搜索索引、稀疏注意力路由、KV 缓存压缩等。</div>
+    <a class="card-link" href="https://www.marktechpost.com/2026/06/15/meet-flash-kmeans-an-io-aware-exact-k-means-that-runs-over-200x-faster-than-faiss-on-gpus" target="_blank">📎 MarkTechPost 原文</a>
+  </div>
+
+  <div class="card tech">
+    <div class="card-header">
+      <div class="card-title">Anthropic 发布生物科学 AI Agent 基础设施深度论文：确定性检索层+大模型</div>
+      <span class="card-tag">论文</span>
+    </div>
+    <div class="card-meta"><span class="source">GitHub · agents-radar</span><span>6月9日</span></div>
+    <div class="card-summary">Anthropic《Paving the way for agents in biology》系统批判现有生物数据基础设施对 AI Agent 的不友好，提出"确定性检索层+大模型"技术解耦方案，锚定 Agent 向高精度、高风险科学领域的进军路线图。对理解 AI 在垂直科学领域的落地方向有参考价值。</div>
+  </div>
+</div>
+
+<!-- ====== 深度报告 ====== -->
+<div class="section">
+  <div class="section-header"><div class="dot" style="background:var(--c-report);"></div><h2>💡 优秀报告 / 深度研报推介</h2><span class="count">2 条</span></div>
+
+  <div class="card report">
+    <div class="card-header">
+      <div class="card-title"><a href="https://kersai.com/june-2026-ai-news-anthropic-spacex-google-business-impact/" target="_blank">Kersai：2026 年 6 月 AI 全景深度分析——Anthropic / SpaceX / Google 商业影响</a></div>
+      <span class="card-tag">第三方研报</span>
+    </div>
+    <div class="card-meta"><span class="source">Kersai</span><span>6月持续更新</span></div>
+    <div class="card-summary">系统性梳理 Anthropic $965B 估值、SpaceX AI 基础设施布局、Cursor $60B 交易、Google Gemini 浪潮及欧盟 AI 法案落地，从商业影响角度分析每个事件对市场格局的重塑。适合作为月度复盘时的参考框架。</div>
+    <a class="card-link" href="https://kersai.com/june-2026-ai-news-anthropic-spacex-google-business-impact/" target="_blank">📎 Kersai 原文</a>
+  </div>
+
+  <div class="card report">
+    <div class="card-header">
+      <div class="card-title"><a href="https://zhuanlan.zhihu.com/p/2042671391217013114" target="_blank">知乎深度：六月大模型混战前瞻——模型越强，商业越难</a></div>
+      <span class="card-tag">行业分析</span>
+    </div>
+    <div class="card-meta"><span class="source">知乎</span><span>近期</span></div>
+    <div class="card-summary">全球 AI 支出 2026 年预计达 2.5 万亿美元，高盛预测 2026-2031 年间 AI 基础设施累计资本投入将达 7.6 万亿美元。核心论点：模型能力越强、越同质化，商业化的难度反而越大——因为这降低了用户切换成本、压缩了定价空间。对理解当前"模型军备竞赛"背后的商业逻辑有启发。</div>
+    <a class="card-link" href="https://zhuanlan.zhihu.com/p/2042671391217013114" target="_blank">📎 知乎原文</a>
+  </div>
+</div>
+
+<!-- ====== 投融资 ====== -->
+<div class="section">
+  <div class="section-header"><div class="dot" style="background:var(--c-funding);"></div><h2>💰 投融资动态</h2><span class="count">2 条</span></div>
+
+  <div class="card funding">
+    <div class="card-header">
+      <div class="card-title"><span class="flash-tag flash-ipo">IPO</span> Anthropic 估值 9650 亿美元超越 OpenAI——AI 进入万亿美元俱乐部时代</div>
+    </div>
+    <div class="card-meta"><span class="source">Bloomberg / 多来源</span></div>
+    <div class="card-summary">Anthropic（估值 9650 亿美元，5 月 28 日 H 轮 650 亿美元融资）已秘密递交 IPO 申请，最快秋季上市。对比：OpenAI 估值约 1 万亿美元（3 月 1220 亿美元融资），Cerebras 上市首日市值 670 亿美元。AI 赛道资本集中度史无前例，但 Anthropic 同时面临出口管制和地缘政治风险。</div>
+  </div>
+
+  <div class="card funding">
+    <div class="card-header">
+      <div class="card-title"><span class="flash-tag flash-ipo">IPO</span> Cerebras AI 芯片上市首日市值 670 亿美元——AI 算力基础设施投资升温</div>
+    </div>
+    <div class="card-meta"><span class="source">TechCrunch</span></div>
+    <div class="card-summary">AI 芯片制造商 Cerebras 成功上市，首日市值达 670 亿美元。作为英伟达训练芯片的替代方案，Cerebras 上市标志着 AI 算力基础设施投资进入新阶段。结合高盛预测未来五年 AI 基础设施累计投入 7.6 万亿美元，算力供应链的资本化正在加速。</div>
+  </div>
+</div>
+
+<!-- ====== 投资启示 ====== -->
+<div class="summary-box">
+  <h2>📋 今日总结 & 投资启示</h2>
+  <ul>
+    <li><strong>AI 监管进入"选边站队"阶段——选择性执法风险凸显</strong>：白宫对 Anthropic 施压不足 24 小时即做出决定，被业界广泛批评偏袒 OpenAI/亚马逊。如果监管不是公平、透明的，它本身就是一种竞争武器——<span class="highlight">被"选中"的企业获得不对称优势</span>。关注：哪些公司更善于在华盛顿游说？这是今年最被低估的 AI 竞争维度。</li>
+    <li><strong>出口管制从硬件延伸到软件模型——AI 供应链"脱钩"加速</strong>：Fable 5/Mythos 5 是首个被全面出口管制的商业通用大模型。从芯片（英伟达出口限制）到模型（Anthropic 出口管制），再到并购（Meta-Manus 被撤销），<span class="highlight">中美 AI 资产正在全链条"脱钩"</span>。中国自主大模型（Kimi、DeepSeek 等）的战略价值进一步上升。</li>
+    <li><strong>AI 替代劳动力 vs 企业创富——加剧的社会分裂正在成为政治变量</strong>：15 万人被裁、AI 连续三月为首要原因，76% 美国人视生活成本为首要问题——而同时 Anthropic 和 OpenAI 估值合计近 2 万亿美元。<span class="highlight">AI 创造财富的速度远快于再分配的速度</span>。这一矛盾可能在 2026 年中期选举中爆发，成为政策风险的催化剂。</li>
+    <li><strong>OpenAI 生态化 vs Anthropic 安全化——两条路径的 IPO 估值对决即将揭晓</strong>：OpenAI 投 1.5 亿美元建合作伙伴生态（推/拉模式），Anthropic 以"最安全模型"叙事溢价（但正被出口管制冲击）。Nadella 的"人力资本+token 资本"框架指出了第三条路——<span class="highlight">生态能力可能比纯模型能力更有投资价值</span>。</li>
+    <li><strong>模型层"降本"已成共识——关注应用层受益机会</strong>：Kimi K2.7 Code 高速版输出 6 倍速但仅 2 倍价、Flash-KMeans 200倍提速——<span class="highlight">基础模型和基础设施层的成本正在以超预期速度下降</span>。这对下游应用/SaaS/Agent 公司是中长期的成本利好，但对纯模型厂商的毛利率和定价权是压力。</li>
+    <li><strong>7.6 万亿美元 AI 基础设施大周期正在展开</strong>：高盛预测、Cerebras IPO、SpaceX AI 基础设施布局——算力、数据中心、电力正在形成新的大宗商品级别的投资赛道。关注传统能源、电网、冷却等"AI 卖水人"产业链的投资机会。</li>
+  </ul>
+</div>
+
+<div class="footer">
+  <p>📊 报告由 <strong>WorkBuddy AI 助手</strong> 生成 · 数据来源：<a href="https://aihot.virxact.com" target="_blank">AI HOT</a>（国内精选）+ 全球多渠道 WebSearch（海外前沿）</p>
+  <p>生成时间：2026-06-15 22:47（北京时间） · 存档路径：D:\WorkBuddy\ai-daily-reports\2026-06\</p>
+  <p style="margin-top:8px;color:#a5b4fc;">⚠️ 本报告仅供研究参考，不构成投资建议。投资有风险，决策需谨慎。</p>
+</div>
+
+</div>
+</body>
+</html>

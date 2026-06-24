@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 存档索引</title>
+<style>
+:root {
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --primary: #6366f1;
+  --shadow: 0 1px 3px rgba(0,0,0,.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+}
+.container { max-width: 800px; margin: 0 auto; padding: 40px 20px 60px; }
+.header {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #7c3aed 100%);
+  border-radius: 16px; padding: 32px 36px; color: #fff; margin-bottom: 32px;
+  box-shadow: 0 8px 30px rgba(99,102,241,.3);
+}
+.header h1 { font-size: 24px; font-weight: 700; }
+.header p { font-size: 14px; opacity: .85; margin-top: 6px; }
+.month-group { margin-bottom: 28px; }
+.month-title {
+  font-size: 17px; font-weight: 700; color: var(--text);
+  padding-bottom: 10px; border-bottom: 2px solid var(--primary);
+  margin-bottom: 12px;
+}
+.report-list { list-style: none; display: grid; gap: 6px; }
+.report-item a {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px; background: var(--card-bg); border-radius: 10px;
+  text-decoration: none; color: var(--text); box-shadow: var(--shadow);
+  transition: transform .15s, box-shadow .15s;
+}
+.report-item a:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(99,102,241,.15);
+}
+.report-item .date { font-weight: 600; }
+.report-item .weekday { color: var(--text-muted); font-size: 13px; }
+.report-item .arrow { color: var(--primary); font-weight: 700; }
+.empty-state { text-align: center; padding: 48px 0; color: var(--text-muted); }
+.empty-state .icon { font-size: 48px; margin-bottom: 12px; }
+.footer {
+  text-align: center; margin-top: 48px; padding-top: 24px;
+  border-top: 1px solid var(--border); color: var(--text-muted); font-size: 12px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>📁 AI 每日全景报告 · 存档索引</h1>
+  <p>中英双语 · 可视化 · 可溯源 · 每日 22:00 自动更新</p>
+</div>
+
+<div class="month-group">
+  <div class="month-title">📅 2026 年 6 月</div>
+  <ul class="report-list" id="reportList">
+    <div class="empty-state">
+      <div class="icon">📭</div>
+      <p>索引页面加载中...请直接在浏览器中打开报告文件浏览</p>
+    </div>
+  </ul>
+</div>
+
+<div style="background:#eef2ff;border:1px solid #c7d2fe;border-radius:12px;padding:20px 24px;margin-top:20px;">
+  <h3 style="font-size:16px;font-weight:700;color:var(--primary);margin-bottom:10px;">📌 使用说明</h3>
+  <ul style="font-size:13px;color:var(--text-secondary);padding-left:18px;line-height:2;">
+    <li>报告存放路径：<code style="background:#e2e8f0;padding:2px 6px;border-radius:4px;">D:\WorkBuddy\ai-daily-reports\YYYY-MM\</code></li>
+    <li>文件命名规则：<code style="background:#e2e8f0;padding:2px 6px;border-radius:4px;">AI每日报告-YYYY-MM-DD.html</code></li>
+    <li>双击 .html 文件即可在浏览器中查看完整报告</li>
+    <li>支持 Ctrl+F 全文搜索历史报告中的关键词</li>
+    <li>可导入 Notion/飞书等协作工具中作为知识库沉淀</li>
+  </ul>
+</div>
+
+<div class="footer">
+  <p>📊 每日 22:00（北京时间）自动生成 · 来源：AI HOT + 全球多渠道</p>
+  <p style="margin-top:4px;">⚠️ 仅供研究参考，不构成投资建议</p>
+</div>
+
+</div>
+
+<script>
+// Dynamically list available reports
+(async () => {
+  const list = document.getElementById('reportList');
+  // Since static HTML can't list directories, we show a note
+  list.innerHTML = `
+    <li class="report-item">
+      <a href="2026-06/AI每日报告-2026-06-23.html">
+        <span class="date">📄 6月23日</span>
+        <span class="weekday">周二</span>
+        <span class="arrow">→</span>
+      </a>
+    </li>
+    <li class="report-item">
+      <a href="2026-06/AI每日报告-2026-06-22.html">
+        <span class="date">📄 6月22日</span>
+        <span class="weekday">周日</span>
+        <span class="arrow">→</span>
+      </a>
+    </li>
+    <li class="report-item">
+      <a href="2026-06/AI每日报告-2026-06-17.html">
+        <span class="date">📄 6月17日</span>
+        <span class="weekday">周三</span>
+        <span class="arrow">→</span>
+      </a>
+    </li>
+    <li class="report-item">
+      <a href="2026-06/AI每日报告-2026-06-16.html">
+        <span class="date">📄 6月16日</span>
+        <span class="weekday">周二</span>
+        <span class="arrow">→</span>
+      </a>
+    </li>
+    <li class="report-item">
+      <a href="2026-06/AI每日报告-2026-06-15.html">
+        <span class="date">📄 6月15日</span>
+        <span class="weekday">周一</span>
+        <span class="arrow">→</span>
+      </a>
+    </li>
+    <li style="padding:12px 16px;color:var(--text-muted);font-size:13px;">
+      ✅ 6月23日报告已生成 · 含 25 条双语资讯（SpaceX $6.3B算力大单 · 五眼联盟AI威胁警告 · OpenAI Daybreak安全工具 · Fable 5付费开启 · 国产AI密集发布）
+    </li>
+  `;
+})();
+</script>
+
+</body>
+</html>
