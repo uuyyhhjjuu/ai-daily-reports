@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026-06-26</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f0f0f5;color:#1a1a2e;line-height:1.7}
+.container{max-width:920px;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#6366f1 0%,#4f46e5 50%,#4338ca 100%);border-radius:16px;padding:36px 32px;color:#fff;margin-bottom:20px;box-shadow:0 8px 32px rgba(99,102,241,.25)}
+.header h1{font-size:26px;font-weight:700;margin-bottom:6px;letter-spacing:-.5px}
+.header .subtitle{font-size:14px;opacity:.88;margin-bottom:14px}
+.header .meta{display:flex;flex-wrap:wrap;gap:10px;font-size:13px}
+.header .meta span{background:rgba(255,255,255,.18);padding:4px 12px;border-radius:20px;backdrop-filter:blur(4px)}
+.stats-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;padding:16px 20px;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.stat-item{display:flex;align-items:center;gap:6px;font-size:13px;color:#555}
+.stat-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.stat-num{font-weight:700;color:#1a1a2e}
+.section{margin-bottom:24px}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:0 4px}
+.section-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;box-shadow:0 0 0 4px rgba(0,0,0,.05)}
+.section-title{font-size:18px;font-weight:700;color:#1a1a2e}
+.section-count{font-size:13px;color:#999;background:#f0f0f5;padding:2px 10px;border-radius:10px}
+.card{background:#fff;border-radius:12px;padding:18px 22px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.05);border-left:4px solid #ccc;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.card.industry{border-left-color:#f59e0b}
+.card.opinion{border-left-color:#10b981}
+.card.product{border-left-color:#8b5cf6}
+.card.paper{border-left-color:#06b6d4}
+.card.report{border-left-color:#3b82f6}
+.card.funding{border-left-color:#f97316}
+.card-title{font-size:16px;font-weight:600;color:#1a1a2e;margin-bottom:6px}
+.card-title a{color:#1a1a2e;text-decoration:none;transition:color .15s}
+.card-title a:hover{color:#6366f1}
+.card-meta{font-size:12px;color:#888;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card-meta .source{background:#f0f0f5;padding:2px 8px;border-radius:6px;font-weight:500}
+.card-meta .time{color:#6366f1;font-weight:600}
+.card-summary{font-size:14px;color:#444;line-height:1.65}
+.card-summary .highlight{color:#6366f1;font-weight:600}
+.insights{background:linear-gradient(135deg,#eef2ff 0%,#e0e7ff 100%);border-radius:16px;padding:28px 28px;margin:28px 0 20px}
+.insights h2{font-size:20px;font-weight:700;color:#4338ca;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.insight-item{background:rgba(255,255,255,.7);border-radius:10px;padding:14px 18px;margin-bottom:10px;font-size:14px;line-height:1.7;color:#333}
+.insight-item:last-child{margin-bottom:0}
+.insight-item .highlight{color:#4338ca;font-weight:700}
+.insight-item .num{display:inline-block;width:24px;height:24px;background:#6366f1;color:#fff;border-radius:50%;text-align:center;line-height:24px;font-size:12px;font-weight:700;margin-right:8px}
+.footer{text-align:center;padding:20px;font-size:12px;color:#999;line-height:1.8}
+.footer a{color:#6366f1;text-decoration:none}
+@media(max-width:680px){
+.container{padding:12px}
+.header{padding:24px 20px}
+.header h1{font-size:20px}
+.card{padding:14px 16px}
+.stats-bar{padding:12px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<h1>AI 每日全景报告</h1>
+<div class="subtitle">Daily AI Panorama Report — 中英双语 · 国内+海外 · 可视化可溯源</div>
+<div class="meta">
+<span>📅 2026年6月26日（周五）</span>
+<span>⏰ 覆盖时段：6/25 22:00 → 6/26 22:00 北京时间</span>
+<span>📊 共 23 条</span>
+</div>
+</div>
+
+<div class="stats-bar">
+<div class="stat-item"><div class="stat-dot" style="background:#f59e0b"></div><span>行业动态 <span class="stat-num">6</span></span></div>
+<div class="stat-item"><div class="stat-dot" style="background:#10b981"></div><span>大V观点 <span class="stat-num">4</span></span></div>
+<div class="stat-item"><div class="stat-dot" style="background:#8b5cf6"></div><span>模型/产品 <span class="stat-num">6</span></span></div>
+<div class="stat-item"><div class="stat-dot" style="background:#06b6d4"></div><span>技术/论文 <span class="stat-num">2</span></span></div>
+<div class="stat-item"><div class="stat-dot" style="background:#3b82f6"></div><span>深度报告 <span class="stat-num">2</span></span></div>
+<div class="stat-item"><div class="stat-dot" style="background:#f97316"></div><span>投融资 <span class="stat-num">3</span></span></div>
+</div>
+
+<!-- ========== 行业动态 ========== -->
+<div class="section">
+<div class="section-header">
+<div class="section-dot" style="background:#f59e0b"></div>
+<div class="section-title">🏭 行业动态</div>
+<div class="section-count">6 条</div>
+</div>
+
+<div class="card industry">
+<div class="card-title"><a href="https://the-decoder.com/openais-gpt-5-6-rollout-now-requires-us-government-approval-on-a-customer-by-customer-basis/" target="_blank">白宫要求 OpenAI 暂缓 GPT-5.6 广泛发布，逐客户审批准入</a></div>
+<div class="card-meta"><span class="source">The Decoder / The Information</span><span class="time">今天 05:07</span></div>
+<div class="card-summary">据 The Information 报道，特朗普政府因安全顾虑要求 OpenAI 将 GPT-5.6 改为受控预览版，仅向小部分合作伙伴提供早期访问，并由政府<span class="highlight">逐客户审批准入</span>。CEO Sam Altman 已向员工确认该流程，若预览顺利，预计"几周后"广泛发布。核心担忧在于模型在自动化高技能网络安全工作上的能力——既能帮防御者发现漏洞，也可能被攻击者加速利用。此前特朗普已签署行政令要求 AI 公司自愿提交新模型供政府测试。</div>
+</div>
+
+<div class="card industry">
+<div class="card-title"><a href="https://the-decoder.com/altman-wont-go-public-for-less-than-1-trillion-so-openais-ipo-may-slip-to-2027/" target="_blank">Altman 坚持 1 万亿美元估值，OpenAI IPO 或推迟至 2027</a></div>
+<div class="card-meta"><span class="source">The Decoder / NYT</span><span class="time">今天 约21:00</span></div>
+<div class="card-summary">据《纽约时报》报道，OpenAI 倾向将 IPO 推迟至 2027 年。CEO Altman 坚持<span class="highlight">不低于 1 万亿美元</span>估值（上次私募估值 7300 亿），顾问给出两个选项：2027 年以万亿估值上市，或以较低估值尽快上市，Altman 拒绝任何低于万亿的方案。SpaceX 上市后股价从 $202 跌至 $153 加剧了顾问担忧。ChatGPT 用户增长停滞在 9 亿（未达 10 亿目标），2025 年营收约 130 亿美元但仍未盈利。消息致<span class="highlight">SoftBank 股价单日暴跌 13%</span>，其对 OpenAI 投资额将达约 650 亿美元。</div>
+</div>
+
+<div class="card industry">
+<div class="card-title"><a href="https://www.ithome.com/0/968/872.htm" target="_blank">近 400 家美国报纸联合起诉微软和 OpenAI 侵犯版权</a></div>
+<div class="card-meta"><span class="source">IT之家 / Bloomberg Law</span><span class="time">今天 12:38</span></div>
+<div class="card-summary">代表近 400 家纸媒的出版商联盟向纽约南区联邦法院起诉微软和 OpenAI，指控其<span class="highlight">未经授权系统性抓取新闻内容</span>训练 Copilot、ChatGPT 等 AI 模型，侵犯版权并触犯《数字千年版权法》。起诉书称被告"秘密"爬取网站、复制文章并删除版权管理信息，AI 产品基于其内容创造数十亿美元价值但出版商分文未得。OpenAI 回应称训练数据基于公开内容且符合合理使用原则。</div>
+</div>
+
+<div class="card industry">
+<div class="card-title"><a href="https://the-decoder.com/linux-foundation-and-20-tech-giants-launch-akrites-to-fix-open-source-flaws-before-ai-powered-attacks-hit/" target="_blank">Linux 基金会联合 20 家科技巨头启动 Akrites 计划，防御 AI 驱动攻击</a></div>
+<div class="card-meta"><span class="source">The Decoder</span><span class="time">今天 约19:00</span></div>
+<div class="card-summary">Linux 基金会宣布启动 <span class="highlight">Akrites</span> 计划，联合 AWS、Anthropic、Cisco、Citi、Google、IBM、摩根大通、微软、NVIDIA、OpenAI、Red Hat 等约 20 家科技/金融巨头，协调修复开源软件安全漏洞。AI 模型可在数分钟内扫描大型项目代码发现漏洞，使攻击者能力大幅提升。Akrites 设立统一安全事件响应团队（SIRT），替代当前各组织独立报告的低效模式；对无活跃维护者的关键项目，Akrites 将作为"最后维护者"直接提交补丁。近期数据显示<span class="highlight">已验证开源漏洞中仅不到 5% 已修复</span>。</div>
+</div>
+
+<div class="card industry">
+<div class="card-title"><a href="https://www.ithome.com/0/968/894.htm" target="_blank">小鹏 CEO 何小鹏：2026 年底自动驾驶可合法进入全球</a></div>
+<div class="card-meta"><span class="source">IT之家</span><span class="time">今天 13:41</span></div>
+<div class="card-summary">何小鹏在微博透露，联合国 WP29 缔约国会议批准了 DCAS UNR 171 series 02（对应城区 NGP 法规）与 UNR ADS（对应 L3-L5 自动驾驶法规）。DCAS 将在六个月后成为<span class="highlight">欧盟强制法规</span>，即 2026 年底自动驾驶可合法进入全球市场；UNR ADS 为框架性法规，加速 L4 级 Robotaxi 落地。何小鹏称 2027 年海外小鹏汽车将搭载 VLA 和 VLM，支持中英文混合语音对话。</div>
+</div>
+
+<div class="card industry">
+<div class="card-title"><a href="https://the-decoder.com/most-major-ai-chatbots-still-lean-left-on-political-questions-even-anti-woke-models-are-no-exception/" target="_blank">意大利反垄断调查微软 365 涨价：未告知用户 AI Copilot 集成</a></div>
+<div class="card-meta"><span class="source">Reuters</span><span class="time">今天 约19:00</span></div>
+<div class="card-summary">据 Reuters 报道，意大利反垄断机构正在调查微软 365 服务的价格上调，指控微软<span class="highlight">未充分告知用户</span> AI 工具 Copilot 被集成到服务中即调整定价。此举标志着欧洲监管机构对 AI 功能捆绑涨价的审查从"安全"维度扩展到"消费者保护+反垄断"层面，可能对微软乃至其他将 AI 功能嵌入现有订阅服务的科技公司（如 Google、Adobe）产生连锁影响。</div>
+</div>
+</div>
+
+<!-- ========== 大V观点 ========== -->
+<div class="section">
+<div class="section-header">
+<div class="section-dot" style="background:#10b981"></div>
+<div class="section-title">💬 大V观点 & 深度报告</div>
+<div class="section-count">4 条</div>
+</div>
+
+<div class="card opinion">
+<div class="card-title"><a href="https://the-decoder.com/anthropic-doesnt-need-junior-engineers-anymore-thanks-to-ai-and-warns-of-an-economic-shock-when-other-industries-follow/" target="_blank">Anthropic 联合创始人 Jack Clark：不再需要初级工程师，警告经济冲击</a></div>
+<div class="card-meta"><span class="source">The Decoder / Reason 杂志专访</span><span class="time">今天 约20:00</span></div>
+<div class="card-summary">Anthropic 联合创始人 Jack Clark 在接受 Reason 杂志采访时表示，公司正招聘更多经验丰富的人才，因为<span class="highlight">"直觉的回报远超以往"</span>——Claude 已能处理过去需要大型团队完成的实验扩展工作。Clark 警告这一趋势将冲击更广泛的经济：当 AI 放大顶级专家产出同时自动化入门级工作，可能出现"<span class="highlight">超趋势 GDP 增长伴随衰退级失业率飙升</span>"的悖论，而没有任何政府对此做好准备。</div>
+</div>
+
+<div class="card opinion">
+<div class="card-title"><a href="https://mp.weixin.qq.com/s/LVj2foSXi_hBRKxjuYaUyw" target="_blank">Claude Code 6 个实用 Hook 玩法：从被动聊天到事件驱动自动化</a></div>
+<div class="card-meta"><span class="source">公众号：数字生命卡兹克</span><span class="time">今天 10:02</span></div>
+<div class="card-summary">Claude Code 内置近 <span class="highlight">30 个 Hook 事件</span>（年初仅 13 个），本质是运行时不消耗 token 的规则脚本。6 个实用玩法：①权限弹窗提醒 ②开机日程播报（问候+天气+飞书日程）③上下文预压缩时自动生成摘要卡片 ④结合 Skill 自动整理下载文件夹 ⑤每小时久坐提醒 ⑥通过 Bark 实现手机/手表任务完成/失败推送。核心理念：让 AI 从被动聊天框进化为<span class="highlight">事件驱动的自动化系统</span>。</div>
+</div>
+
+<div class="card opinion">
+<div class="card-title"><a href="https://huggingface.co/blog/allenai/hybrid-token-prediction" target="_blank">OLMo Hybrid vs Transformer：混合架构在实义词上优势明显，但重复短语几无优势</a></div>
+<div class="card-meta"><span class="source">Hugging Face Blog / Allen AI</span><span class="time">今天 00:12</span></div>
+<div class="card-summary">Allen AI 对比 7B 参数的 OLMo 3（Transformer）与 OLMo Hybrid（混合架构），发现混合模型在名词、动词、形容词等实义词上预测损失更低（loss gap 约 <span class="highlight">0.04</span>），功能词 gap 约 0.02，在需上下文推理的代词指代上表现更好。但在重复 n-gram 和闭合括号（如 <code>}</code>）上优势几乎消失——Transformer 凭注意力机制更擅长从输入中直接检索精确信息。这为混合架构的适用边界提供了精细刻画。</div>
+</div>
+
+<div class="card opinion">
+<div class="card-title"><a href="https://x.com/xiaohu/status/2070317717811540149" target="_blank">小互开源个人 IP 配图技能"小互 IP Studio"，含 31 个原创角色</a></div>
+<div class="card-meta"><span class="source">X：小互 (@xiaohu)</span><span class="time">今天 09:26</span></div>
+<div class="card-summary">博主小互开源个人 IP 配图技能"<span class="highlight">小互 IP Studio</span>"，含 31 个原创角色（15 个手绘线稿+16 个谐音梗 meme）及一套配图方法论。Agent 可自动读取文章、规划配图类型（情绪图/示意图/四格漫画）、生成并自查返工。默认手绘线稿淡彩画风，另备 5 种皮肤可切换。安装仅需 Python3，支持 Claude Code、Codex 等工具，体现了 AI Agent 在内容创作工作流中的实用性持续提升。</div>
+</div>
+</div>
+
+<!-- ========== 模型/产品/应用 ========== -->
+<div class="section">
+<div class="section-header">
+<div class="section-dot" style="background:#8b5cf6"></div>
+<div class="section-title">🚀 模型/产品/应用更新</div>
+<div class="section-count">6 条</div>
+</div>
+
+<div class="card product">
+<div class="card-title"><a href="https://x.com/OpenAIDevs/status/2070254532911882707" target="_blank">Codex 在 ChatGPT 移动 App 正式可用（GA），新增一对一设备配对</a></div>
+<div class="card-meta"><span class="source">X：OpenAI Developers (@OpenAIDevs)</span><span class="time">今天 05:15</span></div>
+<div class="card-summary">OpenAI 宣布 Codex 在 ChatGPT 移动应用中<span class="highlight">正式开放（GA）</span>，新增一对一设备配对实现更安全的手机与电脑连接。移动端新增通知、目标、侧边聊天、文件预览及内联审阅评论功能。用户可通过手机启动新工作、审查输出、引导执行和批准下一步，而 Codex 实际继续在笔记本或开发机上后台运行。这标志着 AI 编程工具从桌面端向移动工作流的正式延伸。</div>
+</div>
+
+<div class="card product">
+<div class="card-title"><a href="https://x.com/midjourney/status/2070223272072065228" target="_blank">Midjourney 预览 V8.2 美学效果，草稿模式支持随机风格探索速度提升 24 倍</a></div>
+<div class="card-meta"><span class="source">X：Midjourney (@midjourney)</span><span class="time">今天 03:11</span></div>
+<div class="card-summary">Midjourney 带来两项更新：①加入 <code>--preview</code> 参数可提前体验 <span class="highlight">V8.2</span> 的美学与个性化效果；②V8.1 草稿模式（生成 24 张低分辨率图，价格仅为标准 4 张的一半）现支持搭配 <code>--sref random</code> 使用，探索风格空间速度比之前快 <span class="highlight">24 倍</span>。点击 "Vary" 可将草稿升级为全分辨率。大幅降低了用户探索不同视觉风格的成本。</div>
+</div>
+
+<div class="card product">
+<div class="card-title"><a href="https://runwayml.com/news/introducing-agent-2" target="_blank">Runway 发布 Agent 2.0：面向营销人员的全链路 AI 广告智能体</a></div>
+<div class="card-meta"><span class="source">Runway 官网</span><span class="time">今天 02:42</span></div>
+<div class="card-summary">Runway 发布 Agent 2.0，帮助营销人员创建、测试和优化广告、视频及营销活动。品牌营销人员可在对话中开发活动概念、生成变体并自动本地化；绩效营销人员可上传创意并导入 Meta、YouTube、TikTok 或 Google 广告数据，由 Agent 分析后生成下一轮待测广告。社交媒体营销人员可一次性生成一周内容，自动裁切为 <span class="highlight">9:16、16:9、1:1</span> 等格式。面向所有用户开放，标志着 AI 视频工具从生成向工作流自动化进化。</div>
+</div>
+
+<div class="card product">
+<div class="card-title"><a href="https://x.com/berryxia/status/2070167806700908957" target="_blank">Ornith-1.0 开源模型家族发布：专注 Agentic Coding，SWE-Bench Verified 达 82.4</a></div>
+<div class="card-meta"><span class="source">X：Berry Xia (@berryxia) / TechTimes</span><span class="time">昨天 23:31</span></div>
+<div class="card-summary">Ornith-1.0 开源模型家族发布，覆盖 <span class="highlight">9B Dense、31B Dense、35B MoE 及 397B MoE</span> 全参数规模，专注智能体编程。Agent Coding 基准达开源顶尖：SWE-Bench Verified <span class="highlight">82.4</span>、SWE-Bench Pro 62.2、Terminal-Bench 2.1 77.5。基于 gemma4 和 qwen3.5 后训练，采用强化学习联合优化任务脚手架与最终解决方案，让模型自主改进执行框架。全系列 MIT 开源，提供 GGUF 版本支持本地运行。</div>
+</div>
+
+<div class="card product">
+<div class="card-title"><a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.193" target="_blank">Claude Code v2.1.193 发布：全量 Shell 分类、OTel 日志、路径自动补全</a></div>
+<div class="card-meta"><span class="source">GitHub Releases</span><span class="time">今天 05:46</span></div>
+<div class="card-summary">Claude Code v2.1.193 新增 <code>autoMode.classifyAllShell</code> 设置，将全部 Bash/PowerShell 命令经自动模式分类器处理；新增 <code>claude_code.assistant_response</code> OpenTelemetry 日志事件（默认关闭）；Bash 模式支持<span class="highlight">实时文件路径自动补全</span>。新增空闲后台 shell 命令自动内存压力回收。修复 /model UI 状态滞后、后台任务误取消、子 agent 隐藏同级等问题，改进后台 agent 启动指令与 MCP 认证重连。</div>
+</div>
+
+<div class="card product">
+<div class="card-title"><a href="https://blog.google/products-and-platforms/products/search/google-finance-updates-june-2026" target="_blank">Google Finance 推出 Android 应用与 AI 投资组合功能</a></div>
+<div class="card-meta"><span class="source">Google Blog</span><span class="time">今天 00:00</span></div>
+<div class="card-summary">Google Finance 推出正式版 Android 应用，同步上线全球投资组合跟踪功能。用户可通过截图、CSV/PDF 上传或文字描述创建组合，并利用 <span class="highlight">AI 研究工具</span>提问资产配置、固定收益影响等问题。新增市场情报简报功能：用户设定任务（如每日盘前简报），后台自动生成并推送。Android 应用包含 watchlist、实时数据、金融新闻 feed 及 AI 驱动的"关键时刻"解释股价波动功能。</div>
+</div>
+</div>
+
+<!-- ========== 技术进展 & 论文 ========== -->
+<div class="section">
+<div class="section-header">
+<div class="section-dot" style="background:#06b6d4"></div>
+<div class="section-title">🔬 技术进展 & 论文</div>
+<div class="section-count">2 条</div>
+</div>
+
+<div class="card paper">
+<div class="card-title"><a href="https://newsroom.ibm.com/2026-06-25-ibm-debuts-worlds-first-sub-1-nanometer-chip-technology" target="_blank">IBM 发布全球首款亚纳米级芯片技术：0.7nm 纳米堆叠架构，集成近 1000 亿晶体管</a></div>
+<div class="card-meta"><span class="source">IBM Newsroom / Hacker News</span><span class="time">今天 02:52</span></div>
+<div class="card-summary">IBM 发布全球首款亚纳米级芯片技术，采用 <span class="highlight">0.7nm（7 埃米）</span>节点与全新三维纳米堆叠（nanostack）架构。指甲盖大小芯片集成近 <span class="highlight">1000 亿个晶体管</span>，密度约为 IBM 2021 年 2nm 芯片的两倍。相比 2nm 芯片，性能最高提升 50%，能效最高提升 70%。纳米堆叠架构还实现 SRAM 面积缩减 40%，有助于支撑先进 AI 工作负载的高带宽需求。已在 VLSI 2026 会议上验证，IBM 预计 5 年内量产。</div>
+</div>
+
+<div class="card paper">
+<div class="card-title"><a href="https://scrollprize.org/firstscroll" target="_blank">赫库兰尼姆古卷首次被完整虚拟解读：AI+X 射线复原公元 79 年文本</a></div>
+<div class="card-meta"><span class="source">Vesuvius Challenge / Hacker News</span><span class="time">今天 02:04</span></div>
+<div class="card-summary">研究人员利用高分辨率 X 射线显微断层扫描和机器学习，在未物理展开的情况下完整虚拟展开并读取了赫库兰尼姆古卷 PHerc.1667（Scroll 4）。这是<span class="highlight">首卷被从头到尾连续读取</span>的纸莎草卷，内容为斯多葛哲学论著。第二卷通过更高分辨率成像使墨水在三维数据中直接可见，独立确认了 2023 年大奖赛解读。第三卷确定标题和作者为菲洛德穆《论诸神》第八卷。所有数据与代码已公开，展示了 AI 在人文考古领域的突破性应用。</div>
+</div>
+</div>
+
+<!-- ========== 优秀报告/深度研报 ========== -->
+<div class="section">
+<div class="section-header">
+<div class="section-dot" style="background:#3b82f6"></div>
+<div class="section-title">💡 优秀报告 / 深度研报</div>
+<div class="section-count">2 条</div>
+</div>
+
+<div class="card report">
+<div class="card-title"><a href="https://www.exponentialview.co/p/the-state-of-the-ai-economy" target="_blank">《State of the AI Economy》：AI 经济年化收入超 1750 亿美元，增速为移动互联网 3 倍</a></div>
+<div class="card-meta"><span class="source">Exponential View / X：@rohanpaul_ai</span><span class="time">今天 07:30</span></div>
+<div class="card-summary">Exponential View 发布首份 AI 经济状态报告：过去 12 个月实际 AI 营收达 <span class="highlight">1100 亿美元</span>，年化运行率超 <span class="highlight">1750 亿美元</span>，增速约为移动/互联网普及浪潮的 3 倍。营收形成速度急剧加快：2023 年新增 10 亿美元收入需 180 天，现缩短至不足 2 天。31% 标普 500 公司在财报电话会提及 AI，仅 20% 量化影响。Token 降价每 10% 刺激 12-18% 用量增长。超大规模云厂商 AI 收入目前大致覆盖基础设施折旧，<span class="highlight">GPU 经济效益依赖 6 年计算寿命假设</span>。电力供应和数据中心成本仍是主要瓶颈。</div>
+</div>
+
+<div class="card report">
+<div class="card-title"><a href="https://the-decoder.com/most-major-ai-chatbots-still-lean-left-on-political-questions-even-anti-woke-models-are-no-exception/" target="_blank">华邮调查：多数主流 AI 聊天机器人政治立场偏左，"反觉醒"模型也不例外</a></div>
+<div class="card-meta"><span class="source">The Decoder / 华盛顿邮报</span><span class="time">今天 00:05</span></div>
+<div class="card-summary">华盛顿邮报调查显示，多数主流 AI 聊天机器人在政治问题上明显偏左。GPT-5.5 在 <span class="highlight">80%</span> 回答中仅呈现左派论据；DeepSeek V4 Pro 为 70%；Claude Opus 4.8 有 43% 纯左、57% 给出双方观点。xAI Grok 4.3 左倾回答仍多于右倾。右翼平台 Gab 的 Arya 左倾回答是右倾的 12 倍。Google Gemini 3.1 Pro 是例外，93% 回答同时呈现双方立场。特朗普推动的"反觉醒"AI 未能改变这一格局，该议题可能引发进一步监管干预。</div>
+</div>
+</div>
+
+<!-- ========== 投融资动态 ========== -->
+<div class="section">
+<div class="section-header">
+<div class="section-dot" style="background:#f97316"></div>
+<div class="section-title">💰 投融资动态</div>
+<div class="section-count">3 条</div>
+</div>
+
+<div class="card funding">
+<div class="card-title"><a href="https://techcrunch.com/2026/06/25/general-intuitions-2-3b-bet-that-video-games-can-train-ai-agents-for-the-real-world/" target="_blank">General Intuition 完成 3.2 亿美元融资，用游戏数据训练通用 AI 智能体</a></div>
+<div class="card-meta"><span class="source">TechCrunch</span><span class="time">今天 00:00</span></div>
+<div class="card-summary">General Intuition 以 <span class="highlight">23 亿美元估值</span>完成 3.2 亿美元融资，累计披露融资 4.54 亿美元。公司从旗下游戏剪辑平台 Medal 获取数亿小时含精确按键动作标签的游戏操作数据，训练单一模型同时驾驭 Fortnite 等虚拟环境和四足机器人。演示中 AI 智能体在游戏中连续运行 100 小时，机器人仅靠 <span class="highlight">8 分钟真实街道数据</span>微调即可自主探索办公室。本轮由 Khosla Ventures 领投，Jeff Bezos、Eric Schmidt 等参投，计划夏末前开放 API。</div>
+</div>
+
+<div class="card funding">
+<div class="card-title"><a href="https://techstartups.com/2026/06/25/venture-capital-startup-funding-roundup-june-25-2026/" target="_blank">AI 基础设施与可靠性融资潮：Runpod $100M + Scaled Cognition $100M + Sail Research $80M</a></div>
+<div class="card-meta"><span class="source">Tech Startups</span><span class="time">今天 约08:00</span></div>
+<div class="card-summary">6 月 25 日 AI 融资密集落地，资本从"模型层"向"基础设施+可靠性+垂直应用"迁移：<span class="highlight">Runpod</span> $100M（A 轮，Summit Partners 领投，估值 10 亿美元，AI 开发者云）；<span class="highlight">Scaled Cognition</span> $100M（A 轮，Khosla Ventures 领投，企业 AI 可靠性/减少幻觉）；<span class="highlight">Sail Research</span> $80M（种子+A 轮，Kleiner Perkins/Sequoia 领投，估值 4.5 亿美元，长时间运行 Agent 基础设施）；Trase $107M（种子轮，ARCH Venture Partners 领投，受监管行业 AI Agent）。</div>
+</div>
+
+<div class="card funding">
+<div class="card-title"><a href="https://techstartups.com/2026/06/25/venture-capital-startup-funding-roundup-june-25-2026/" target="_blank">AI 安全与评估赛道获资本青睐：Patronus AI $50M + Nebulock $25M</a></div>
+<div class="card-meta"><span class="source">Tech Startups</span><span class="time">今天 约08:00</span></div>
+<div class="card-summary"><span class="highlight">Patronus AI</span> 完成 $50M B 轮融资（Greenfield Partners 领投），同时推出 Digital World Models——用于 AI Agent 训练和评估的仿真环境。<span class="highlight">Nebulock</span> 完成 $25M A 轮融资（FirstMark 领投，Bain Capital 等参投），专注 AI 原生上下文安全和自主威胁狩猎。两家公司分别覆盖 AI 评估和安全两大细分赛道，反映投资者认为"让 AI 可靠运行"正成为独立可投资类别。此外 Alan 获 €4.8M G 轮（Prosus 领投，估值 €55 亿），Warp 获 $60M B 轮（Battery Ventures 领投，AI 驱动薪酬合规）。</div>
+</div>
+</div>
+
+<!-- ========== 投资启示 ========== -->
+<div class="insights">
+<h2>📋 今日总结 & 投资启示</h2>
+
+<div class="insight-item">
+<span class="num">1</span><strong>AI 监管从"政策讨论"进入"实操限制"阶段。</strong>白宫逐客户审批 GPT-5.6 + OpenAI IPO 推迟至 2027 + SoftBank 单日暴跌 <span class="highlight">13%</span>，三件事同日发生，信号密集。对二级市场：(a) OpenAI 估值锚缺失延长，私营 AI 公司估值泡沫风险上升；(b) Anthropic 受控发布模式获政府背书，<span class="highlight">竞争格局差异化加深</span>；(c) SoftBank 作为 AI 最大代理投资者，IPO 推迟直接冲击其估值逻辑，日股 AI 概念板块需警惕连锁反应。
+</div>
+
+<div class="insight-item">
+<span class="num">2</span><strong>AI 经济年化收入 1750 亿美元，但增速分化加剧。</strong>Exponential View 报告显示增速为移动互联网 <span class="highlight">3 倍</span>，但 31% 标普 500 公司提及 AI 仅 20% 量化影响，说明 AI 营收高度集中于头部公司。Token 降价 10% 刺激 12-18% 用量增长——需求弹性强但意味着<span class="highlight">单价持续下行</span>。云厂商 AI 收入仅覆盖折旧、GPU 经济效益依赖 6 年寿命假设，这是需要持续验证的关键变量。若算力寿命假设被打破，整个 AI 基建投资逻辑需重估。
+</div>
+
+<div class="insight-item">
+<span class="num">3</span><strong>版权+反垄断双线监管升温，训练数据成本不确定性上升。</strong>400 家报纸起诉 OpenAI/微软 + 意大利调查微软 365 涨价，监管从"安全"维度扩展到"<span class="highlight">反垄断+版权+消费者保护</span>"三线并行。对于 AI 公司，训练数据获取成本可能上升，AI 功能捆绑涨价的商业模式面临审查。对微软生态（Office/Copilot）短期估值有压制效应，对拥有自有数据壁垒的公司（如 Google 搜索数据、Meta 社交数据）相对利好。
+</div>
+
+<div class="insight-item">
+<span class="num">4</span><strong>劳动力市场 K 型分化加速：高端"直觉型"人才更值钱，入门级岗位被 AI 侵蚀。</strong>Anthropic 不再招初级工程师的表态，结合此前 SignalFire 数据（大厂新招 55% 为工程师），验证了 AI 对入门级白领岗位的替代效应已在头部公司内部发生。Jack Clark 警告的"<span class="highlight">超趋势 GDP 增长 + 衰退级失业率</span>"悖论值得重视——若此趋势扩散，将对消费、就业数据和政策预期产生深远影响，是宏观交易的重要观察变量。
+</div>
+
+<div class="insight-item">
+<span class="num">5</span><strong>融资潮转向"AI 基础设施+可靠性+安全"，纯模型层估值天花板渐显。</strong>6/25 单日 AI 融资超 $10 亿（Runpod/Scaled Cognition/Sail Research/Trase/Patronus AI/Nebulock），资本明确从"谁有最强模型"转向"谁让 AI 可靠运行"。对投资者：<span class="highlight">infra 和 eval 赛道更具配置价值</span>，纯模型层公司若缺乏数据壁垒或生态锁定，估值天花板正在形成。同时 Akrites 计划（20 家巨头联合）标志着 AI 安全从"公司自建"升级为"行业基建"，安全合规成为新的竞争维度。
+</div>
+
+<div class="insight-item">
+<span class="num">6</span><strong>半导体物理极限持续突破，但量产周期仍是瓶颈。</strong>IBM 0.7nm 纳米堆叠技术（1000 亿晶体管/指甲盖大小）验证了摩尔定律远未终结，但 <span class="highlight">5 年量产预期</span>意味着短期对 AI 算力供给格局无实质影响。当前 AI 算力瓶颈仍在先进制程产能（TSMC 2nm/GAA）和 HBM 供应，IBM 技术更可能是 2030+ 年代的技术路线图锚点。短期关注 TSMC、三星 2nm 良率进展和 HBM4 量产节奏。</div>
+</div>
+</div>
+
+<div class="footer">
+<p>📡 数据来源：AI HOT API (aihot.virxact.com) · WebSearch 多渠道交叉验证（TechCrunch / The Decoder / Reuters / Bloomberg / IBM Newsroom / NYT / IT之家等）</p>
+<p>🕒 生成时间：2026-06-26 22:00 北京时间 · 自动化触发（automation-1781509831657）</p>
+<p>⚠️ 本报告仅供信息参考，不构成投资建议。AI 行业变化迅速，请以最新信息为准。</p>
+</div>
+
+</div>
+</body>
+</html>

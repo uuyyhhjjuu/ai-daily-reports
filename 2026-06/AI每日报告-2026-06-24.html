@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI每日全景报告 · 2026-06-24</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;background:#f0f0f5;color:#1a1a2e;line-height:1.6;font-size:15px}
+.container{max-width:960px;margin:0 auto;padding:0 16px 60px}
+header{background:linear-gradient(135deg,#6366f1 0%,#7c3aed 50%,#4f46e5 100%);color:#fff;padding:40px 24px 32px;border-radius:0 0 20px 20px;margin-bottom:28px;box-shadow:0 4px 24px rgba(99,102,241,0.25)}
+header h1{font-size:28px;font-weight:700;margin-bottom:8px;letter-spacing:-0.5px}
+header .subtitle{font-size:14px;opacity:0.85;margin-bottom:16px}
+header .meta{display:flex;flex-wrap:wrap;gap:8px;font-size:13px}
+header .meta span{background:rgba(255,255,255,0.18);padding:4px 12px;border-radius:20px;backdrop-filter:blur(4px)}
+.stats-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.stats-bar .stat{flex:1;min-width:120px;background:#fff;border-radius:10px;padding:12px 16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.05);border:1px solid #eee}
+.stats-bar .stat .num{font-size:22px;font-weight:700;color:#6366f1}
+.stats-bar .stat .label{font-size:12px;color:#888;margin-top:2px}
+section{margin-bottom:32px}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #e5e5ee}
+.section-header .dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.section-header h2{font-size:18px;font-weight:600;color:#1a1a2e}
+.section-header .count{font-size:13px;color:#999;margin-left:auto;background:#f0f0f5;padding:2px 10px;border-radius:10px}
+.card{background:#fff;border-radius:12px;padding:18px 20px 18px 24px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.04);border:1px solid #f0f0f0;position:relative;overflow:hidden;transition:transform 0.15s,box-shadow 0.15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.08)}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.card.industry::before{background:#f59e0b}
+.card.kol::before{background:#10b981}
+.card.model::before{background:#8b5cf6}
+.card.paper::before{background:#06b6d4}
+.card.report::before{background:#3b82f6}
+.card.funding::before{background:#f97316}
+.card .card-title{font-size:16px;font-weight:600;margin-bottom:6px;line-height:1.4}
+.card .card-title a{color:#1a1a2e;text-decoration:none}
+.card .card-title a:hover{color:#6366f1}
+.card .card-title .en{font-size:13px;font-weight:400;color:#888;margin-left:6px}
+.card .card-meta{font-size:12px;color:#999;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card .card-meta .source{color:#6366f1;font-weight:500}
+.card .card-meta .time{color:#aaa}
+.card .card-meta .sep{color:#ddd}
+.card .card-summary{font-size:14px;color:#555;line-height:1.65}
+.card .card-summary strong{color:#1a1a2e}
+.insights{background:linear-gradient(135deg,#eef2ff 0%,#f5f3ff 50%,#eef2ff 100%);border-radius:16px;padding:28px 28px 32px;margin-bottom:28px;border:1px solid #e0e7ff}
+.insights h2{font-size:20px;font-weight:700;color:#4f46e5;margin-bottom:4px}
+.insights .insights-sub{font-size:13px;color:#818cf8;margin-bottom:20px}
+.insight-item{display:flex;gap:12px;margin-bottom:16px;align-items:flex-start}
+.insight-item .num{flex-shrink:0;width:28px;height:28px;background:#6366f1;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.insight-item .text{font-size:14px;color:#374151;line-height:1.7}
+.insight-item .text strong{color:#1a1a2e}
+.highlight{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:600;color:#92400e}
+footer{text-align:center;padding:24px 16px;font-size:12px;color:#aaa;border-top:1px solid #e5e5ee}
+footer p{margin-bottom:4px}
+@media(max-width:640px){
+  header h1{font-size:22px}
+  .stats-bar .stat{min-width:100px}
+  .card{padding:14px 16px 14px 20px}
+  .insights{padding:20px 16px 24px}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>🤖 AI 每日全景报告</h1>
+  <div class="subtitle">Secondary Market Analyst Briefing — AI Industry Daily</div>
+  <div class="meta">
+    <span>📅 2026年6月24日（周三）</span>
+    <span>🕐 覆盖时段：6/23 22:00 — 6/24 22:00 北京时间</span>
+    <span>📊 共 26 条</span>
+  </div>
+</header>
+
+<div class="container">
+<div class="stats-bar">
+  <div class="stat"><div class="num">7</div><div class="label">🏭 行业动态</div></div>
+  <div class="stat"><div class="num">4</div><div class="label">💬 大V观点</div></div>
+  <div class="stat"><div class="num">6</div><div class="label">🚀 模型/产品</div></div>
+  <div class="stat"><div class="num">3</div><div class="label">🔬 技术论文</div></div>
+  <div class="stat"><div class="num">2</div><div class="label">💡 深度报告</div></div>
+  <div class="stat"><div class="num">4</div><div class="label">💰 投融资</div></div>
+</div>
+
+<!-- ========== 行业动态 ========== -->
+<section>
+<div class="section-header">
+  <div class="dot" style="background:#f59e0b"></div>
+  <h2>🏭 行业动态</h2>
+  <span class="count">7 条</span>
+</div>
+
+<div class="card industry">
+  <div class="card-title"><a href="https://aitoolsrecap.com/Blog/ai-news-june-24-2026" target="_blank">中国反制将 56 家美国企业列入黑名单，AI 出口战走向双向化</a></div>
+  <div class="card-meta">
+    <span class="source">AIToolsRecap</span><span class="sep">·</span><span class="time">今天</span>
+  </div>
+  <div class="card-summary">中国商务部宣布将 56 家美国企业列入黑名单——46 家禁止参与中国政府采购，10 家纳入两用物项出口管制清单，包括稀土矿商 MP Materials 和 USA Rare Earth。此举是对美国五角大楼 6 月 8 日扩展 1260H 清单（新增阿里、百度、比亚迪、腾讯等 65 家中企）的报复性反制。中国控制全球约 <strong>70% 稀土开采、90% 精炼产能</strong>， targeting 美国稀土自主化项目构成结构性施压。美国在 AI 模型端（Fable 5 出口管制）、中国在物理供应链端并行升级，出口战不再单向。</div>
+</div>
+
+<div class="card industry">
+  <div class="card-title"><a href="https://arstechnica.com/ai/2026/06/oracles-21000-layoffs-help-drive-its-debt-fueled-ai-investments/" target="_blank">Oracle 财年裁员 21,000 人（12.9%），举债 450-500 亿美元押注 AI 云基础设施</a></div>
+  <div class="card-meta">
+    <span class="source">Ars Technica / CNBC</span><span class="sep">·</span><span class="time">今天 04:17</span>
+  </div>
+  <div class="card-summary">Oracle 截至 5 月 31 日财年裁员 21,000 人，员工总数降至 141,000 人（-12.9%）。公司称 AI 技术采用导致劳动力缩减，重组成本达 18 亿美元（同比 +481%）。Oracle 计划 2026 年通过债务和股权筹集 <strong>450-500 亿美元</strong>扩建 OCI 云基础设施，服务 OpenAI、xAI、AMD、Nvidia、Meta 等客户。公司债务已超 <strong>1,200 亿美元</strong>。"裁员换 AI 投资"模式加速，但大规模裁员带来的生产力下降和人才流失风险不容忽视。</div>
+</div>
+
+<div class="card industry">
+  <div class="card-title"><a href="https://www.engadget.com/ai/us-government-reportedly-urging-meta-to-share-its-ai-models" target="_blank">美国政府据报正敦促 Meta 开放其 AI 模型</a></div>
+  <div class="card-meta">
+    <span class="source">Engadget</span><span class="sep">·</span><span class="time">今天</span>
+  </div>
+  <div class="card-summary">据 Engadget 报道，美国政府正在向 Meta 施压，要求其分享 AI 模型。此举意味着政策层面正在推动头部科技公司开放模型权重，以增强美国在 AI 领域的整体竞争力。Meta 的 Llama 系列已是最具影响力的开源大模型之一，政府层面的推动可能加速开源生态与国家安全战略的深度绑定。</div>
+</div>
+
+<div class="card industry">
+  <div class="card-title"><a href="https://www.theguardian.com/technology/2026/jun/24/meta-pauses-employee-tracker-ai-training" target="_blank">Meta 暂停追踪员工按键的 AI 培训项目，内部数据泄露引发隐私担忧</a></div>
+  <div class="card-meta">
+    <span class="source">The Guardian / Tom's Hardware</span><span class="sep">·</span><span class="time">今天</span>
+  </div>
+  <div class="card-summary">Meta 暂停了一项强制性的 AI 培训项目，该项目通过追踪员工按键来收集训练数据。此前一次内部数据泄露将敏感员工信息暴露给全公司，员工对数据处理不当表达强烈不满。事件凸显企业内部 AI 训练数据合规的敏感性——即使是在 AI 公司内部，员工隐私与 AI 开发之间的张力也在加剧。</div>
+</div>
+
+<div class="card industry">
+  <div class="card-title"><a href="https://www.cnbc.com/2026/06/24/tech-companies-ai-data-center-energy-costs-bill-congress.html" target="_blank">美国国会推进立法：科技公司须承担 AI 数据中心能源成本</a></div>
+  <div class="card-meta">
+    <span class="source">CNBC</span><span class="sep">·</span><span class="time">今天</span>
+  </div>
+  <div class="card-summary">美国国会正在推进一项法案，要求科技公司为其 AI 数据中心的能源消耗买单。此举旨在解决 AI 算力爆发对电网和公共财政的溢出效应。法案若通过，将直接影响超大规模数据中心的运营成本结构，对 AWS、Azure、GCP 等云厂商的利润率构成中长期压力。</div>
+</div>
+
+<div class="card industry">
+  <div class="card-title"><a href="https://github.blog/news-insights/policy-news-and-insights/github-joins-coalition-advocating-for-fixes-to-california-ai-transparency-act-to-protect-open-source" target="_blank">GitHub 联合 Black Forest Labs、Hugging Face、Mozilla 呼吁修改加州 AI 透明度法案以保护开源</a></div>
+  <div class="card-meta">
+    <span class="source">GitHub Blog</span><span class="sep">·</span><span class="time">昨天 23:48</span>
+  </div>
+  <div class="card-summary">GitHub 联合 Black Forest Labs、Hugging Face 与 Mozilla 组成开源联盟，呼吁对加州 AI 透明度法案（SB 942，拟由 SB 1000 修正）进行针对性修改。当前草案要求开发者在下游用户未履行义务时撤销开源许可证，与开源许可证"永久不可撤销"的基本性质冲突。联盟建议参考欧盟 AI 法案的透明度实践规范，以通知文档方式替代撤销条款。</div>
+</div>
+
+<div class="card industry">
+  <div class="card-title"><a href="https://www.cnbc.com/2026/06/24/tech-stocks-rebound-ai-selloff-chip-stocks.html" target="_blank">全球 AI 股票反弹：科技股经受住抛售考验，JPMorgan 称 AI 资本开支故事完好</a></div>
+  <div class="card-meta">
+    <span class="source">CNBC / Bloomberg</span><span class="sep">·</span><span class="time">今天</span>
+  </div>
+  <div class="card-summary">在经历全球 AI 板块抛售、芯片股重挫后，科技股今日反弹。JPMorgan 分析师 Chang 表示"AI 资本开支故事完好无损"（AI capex story remains intact）。市场在消化前期估值泡沫的同时，核心算力链投资逻辑未被动摇。投资者可能正在"暂停"而非"退出"AI 涨幅，关注后续财报季验证。</div>
+</div>
+</section>
+
+<!-- ========== 大V观点 ========== -->
+<section>
+<div class="section-header">
+  <div class="dot" style="background:#10b981"></div>
+  <h2>💬 大V观点 & 深度报告</h2>
+  <span class="count">4 条</span>
+</div>
+
+<div class="card kol">
+  <div class="card-title"><a href="https://fortune.com/2026/06/24/reid-hoffman-spacex-not-ai-company-xai-train-wreck/" target="_blank">Reid Hoffman：SpaceX "不是 AI 公司"，xAI 是"彻头彻尾的灾难"</a></div>
+  <div class="card-meta">
+    <span class="source">Fortune</span><span class="sep">·</span><span class="time">今天</span>
+  </div>
+  <div class="card-summary">LinkedIn 联合创始人、Greylock 合伙人 Reid Hoffman 在公开场合直言 SpaceX"不是一家 AI 公司"，xAI 则是"彻头彻尾的灾难"（complete train wreck）。同时他表示 OpenAI 和 Anthropic 都有生存空间。Hoffman 作为 OpenAI 早期投资人，其对马斯克 AI 版图的尖锐评价反映了硅谷内部对 xAI 技术路线和商业模式的深层质疑。</div>
+</div>
+
+<div class="card kol">
+  <div class="card-title"><a href="https://www.bloomberg.com/news/articles/2026-06-24/masayoshi-son-ai-bubble-insult-delays-retiring" target="_blank">孙正义称 AI 泡沫论是"侮辱"，推迟退休计划</a></div>
+  <div class="card-meta">
+    <span class="source">Bloomberg</span><span class="sep">·</span><span class="time">今天</span>
+  </div>
+  <div class="card-summary">软银创始人孙正义公开驳斥市场关于 AI 泡沫的讨论，称之为"侮辱性"言论，并宣布推迟退休计划以继续领导软银的 AI 投资战略。软银旗下 Vision Fund 在 AI 领域押注巨大（包括 OpenAI、Anthropic 等头部标的），孙正义的表态可视为对近期 AI 板块回调的"护盘"信号，也暗示软银将继续加大 AI 投入。</div>
+</div>
+
+<div class="card kol">
+  <div class="card-title"><a href="https://axios.com/2026/06/24/chamath-palihapitiya-ai-jobs-apocalypse" target="_blank">Chamath Palihapitiya 驳斥"AI 岗位末日论"</a></div>
+  <div class="card-meta">
+    <span class="source">Axios</span><span class="sep">·</span><span class="time">今天</span>
+  </div>
+  <div class="card-summary">Social Capital 创始人 Chamath Palihapitiya 公开反驳 AI 将引发大规模失业的悲观预期。他认为当前市场对 AI 替代效应的恐惧被过度放大，实际生产力提升带来的新需求将部分抵消岗位消失。这一观点与 Oracle 同日公布的 21,000 人裁员形成微妙对照——AI 对就业市场的影响在不同行业和企业呈现高度分化态势。</div>
+</div>
+
+<div class="card kol">
+  <div class="card-title"><a href="https://www.theguardian.com/technology/2026/jun/24/cory-doctorow-ai-bubble-elon-musk" target="_blank">Cory Doctorow 论 AI 泡沫：马斯克、AI 狂热与老板们的残忍幻想</a></div>
+  <div class="card-meta">
+    <span class="source">The Guardian</span><span class="sep">·</span><span class="time">今天</span>
+  </div>
+  <div class="card-summary">知名科技评论人 Cory Doctorow 接受 Guardian 采访，对当前 AI 产业泡沫提出尖锐批评。他认为"不伤害人就无法赚取数十亿"是 AI 资本化进程的底层矛盾，马斯克的 AI 帝国梦想是"老板们的残忍幻想"。Doctorow 的观点代表了科技怀疑论派对 AI 商业化路径的系统性批判，值得作为市场多头逻辑的对冲视角阅读。</div>
+</div>
+</section>
+
+<!-- ========== 模型/产品/应用 ========== -->
+<section>
+<div class="section-header">
+  <div class="dot" style="background:#8b5cf6"></div>
+  <h2>🚀 模型/产品/应用更新</h2>
+  <span class="count">6 条</span>
+</div>
+
+<div class="card model">
+  <div class="card-title"><a href="https://openai.com/index/openai-broadcom-jalapeno-inference-chip" target="_blank">OpenAI 与 Broadcom 联合发布 Jalapeño：首个自研 LLM 推理定制芯片</a></div>
+  <div class="card-meta">
+    <span class="source">OpenAI 官网 / CNBC / Bloomberg</span><span class="sep">·</span><span class="time">今天 14:00</span>
+  </div>
+  <div class="card-summary">OpenAI 与 Broadcom 联合推出 Jalapeño，一款专为大语言模型推理优化的定制 AI 芯片，标志着 OpenAI 首次进入芯片设计领域。Jalapeño 针对推理场景（非训练）优化，旨在降低 ChatGPT 等应用的推理成本，预计 2026 年底大规模部署。这是 OpenAI"全栈自研"战略的关键一步——从模型到芯片垂直整合，直接挑战 NVIDIA 在推理侧的定价权。</div>
+</div>
+
+<div class="card model">
+  <div class="card-title"><a href="https://www.ithome.com/0/967/852.htm" target="_blank">ChatGPT 语音最大规模升级：双向 AI 语音模型 Bidi 1 已上线测试</a></div>
+  <div class="card-meta">
+    <span class="source">IT之家</span><span class="sep">·</span><span class="time">今天 12:34</span>
+  </div>
+  <div class="card-summary">部分用户反馈 ChatGPT 网页版和 App 版已上线双向 AI 语音模型 Bidi 1，位于设置模型选择器中。该模型支持边说话边监听，用户可在对话中途打断并发出新指令——例如要求从 1 数到 10 时中途喊停倒数，模型会立即切换执行。OpenAI 尚未官宣，预计本周启动更大范围测试。Bidi 1 采用双向（Bidirectional）架构，弥补了 GPT-5.5 文本能力与现有语音技术栈之间的性能差距。</div>
+</div>
+
+<div class="card model">
+  <div class="card-title"><a href="https://github.com/QwenLM/Qwen-AgentWorld" target="_blank">Qwen-AgentWorld 开源：业界首个原生语言世界模型，超越 GPT-5.4</a></div>
+  <div class="card-meta">
+    <span class="source">通义千问 / GitHub / arXiv</span><span class="sep">·</span><span class="time">今天 11:32</span>
+  </div>
+  <div class="card-summary">阿里通义千问推出首个原生语言世界模型 Qwen-AgentWorld，覆盖 MCP、Search、Terminal、SWE、Web、OS、Android 七大领域。基于超 1,000 万条真实交互轨迹，经 CPT→SFT→RL 三阶段训练。在 AgentWorldBench 上，Qwen-AgentWorld-397B-A17B 取得 <strong>58.71 分</strong>，超越 GPT-5.4（58.25）和 Claude Opus 4.8。作为环境模拟器可实现可控 Sim RL，在 WideSearch 上超越真实环境 RL（F1 50.3% vs 45.6%）。模型与评测基准已开源。</div>
+</div>
+
+<div class="card model">
+  <div class="card-title"><a href="https://mp.weixin.qq.com/s/Sb-NMXTrWFQES1EDO_Gr2g" target="_blank">豆包正式推出专业版：68-500 元/月付费套餐，接入豆包 2.1 Pro 模型</a></div>
+  <div class="card-meta">
+    <span class="source">豆包（字节跳动）</span><span class="sep">·</span><span class="time">今天 09:00</span>
+  </div>
+  <div class="card-summary">字节跳动豆包基于豆包 2.1 系列大模型正式推出专业版，面向复杂办公与生产力场景。办公任务模式接入可执行 Agent 任务的豆包 2.1 模型，支持操作本地电脑、浏览器、调用 Skills 技能、定时任务，内置 Office 套件，可生成带后端数据库的在线应用。定价：标准套餐 68 元/月，加强套餐 200 元/月，高级套餐 500 元/月；大学生认证后 38 元/月。火山引擎总裁谭待同期披露：豆包大模型日均 tokens 调用量已达 <strong>180 万亿</strong>，一年内增长超 10 倍。</div>
+</div>
+
+<div class="card model">
+  <div class="card-title"><a href="https://www.anthropic.com/news/introducing-claude-tag" target="_blank">Anthropic 推出 Claude Tag：在 Slack 中通过 @Claude 委托任务的"AI 同事"</a></div>
+  <div class="card-meta">
+    <span class="source">Anthropic Newsroom</span><span class="sep">·</span><span class="time">今天 01:09</span>
+  </div>
+  <div class="card-summary">Anthropic 推出 Claude Tag，将 Claude 嵌入 Slack 频道作为持久"AI 团队成员"。Claude 可记住频道上下文，支持多用户交互，经授权后可自动学习其他频道和数据源。开启"环境"行为后，能主动更新未解决的线程或任务，支持异步工作并可自主推进项目数小时或数天。即日起面向 Claude Enterprise 和 Team 客户提供 beta 版，管理员可精细控制工具和渠道访问权限、设置 token 消耗限额。</div>
+</div>
+
+<div class="card model">
+  <div class="card-title"><a href="https://x.com/runwayml/status/2069535148450705517" target="_blank">Runway 推出 Seedance 4K 等三款新模型，汇聚全球最佳视频生成</a></div>
+  <div class="card-meta">
+    <span class="source">X：Runway (@runwayml)</span><span class="sep">·</span><span class="time">今天 05:36</span>
+  </div>
+  <div class="card-summary">Runway 宣布推出三款新模型：Seedance 4K（4K 分辨率视频生成）、Seedance Mini（轻量版）、Kling 3.0 Turbo（快手可灵加速版），全部已在 Runway 平台上线。使用优惠码 30RUNWAY 前三个月可享七折优惠。Runway 正在从单一模型公司转型为"视频模型聚合平台"，将第三方模型（如快手 Kling）接入自家平台，降低用户跨平台切换成本。</div>
+</div>
+</section>
+
+<!-- ========== 技术进展 & 论文 ========== -->
+<section>
+<div class="section-header">
+  <div class="dot" style="background:#06b6d4"></div>
+  <h2>🔬 技术进展 & 论文</h2>
+  <span class="count">3 条</span>
+</div>
+
+<div class="card paper">
+  <div class="card-title"><a href="https://www.marktechpost.com/2026/06/24/dflash-speculative-decoding-drafts-whole-token-blocks-in-parallel-for-up-to-15x-higher-throughput-on-nvidia-blackwell" target="_blank">DFlash：块扩散草稿模型实现最高 15 倍吞吐量提升</a></div>
+  <div class="card-meta">
+    <span class="source">MarkTechPost</span><span class="sep">·</span><span class="time">今天 15:21</span>
+  </div>
+  <div class="card-summary">UC San Diego 团队提出 DFlash，一种用于投机解码的轻量块扩散草稿模型。一次前向推理生成整块 token，再由目标模型并行验证，保证输出无损。相比 EAGLE-3，DFlash 实现最高 2.5 倍加速，在 Qwen3-8B 等多种模型上平均无损加速超过 6 倍（MATH-500 达 6.08×）。在 NVIDIA Blackwell 上（TensorRT-LLM），gpt-oss-120b 吞吐量提升最高 <strong>15 倍</strong>。核心创新是将目标模型多层隐藏特征注入草稿模型每一层的 Key-Value 投影。</div>
+</div>
+
+<div class="card paper">
+  <div class="card-title"><a href="https://hai.stanford.edu/news/ai-hiring-tools-can-yield-racial-bias-and-systemic-rejection" target="_blank">Stanford HAI 大规模研究：AI 招聘工具存在系统性种族偏见，黑人被拒率 26%</a></div>
+  <div class="card-meta">
+    <span class="source">Stanford HAI / Hacker News</span><span class="sep">·</span><span class="time">今天 05:48</span>
+  </div>
+  <div class="card-summary">覆盖 340 万人、400 万份申请、150 家雇主和 1,700 个职位的大规模实地研究发现，AI 招聘筛选工具存在显著种族歧视：<strong>26% 的黑人申请者和 15% 的亚裔申请者</strong>遭遇算法对其族群的系统性排斥。多数雇主依赖同一第三方供应商算法，形成"算法单一文化"。10% 提交 4 份申请者被所有职位拒绝。对比同期未用 AI 的招聘数据（8.3 万份申请、108 家财富 500 强企业），未发现此类模式。研究呼吁对算法招聘进行独立监管。</div>
+</div>
+
+<div class="card paper">
+  <div class="card-title"><a href="https://x.com/haoailab/status/2069493820732170695" target="_blank">FastWan-QAD：单卡 RTX 5090 上 1.8 秒生成 5 秒 480P 视频</a></div>
+  <div class="card-meta">
+    <span class="source">X：Sky Computing Lab (@haoailab)</span><span class="sep">·</span><span class="time">今天 02:52</span>
+  </div>
+  <div class="card-summary">Sky Computing Lab 发布 FastWan-QAD 视频生成模型系列，基于 FastVideo 的量化感知蒸馏（QAD）方案训练。在单张 NVIDIA GeForce RTX 5090 上，端到端生成一段 5 秒 480P 视频仅需 <strong>1.8 秒</strong>——生成速度快于视频时长，意味着可以实时流式生成。模型、代码及博客已完全开源，对视频生成 democratization 和边缘部署有重要意义。</div>
+</div>
+</section>
+
+<!-- ========== 深度报告 ========== -->
+<section>
+<div class="section-header">
+  <div class="dot" style="background:#3b82f6"></div>
+  <h2>💡 优秀报告 / 深度研报</h2>
+  <span class="count">2 条</span>
+</div>
+
+<div class="card report">
+  <div class="card-title"><a href="https://www.foreignaffairs.com/articles/2026-06-24/how-to-survive-the-ai-shock" target="_blank">How to Survive the AI Shock — Foreign Affairs 深度长文</a></div>
+  <div class="card-meta">
+    <span class="source">Foreign Affairs</span><span class="sep">·</span><span class="time">今天</span>
+  </div>
+  <div class="card-summary">Foreign Affairs 发表重磅分析文章，系统讨论 AI 冲击下的国家与企业生存策略。文章从地缘政治、经济重构、社会治理三个维度，分析 AI 技术扩散对全球权力格局的深层影响。核心论点包括：AI 不仅是技术竞争，更是制度韧性的试金石；国家层面的 AI 战略需要超越"芯片竞赛"思维，构建从能源到人才的全方位基础设施。值得作为宏观框架性阅读。</div>
+</div>
+
+<div class="card report">
+  <div class="card-title"><a href="https://www.tomshardware.com/tech-industry/ai-data-centers/ai-data-center-boom-human-bottleneck" target="_blank">AI 数据中心繁荣遭遇人力瓶颈：关键技能短缺或拖慢部署进度</a></div>
+  <div class="card-meta">
+    <span class="source">Tom's Hardware</span><span class="sep">·</span><span class="time">今天</span>
+  </div>
+  <div class="card-summary">尽管数十亿美元资金涌入 AI 数据中心建设，但关键技能型劳动力的严重短缺正在成为制约部署速度的"人类瓶颈"。从高压电工到冷却系统工程师，从网络架构师到调试技术员，合格人才的供给远远跟不上数据中心扩建节奏。文章指出，资本可以快速筹集，但人才培养周期需要数年——这是 AI 算力链中最容易被忽视的供给侧约束，对评估超大规模数据中心建设计划的兑现节奏具有参考价值。</div>
+</div>
+</section>
+
+<!-- ========== 投融资动态 ========== -->
+<section>
+<div class="section-header">
+  <div class="dot" style="background:#f97316"></div>
+  <h2>💰 投融资动态</h2>
+  <span class="count">4 条</span>
+</div>
+
+<div class="card funding">
+  <div class="card-title"><a href="https://www.wsj.com/tech/2026/06/24/qualcomm-acquires-modular-ai-software-3-9-billion" target="_blank">Qualcomm 39 亿美元收购 AI 软件公司 Modular，补齐推理软件栈</a></div>
+  <div class="card-meta">
+    <span class="source">WSJ / Bloomberg / CNBC</span><span class="sep">·</span><span class="time">今天</span>
+  </div>
+  <div class="card-summary">Qualcomm 宣布以 <strong>39 亿美元</strong>股票收购 AI 软件初创公司 Modular，后者开发了 Mojo 编程语言和模块化 AI 推理引擎。收购旨在补齐 Qualcomm 在 AI 推理软件栈上的短板，将其芯片优势从通信扩展到数据中心和边缘 AI。这笔交易标志着芯片厂商正从"卖硬件"向"硬软一体"转型——NVIDIA 的 CUDA 生态护城河正在被多方围攻。</div>
+</div>
+
+<div class="card funding">
+  <div class="card-title"><a href="https://www.bloomberg.com/news/articles/2026-06-24/sk-hynix-29-billion-nasdaq-listing-ai-memory" target="_blank">SK 海力士申请美股上市募资 290 亿美元，全部用于 AI 存储芯片扩产</a></div>
+  <div class="card-meta">
+    <span class="source">Bloomberg / Tom's Hardware</span><span class="sep">·</span><span class="time">今天</span>
+  </div>
+  <div class="card-summary">韩国 SK 海力士提交美股上市申请，计划募资最高 <strong>290 亿美元</strong>，这将是纳斯达克历史上最大规模 IPO 之一。所有募集资金将用于先进 AI 存储芯片（HBM）产能扩建和 EUV 光刻设备采购。SK 海力士是全球 HBM 市场领导者，此次募资规模反映 AI 算力链对高带宽存储的需求已达到前所未有的量级。HBM 供给有望在 2027 年显著改善。</div>
+</div>
+
+<div class="card funding">
+  <div class="card-title"><a href="https://www.wsj.com/tech/2026/06/24/agility-robotics-spac-2-5-billion-go-public" target="_blank">Agility Robotics（人形机器人）将通过 SPAC 上市，估值 25 亿美元</a></div>
+  <div class="card-meta">
+    <span class="source">WSJ</span><span class="sep">·</span><span class="time">今天</span>
+  </div>
+  <div class="card-summary">人形机器人公司 Agility Robotics（旗下 Digit 双足机器人已为亚马逊、GXO 等客户部署）宣布将通过 SPAC 合并上市，估值 <strong>25 亿美元</strong>。这是人形机器人赛道首例上市案例，标志着"Physical AI"概念正式进入公开市场。Agility 的商业化路径（仓储物流场景先行）与 Figure AI、Tesla Optimus 等竞争对手形成差异化，上市后表现将成为人形机器人板块估值锚点。</div>
+</div>
+
+<div class="card funding">
+  <div class="card-title"><a href="https://www.bloomberg.com/news/articles/2026-06-24/mgx-50-billion-ai-fund" target="_blank">阿联酋 MGX 设立 500 亿美元 AI 基金</a></div>
+  <div class="card-meta">
+    <span class="source">Bloomberg</span><span class="sep">·</span><span class="time">今天</span>
+  </div>
+  <div class="card-summary">阿联酋 AI 投资机构 MGX 宣布设立 <strong>500 亿美元</strong> AI 投资基金，聚焦全球 AI 基础设施、芯片和模型公司。中东主权资本正在成为 AI 产业链的重要资金来源——继沙特 PIF 之后，阿联酋通过 MGX 加速布局 AI 全链条。500 亿美元规模相当于全球 AI 初创企业 2025 年全年融资额的相当比例，中东资本入场将进一步推高 AI 估值。</div>
+</div>
+</section>
+
+<!-- ========== 投资启示 ========== -->
+<div class="insights">
+  <h2>📋 今日总结 & 投资启示</h2>
+  <div class="insights-sub">分析师视角 · 二级市场关键结论 · 2026-06-24</div>
+
+  <div class="insight-item">
+    <div class="num">1</div>
+    <div class="text"><strong>OpenAI 自研芯片 Jalapeño 打响推理侧"去 NVIDIA 化"第一枪。</strong>OpenAI 联合 Broadcom 推出首个自研 LLM 推理芯片，标志着头部 AI 公司从"买卡"转向"造卡"。短期 NVIDIA 仍垄断训练侧，但推理侧自研化趋势将逐步侵蚀其定价权。关注 <span class="highlight">Broadcom (AVGO)</span> 作为 AI 芯片定制化浪潮的核心受益标的，以及 NVIDIA 推理业务收入占比变化。</div>
+  </div>
+
+  <div class="insight-item">
+    <div class="num">2</div>
+    <div class="text"><strong>中美 AI 出口战双向化升级，稀土成为关键博弈筹码。</strong>中国反制将 56 家美企列入黑名单，targeting 稀土矿商 MP Materials——中国控制全球 <span class="highlight">70% 稀土开采、90% 精炼产能</span>。AI 供应链风险从"芯片断供"扩展至"原材料断供"，建议关注稀有金属替代供应链标的及国内稀土板块估值修复机会。出口管制升级对跨国 AI 公司的海外收入预期构成持续压制。</div>
+  </div>
+
+  <div class="insight-item">
+    <div class="num">3</div>
+    <div class="text"><strong>Oracle 裁员 2.1 万人揭示传统软件巨头 AI 转型阵痛，举债 500 亿美元的激进策略需关注财务风险。</strong>Oracle 重组成本 <span class="highlight">18 亿美元（+481% YoY）</span>，债务超 1,200 亿美元，"裁员换 AI 投资"模式在改善现金流的同时带来执行力风险。传统企业软件公司（Oracle、SAP、IBM）的 AI 转型进度分化加剧，OCI 收入增速与 OpenAI/xAI 等大客户合同续约率是关键观察指标。</div>
+  </div>
+
+  <div class="insight-item">
+    <div class="num">4</div>
+    <div class="text"><strong>Qualcomm 39 亿美元收购 Modular + SK 海力士 290 亿美元上市：AI 产业链垂直整合加速。</strong>Qualcomm 补齐推理软件栈短板（对标 CUDA），SK 海力士全力扩产 HBM。芯片厂商"硬软一体"趋势明确，HBM 供给瓶颈有望在 <span class="highlight">2027 年显著缓解</span>。关注 Qualcomm 边缘 AI 竞争力提升对手机 SoC 估值的重定价效应，以及 HBM 供给改善对 AI 推理成本下降的传导路径。</div>
+  </div>
+
+  <div class="insight-item">
+    <div class="num">5</div>
+    <div class="text"><strong>豆包专业版付费化标志中国 AI 应用商业化拐点，日均 180 万亿 tokens 提供变现基础。</strong>字节跳动豆包推出 <span class="highlight">68-500 元/月</span>付费套餐，中国 AI 应用从"免费获客"进入"付费变现"阶段。火山引擎 FORCE 大会同期发布豆包 2.1 Pro 旗舰模型（编程/Agent 评测领先）+ Agent Ready 企业基础设施，形成"模型-产品-平台"闭环。关注国内 AI 应用 ARPU 提升对互联网大厂广告+订阅双轮估值模型的拉动效应。</div>
+  </div>
+
+  <div class="insight-item">
+    <div class="num">6</div>
+    <div class="text"><strong>中东资本 500 亿美元 AI 基金入场，全球 AI 投资流动性进一步充裕。</strong>MGX 设立 <span class="highlight">500 亿美元</span> AI 基金，加上孙正义推迟退休继续加码、Agility Robotics SPAC 上市，AI 一级市场资金供给未见收缩。但二级市场经历抛售后反弹（JPMorgan 称 capex 故事完好），多头逻辑从"叙事驱动"转向"财报验证"——Q2 财报季 AI 资本开支兑现度将成为下一阶段方向选择的关键变量。</div>
+  </div>
+</div>
+
+<footer>
+  <p>📊 数据来源：AI HOT (aihot.virxact.com) · WebSearch 多渠道交叉验证（CNBC / Bloomberg / WSJ / Fortune / Ars Technica / Guardian / Tom's Hardware 等）</p>
+  <p>🕐 报告生成时间：2026-06-24 22:00 北京时间 · 覆盖时段 24 小时滚动窗口</p>
+  <p>⚠️ 本报告仅供信息参考，不构成投资建议。市场有风险，投资需谨慎。</p>
+</footer>
+
+</div>
+</body>
+</html>

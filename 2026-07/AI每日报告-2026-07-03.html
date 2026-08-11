@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026-07-03</title>
+<style>
+:root {
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --primary: #6366f1;
+  --primary-light: #eef2ff;
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-hover: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+  --c-industry: #f59e0b;
+  --c-opinion: #10b981;
+  --c-product: #8b5cf6;
+  --c-research: #06b6d4;
+  --c-report: #3b82f6;
+  --c-funding: #f97316;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 860px; margin: 0 auto; padding: 32px 20px 60px; }
+.header {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 40%, #7c3aed 100%);
+  border-radius: 16px; padding: 36px 40px; color: #fff; margin-bottom: 24px;
+  box-shadow: 0 8px 30px rgba(99,102,241,.25);
+}
+.header h1 { font-size: 26px; font-weight: 700; letter-spacing: -.02em; }
+.header .subtitle { font-size: 15px; opacity: .88; margin-top: 8px; }
+.header .meta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; font-size: 13px; opacity: .82; }
+.header .meta span { display: inline-flex; align-items: center; gap: 4px; }
+.header .meta .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.6); }
+.header .badge-backfill {
+  display: inline-block; margin-top: 12px; padding: 4px 12px; border-radius: 6px;
+  background: rgba(255,255,255,.18); font-size: 12px; font-weight: 600;
+}
+.stats { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.stat-chip {
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
+  padding: 8px 14px; font-size: 13px; display: inline-flex; align-items: center; gap: 6px;
+  box-shadow: var(--shadow); transition: box-shadow .2s;
+}
+.stat-chip:hover { box-shadow: var(--shadow-hover); }
+.stat-chip .count { font-weight: 700; color: var(--primary); }
+.stat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.section { margin-bottom: 32px; }
+.section-header {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 14px;
+  font-size: 18px; font-weight: 700; color: var(--text);
+}
+.section-header .dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.section-header .badge {
+  font-size: 12px; font-weight: 600; color: var(--text-muted);
+  background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+  padding: 2px 8px;
+}
+.card {
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
+  padding: 18px 20px 18px 24px; margin-bottom: 12px; position: relative;
+  box-shadow: var(--shadow); transition: box-shadow .2s, transform .15s; overflow: hidden;
+}
+.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+.card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 12px 0 0 12px; }
+.card.c-industry::before { background: var(--c-industry); }
+.card.c-opinion::before { background: var(--c-opinion); }
+.card.c-product::before { background: var(--c-product); }
+.card.c-research::before { background: var(--c-research); }
+.card.c-report::before { background: var(--c-report); }
+.card.c-funding::before { background: var(--c-funding); }
+.card .title { font-size: 16px; font-weight: 600; color: var(--text); line-height: 1.5; }
+.card .title a {
+  color: var(--text); text-decoration: none;
+  border-bottom: 1px solid transparent; transition: border-color .2s, color .2s;
+}
+.card .title a:hover { color: var(--primary); border-bottom-color: var(--primary); }
+.card .meta {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  margin-top: 6px; font-size: 12px; color: var(--text-muted);
+}
+.card .meta .source { font-weight: 500; color: var(--text-secondary); }
+.card .meta .sep { color: var(--border); }
+.card .meta .tag { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.card .meta .tag-new { background: #fef3c7; color: #92400e; }
+.card .summary { margin-top: 10px; font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+.insights {
+  background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 50%, #ddd6fe 100%);
+  border-radius: 16px; padding: 28px 32px; margin-top: 36px; margin-bottom: 24px;
+  border: 1px solid #c7d2fe;
+}
+.insights h2 {
+  font-size: 20px; font-weight: 700; color: #3730a3; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.insight-item {
+  background: rgba(255,255,255,.7); border-radius: 10px; padding: 14px 18px;
+  margin-bottom: 10px; font-size: 14px; color: #312e81; line-height: 1.65;
+  border: 1px solid rgba(199,210,254,.5);
+}
+.insight-item:last-child { margin-bottom: 0; }
+.insight-item .label { font-weight: 700; color: #4338ca; margin-right: 4px; }
+.highlight { background: #fde68a; color: #78350f; padding: 1px 5px; border-radius: 4px; font-weight: 600; font-size: 13px; }
+.footer {
+  text-align: center; padding: 24px 0; font-size: 12px; color: var(--text-muted);
+  border-top: 1px solid var(--border); margin-top: 20px; line-height: 1.8;
+}
+.footer a { color: var(--primary); text-decoration: none; }
+@media (max-width: 640px) {
+  .container { padding: 16px 12px 40px; }
+  .header { padding: 24px 20px; border-radius: 12px; }
+  .header h1 { font-size: 20px; }
+  .card { padding: 14px 16px 14px 20px; }
+  .insights { padding: 20px 18px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>AI 每日全景报告</h1>
+  <div class="subtitle">2026 年 7 月 3 日 · 周五</div>
+  <div class="meta">
+    <span><span class="dot"></span> 覆盖时段：7/2 22:00 — 7/3 22:00 北京时间</span>
+    <span><span class="dot"></span> 收录条目：26 条</span>
+    <span><span class="dot"></span> 数据源：AI HOT + WebSearch 多渠道交叉验证</span>
+  </div>
+  <div class="badge-backfill">⚠️ 补生成（原 7/3 22:00 调度未触发，7/4 下午补齐）</div>
+</div>
+
+<div class="stats">
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--c-industry)"></span> 行业动态 <span class="count">8</span></div>
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--c-opinion)"></span> 大V观点 <span class="count">5</span></div>
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--c-product)"></span> 模型/产品 <span class="count">5</span></div>
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--c-research)"></span> 技术进展 <span class="count">3</span></div>
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--c-report)"></span> 深度报告 <span class="count">2</span></div>
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--c-funding)"></span> 投融资 <span class="count">3</span></div>
+</div>
+
+<!-- ===== 行业动态 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="dot" style="background:var(--c-industry)"></span>行业动态<span class="badge">8 条</span>
+  </div>
+
+  <div class="card c-industry">
+    <div class="title"><a href="https://www.ft.com/" target="_blank">白宫加速自愿前沿模型标准谈判，下周或正式宣布，取代 ad-hoc 出口管制</a></div>
+    <div class="meta"><span class="source">Financial Times / AIToolsRecap</span><span class="sep">|</span>今天<span class="sep">|</span><span class="tag tag-new">最新披露</span></div>
+    <div class="summary">FT 确认白宫正与 OpenAI、Google、Anthropic、CAISI 及国安机构加速谈判自愿前沿模型发布标准，下周可能宣布。框架聚焦两大核心：审查时间线（政府可扣留模型多久）和能力阈值定义（何种能力算"前沿"需审查）。将正式取代当前未经国会、无明确安全标准的"事实上的非自愿许可制"——该机制对 Anthropic（Fable 5 被迫下线 20 天）和 OpenAI（GPT-5.6 发布前被拦截）执行不一。对两家即将 IPO 的公司而言，可预测的监管框架将大幅降低 S-1 中的监管风险披露。</div>
+  </div>
+
+  <div class="card c-industry">
+    <div class="title"><a href="https://fortune.com/" target="_blank">Anthropic 收入反超 OpenAI：年化 470 亿 vs 250-330 亿，企业订阅 5 月已超车</a></div>
+    <div class="meta"><span class="source">Fortune / Ramp / Similarweb</span><span class="sep">|</span>今天<span class="sep">|</span><span class="tag tag-new">竞争拐点</span></div>
+    <div class="summary">Fortune 500 分析显示 Anthropic 自报年化收入 run-rate 达 470 亿美元，超越 OpenAI 的 250-330 亿；Ramp 企业信用卡数据显示 Anthropic 5 月企业订阅量首超 OpenAI；Similarweb 显示 ChatGPT 月访问量 5 月首次跌破生成式 AI 市场多数份额。驱动力是企业 Claude Code 采用——Anthropic 内部 65% 产品代码由 Claude 生成，Stripe 用 Fable 5 将数月工程压缩到数天（5000 万行 Ruby 代码库），100 万美元+年合同企业客户超 1000 家。OpenAI Codex 虽有 500 万周活，但单席位收入较低。</div>
+  </div>
+
+  <div class="card c-industry">
+    <div class="title"><a href="https://www.ithome.com/0/972/341.htm" target="_blank">国家网信办《互联网信息服务管理办法》再征求意见，首设"智能信息服务"专章规范 AI</a></div>
+    <div class="meta"><span class="source">IT之家</span><span class="sep">|</span>今天 17:15</div>
+    <div class="summary">7 月 3 日，国家网信办就《互联网信息服务管理办法（修订草案征求意见稿）》再次公开征求意见。草案新增"智能信息服务"专章，要求 AI 服务提供者公示技术基本原理、训练数据来源，对生成合成内容进行标识，禁止强制用户使用智能服务或利用算法扰乱网络舆论。强化账号管理（超 6 个月不登录可注销）、建立网络暴力信息特征库。意见反馈截止 8 月 2 日。这是国内首次在行政法规层级为 AI 服务设专章，监管从部门规章上升至国务院条例。</div>
+  </div>
+
+  <div class="card c-industry">
+    <div class="title"><a href="https://www.ithome.com/0/972/424.htm" target="_blank">全球首例 AI Agent 自主完成勒索攻击曝光：600+ 攻击载荷，31 秒自修复，全程零人工</a></div>
+    <div class="meta"><span class="source">IT之家 / Sysdig</span><span class="sep">|</span>今天 19:57<span class="sep">|</span><span class="tag tag-new">首发</span></div>
+    <div class="summary">安全厂商 Sysdig 首次记录到 AI Agent "JADEPUFFER" 自主完成的勒索攻击。攻击利用 Langflow 服务漏洞 CVE-2025-3248 远程执行代码，自主收集 OpenAI/Anthropic/DeepSeek/Gemini API 密钥及阿里云/腾讯云/AWS 等云凭证，横向移动到 MySQL 和 Nacos 服务器，加密 1342 条配置数据并留下比特币勒索信息。AI 在首次操作失败后 31 秒内自主完成错误分析与修复，累计执行超 600 个攻击载荷，全程无需人类操作。标志 AI Agent 从生产力工具到攻击工具的威胁实战化。</div>
+  </div>
+
+  <div class="card c-industry">
+    <div class="title"><a href="https://the-decoder.com/microsoft-launches-2-5-billion-frontier-company-to-embed-6000-ai-engineers-inside-enterprise-clients" target="_blank">Microsoft 成立 Frontier Company：25 亿美元派驻 6000 名 AI 工程师到企业客户现场</a></div>
+    <div class="meta"><span class="source">The Decoder / Microsoft Blog</span><span class="sep">|</span>今天 11:18</div>
+    <div class="summary">Microsoft 新设业务部门 Frontier Company，拨款 25 亿美元，将 6000 名行业与工程专家派驻企业客户现场，"共同设计、部署并持续改进 AI 系统"。由 Rodrigo Kede Lima 领导，定位为超越"前部署工程"的"以结果为导向的工程组织"。Microsoft 将自己定位为 OpenAI 和 Anthropic 的"平台中立"替代方案（后两者也已设专门部署团队），并借助埃森哲、凯捷、安永等系统集成商扩大覆盖。AI 企业落地进入"驻场交付"重资产阶段。</div>
+  </div>
+
+  <div class="card c-industry">
+    <div class="title"><a href="https://techcrunch.com/2026/07/02/mark-zuckerberg-tells-staff-that-ai-agents-havent-progressed-as-quickly-as-hed-hoped" target="_blank">扎克伯格内部坦承：AI 智能体开发速度未如预期，Meta 重组赌注尚未兑现</a></div>
+    <div class="meta"><span class="source">TechCrunch / CNBC / Reuters</span><span class="sep">|</span>今天 07:38</div>
+    <div class="summary">Meta CEO 扎克伯格在内部全体会议上表示，AI 智能体开发速度并未如高管预期加速。今年 Meta 裁减约 8000 人（约 10%），另将 7000 人调至 Agent Transformation 等多个 AI 团队。扎克伯格称裁员不够"干净"，以 AI 为中心的新公司结构预期好处尚未实现，但相信未来 3-6 个月将看到改善。Meta 今年预计 AI 基础设施投入高达 1450 亿美元。此前 7/2 报道 Meta 正筹建 Meta Compute 云业务出售闲置算力——重组+变现双线推进。</div>
+  </div>
+
+  <div class="card c-industry">
+    <div class="title"><a href="https://www.wsj.com/" target="_blank">WSJ 披露 Anthropic 与五角大楼控权之争邮件：Claude 军事用途护栏数月拉锯</a></div>
+    <div class="meta"><span class="source">Wall Street Journal / X：@kimmonismus</span><span class="sep">|</span>今天 00:24<span class="sep">|</span><span class="tag tag-new">最新披露</span></div>
+    <div class="summary">WSJ 发布的法庭文件显示，Anthropic CEO Dario Amodei 与五角大楼副部长 Emil Michael 数月邮件往来，核心分歧在 Claude 军事用途护栏。Anthropic 要求禁止全自主武器及某些监控用途，五角大楼希望 Claude 可用于所有合法国安场景。Michael 称若分歧太大不愿"强行推动"。随后五角大楼将 Anthropic 列为供应链风险，阻止合作伙伴在国防部项目使用其模型——原采用 Anthropic 的操作中已有三分之二切换至其他 AI 工具。法官暂停部分措施，政府上诉中。</div>
+  </div>
+
+  <div class="card c-industry">
+    <div class="title"><a href="https://www.ithome.com/0/971/937.htm" target="_blank">花旗、Adobe 等企业限制员工使用 AI 旗舰模型控成本，Atlassian 月支出飙至 1500 万美元</a></div>
+    <div class="meta"><span class="source">IT之家 / 404 Media</span><span class="sep">|</span>昨天 22:22</div>
+    <div class="summary">据 404 Media 获取的内部资料，Atlassian、Adobe、亚马逊等六家企业正限制员工使用 AI 工具，要求改用能力较低的大模型避免成本失控。花旗因 GitHub 改按量计费，6 月 24 日禁用 Claude Opus 4.6/4.7 及 GPT-5.5 等旗舰模型；Adobe 6 月 30 日终止 Claude 无限制使用协议；Atlassian AI 月支出从 500 万飙升至 1500 万美元，本财年预计超 1.2 亿美元。GitHub 计划改用开源模型并测试单人按量计费。企业 AI 成本纪律时代到来。</div>
+  </div>
+</div>
+
+<!-- ===== 大V观点 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="dot" style="background:var(--c-opinion)"></span>大V观点 & 深度报告<span class="badge">5 条</span>
+  </div>
+
+  <div class="card c-opinion">
+    <div class="title"><a href="https://x.com/emollick/status/2072778376494895139" target="_blank">Ethan Mollick：关于 Mythos 和网络安全的讨论并非炒作</a></div>
+    <div class="meta"><span class="source">X：@emollick（宾大教授）</span><span class="sep">|</span>今天 12:24<span class="sep">|</span><span class="tag tag-new">一手信源</span></div>
+    <div class="summary">宾大教授 Ethan Mollick 在 X 发文称"关于 Mythos 和网络安全的讨论并非炒作"，并补充"正如任何使用 Fable 进行自主工作的人可能已经认识到的那样"。这被视为对近期 NSA 局长称 Mythos 数小时攻破几乎所有机密系统、以及 Epoch AI 报告 2026 年 6 月 AI 辅助漏洞发现创纪录激增（21 个组织披露约 1500 个高/关键 CVE）的回应。Mollick 罕见地对 AI 安全威胁给出明确判断，而非通常的审慎措辞。</div>
+  </div>
+
+  <div class="card c-opinion">
+    <div class="title"><a href="https://x.com/" target="_blank">Dean W. Ball：OpenAI 5% 公众持股应直接分给家庭，而非交给政府</a></div>
+    <div class="meta"><span class="source">X：@deanwball（前白宫 AI 顾问，已加入 OpenAI）</span><span class="sep">|</span>今天</div>
+    <div class="summary">前白宫 AI 顾问、现已加入 OpenAI 的 Dean W. Ball 在 X 发文，认为 OpenAI 的 5% 公众持股想法如果直接分配给家庭而非交给政府，风险会小得多——因为政治俘获和治理争斗可能吞噬善意。这一观点代表了硅谷自由意志主义派对"AI 国家资本主义化"的警惕。Ball 的身份转换（从白宫顾问到 OpenAI 员工）本身就折射出政府-企业旋转门的加速。</div>
+  </div>
+
+  <div class="card c-opinion">
+    <div class="title"><a href="https://x.com/" target="_blank">Geoffrey Litt：即使代理写更多代码，人类仍需真正理解才能保持创造性参与者角色</a></div>
+    <div class="meta"><span class="source">X：@geoffreylitt（研究员）</span><span class="sep">|</span>今天<span class="sep">|</span><span class="tag tag-new">一手信源</span></div>
+    <div class="summary">研究者 Geoffrey Litt 在 X 发文，认为即使代理编写更多代码，人类仍需要真正的理解才能保持创造性参与者角色，而非被动的验证者。这一观点与同日 Hacker News 热门"短绳 AI 编程法"（Short Leash 方法，要求全程参与、变更前审查差异、人工+AI 双重 PR 审查）形成呼应——社区正在探索"AI 编码时代人类如何不失去掌控"的方法论。Dan Shipper 补充：长时间运行的代理需要更好的方式讲述它们做了什么。</div>
+  </div>
+
+  <div class="card c-opinion">
+    <div class="title"><a href="https://x.com/" target="_blank">Mitchell Hashimoto 分享更便宜的路由模式：Fable 做规划者，GPT-5.5 做编码者</a></div>
+    <div class="meta"><span class="source">X：Mitchell Hashimoto（Anthropic 联合创始人）</span><span class="sep">|</span>今天<span class="sep">|</span><span class="tag tag-new">社区一手</span></div>
+    <div class="summary">Anthropic 联合创始人 Mitchell Hashimoto 在 X 分享了一种更便宜的模型路由模式：使用 Fable xhigh 作为规划者和评判者、GPT-5.5 xhigh 作为编码者，然后自己审查代码。规划和评判成本仅几美元，而完整的 Fable 往返花费更多。这一来自顶级实验室联创的"混合路由"实践，与 Reddit 用户"Fable API 7/7 后约 100 美元/小时"的成本焦虑形成对照——模型路由正成为企业 AI 成本控制的核心工程能力。</div>
+  </div>
+
+  <div class="card c-opinion">
+    <div class="title"><a href="https://www.youtube.com/" target="_blank">NVIDIA Bryan Catanzaro 开源模型宣言：未来不像封闭 AGI 服务，更像企业定制化模型</a></div>
+    <div class="meta"><span class="source">YouTube / Reddit r/LocalLLaMA</span><span class="sep">|</span>今天</div>
+    <div class="summary">NVIDIA 的 Bryan Catanzaro 在 YouTube 解释了 NVIDIA 为何构建和开源 Nemotron 等模型，认为未来看起来不像一个封闭的 AGI 服务，而更像企业在自己的数据和工作流上运行定制化模型。LocalLLaMA 线程将该片段作为"开源模型宣言"传播。这与同日花旗/Adobe 限制旗舰模型成本、Meta 禁用 Claude Code 防蒸馏等事件共同指向：企业 AI 采用正从"调 API 用旗舰"向"路由+开源+定制"的混合架构迁移。</div>
+  </div>
+</div>
+
+<!-- ===== 模型/产品/应用 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="dot" style="background:var(--c-product)"></span>模型/产品/应用更新<span class="badge">5 条</span>
+  </div>
+
+  <div class="card c-product">
+    <div class="title"><a href="https://aitoolsrecap.com/Blog/ai-news-july-3-2026" target="_blank">Gemini 3.5 Pro 7 月发布确认：唯一不受政府限制的前沿模型</a></div>
+    <div class="meta"><span class="source">AIToolsRecap</span><span class="sep">|</span>今天</div>
+    <div class="summary">Gemini 3.5 Pro 将于 7 月正式发布，成为唯一不受政府访问限制的主要前沿模型。原因是其网络安全基准分数 TerminalBench 2.1 为 70.7%，低于触发政府审查的非正式阈值（GPT-5.6 Sol 在 OpenAI 内部 Capture the Flag 评估达 96.7% 触发"高"风险分类，Fable 5 同样受限）。对 Google 而言时机极佳：在 Anthropic 和 OpenAI 整个 6 月应对政府限制之际，Gemini 3.5 Pro 将进入两个最强竞争对手最具能力模型均经历干扰的市场。Computer Use 已原生集成于 Gemini 3.5 Flash API。</div>
+  </div>
+
+  <div class="card c-product">
+    <div class="title"><a href="https://mp.weixin.qq.com/s/JVBbqU1O967ktzfEPuDERQ" target="_blank">面壁智能发布 ForgeTrain：全球首个 AI 全自动预训练框架，8 小时追平 Megatron-LM</a></div>
+    <div class="meta"><span class="source">公众号：面壁智能（MiniCPM）</span><span class="sep">|</span>今天 17:12</div>
+    <div class="summary">面壁智能发布全球首个完全由 AI 编写、无人类干预的生产级大模型预训练框架 ForgeTrain。该框架针对特定模型和硬件从零自动"锻造"专用训练代码，8 小时追平 Megatron-LM，1.5-2 天内稳定反超，模型 FLOPS 利用率提升约 8%-10%，可迁移至不同模型（MiniCPM4-0.5B/8B）和硬件（H100 及昇腾 NPU）。采用四阶段 Harness 优化流程，全程自动判定。面壁智能将其工程思想概括为 Forge Engineering——AI 训练基础设施本身正被 AI 接管。</div>
+  </div>
+
+  <div class="card c-product">
+    <div class="title"><a href="https://mp.weixin.qq.com/s/RuukpnoOA2tI0ERCNrLgtQ" target="_blank">生数科技发布 Vidu S1：视频生成迈向"实时交互"，25FPS 无限时长</a></div>
+    <div class="meta"><span class="source">公众号：生数科技（Vidu·视频）</span><span class="sep">|</span>今天 19:17</div>
+    <div class="summary">7 月 3 日，生数科技在 2026 全球数字经济大会发布 Vidu S1 实时交互模型，支持实时视频通话和语音控制视频走向，实现无限时长连续互动。采用自回归扩散路线，基于已生成画面和语音指令持续预测后续内容；无需传统建模，一张图片即可创建角色并自定义音色。Vidu S1 在 540P 分辨率下实现 25FPS（最高 42FPS）实时生成，通过 TurboDiffusion 等技术降低计算成本，已开启内测。视频生成从"片段制作"跨入"实时交互"阶段。</div>
+  </div>
+
+  <div class="card c-product">
+    <div class="title"><a href="https://www.marktechpost.com/2026/07/02/meet-alibabas-page-agent-a-javascript-in-page-gui-agent-that-controls-web-interfaces-with-natural-language-through-the-dom" target="_blank">阿里巴巴发布 Page Agent：开源 JS 库，自然语言直接操控网页 DOM</a></div>
+    <div class="meta"><span class="source">MarkTechPost</span><span class="sep">|</span>今天 04:51</div>
+    <div class="summary">阿里巴巴发布 Page Agent，一个开源 JavaScript 客户端库，嵌入网页后可通过自然语言指令直接操作 DOM 元素。与 Playwright、Puppeteer 等外部浏览器自动化工具不同，Page Agent 不依赖截图或多模态模型，而是将实时 DOM 脱水压缩为 FlatDomTree 文本映射，让纯文本模型精准执行点击、表单填写等操作。继承用户 cookies 和会话，无需独立后端，支持任意 OpenAI 兼容端点（示例用 qwen3.5-plus）。MIT 许可证，适合在自有应用内构建 AI 副驾。</div>
+  </div>
+
+  <div class="card c-product">
+    <div class="title"><a href="https://www.cognizant.com/" target="_blank">Cognizant × OpenAI 推出 GPT-5.5 网络防御服务"Trusted Access for Cyber"</a></div>
+    <div class="meta"><span class="source">Cognizant News</span><span class="sep">|</span>今天</div>
+    <div class="summary">Cognizant 和 OpenAI 宣布推出 GPT-5.5 网络防御服务，使用"Trusted Access for Cyber"帮助企业安全团队从漏洞发现推进到验证修复。这是 OpenAI 模型在企业安全垂直领域的标志性落地——同日 Epoch AI 报告 2026 年 6 月 AI 辅助漏洞发现创纪录激增（21 个组织披露约 1500 个高/关键 CVE），Cloudflare 也推出 AI 流量控制工具区分搜索/代理/训练爬虫。AI 安全攻防双方均在加速工具化。</div>
+  </div>
+</div>
+
+<!-- ===== 技术进展 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="dot" style="background:var(--c-research)"></span>技术进展 & 论文<span class="badge">3 条</span>
+  </div>
+
+  <div class="card c-research">
+    <div class="title"><a href="https://www.ithome.com/0/972/526.htm" target="_blank">北大+中科院发布全球首款忆阻器神经动力学芯片，发表于《科学》</a></div>
+    <div class="meta"><span class="source">IT之家 / Science</span><span class="sep">|</span>今天 13:01<span class="sep">|</span><span class="tag tag-new">首发</span></div>
+    <div class="summary">北京大学集成电路学院联合中科院上海微系统所，发布全球首款基于可控存内计算的忆阻器神经动力学芯片，首次将单步运算时延压缩至 2.12 毫秒。芯片采用 40nm 工艺，存内计算阵列与外围电路总面积 0.28 平方毫米，运行频率 50MHz，单步积分仅需 9 级流水。在脑皮层重建等任务中较当前 GPU 提速 50-478 倍，突破神经动力学实时计算瓶颈。相关成果 7 月 3 日发表于《科学》。这是中国在存算一体芯片领域的标志性突破。</div>
+  </div>
+
+  <div class="card c-research">
+    <div class="title"><a href="https://www.ithome.com/0/972/089.htm" target="_blank">阿里达摩院发布超导材料发现 AI 智能体 Elements Claw，28 GPU 小时筛出 4 种验证超导体</a></div>
+    <div class="meta"><span class="source">IT之家</span><span class="sep">|</span>今天 11:27</div>
+    <div class="summary">阿里达摩院联合中国人民大学、中科院发布首个超导材料发现 AI 智能体 Elements Claw。采用"专通融合"架构，基于 1.25 亿分子/晶体结构预训练的 1B 参数原子基础模型 Elements，判断超导性 AUC 达 0.996，预测临界温度平均误差小于 1K。AI 仅用 28 个 GPU 小时筛选 240 万晶体结构，预测出 6.8 万候选材料，其中 4 种（Hf21Re25、Zr4VRe7、HfZrRe4、Zr3ScRe8）已合成并验证超导性，临界温度最高 6.5K。全部 240 万稳定晶体数据库已开放。AI for Science 在材料发现领域落地。</div>
+  </div>
+
+  <div class="card c-research">
+    <div class="title"><a href="https://www.marktechpost.com/2026/07/03/nvidia-ai-introduces-aspire-a-self-improving-robotics-framework-reaching-31-zero-shot-on-libero-pro-long-tasks" target="_blank">NVIDIA ASPIRE：自我改进机器人框架，零样本成功率从 4% 提升至 31%</a></div>
+    <div class="meta"><span class="source">MarkTechPost / arXiv</span><span class="sep">|</span>今天</div>
+    <div class="summary">NVIDIA 联合密歇根大学、UIUC、UC Berkeley 等提出 ASPIRE，一个持续学习机器人框架。通过协调器-执行器架构、闭环执行引擎、技能库和进化搜索，编写并优化机器人控制程序（编程智能体使用 Claude Code，Claude Opus 4.6，1M token 上下文窗口）。在 LIBERO-Pro 上最高比最强基线提升 77 分；Robosuite 双手交接成功率从 20% 提升至 92%；BEHAVIOR-1K 收音机拾取从 56% 提升至 88%。利用 LIBERO-90 积累技能，ASPIRE 在零样本条件下对 LIBERO-Pro Long 任务达约 31% 成功率（此前方法饱和在 4%）。</div>
+  </div>
+</div>
+
+<!-- ===== 深度报告 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="dot" style="background:var(--c-report)"></span>优秀报告/深度研报<span class="badge">2 条</span>
+  </div>
+
+  <div class="card c-report">
+    <div class="title"><a href="https://aitoolsrecap.com/Blog/ai-news-july-3-2026" target="_blank">AIToolsRecap 深度：自愿 AI 标准框架可能长什么样——能力阈值、审查时间线、访问规则</a></div>
+    <div class="meta"><span class="source">AIToolsRecap</span><span class="sep">|</span>今天</div>
+    <div class="summary">AIToolsRecap 对白宫自愿前沿模型标准框架做了系统拆解：① 能力阈值——TerminalBench 2.1 或等效 CTF 评估上某分数（Gemini 3.5 Pro 70.7% 与 GPT-5.6 Sol 96.7% 之间）触发预发布审查；② 审查时间线——政府可扣留模型的最长天数，这是最具争议条款（实验室要短窗口，政府要灵活性）；③ 审查期访问规则——谁可在审查期访问模型（政府及可信合作伙伴）；④ 国籍访问控制——Fable 5 恢复后的用户国籍验证可能成为最高能力模型的标准条件；⑤ "自愿"的真实含义——实验室事先同意而非被突袭。对 Anthropic 和 OpenAI 的 IPO 路演窗口，框架时机至关重要。</div>
+  </div>
+
+  <div class="card c-report">
+    <div class="title"><a href="https://news.crunchbase.com/" target="_blank">Crunchbase：2026 上半年全球风投达 5100 亿美元创纪录，AI 吸纳 Q2 大部分资本</a></div>
+    <div class="meta"><span class="source">Crunchbase News</span><span class="sep">|</span>今天</div>
+    <div class="summary">Crunchbase 报道 2026 年上半年全球初创企业投资达 5100 亿美元，创历史新高，AI 吸纳了 Q2 大部分资本，退出活动增强。这一数据与同日快手可灵 AI 20.28 亿美元融资、ElevenLabs 220 亿美元估值、Tripo AI 1.5 亿美元融资等个案共同印证：AI 仍是 2026 年全球风投的绝对主线，资本从通用模型层向视频生成/3D/语音等垂直应用和基础设施加速迁移。</div>
+  </div>
+</div>
+
+<!-- ===== 投融资 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="dot" style="background:var(--c-funding)"></span>投融资动态<span class="badge">3 条</span>
+  </div>
+
+  <div class="card c-funding">
+    <div class="title"><a href="https://www.ithome.com/0/971/954.htm" target="_blank">快手可灵 AI 获初始投资者 20.28 亿美元注资，投后估值 180 亿美元，12 个月内赴港 IPO</a></div>
+    <div class="meta"><span class="source">IT之家 / CNBC / Bloomberg</span><span class="sep">|</span>昨天 23:36</div>
+    <div class="summary">快手港交所公告，21 名初始投资者同意以 138.24 亿元人民币（20.28 亿美元）现金注资北京可灵，同日 15 名额外投资者追加 52.235 亿元（7.66 亿美元），认购总上限 204.471 亿元（30 亿美元），对应扩大后注册资本 16.67%。投后估值 180 亿美元。快手预计未来 12 个月内启动可灵 AI 赴港上市，募资用于扩充算力、建设数据中心及人才引进。Tencent 领投。可灵是快手 AI 视频生成部门分拆，Q1 季度收入约 7500 万美元。</div>
+  </div>
+
+  <div class="card c-funding">
+    <div class="title"><a href="https://www.reuters.com/" target="_blank">ElevenLabs 探索 220 亿美元估值员工股票出售</a></div>
+    <div class="meta"><span class="source">Reuters / Bloomberg</span><span class="sep">|</span>今天</div>
+    <div class="summary">ElevenLabs 正在探索以 220 亿美元估值进行员工股票出售。作为语音 AI 领域的龙头，ElevenLabs 的估值跃升反映生成式 AI 在语音合成/克隆赛道的商业化加速。这与同日 Tripo AI（3D 基础模型）1.5 亿美元融资、可灵 AI（视频生成）180 亿美元估值共同指向：多模态生成（语音/3D/视频）正成为继文本模型后的资本配置新主线。</div>
+  </div>
+
+  <div class="card c-funding">
+    <div class="title"><a href="https://gamesbeat.com/" target="_blank">Tripo AI 再募资 1.5 亿美元，距上轮 2 亿美元仅一个月，3D 基础模型赛道白热化</a></div>
+    <div class="meta"><span class="source">GamesBeat / GlobeNewswire</span><span class="sep">|</span>今天</div>
+    <div class="summary">Tripo AI 为 3D 基础模型和世界模型再募资 1.5 亿美元（A3 轮），距离上一轮 2 亿美元募资仅一个月。其工作涵盖创作者、游戏、制造、VR 和具身 AI。一个月内连续两轮大额融资，显示 3D 生成赛道正进入资本密集注入期——3D 资产是游戏/VR/具身智能/数字孪生的共同基础设施，资本在抢夺"3D 版 Stable Diffusion"的入口位置。同日 SoftBank 成立 SB Neo 运营美国 neocloud 业务，AI 基础设施融资全线活跃。</div>
+  </div>
+</div>
+
+<!-- ===== 投资启示 ===== -->
+<div class="insights">
+  <h2>📋 今日总结 & 投资启示</h2>
+
+  <div class="insight-item">
+    <span class="label">① AI 监管从"临时突击"走向"制度化"。</span>白宫加速自愿前沿模型标准谈判（下周或宣布），将正式取代当前对 Fable 5（下线 20 天）和 GPT-5.6（发布前拦截）执行不一的 ad-hoc 出口管制。框架核心是能力阈值（TerminalBench ~70-97%）+ 审查时间线 + 访问规则。对 Anthropic（S-1 估值 <span class="highlight">9650 亿美元</span>）和 OpenAI（<span class="highlight">8300 亿-1 万亿</span>）的 IPO 路演，可预测的监管框架将大幅降低 S-1 风险披露项。关注框架公布时间点与 IPO 窗口的咬合。
+  </div>
+
+  <div class="insight-item">
+    <span class="label">② 前沿模型收入格局逆转。</span>Anthropic 年化收入 <span class="highlight">470 亿美元</span>反超 OpenAI 的 250-330 亿，企业订阅 5 月已超车（Ramp 数据），ChatGPT 流量首次跌破多数份额（Similarweb）。驱动力是企业 Claude Code 采用（100 万美元+年合同客户超 1000 家）。这意味着"Claude vs ChatGPT"不再是追赶叙事，而是真正的双寡头竞争——对两家 IPO 估值的相对定价有直接影响。
+  </div>
+
+  <div class="insight-item">
+    <span class="label">③ 企业 AI 成本纪律时代到来。</span>花旗禁用 Claude Opus/GPT-5.5 旗舰模型、Adobe 终止 Claude 无限协议、Atlassian 月支出飙至 <span class="highlight">1500 万美元</span>、Tesla 员工 AI 上限每周 200 美元。叠加 Mitchell Hashimoto 的混合路由实践（Fable 规划+GPT-5.5 编码，成本仅几美元），企业 AI 采用正从"调 API 用旗舰"向"路由+开源+定制"混合架构迁移。模型层利润率压缩不可逆，竞争壁垒向基础设施规模（Microsoft Frontier Company 25 亿/6000 人驻场）和成本工程迁移。
+  </div>
+
+  <div class="insight-item">
+    <span class="label">④ AI Agent 安全威胁实战化。</span>全球首例 AI Agent 自主完成勒索攻击（JADEPUFFER，600+ 载荷/31 秒自修复/零人工）+ Ethan Mollick 罕见明确表态"Mythos 网络安全讨论并非炒作" + Epoch AI 报告 6 月 AI 辅助漏洞发现创纪录（1500 个高/关键 CVE）。安全攻防双方均在工具化（Cognizant×OpenAI 推 GPT-5.5 网络防御服务、Cloudflare AI 流量控制工具）。关注 AI 安全赛道的攻防两侧投资机会。
+  </div>
+
+  <div class="insight-item">
+    <span class="label">⑤ 多模态生成成资本配置新主线。</span>快手可灵 AI（<span class="highlight">180 亿美元</span>估值/20.28 亿美元融资/12 月内赴港 IPO）、ElevenLabs（220 亿美元估值）、Tripo AI（一个月内连续两轮共 3.5 亿美元）。Crunchbase 确认 2026 H1 全球风投达 <span class="highlight">5100 亿美元</span>创纪录，AI 吸纳 Q2 大部分资本。资本从通用文本模型向视频/语音/3D 等垂直多模态生成和基础设施迁移趋势明确。
+  </div>
+
+  <div class="insight-item">
+    <span class="label">⑥ 中国 AI 全栈突破信号密集。</span>北大忆阻器神经动力学芯片发表于《科学》（较 GPU 提速 50-478 倍）、阿里达摩院 Elements Claw 28 GPU 小时发现 4 种超导体、面壁智能 ForgeTrain 8 小时追平 Megatron（可迁移昇腾 NPU）、国家网信办首设"智能信息服务"专章。从底层芯片（存算一体）到 AI for Science（超导发现）到训练基础设施（AI 自动写训练框架）到监管制度化，中国 AI 生态正从"追赶"进入"全栈平行构建"阶段。
+  </div>
+</div>
+
+<div class="footer">
+  <p>数据来源：AI HOT API (aihot.virxact.com) + WebSearch/WebFetch（Financial Times / Fortune / Ramp / Similarweb / IT之家 / The Decoder / TechCrunch / WSJ / AIToolsRecap / The Neuron / MarkTechPost / Cognizant / Crunchbase / GamesBeat / Reuters / Bloomberg 等）</p>
+  <p>报告生成时间：2026-07-04 补生成（原 7/3 22:00 调度未触发）· 覆盖时段 7/2 22:00 — 7/3 22:00 北京时间</p>
+  <p style="margin-top: 8px; color: var(--text-muted);">⚠️ 本报告仅供研究参考，不构成投资建议。AI 行业变化快，请注意信息时效性。</p>
+</div>
+
+</div>
+</body>
+</html>

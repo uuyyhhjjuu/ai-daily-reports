@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI每日全景报告 · 2026-06-25</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;background:#f0f0f5;color:#1a1a2e;line-height:1.6;font-size:15px}
+.container{max-width:960px;margin:0 auto;padding:0 16px 60px}
+header{background:linear-gradient(135deg,#6366f1 0%,#7c3aed 50%,#4f46e5 100%);color:#fff;padding:40px 24px 32px;border-radius:0 0 20px 20px;margin-bottom:28px;box-shadow:0 4px 24px rgba(99,102,241,0.25)}
+header h1{font-size:28px;font-weight:700;margin-bottom:8px;letter-spacing:-0.5px}
+header .subtitle{font-size:14px;opacity:0.85;margin-bottom:16px}
+header .meta{display:flex;flex-wrap:wrap;gap:8px;font-size:13px}
+header .meta span{background:rgba(255,255,255,0.18);padding:4px 12px;border-radius:20px;backdrop-filter:blur(4px)}
+.stats-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.stats-bar .stat{flex:1;min-width:120px;background:#fff;border-radius:10px;padding:12px 16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.05);border:1px solid #eee}
+.stats-bar .stat .num{font-size:22px;font-weight:700;color:#6366f1}
+.stats-bar .stat .label{font-size:12px;color:#888;margin-top:2px}
+section{margin-bottom:32px}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #e5e5ee}
+.section-header .dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.section-header h2{font-size:18px;font-weight:600;color:#1a1a2e}
+.section-header .count{font-size:13px;color:#999;margin-left:auto;background:#f0f0f5;padding:2px 10px;border-radius:10px}
+.card{background:#fff;border-radius:12px;padding:18px 20px 18px 24px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.04);border:1px solid #f0f0f0;position:relative;overflow:hidden;transition:transform 0.15s,box-shadow 0.15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.08)}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.card.industry::before{background:#f59e0b}
+.card.kol::before{background:#10b981}
+.card.model::before{background:#8b5cf6}
+.card.paper::before{background:#06b6d4}
+.card.report::before{background:#3b82f6}
+.card.funding::before{background:#f97316}
+.card .card-title{font-size:16px;font-weight:600;margin-bottom:6px;line-height:1.4}
+.card .card-title a{color:#1a1a2e;text-decoration:none}
+.card .card-title a:hover{color:#6366f1}
+.card .card-title .en{font-size:13px;font-weight:400;color:#888;margin-left:6px}
+.card .card-meta{font-size:12px;color:#999;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card .card-meta .source{color:#6366f1;font-weight:500}
+.card .card-meta .time{color:#aaa}
+.card .card-meta .sep{color:#ddd}
+.card .card-summary{font-size:14px;color:#555;line-height:1.65}
+.card .card-summary strong{color:#1a1a2e}
+.insights{background:linear-gradient(135deg,#eef2ff 0%,#f5f3ff 50%,#eef2ff 100%);border-radius:16px;padding:28px 28px 32px;margin-bottom:28px;border:1px solid #e0e7ff}
+.insights h2{font-size:20px;font-weight:700;color:#4f46e5;margin-bottom:4px}
+.insights .insights-sub{font-size:13px;color:#818cf8;margin-bottom:20px}
+.insight-item{display:flex;gap:12px;margin-bottom:16px;align-items:flex-start}
+.insight-item .num{flex-shrink:0;width:28px;height:28px;background:#6366f1;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.insight-item .text{font-size:14px;color:#374151;line-height:1.7}
+.insight-item .text strong{color:#1a1a2e}
+.highlight{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:600;color:#92400e}
+footer{text-align:center;padding:24px 16px;font-size:12px;color:#aaa;border-top:1px solid #e5e5ee}
+footer p{margin-bottom:4px}
+@media(max-width:640px){
+  header h1{font-size:22px}
+  .stats-bar .stat{min-width:100px}
+  .card{padding:14px 16px 14px 20px}
+  .insights{padding:20px 16px 24px}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>🤖 AI 每日全景报告</h1>
+  <div class="subtitle">Secondary Market Analyst Briefing — AI Industry Daily</div>
+  <div class="meta">
+    <span>📅 2026年6月25日（周四）</span>
+    <span>🕐 覆盖时段：6/24 22:00 — 6/25 22:00 北京时间</span>
+    <span>📊 共 22 条</span>
+  </div>
+</header>
+
+<div class="container">
+<div class="stats-bar">
+  <div class="stat"><div class="num">7</div><div class="label">🏭 行业动态</div></div>
+  <div class="stat"><div class="num">4</div><div class="label">💬 大V观点</div></div>
+  <div class="stat"><div class="num">5</div><div class="label">🚀 模型/产品</div></div>
+  <div class="stat"><div class="num">2</div><div class="label">🔬 技术论文</div></div>
+  <div class="stat"><div class="num">2</div><div class="label">💡 深度报告</div></div>
+  <div class="stat"><div class="num">2</div><div class="label">💰 投融资</div></div>
+</div>
+
+<!-- ========== 行业动态 ========== -->
+<section>
+<div class="section-header">
+  <div class="dot" style="background:#f59e0b"></div>
+  <h2>🏭 行业动态</h2>
+  <span class="count">7 条</span>
+</div>
+
+<div class="card industry">
+  <div class="card-title"><a href="https://www.cnbc.com/2026/06/24/anthropic-alibaba-distillation-campaign.html" target="_blank">Anthropic 指控阿里巴巴实施"迄今最大规模蒸馏攻击"，2.5万虚假账户生成2880万次交互</a></div>
+  <div class="card-meta">
+    <span class="source">CNBC / Reuters</span>
+    <span class="sep">·</span>
+    <span class="time">今天 05:18</span>
+  </div>
+  <div class="card-summary">Anthropic 致信美国参议院银行委员会，指控阿里巴巴通过约 <strong>2.5万个虚假账户</strong> 在4月22日至6月5日期间与 Claude 模型进行 <strong>2880万次交互</strong>，实施"迄今已知最大规模蒸馏攻击"。信件于6月10日发送至 Sen. Tim Scott 和 Sen. Elizabeth Warren。Anthropic 称此举"无视特朗普政府警告"。此前 Anthropic 已在2月点名 <strong>DeepSeek、Moonshot、MiniMax</strong> 三家实施类似行为。该指控发生在 Anthropic 因出口管制被要求下架 Fable 5/Mythos 5 的敏感时期，凸显中美 AI 知识产权博弈全面升级。</div>
+</div>
+
+<div class="card industry">
+  <div class="card-title"><a href="https://techstartups.com/2026/06/24/china-builds-its-own-rival-to-anthropics-mythos-as-ai-cyberwar-race-intensifies/" target="_blank">中国360安全推出"屠龙锋"对标 Anthropic Mythos，AI 网安军备竞赛国际化</a></div>
+  <div class="card-meta">
+    <span class="source">TechStartups / Reuters</span>
+    <span class="sep">·</span>
+    <span class="time">昨天 15:00</span>
+  </div>
+  <div class="card-summary">360安全在 ISC.AI 2026 大会推出"屠龙锋"（自动漏洞发现）和"倚天阵"（自动防御响应）两大 AI 安全系统，创始人周鸿祎称其为"中国版 Mythos"。屠龙锋已发现 <strong>3432个软件漏洞</strong>，其中 <strong>105个获官方确认</strong>。周鸿祎承认国产模型基础能力仍有 <strong>20%-30% 差距</strong>，但表示"不能等到模型能力完全追赶才开始漏洞发现"，采取"智能体路线"而非纯模型竞赛。此前美国以国家安全为由限制 Anthropic Mythos 出口，360 此举标志着漏洞发现 AI 已被视为战略级能力。</div>
+</div>
+
+<div class="card industry">
+  <div class="card-title"><a href="https://www.nytimes.com/2026/06/23/us/politics/nsa-lost-access-anthropic-tool.html" target="_blank">NSA 因与 Anthropic 的出口管制纠纷失去 Mythos 访问权限</a></div>
+  <div class="card-meta">
+    <span class="source">New York Times</span>
+    <span class="sep">·</span>
+    <span class="time">今天 03:08</span>
+  </div>
+  <div class="card-summary">美国国家安全局（NSA）因 Anthropic 与特朗普政府的出口管制纠纷，失去了对 Mythos 漏洞发现系统的访问权限。政府此前以"国家安全"为由要求 Anthropic 暂停 Fable 5 和 Mythos 5 对所有外籍人员（包括 Anthropic 外籍员工）的访问。Anthropic 高管已飞往华盛顿与政府磋商，但尚未公布恢复时间表。NSA 失去该工具意味着美国顶级网络安全机构在关键漏洞发现能力上出现真空。</div>
+</div>
+
+<div class="card industry">
+  <div class="card-title"><a href="https://the-decoder.com/meta-employees-warn-ai-moderation-rollout-is-too-fast" target="_blank">Meta 员工警告 AI 内容审核部署过快，已从 Google Gemini 切换至自研 Muse Spark</a></div>
+  <div class="card-meta">
+    <span class="source">The Decoder</span>
+    <span class="sep">·</span>
+    <span class="time">今天 18:07</span>
+  </div>
+  <div class="card-summary">Meta 已用大语言模型替换约 <strong>一半人工审核请求</strong>，计划年底前将部分内容类型 AI 审核比例提升至 <strong>90%以上</strong>。Meta 已从使用 Google Gemini 转向自研基础模型 <strong>Muse Spark</strong>（基于人工审核员历史决策训练），每年节省数十亿美元。但员工警告模型仍会错误移除无害内容，快速部署已导致外包裁员。Meta 称自3月测试显示模型错误率比人类低 <strong>13%</strong>，且多捕捉 <strong>10%</strong> 违规。</div>
+</div>
+
+<div class="card industry">
+  <div class="card-title"><a href="https://aiproducthub.cn/newsflash/nvidia-shareholder-meeting-jensen-huang-ai-profitable-2026/" target="_blank">NVIDIA 年度股东大会：黄仁勋宣布"有用 AI 时代"到来，Vera Rubin 全面量产</a></div>
+  <div class="card-meta">
+    <span class="source">AIProductHub / Sina Finance</span>
+    <span class="sep">·</span>
+    <span class="time">今天 06:00</span>
+  </div>
+  <div class="card-summary">黄仁勋在 2026 年度股东大会明确表示"有用的 AI 已经到来，而且它已经能够赚钱"，将 AI 数据中心定义为"<strong>生产 Token 的工厂</strong>"。下一代芯片架构 <strong>Vera Rubin 已全面量产</strong>，专为 AI 智能体打造（支撑持续思考、数据库访问、工具调用和代码执行）。黄仁勋将"物理 AI"定义为下一波增长浪潮（机器人、汽车、工厂）。10名董事会成员全部获连任。</div>
+</div>
+
+<div class="card industry">
+  <div class="card-title"><a href="https://the-decoder.com/figma-bets-on-human-judgment-at-config-2026-while-the-ai-powering-its-canvas-belongs-to-someone-else" target="_blank">Figma Config 2026：押注人类判断，画布 AI 能力却完全依赖第三方</a></div>
+  <div class="card-meta">
+    <span class="source">The Decoder</span>
+    <span class="sep">·</span>
+    <span class="time">今天 00:49</span>
+  </div>
+  <div class="card-summary">Figma 在 Config 2026 将设计画布扩展至代码、动画、3D 深度和着色器效果，推出 Code Layers、Motion、Shader 及 Generative Plugins。但 Figma 的 AI 功能完全依赖 <strong>Anthropic、OpenAI 和 Google</strong> 外部模型，推理成本挤压利润率。同时这些供应商的竞争产品可直接生成界面，对 Figma 构成威胁。Figma 集成了去年收购的 Weave 工作流系统，团队可搜索复用 AI 提示词、保存工作流为技能。</div>
+</div>
+
+<div class="card industry">
+  <div class="card-title"><a href="https://mp.weixin.qq.com/s/mdmaAyUIvxE8WT_GEbF2wQ" target="_blank">字节跳动副总裁洪定坤：AI Coding 实践数据首披露，TRAE 日均 Token 消耗5.6万亿</a></div>
+  <div class="card-meta">
+    <span class="source">火山引擎公众号</span>
+    <span class="sep">·</span>
+    <span class="time">昨天 22:02</span>
+  </div>
+  <div class="card-summary">在火山引擎 FORCE 大会，字节跳动技术副总裁洪定坤分享 AI Coding 数据：过去一年 AI 代码贡献率增长 <strong>6倍</strong>，tokens 消耗增长 <strong>5倍</strong>。900次实验显示主流 Coding 模型代码正确率超 <strong>80%</strong>，但可交付性仅 <strong>40-60分</strong>；结合 Harness 基建后提升至80分。TRAE 日均 Token 消耗 <strong>5.6万亿</strong>（增长50倍），并推出 TRAE Work。字节探索原型驱动开发模式。</div>
+</div>
+
+</section>
+
+<!-- ========== 大V观点 & 深度报告 ========== -->
+<section>
+<div class="section-header">
+  <div class="dot" style="background:#10b981"></div>
+  <h2>💬 大V观点 & 深度报告</h2>
+  <span class="count">4 条</span>
+</div>
+
+<div class="card kol">
+  <div class="card-title"><a href="https://fortune.com/2026/06/24/reid-hoffman-spacex-musk-openai-anthropic-gen-z-mistake" target="_blank">Reid Hoffman 播客：SpaceX"不是 AI 公司"，xAI"彻底灾难"——11位联合创始人全部离职</a></div>
+  <div class="card-meta">
+    <span class="source">Fortune（播客）</span>
+    <span class="sep">·</span>
+    <span class="time">昨天 22:20</span>
+  </div>
+  <div class="card-summary">LinkedIn 联合创始人、Anthropic 和 OpenAI 投资者 Reid Hoffman 在播客中尖锐批评：SpaceX"不是一家人工智能公司"，上市后收购 Cursor 是"花钱买相关性"；xAI 则是"彻底的灾难"，<strong>所有11位联合创始人已离职</strong>，Grok 模型在基准测试中落后。他批评美国政府以出口管制为由强制 Anthropic 下架 Fable/Mythos"专断随意"，并认为 Cursor 可能已过巅峰。建议年轻人不要抵制 AI。</div>
+</div>
+
+<div class="card kol">
+  <div class="card-title"><a href="https://techcrunch.com/2026/06/24/ai-was-supposed-to-kill-engineering-jobs-but-new-data-suggests-theyre-the-most-resilient" target="_blank">SignalFire 报告：AI 未消灭工程岗位，工程反成2025最具韧性岗位</a></div>
+  <div class="card-meta">
+    <span class="source">TechCrunch</span>
+    <span class="sep">·</span>
+    <span class="time">今天 05:56</span>
+  </div>
+  <div class="card-summary">风投 SignalFire 追踪 <strong>8000万家公司</strong> 数百万员工数据发现，工程是2025年最具韧性岗位。大型科技公司总招聘较2019年下降 <strong>25%</strong>，工程岗仅降 <strong>11%</strong>；工程岗占12家"Tech Majors"新招员工的 <strong>55%</strong>（2019年为46%）。早期初创公司2025年工程师招聘比2019年增长 <strong>7%</strong>。NVIDIA CEO 黄仁勋称 AI 让工程师更忙碌，是杰文斯悖论的典型例证。Anthropic CEO 曾警告 AI 可能消灭一半入门级白领，但该公司经济主管称尚未看到显著影响。</div>
+</div>
+
+<div class="card kol">
+  <div class="card-title"><a href="https://huggingface.co/blog/nvidia/accelerating-fine-tuning-nvidia-nemo-automodel" target="_blank">NVIDIA NeMo AutoModel：一行代码加速 MoE 微调，吞吐量提升3.4-3.7倍</a></div>
+  <div class="card-meta">
+    <span class="source">HuggingFace Blog</span>
+    <span class="sep">·</span>
+    <span class="time">今天 00:00</span>
+  </div>
+  <div class="card-summary">NVIDIA NeMo AutoModel 基于 Transformers v5 开源库，添加 Expert Parallelism、DeepEP 融合 all-to-all 调度和 TransformerEngine 内核。在 MoE 模型微调中，相比原生 v5 训练吞吐量提升 <strong>3.4-3.7倍</strong>，GPU 内存减少 <strong>29-32%</strong>，仅需改动一行 import。在16节点128张 H100 上全微调 Nemotron 3 Ultra 550B A55B 时，v5 因内存不足无法运行，AutoModel 凭借 EP=64 专家并行使训练可行。单节点 30B MoE 模型（如 Qwen3-30B-A3B）同样获得可量化优势。</div>
+</div>
+
+<div class="card kol">
+  <div class="card-title"><a href="https://openrouter.ai/blog/insights/when-zero-means-zero" target="_blank">OpenRouter 零数据留存实践：新增97款模型，ZDR 流量占全部路由近半</a></div>
+  <div class="card-meta">
+    <span class="source">OpenRouter Blog</span>
+    <span class="sep">·</span>
+    <span class="time">今天 00:00</span>
+  </div>
+  <div class="card-summary">OpenRouter 的零数据留存（ZDR）保证用户提示词和模型响应不被存储。自1月以来新增 <strong>97款</strong> 支持 ZDR 的模型，月度 token 量增长 <strong>4.3倍</strong>，约占全部路由流量 <strong>一半</strong>。ZDR 在三个层面执行：账户级（整个供应商开启）、护栏级（按 API Key 限定）、单次请求级。企业用户可灵活选择控制粒度，避免锁定单一供应商。这一趋势反映企业对 AI 数据隐私的诉求正从"合规要求"转向"采购刚性需求"。</div>
+</div>
+
+</section>
+
+<!-- ========== 模型/产品/应用更新 ========== -->
+<section>
+<div class="section-header">
+  <div class="dot" style="background:#8b5cf6"></div>
+  <h2>🚀 模型/产品/应用更新</h2>
+  <span class="count">5 条</span>
+</div>
+
+<div class="card model">
+  <div class="card-title"><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash" target="_blank">Google 将 Computer Use 集成至 Gemini 3.5 Flash，原生支持跨环境智能体</a></div>
+  <div class="card-meta">
+    <span class="source">Google Blog</span>
+    <span class="sep">·</span>
+    <span class="time">今天 05:16</span>
+  </div>
+  <div class="card-summary">Google 将计算机使用（Computer Use）作为内置工具集成至 Gemini 3.5 Flash，开发者可构建跨浏览器、移动端和桌面环境的智能体。此前该功能仅作为独立模型在 Gemini 2.5 中提供，现已原生整合至主 Flash 模型。安全方面采用针对性对抗训练降低提示注入风险，新增两项可选企业级保护：<strong>敏感操作需用户确认</strong>、<strong>检测间接提示注入时自动停止</strong>。在持续软件测试、跨应用知识工作等长周期企业自动化场景中表现更优。</div>
+</div>
+
+<div class="card model">
+  <div class="card-title"><a href="https://x.com/OpenAI/status/2069843083701915755" target="_blank">OpenAI 发布新版 GPT-5.5 Instant：更懂意图、更好处理复杂约束</a></div>
+  <div class="card-meta">
+    <span class="source">X / OpenAI</span>
+    <span class="sep">·</span>
+    <span class="time">今天 02:00</span>
+  </div>
+  <div class="card-summary">OpenAI 发布新版 GPT-5.5 Instant，改善了对话趣味性和意图理解能力，能更好地理解问题背后的意图并相应调整回应。同时更可靠地处理复杂约束，让购物和本地推荐更加实用和连贯。当日向付费用户推送，次日向免费用户推送。作为 OpenAI 最常用的模型，此次更新聚焦用户体验而非原始能力提升，反映产品成熟期策略转向。</div>
+</div>
+
+<div class="card model">
+  <div class="card-title"><a href="https://x.ai/news/grok-interactive-brokers" target="_blank">盈透证券与 Grok 集成：自然语言驱动的组合分析与实时交易指令</a></div>
+  <div class="card-meta">
+    <span class="source">xAI</span>
+    <span class="sep">·</span>
+    <span class="time">今天 08:00</span>
+  </div>
+  <div class="card-summary">盈透证券（Interactive Brokers）与 Grok 集成，用户可在几分钟内免费关联现有账户。通过自然语言对话完成组合收益分析（如股息与利息预测）、行业/地区/经济事件的风险敞口情景建模、市场趋势研究，并直接生成对冲订单等实时交易指令，实现从数据洞察到执行决策的一体化。这是 xAI 首次进入金融服务场景，也是 AI 助手直接嵌入交易执行的标志性案例。</div>
+</div>
+
+<div class="card model">
+  <div class="card-title"><a href="https://cursor.com/blog/notion" target="_blank">Notion 使用 Cursor SDK 嵌入编码智能体：文档内 @Cursor 即可端到端交付 PR</a></div>
+  <div class="card-meta">
+    <span class="source">Cursor Blog</span>
+    <span class="sep">·</span>
+    <span class="time">今天 04:55</span>
+  </div>
+  <div class="card-summary">Notion 通过 Cursor SDK 在数周内将编码智能体嵌入产品。用户可在文档中 <strong>@Cursor</strong>、在讨论串中提及或向数据库指派任务，Cursor 即可端到端完成规划、构建、测试、验证并自动创建 PR。集成基于一套 Provider 无关的智能体框架，支持 SSE 流式传输和断连恢复。Cursor SDK 提供与生产环境相同的模型、运行时和远程 MCP 支持，让 Notion 无需自建智能体基础设施即可获得完整栈编码能力。</div>
+</div>
+
+<div class="card model">
+  <div class="card-title"><a href="https://x.com/perplexity_ai/status/2069866668671766804" target="_blank">Perplexity 推出 Computer for Counsel：AI 助手进入法律场景</a></div>
+  <div class="card-meta">
+    <span class="source">X / Perplexity</span>
+    <span class="sep">·</span>
+    <span class="time">今天 03:34</span>
+  </div>
+  <div class="card-summary">Perplexity 推出面向律师的 Computer for Counsel，连接律师日常使用的研究数据库、文档工具和案件管理系统，可从 midpageAI、LegalZoom、Docusign、netdocuments 等提取可引用来源。所有 Pro 和 Max 订阅用户均可使用。这标志着 Perplexity 从通用搜索引擎向垂直专业场景持续扩张，法律 AI 赛道竞争加剧。</div>
+</div>
+
+</section>
+
+<!-- ========== 技术进展 & 论文 ========== -->
+<section>
+<div class="section-header">
+  <div class="dot" style="background:#06b6d4"></div>
+  <h2>🔬 技术进展 & 论文</h2>
+  <span class="count">2 条</span>
+</div>
+
+<div class="card paper">
+  <div class="card-title"><a href="https://research.google/blog/thinking-to-recall-how-reasoning-unlocks-parametric-knowledge-in-llms" target="_blank">Google Research：推理（Chain-of-Thought）如何解锁 LLM 中的参数化知识</a></div>
+  <div class="card-meta">
+    <span class="source">Google Research Blog</span>
+    <span class="sep">·</span>
+    <span class="time">今天 01:05</span>
+  </div>
+  <div class="card-summary">Google Research 发现，推理（chain-of-thought）能帮助 LLM 回忆简单事实，即使这些事实无需复杂推导。在 Gemini-2.5 Flash/Pro 和 Qwen3-32B 上，启用推理后模型能够回答原本无法直接回答的简单问题，pass@k 显示正确事实已存在于输出分布中。该现象由两个机制驱动：一是推理 token 充当<strong>计算缓冲</strong>，允许模型进行隐藏计算以提取参数化知识；二是推理过程中产生的相关事实起到<strong>启动效应</strong>（factual priming），帮助模型激活正确答案。</div>
+</div>
+
+<div class="card paper">
+  <div class="card-title"><a href="https://mistral.ai/news/more-control-over-connectors" target="_blank">Mistral AI Connectors 安全新能力：管理控制、作用域 API Key、MCP 调试器</a></div>
+  <div class="card-meta">
+    <span class="source">Mistral AI</span>
+    <span class="sep">·</span>
+    <span class="time">昨天 23:59</span>
+  </div>
+  <div class="card-summary">Mistral AI 发布 Connectors 多项新能力：Enriched admin controls（GA）支持按工作空间设置连接器访问权限；API keys with connector scopes（GA）防止自动化 AI 工作负载中身份冒充；Multi-account connectors（GA）允许单个连接器绑定多个账户；Connectors Debugger（公开预览）对 MCP 连接器进行端到端根因分析；Connectors in Vibe Code（GA）和 Connectors in Workflows（公开预览）分别允许在开发者界面复用连接器及支持长时间运行任务不中断。</div>
+</div>
+
+</section>
+
+<!-- ========== 优秀报告/深度研报 ========== -->
+<section>
+<div class="section-header">
+  <div class="dot" style="background:#3b82f6"></div>
+  <h2>💡 优秀报告/深度研报</h2>
+  <span class="count">2 条</span>
+</div>
+
+<div class="card report">
+  <div class="card-title"><a href="https://www.sohu.com/a/1036632055_122893087" target="_blank">2026年中 AI 算力与硬件产业链全景：从芯片"堆料"到系统"博弈"</a></div>
+  <div class="card-meta">
+    <span class="source">搜狐（综合 IDC/Gartner 数据）</span>
+    <span class="sep">·</span>
+    <span class="time">近日</span>
+  </div>
+  <div class="card-summary">据 IDC 与 Gartner 最新季度报告，2026年全球 AI 服务器出货量预计达 <strong>980万台</strong>（同比+44%），高端 GPU/NPU 服务器占比从2025年的 <strong>37%</strong> 跃升至 <strong>55%</strong>。行业正从"单纯芯片性能竞赛"向"系统级算力效率博弈"转型，"算力饥渴"已从训练端蔓延至推理端。报告分析了 OpenAI Jalapeño 自研芯片、NVIDIA Vera Rubin 量产、以及各云厂商自研芯片对产业链格局的重塑影响，值得二级市场投资者关注算力供应链结构性变化。</div>
+</div>
+
+<div class="card report">
+  <div class="card-title"><a href="https://www.flowpixai.com/ai-news/ai-regulation-2026-global.html" target="_blank">全球 AI 监管政策盘点：欧盟 AI Act 全面执行，企业面临数据合规/透明披露/审计三重压力</a></div>
+  <div class="card-meta">
+    <span class="source">FlowPixAI</span>
+    <span class="sep">·</span>
+    <span class="time">6月10日</span>
+  </div>
+  <div class="card-summary">2026年6月欧盟 AI Act 对高风险 AI 系统全面执行，企业最紧迫三件事：<strong>数据合规、透明性披露、合规审计</strong>。全球主要经济体从观望转向主动立法，监管框架日趋成熟。报告覆盖欧盟 AI Act 执行细则、中国生成式 AI 管理办法、美国 NIST AI 风险管理框架、新加坡智能体 AI 治理框架等，对跨国 AI 企业的合规成本和业务影响进行了系统梳理。优秀研报，不受新鲜度限制。</div>
+</div>
+
+</section>
+
+<!-- ========== 投融资动态 ========== -->
+<section>
+<div class="section-header">
+  <div class="dot" style="background:#f97316"></div>
+  <h2>💰 投融资动态</h2>
+  <span class="count">2 条</span>
+</div>
+
+<div class="card funding">
+  <div class="card-title"><a href="https://seekingalpha.com/news/4607025-anthropic-notifies-white-house-that-alibaba-attempted-to-harvest-us-ai-capabilities-report" target="_blank">阿里巴巴(BABA)因 Anthropic 蒸馏指控股价大跌4.72%，中美 AI 知识产权争端首次直接冲击中国科技巨头</a></div>
+  <div class="card-meta">
+    <span class="source">CNBC / Seeking Alpha</span>
+    <span class="sep">·</span>
+    <span class="time">今天 05:18</span>
+  </div>
+  <div class="card-summary">受 Anthropic 指控阿里巴巴蒸馏攻击 Claude 消息影响，BABA 股价下跌 <strong>4.72%</strong> 至近期低点。这是中美 AI 知识产权争端首次直接冲击中国科技巨头股价。市场关注后续可能的美方监管反应和潜在制裁措施。此前 Anthropic 已在2月点名 DeepSeek、Moonshot、MiniMax 三家实施蒸馏攻击，此次将矛头首次指向阿里这样体量的巨头，信号意义显著。</div>
+</div>
+
+<div class="card funding">
+  <div class="card-title"><a href="https://aiproducthub.cn/newsflash/nvidia-shareholder-meeting-jensen-huang-ai-profitable-2026/" target="_blank">NVIDIA FY2026 财报披露：营收2160亿美元(+65%)，承诺50%+自由现金流返还股东</a></div>
+  <div class="card-meta">
+    <span class="source">AIProductHub / Reuters</span>
+    <span class="sep">·</span>
+    <span class="time">今天 06:00</span>
+  </div>
+  <div class="card-summary">NVIDIA 在年度股东大会披露 FY2026 财务数据：营收 <strong>2160亿美元</strong>（同比+65%），数据中心收入 <strong>1940亿美元</strong>（+68%），经营现金流 <strong>1030亿美元</strong>。黄仁勋承诺将 <strong>50%以上</strong> 自由现金流返还股东。当前市值超 <strong>5万亿美元</strong>，为全球市值最高上市公司。黄仁勋正面回应了市场对 AI 投资回报率的质疑，称"有用的 AI 已经到来，而且它已经能够赚钱"。Vera Rubin 全面量产标志着 NVIDIA 进入 AI 智能体芯片时代。</div>
+</div>
+
+</section>
+
+<!-- ========== 今日总结 & 投资启示 ========== -->
+<div class="insights">
+  <h2>📋 今日总结 & 投资启示</h2>
+  <div class="insights-sub">Analyst Take · 二级市场视角</div>
+
+  <div class="insight-item">
+    <div class="num">1</div>
+    <div class="text"><strong>Anthropic-阿里巴巴蒸馏争端是今日最大市场事件。</strong>Anthropic 首次将蒸馏指控矛头指向阿里量级巨头（此前点名 DeepSeek/Moonshot/MiniMax），BABA 应声下跌 <span class="highlight">4.72%</span>。此事叠加 NSA 失去 Mythos 访问权限、360 推出 Mythos 竞品，构成"中美 AI 知识产权+网络安全"双线博弈升级的完整叙事。<strong>关注：</strong>美方后续是否出台针对性制裁、阿里云国际业务受影响程度、以及蒸馏指控对国内大模型公司出海估值的压制效应。</div>
+  </div>
+
+  <div class="insight-item">
+    <div class="num">2</div>
+    <div class="text"><strong>NVIDIA 股东大会传递"AI 盈利拐点"信号。</strong>黄仁勋首次明确宣称"有用的 AI 已经到来，而且它已经能够赚钱"，FY2026 营收 <span class="highlight">2160亿美元</span>（+65%）和经营现金流 <span class="highlight">1030亿美元</span> 提供了硬核财务支撑。Vera Rubin 全面量产标志着算力需求从"训练"转向"智能体推理"，<strong>关注：</strong>NVIDIA 从"卖芯片"向"卖 Token 工厂基础设施"的叙事转变对估值逻辑的影响，以及 OpenAI Jalapeño 等自研芯片对 NVIDIA 推理市场份额的潜在侵蚀。</div>
+  </div>
+
+  <div class="insight-item">
+    <div class="num">3</div>
+    <div class="text"><strong>Meta 从 Gemini 切换至自研 Muse Spark 进行内容审核，标志大厂 AI 基础设施"去依赖化"加速。</strong>Meta 计划年底前 AI 审核比例达 <span class="highlight">90%+</span>，每年节省数十亿美元。这一趋势意味着 Google Gemini 失去一个重要企业客户，同时 Meta 加入"自研模型+自研芯片"行列。<strong>关注：</strong>Google Cloud 企业 AI 收入中"被自研替代"的风险敞口，以及 Meta Muse Spark 外溢至其他业务线的潜力。</div>
+  </div>
+
+  <div class="insight-item">
+    <div class="num">4</div>
+    <div class="text"><strong>AI 安全工具正在成为地缘政治博弈的新武器。</strong>360 推出"中国版 Mythos"屠龙锋（已发现 <span class="highlight">3432个漏洞</span>），周鸿祎承认模型能力仍有 <span class="highlight">20%-30%</span> 差距但采取"智能体路线"弥补。与此同时 NSA 因出口管制纠纷失去 Mythos 访问权限，美国自身网络安全能力出现真空。<strong>关注：</strong>网络安全 AI 赛道的估值重定价机会，以及出口管制"反噬效应"对美国自身安全能力的损害程度。</div>
+  </div>
+
+  <div class="insight-item">
+    <div class="num">5</div>
+    <div class="text"><strong>Cursor SDK 生态化是今日产品侧最重要信号。</strong>Notion 通过 Cursor SDK 数周内嵌入编码智能体，无需自建基础设施。这意味着 Cursor 正从"AI 编程工具"进化为"AI 编程基础设施平台"，类似 Twilio 之于通讯。<strong>关注：</strong>Cursor SDK 对 GitHub Copilot 企业版市场的侵蚀，以及"AI 编程基础设施化"趋势下 IDE/编程工具赛道的竞争格局重塑。</div>
+  </div>
+
+  <div class="insight-item">
+    <div class="num">6</div>
+    <div class="text"><strong>工程岗位韧性数据反驳"AI 消灭白领"叙事。</strong>SignalFire 8000万家公司数据显示工程岗招聘仅降 <span class="highlight">11%</span>（vs 总体 <span class="highlight">25%</span>），占 Tech Majors 新招员工 <span class="highlight">55%</span>。杰文斯悖论在 AI 编程领域成立——AI 降低编程门槛反而推高了工程师需求。<strong>关注：</strong>就业数据对"AI 泡沫论"的对冲效应，以及工程岗供需缺口对薪资通胀和科技股利润率的传导。</div>
+  </div>
+</div>
+
+<footer>
+  <p>📊 数据来源：AI HOT (aihot.virxact.com) + CNBC / Reuters / NYT / TechCrunch / Fortune / The Decoder / WebSearch 多渠道交叉验证</p>
+  <p>🕐 生成时间：2026-06-25 22:00 北京时间 · 覆盖时段：6/24 22:00 — 6/25 22:00</p>
+  <p>⚠️ 本报告仅供研究参考，不构成投资建议。市场有风险，投资需谨慎。</p>
+</footer>
+
+</div>
+</body>
+</html>

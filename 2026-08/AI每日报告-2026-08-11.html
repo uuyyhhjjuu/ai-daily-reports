@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026-08-11</title>
+<style>
+:root {
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --primary: #6366f1;
+  --primary-light: #eef2ff;
+  --shadow: 0 1px 3px rgba(0,0,0,.08);
+  --shadow-hover: 0 4px 16px rgba(99,102,241,.15);
+  --c-industry: #f59e0b;
+  --c-kol: #10b981;
+  --c-model: #8b5cf6;
+  --c-product: #ec4899;
+  --c-paper: #06b6d4;
+  --c-research: #3b82f6;
+  --c-finance: #f97316;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #7c3aed 100%);
+  border-radius: 16px; padding: 36px 40px; color: #fff; margin-bottom: 28px;
+  box-shadow: 0 8px 30px rgba(99,102,241,.3);
+}
+.header h1 { font-size: 26px; font-weight: 700; letter-spacing: -.5px; }
+.header .h1-en { font-size: 14px; font-weight: 500; opacity: .85; margin-top: 4px; letter-spacing: .3px; }
+.header .meta { font-size: 14px; opacity: .9; margin-top: 10px; display: flex; flex-wrap: wrap; gap: 16px; }
+.header .meta span { display: inline-flex; align-items: center; gap: 4px; }
+.header .badge {
+  display: inline-block; background: rgba(255,255,255,.2); padding: 2px 10px;
+  border-radius: 20px; font-size: 12px; margin-top: 12px;
+}
+
+/* Stats Bar */
+.stats-bar {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;
+  background: var(--card-bg); border-radius: 12px; padding: 16px 20px; box-shadow: var(--shadow);
+}
+.stat-item {
+  display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-secondary);
+  padding: 4px 10px; border-radius: 8px; background: var(--bg);
+}
+.stat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.stat-num { font-weight: 700; color: var(--text); }
+
+/* Section */
+.section { margin-bottom: 32px; }
+.section-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+  padding-bottom: 8px; border-bottom: 2px solid var(--border);
+}
+.section-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.section-title { font-size: 18px; font-weight: 700; }
+.section-title-en { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+.section-count { font-size: 13px; color: var(--text-muted); margin-left: auto; }
+
+/* Card */
+.card {
+  background: var(--card-bg); border-radius: 12px; padding: 20px 24px;
+  margin-bottom: 12px; box-shadow: var(--shadow);
+  border-left: 4px solid var(--primary);
+  transition: box-shadow .2s, transform .2s;
+  position: relative; overflow: hidden;
+}
+.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+.card-industry { border-left-color: var(--c-industry); }
+.card-kol { border-left-color: var(--c-kol); }
+.card-model { border-left-color: var(--c-model); }
+.card-product { border-left-color: var(--c-product); }
+.card-paper { border-left-color: var(--c-paper); }
+.card-research { border-left-color: var(--c-research); }
+.card-finance { border-left-color: var(--c-finance); }
+
+.card-title {
+  font-size: 16px; font-weight: 600; line-height: 1.5; margin-bottom: 4px;
+}
+.card-title a { color: var(--text); text-decoration: none; }
+.card-title a:hover { color: var(--primary); }
+
+.card-en {
+  font-size: 13px; color: var(--text-muted); font-style: italic;
+  margin-bottom: 8px; line-height: 1.5;
+}
+
+.card-meta {
+  display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.card-meta .source { font-weight: 500; color: var(--text-secondary); }
+.card-meta .time { color: var(--primary); font-weight: 500; }
+.card-tag {
+  display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 4px;
+  font-weight: 500;
+}
+
+.card-summary {
+  font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+}
+.card-summary .highlight {
+  color: var(--primary); font-weight: 600;
+}
+.card-summary-en {
+  font-size: 13px; color: var(--text-muted); line-height: 1.65;
+  margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border);
+}
+
+/* Summary Section */
+.summary-section {
+  background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+  border-radius: 16px; padding: 32px 36px; margin-top: 36px;
+  border: 1px solid #e0e7ff;
+}
+.summary-section h2 {
+  font-size: 20px; font-weight: 700; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 8px;
+}
+.summary-sub { margin-bottom: 24px; }
+.summary-sub h3 {
+  font-size: 16px; font-weight: 700; margin-bottom: 12px;
+  color: var(--text); display: flex; align-items: center; gap: 6px;
+}
+.summary-sub ul { list-style: none; padding-left: 0; }
+.summary-sub li {
+  font-size: 14px; color: var(--text-secondary); margin-bottom: 10px;
+  padding-left: 18px; position: relative; line-height: 1.7;
+}
+.summary-sub li::before {
+  content: "▸"; position: absolute; left: 0; color: var(--primary); font-weight: 700;
+}
+.summary-sub li .highlight { color: var(--primary); font-weight: 600; }
+.summary-sub .up { color: #dc2626; font-weight: 600; }
+.summary-sub .down { color: #16a34a; font-weight: 600; }
+.summary-sub .lens {
+  background: rgba(99,102,241,.08); border-radius: 8px; padding: 12px 16px;
+  margin-top: 12px; font-size: 13px; color: var(--text-secondary); border-left: 3px solid var(--primary);
+}
+.summary-sub .en-note {
+  font-size: 13px; color: var(--text-muted); margin-top: 10px; line-height: 1.65;
+  padding-top: 10px; border-top: 1px dashed #c7d2fe;
+}
+
+/* Trend Bars */
+.trend-wrap { margin-top: 14px; }
+.trend-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 13px; }
+.trend-label { width: 190px; flex-shrink: 0; color: var(--text-secondary); }
+.trend-bar-bg { flex: 1; background: rgba(99,102,241,.12); border-radius: 6px; height: 20px; position: relative; }
+.trend-bar { height: 100%; border-radius: 6px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; color: #fff; font-size: 11px; font-weight: 700; }
+
+/* Tracking Table */
+.track-table {
+  width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px;
+}
+.track-table th {
+  text-align: left; padding: 8px 12px; background: rgba(99,102,241,.08);
+  color: var(--text); font-weight: 600; border-bottom: 2px solid var(--primary);
+}
+.track-table td {
+  padding: 8px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary);
+}
+.track-table .up { color: #dc2626; font-weight: 600; }
+.track-table .down { color: #16a34a; font-weight: 600; }
+
+/* Footer */
+.footer {
+  text-align: center; margin-top: 48px; padding-top: 24px;
+  border-top: 1px solid var(--border); color: var(--text-muted); font-size: 12px;
+}
+.footer p { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>🤖 AI 每日全景报告</h1>
+  <div class="h1-en">AI Daily Panorama Report · Bilingual Edition</div>
+  <div class="meta">
+    <span>📅 2026年8月11日（周二）</span>
+    <span>🕐 覆盖时段：8/10 22:00 ~ 8/11 22:00 北京时间</span>
+    <span>📊 共 30 条 / 31 条溯源链接</span>
+  </div>
+  <div class="badge">数据来源：AI HOT（aihot.virxact.com）· 每条均附原文链接</div>
+</div>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-model)"></div>国内进展 <span class="stat-num">4</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-product)"></div>海外动态 <span class="stat-num">8</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-industry)"></div>行业与资本 <span class="stat-num">3</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-kol)"></div>大V观点 <span class="stat-num">5</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-paper)"></div>技术进展 <span class="stat-num">6</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-research)"></div>研报论文 <span class="stat-num">4</span></div>
+</div>
+
+<!-- ===== 国内大模型与应用进展 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-model)"></div>
+    <div class="section-title">🇨🇳 国内大模型与应用进展 <span class="section-title-en">/ China: Models &amp; Applications</span></div>
+    <div class="section-count">4 条</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://mp.weixin.qq.com/s?__biz=MzkyODk2MDQwNw%3D%3D&mid=2247487491&idx=1&sn=fcb14aceb054f9a24e22525d3dae6fa0" target="_blank">Ling-3.0-tiny 正式开源：1.3B 激活参数如何进入真实任务</a></div>
+    <div class="card-en">EN: Ant Group open-sources Ling-3.0-tiny — a 7.9B hybrid-reasoning model activating only 1.3B parameters at inference.</div>
+    <div class="card-meta">
+      <span class="source">公众号：蚂蚁百灵（Ling）</span>
+      <span class="time">今天 17:20</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">开源模型</span>
+    </div>
+    <div class="card-summary">蚂蚁百灵开源 Ling-3.0-tiny，总参数 <span class="highlight">7.9B</span>、推理时仅激活 <span class="highlight">1.3B</span> 参数的原生混合推理模型，同步提供 BF16、FP8、INT4 三个版本。低激活参数 + 多精度权重的组合，直指端侧与低成本批量推理场景。</div>
+    <div class="card-summary-en">EN — Native hybrid-reasoning design with three quantization tiers (BF16 / FP8 / INT4), targeting on-device and low-cost batch inference.</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://mp.weixin.qq.com/s?__biz=MzYzNDE5MDEwMQ%3D%3D&mid=2247488345&idx=1&sn=ef4e57c9c9350f9238d90211eb2dd453" target="_blank">千问开放平台上线：租房、寄快递、查理财等十余领域服务可对话办理</a></div>
+    <div class="card-en">EN: Alibaba's Qwen App launches an open platform, turning conversation into a service-distribution entry point.</div>
+    <div class="card-meta">
+      <span class="source">公众号：千问APP（阿里）</span>
+      <span class="time">今天</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">生态平台</span>
+    </div>
+    <div class="card-summary">千问开放平台上线，面向生态伙伴与开发者开放<span class="highlight">手机、PC、AI 眼镜</span>三类终端接入，首批覆盖物流运输、房产居住、本地生活、理财、汽车等<span class="highlight">十多个领域</span>。用户可在对话中 @ 服务或点击"圆点角标"进入智能体，完成咨询→推荐→下单全流程；平台同时提供账号、AI 支付、订单接入等基础设施。这是"超级入口"逻辑在 AI 时代的重演。</div>
+    <div class="card-summary-en">EN — Three device classes (phone / PC / AI glasses), 10+ verticals at launch, with account, AI-payment and order infrastructure provided. A super-app entry-point playbook rebuilt for the agent era.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://mp.weixin.qq.com/s?__biz=MzkyMzI3NzQ0Mg%3D%3D&mid=2247494052&idx=1&sn=ee3ab3d0f4550e9120927c53a27522c9" target="_blank">ZCode 全面升级：Goal、Subagents、Remote Control 与闲时任务四大功能上线</a></div>
+    <div class="card-en">EN: Zhipu ships four ZCode features, claiming a measurable edge when GLM-5.2 is paired with its own harness.</div>
+    <div class="card-meta">
+      <span class="source">公众号：智谱（GLM）</span>
+      <span class="time">今天 13:52</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">编码智能体</span>
+    </div>
+    <div class="card-summary">ZCode 针对 GLM 深度优化，上线 Goal、Subagents、Remote Control 与闲时任务四大功能。在 Z.ai Code Bench 测试中，GLM-5.2 搭配 ZCode 较搭配 Claude Code 任务整体通过率高 <span class="highlight">2.39%</span>；ZCode 缓存命中率超 <span class="highlight">98%</span>，叠加 1.5 倍限时额度加成后，GLM Coding Plan 整体使用量接近常规额度的 <span class="highlight">1.8 倍</span>。</div>
+    <div class="card-summary-en">EN — Self-reported: +2.39% task pass rate vs. GLM-5.2 on Claude Code, &gt;98% cache hit rate, effective quota ~1.8x. Vendor-measured benchmark — treat with the usual caution.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://x.com/Alibaba_Qwen/status/2086664887560970531" target="_blank">Qwen-MM-Plugins 让智能体原生支持多模态</a></div>
+    <div class="card-en">EN: Qwen-MM-Plugins gives agents native multimodal capability — from multimodal models to multimodal agents.</div>
+    <div class="card-meta">
+      <span class="source">X：通义千问 / Qwen (@Alibaba_Qwen)</span>
+      <span class="time">今天</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">多模态智能体</span>
+    </div>
+    <div class="card-summary">通义千问发布 Qwen-MM-Plugins，让智能体原生读取图片、视频与文档，并支持视频编辑、3D/CAD 处理等任务。官方口径为"从多模态模型 → 多模态智能体"，代码已开源在 GitHub（QwenLM/Qwen-MM-Plugins）。</div>
+    <div class="card-summary-en">EN — Reading images / video / documents, editing video, handling 3D &amp; CAD. Open-sourced at github.com/QwenLM/Qwen-MM-Plugins.</div>
+  </div>
+</div>
+
+<!-- ===== 海外大模型与应用动态 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-product)"></div>
+    <div class="section-title">🌍 海外大模型与应用动态 <span class="section-title-en">/ Global: Models &amp; Products</span></div>
+    <div class="section-count">8 条</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://blogs.nvidia.com/blog/local-ai-open-source-models-agents-nemotron" target="_blank">NVIDIA 推出 Nemotron 3.5 Lightning，加速本地智能体任务</a></div>
+    <div class="card-en">EN: NVIDIA releases Nemotron 3.5 Lightning, a customizable 30B open-weight MoE model built for always-on local agents.</div>
+    <div class="card-meta">
+      <span class="source">NVIDIA Blog（RSS）</span>
+      <span class="time">今天 21:00</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">端侧模型</span>
+    </div>
+    <div class="card-summary">NVIDIA 发布 Nemotron 3.5 Lightning，可定制的开源 <span class="highlight">30B 混合专家（MoE）</span>模型，专为常驻智能体设计。相比同类开源模型，token 生成速度最高提升 <span class="highlight">4 倍</span>，任务完成时间缩短 <span class="highlight">30%</span>。采用开放权重，支持微调，可在 RTX PC、DGX Spark 及 Jetson 等设备上运行。</div>
+    <div class="card-summary-en">EN — Up to 4x faster token generation and 30% shorter task completion vs. comparable open models; runs on RTX PCs, DGX Spark and Jetson.</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://x.com/AIatMeta/status/2086757844544811485" target="_blank">Meta 发布开源模型 Muse Glimmer：30B 开放权重，Apache 2.0</a></div>
+    <div class="card-en">EN: Meta releases Muse Glimmer — 30B open-weight model under Apache 2.0, tuned for local always-on agent workflows.</div>
+    <div class="card-meta">
+      <span class="source">X：AI at Meta (@AIatMeta)</span>
+      <span class="time">今天</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">开放权重</span>
+    </div>
+    <div class="card-summary">Meta 推出 Muse Glimmer，<span class="highlight">300 亿参数</span>开放权重模型，专为本地、常驻运行的智能体工作流优化。官方称在关键智能体用例与基准上优于同尺寸领先模型，并设计为完全在消费级硬件（Mac 或配高性能 GPU 的 PC）上运行，以<span class="highlight">宽松的 Apache 2.0 许可证</span>发布权重。</div>
+    <div class="card-summary-en">EN — Designed to run entirely on consumer hardware (Mac or high-end GPU PC); weights shipped under a permissive Apache 2.0 license.</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows" target="_blank">OpenAI 推出 GPT-5.6-Cyber，面向授权漏洞研究的网络安全专用模型</a></div>
+    <div class="card-en">EN: OpenAI ships GPT-5.6-Cyber via Daybreak Red for authorized vulnerability research and security testing.</div>
+    <div class="card-meta">
+      <span class="source">OpenAI 官网动态</span>
+      <span class="time">今天</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">垂类模型</span>
+    </div>
+    <div class="card-summary">OpenAI 发布网络安全专用模型 GPT-5.6-Cyber，通过 Daybreak Red 获取，用于<span class="highlight">授权的</span>漏洞研究、漏洞验证与安全测试，应对"网络防御窗口不断收窄"的挑战。模型竞争进一步从通用能力转向垂直深耕。</div>
+    <div class="card-summary-en">EN — Framed as a response to a narrowing cyber-defense window; access gated through Daybreak Red for authorized use only.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://openrouter.ai/blog/announcements/introducing-the-new-auto-router" target="_blank">OpenRouter 推出由市场智慧驱动的新版 Auto 路由器</a></div>
+    <div class="card-en">EN: OpenRouter's new Auto router routes by real community consumption across ~30 task types.</div>
+    <div class="card-meta">
+      <span class="source">OpenRouter Announcements</span>
+      <span class="time">今天</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">路由/中间层</span>
+    </div>
+    <div class="card-summary">OpenRouter 基于每周超 <span class="highlight">55T token</span> 的社区消费数据推出新版 Auto 路由器，按约 30 种任务类型匹配近 7 天社区实际消费的模型，支持 cost_tier 参数（low 至 max）。在 MMLU Pro 等基准上，新默认档位在多数领域以<span class="highlight">更低成本</span>达到旧版同等性能。以"市场用脚投票"替代静态评测来选模型，是中间层的一种定价权。</div>
+    <div class="card-summary-en">EN — 55T+ weekly tokens of consumption data as the routing signal; matches models per ~30 task types with a cost_tier knob from low to max.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://x.com/ClaudeDevs/status/2086844755770757531" target="_blank">Claude Code 自动模式默认开启原理</a></div>
+    <div class="card-en">EN: Claude Code explains why auto-mode is now the default — and what decides whether an action is safe to run.</div>
+    <div class="card-meta">
+      <span class="source">X：Claude Devs (@ClaudeDevs)</span>
+      <span class="time">昨天 23:58</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">智能体权限</span>
+    </div>
+    <div class="card-summary">Claude Code 将自动模式设为默认选项，用户不再需要逐个批准操作。官方同步说明"什么决定某个操作可以安全运行"的判定机制。<span class="highlight">默认放开审批</span>是智能体产品的关键心理门槛——权限模型从"每步确认"转向"风险分级自动执行"。</div>
+    <div class="card-summary-en">EN — Shifting the permission model from per-step approval to risk-tiered autonomous execution; a notable trust threshold for agent products.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://blog.google/products/ads-commerce/google-ads-analytics-ai-updates" target="_blank">Google 为 Google Ads 和 Google Analytics 推出新 AI 与智能体功能</a></div>
+    <div class="card-en">EN: Google adds Gemini-based AI Overviews, insight cards and benchmark comparison to Ads and Analytics.</div>
+    <div class="card-meta">
+      <span class="source">Google Blog：AI（RSS）</span>
+      <span class="time">今天</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">广告/营销</span>
+    </div>
+    <div class="card-summary">Google 在 Google Ads 与 Google Analytics 新增 AI 与智能体体验：Analytics 首页 AI Overviews 智能摘要、Ads 首页 AI 洞察卡片，以及 Ask Advisor 新增<span class="highlight">基准对比</span>功能（与同类商家匿名平均值比较）。均基于 Gemini 构建，目前面向英文账户 beta。广告主决策链正被逐步智能体化。</div>
+    <div class="card-summary-en">EN — Built on Gemini, currently in beta for English-language accounts; benchmarking against anonymized peer averages is the notable addition.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://openchamber.dev/" target="_blank">OpenChamber：一个基于代理的开发环境</a></div>
+    <div class="card-en">EN: OpenChamber — an open-source agent-based dev environment spanning desktop, browser, mobile and VS Code.</div>
+    <div class="card-meta">
+      <span class="source">Hacker News 热门（buzzing.cc 中文翻译）</span>
+      <span class="time">今天</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">开发环境</span>
+    </div>
+    <div class="card-summary">OpenChamber 是基于代理的开发环境，可跨桌面、浏览器、手机与 VS Code 使用，支持会话目标、<span class="highlight">多模型并行运行与融合</span>、变更走查、从 issue 到 PR 的完整流程及定时任务。基于 OpenCode SDK，完全开源免费，代码与会话内容均保存本地，远程访问由 UI 密码与端到端加密 Private Relay 保护。</div>
+    <div class="card-summary-en">EN — Multi-model parallel execution with result fusion, issue-to-PR flow, local-first storage, E2E-encrypted private relay for remote access.</div>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://openai.com/index/zapier" target="_blank">Zapier 如何用 ChatGPT Work 改造核心营销流程</a></div>
+    <div class="card-en">EN: Zapier's marketing team automates lead QA/QC with ChatGPT Work, generating seven-figure monthly pipeline value.</div>
+    <div class="card-meta">
+      <span class="source">OpenAI 官网动态</span>
+      <span class="time">今天</span>
+      <span class="card-tag" style="background:#fef3c7;color:#92400e">企业落地</span>
+    </div>
+    <div class="card-summary">Zapier 企业营销团队用 ChatGPT Work 自动化线索漏斗优化、营销素材搭建与报告生成，每月可对<span class="highlight">数千条线索</span>执行 QA/QC——而单人查看一条流失线索原本需 <span class="highlight">35~45 分钟</span>。该系统每月为销售团队带来<span class="highlight">七位数管道价值</span>，并生成高管仪表盘展示重复问题与每周趋势。是少见的、给出明确单位工时对比的企业级 agent ROI 案例。</div>
+    <div class="card-summary-en">EN — One of the few enterprise agent cases with an explicit unit-labor baseline: 35–45 minutes per churned lead, now handled at thousands per month.</div>
+  </div>
+</div>
+
+<!-- ===== 行业动态与资本 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-industry)"></div>
+    <div class="section-title">🏭 行业动态与资本 <span class="section-title-en">/ Industry &amp; Capital</span></div>
+    <div class="section-count">3 条</div>
+  </div>
+
+  <div class="card card-finance">
+    <div class="card-title"><a href="https://www.ithome.com/0/988/239.htm" target="_blank">消息称 Anthropic 最快今年 9 月上市，向投资者淡化 AI 模型竞争等挑战</a></div>
+    <div class="card-en">EN: Anthropic reportedly prepares what could be the largest IPO ever — while downplaying competition from Chinese AI firms.</div>
+    <div class="card-meta">
+      <span class="source">IT之家（RSS）</span>
+      <span class="time">今天 11:57</span>
+      <span class="card-tag" style="background:#fed7aa;color:#9a3412">IPO</span>
+    </div>
+    <div class="card-summary">Anthropic 正与潜在投资者接触，为可能成为史上规模最大的 IPO 做准备，计划<span class="highlight">今年 9 月或 10 月初</span>上市。公司估值高达 <span class="highlight">9,650 亿美元</span>，年化收入已超 <span class="highlight">470 亿美元</span>，并<span class="highlight">淡化来自中国 AI 企业的竞争影响</span>。同时计划拓展 AI 在医疗与生物学领域的应用，尚未公布 IPO 定价方案。</div>
+    <div class="card-summary-en">EN — ~$965B valuation, $47B+ annualized revenue. The act of explicitly downplaying Chinese competition is itself the signal: it has become a question investors force issuers to answer.</div>
+  </div>
+
+  <div class="card card-finance">
+    <div class="card-title"><a href="https://x.com/JensenHuang/status/2086934705207959965" target="_blank">英伟达联合六大机构融资 5000 亿美元建 AI 工厂</a></div>
+    <div class="card-en">EN: NVIDIA partners with six major institutions to mobilize $500B+ of third-party capital for AI infrastructure.</div>
+    <div class="card-meta">
+      <span class="source">X：Jensen Huang (@JensenHuang)</span>
+      <span class="time">今天 05:56</span>
+      <span class="card-tag" style="background:#fed7aa;color:#9a3412">AI 基建</span>
+    </div>
+    <div class="card-summary">英伟达宣布与 <span class="highlight">Apollo、BlackRock、Blackstone、Brookfield、Goldman Sachs、KKR</span> 合作，建立<span class="highlight">独立融资平台</span>，动员超 <span class="highlight">5000 亿美元</span>第三方资本支持 AI 基础设施建设。关键在结构：资本方被前置到独立平台，而非由英伟达自身担保或投资——这是对本档案库 7/28 报告所记录"7500 亿循环融资信任危机"的一次结构性回应。</div>
+    <div class="card-summary-en">EN — Structure matters more than size: third-party capital is placed in a standalone vehicle rather than backed by NVIDIA's own balance sheet, directly addressing the "circular financing" critique logged in our 7/28 issue.</div>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://bobdahacker.com/blog/tldv-hack" target="_blank">tl;dv 逾 18.1 万段 AI 会议录音被公开暴露，可实时闯入他人通话</a></div>
+    <div class="card-en">EN: tl;dv exposed 181k+ AI meeting recordings due to missing tenant isolation; unpatched for six months.</div>
+    <div class="card-meta">
+      <span class="source">Hacker News 热门（buzzing.cc 中文翻译）</span>
+      <span class="time">今天</span>
+      <span class="card-tag" style="background:#fef3c7;color:#92400e">安全事故</span>
+    </div>
+    <div class="card-summary">AI 会议记录平台 tl;dv 的 Firestore 数据库因缺乏<span class="highlight">租户隔离</span>，任何已认证用户可查询全部 <span class="highlight">18.1 万段</span>会议记录，涉及 84,312 名用户、35,003 个域名，含 23 国政府及多所高校会议。约 1,000 场处于录制状态的会议会暴露可加入的会议 ID，研究者借此闯入马来西亚教育部及美国某大学创业团队的实时通话。该漏洞自 2026 年 1 月报告后 <span class="highlight">6 个月仍未修复</span>。</div>
+    <div class="card-summary-en">EN — 84,312 users and 35,003 domains affected, including government and university meetings; ~1,000 live sessions leaked joinable IDs. Reported January 2026, still unpatched six months later.</div>
+  </div>
+</div>
+
+<!-- ===== KOL / 大V 观点 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-kol)"></div>
+    <div class="section-title">🎙️ KOL / 大V 观点 <span class="section-title-en">/ Voices &amp; Opinions</span></div>
+    <div class="section-count">5 条</div>
+  </div>
+
+  <div class="card card-kol">
+    <div class="card-title"><a href="https://mp.weixin.qq.com/s?__biz=MzIyMzA5NjEyMA%3D%3D&mid=2647685081&idx=1&sn=13a05578a3959c047209c8e74b56fa48" target="_blank">微信小微 AI 帮写与 AI 点评内测：朋友圈最后一点人味正在消失</a></div>
+    <div class="card-en">EN: Kazik on WeChat's AI-assisted Moments writing and commenting — placing AI at the core of social interaction.</div>
+    <div class="card-meta">
+      <span class="source">公众号：数字生命卡兹克</span>
+      <span class="time">今天 08:12</span>
+      <span class="card-tag" style="background:#d1fae5;color:#065f46">社交/产品批评</span>
+    </div>
+    <div class="card-summary">微信基于小微推出朋友圈 <span class="highlight">AI 帮写</span>与 <span class="highlight">AI 点评</span>内测：前者可根据图片和已写文字生成 3 条文案，后者可长按文字生成评价或快捷评论。作者认为这将 AI 置于社交核心位置，可能鼓励 AI 内容、破坏朋友圈自 2012 年确立的"记录美好生活"基调。公众号端小微还常驻首位、自动总结常看文章，作者担忧这会反向影响创作者的内容生产。</div>
+    <div class="card-summary-en">EN — The concern is not capability but incentive: if AI writes and AI comments, the social graph's signal value degrades, and content creators adapt to the summarizer rather than the reader.</div>
+  </div>
+
+  <div class="card card-kol">
+    <div class="card-title"><a href="https://mp.weixin.qq.com/s?__biz=MzIyMzA5NjEyMA%3D%3D&mid=2647685059&idx=1&sn=a329fe9999ac2419470c7eca9a97acd3" target="_blank">我花了 54 个小时，做了一个可能更公平的 AI 大模型排行榜</a></div>
+    <div class="card-en">EN: Kazik builds LatentRank, aggregating credible leaderboards via Bradley-Terry pairwise comparison.</div>
+    <div class="card-meta">
+      <span class="source">公众号：数字生命卡兹克</span>
+      <span class="time">今天</span>
+      <span class="card-tag" style="background:#d1fae5;color:#065f46">评测方法论</span>
+    </div>
+    <div class="card-summary">作者耗时 54 小时开发并免费开放聚合多家可信榜单的综合排行榜 <span class="highlight">LatentRank</span>。采用 <span class="highlight">Bradley-Terry 成对比较</span>算法，并加入先验限制小样本结果，以解决不同榜单规模、领先幅度和模型缺失带来的评分偏差。目前榜单前五名中，<span class="highlight">Opus 5 超过 Fable 5</span> 位居前列。</div>
+    <div class="card-summary-en">EN — Bradley-Terry pairwise aggregation with priors to damp small-sample noise, addressing scale, margin and missing-model bias across leaderboards.</div>
+  </div>
+
+  <div class="card card-kol">
+    <div class="card-title"><a href="https://x.com/finkd/status/2086754845218726027" target="_blank">扎克伯格：超级智能应人人可用</a></div>
+    <div class="card-en">EN: Zuckerberg publishes a long-form argument that superintelligence should be available to everyone.</div>
+    <div class="card-meta">
+      <span class="source">X：Mark Zuckerberg (@finkd)</span>
+      <span class="time">今天</span>
+      <span class="card-tag" style="background:#d1fae5;color:#065f46">战略叙事</span>
+    </div>
+    <div class="card-summary">扎克伯格撰文阐述 Meta"为所有人构建积极未来"的理念与价值观，主张<span class="highlight">每个人都应能使用超级智能</span>。与同日 Muse Glimmer 以 Apache 2.0 开放权重发布形成配套动作——叙事与产品同步推进，Meta 正把"开放"重新确立为竞争身份。</div>
+    <div class="card-summary-en">EN — Paired with the same-day Apache 2.0 release of Muse Glimmer: narrative and product moving together as Meta re-anchors "openness" as competitive identity.</div>
+  </div>
+
+  <div class="card card-kol">
+    <div class="card-title"><a href="https://garymarcus.substack.com/p/open-source-is-not-the-same-as-open" target="_blank">开源不等于开放权重：Gary Marcus 剖析两者本质差异</a></div>
+    <div class="card-en">EN: Gary Marcus — open weights are not open source; transparency and customizability differ fundamentally.</div>
+    <div class="card-meta">
+      <span class="source">Gary Marcus：The Road to AI We Can Trust</span>
+      <span class="time">今天</span>
+      <span class="card-tag" style="background:#d1fae5;color:#065f46">概念辨析</span>
+    </div>
+    <div class="card-summary">开放权重模型并非真正的开源：开源软件公开完整源代码，允许查看、修改与分支；而开放权重仅发布训练后的<span class="highlight">神经网络权重</span>，用户无法访问原始训练数据、预处理方法或训练算法，也不能自由修改或深入调查。这使开发者、监管者与科学家面临限制——文中直接以 <span class="highlight">Meta 最新发布的开放权重模型</span>为例证。恰好与本期 Meta / 扎克伯格的"开放"叙事构成对冲。</div>
+    <div class="card-summary-en">EN — A useful counterweight to today's Meta narrative: weights without data, preprocessing or training algorithms limit what regulators and scientists can actually verify.</div>
+  </div>
+
+  <div class="card card-kol">
+    <div class="card-title"><a href="http://danluu.com/pl-tokens" target="_blank">编写智能体时，哪种编程语言最合适？</a></div>
+    <div class="card-en">EN: Dan Luu stress-tests the "dynamic languages save LLM tokens" claim — and finds it reverses at higher effort levels.</div>
+    <div class="card-meta">
+      <span class="source">Hacker News 热门（buzzing.cc 中文翻译）</span>
+      <span class="time">今天 12:58</span>
+      <span class="card-tag" style="background:#d1fae5;color:#065f46">实测反驳</span>
+    </div>
+    <div class="card-summary">针对"动态语言比静态语言更省 LLM token"的流行说法，作者用 GPT-5.6 Sol 让智能体实现 zstd 解码器进行实测。结果显示：<span class="highlight">medium 努力度下动态语言更好，ultra 下静态语言反而更优</span>，且此前评测存在测试路径错误等缺陷。作者结论——琐碎任务上的性能<span class="highlight">无法推广</span>到更大问题。这是对 agent 评测外推谬误的一次干净示范。</div>
+    <div class="card-summary-en">EN — The finding flips with effort level, and prior evaluations contained broken test paths. A clean demonstration of extrapolation error in agent benchmarking.</div>
+  </div>
+</div>
+
+<!-- ===== 技术进展 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-paper)"></div>
+    <div class="section-title">⚙️ 技术进展 <span class="section-title-en">/ Engineering &amp; Infrastructure</span></div>
+    <div class="section-count">6 条</div>
+  </div>
+
+  <div class="card card-paper">
+    <div class="card-title"><a href="https://www.lmsys.org/blog/2026-08-11-unified-radix-cache" target="_blank">统一 Radix 缓存：为混合模型前缀缓存构建单一树结构</a></div>
+    <div class="card-en">EN: LMSYS proposes Unified Radix Cache — one token-keyed radix topology managing FULL, SWA and MAMBA caches together.</div>
+    <div class="card-meta">
+      <span class="source">LMSYS Blog（Chatbot Arena 团队）</span>
+      <span class="time">今天 21:51</span>
+      <span class="card-tag" style="background:#cffafe;color:#155e75">推理优化</span>
+    </div>
+    <div class="card-summary">LMSYS 提出 Unified Radix Cache，用<span class="highlight">单一 token 键控 radix 拓扑</span>统一管理混合模型的 FULL、SWA 和 MAMBA 组件缓存，各组件保留独立的执行路径、滑动窗口和检查点复用语义。混合架构成为主流后，缓存层的统一抽象是绕不开的工程债。</div>
+    <div class="card-summary-en">EN — Each component keeps independent execution paths, sliding windows and checkpoint-reuse semantics under one shared tree.</div>
+  </div>
+
+  <div class="card card-paper">
+    <div class="card-title"><a href="https://www.lmsys.org/blog/2026-08-11-nemotron-3-5-lightning" target="_blank">SGLang 宣布 Day-0 支持 NVIDIA Nemotron 3.5 Lightning 与 Meta Muse Glimmer</a></div>
+    <div class="card-en">EN: SGLang delivers Day-0 support for both NVIDIA Nemotron 3.5 Lightning and Meta's Muse Glimmer.</div>
+    <div class="card-meta">
+      <span class="source">LMSYS Blog（Chatbot Arena 团队）</span>
+      <span class="time">今天 21:51</span>
+      <span class="card-tag" style="background:#cffafe;color:#155e75">推理框架</span>
+    </div>
+    <div class="card-summary">SGLang 对 Nemotron 3.5 Lightning 提供 <span class="highlight">Day-0 支持</span>：30B 总参数 / 3B 激活的 MoE 架构，支持最长 <span class="highlight">1M token 上下文</span>，Hugging Face 可下 BF16 与 NVFP4 权重，支持 MTP、DFlash、DSpark 三种投机解码，可通过 OpenAI 兼容 API 接入智能体工作流。同期 SGLang 亦与 Meta Superintelligence Labs 合作，为 <span class="highlight">128k+ 上下文</span>的 30B 多模态模型 Muse Glimmer 提供 Day-0 支持。<br><span style="font-size:12px;color:var(--text-muted)">🔗 Muse Glimmer 支持详情：<a href="https://www.lmsys.org/blog/2026-08-10-meta-muse-glimmer" target="_blank" style="color:var(--primary)">lmsys.org/blog/2026-08-10-meta-muse-glimmer</a></span></div>
+    <div class="card-summary-en">EN — Day-0 support has become the real distribution channel for open-weight models: the framework layer, not the model card, decides time-to-adoption.</div>
+  </div>
+
+  <div class="card card-paper">
+    <div class="card-title"><a href="https://linear.app/now/how-we-built-linear-agent" target="_blank">Linear 如何构建 Linear Agent：在系统提示词、工具设计与系统技能中划定边界</a></div>
+    <div class="card-en">EN: Linear on building Linear Agent — encoding constraints into tool parameters instead of scripting fixed paths.</div>
+    <div class="card-meta">
+      <span class="source">Linear：Now（RSS）</span>
+      <span class="time">今天</span>
+      <span class="card-tag" style="background:#cffafe;color:#155e75">Agent 工程</span>
+    </div>
+    <div class="card-summary">Linear Agent 的价值在于完成<span class="highlight">未预设</span>的工作，因此团队未编写固定路径，而是通过系统提示词、工具设计、产品模型、运行范围及底层自定义 harness 划定边界。系统提示词聚焦沟通风格、硬性边界与产品概念解释；<span class="highlight">工具设计将约束编码进参数</span>，使无效操作难以执行。团队还引入系统技能作为组合单元，按需渐进加载，避免一次性暴露过多上下文。</div>
+    <div class="card-summary-en">EN — The core idea: make invalid actions hard to express at the parameter level, and load skills progressively rather than dumping all context upfront.</div>
+  </div>
+
+  <div class="card card-paper">
+    <div class="card-title"><a href="https://www.databricks.com/blog/innocent-until-combined-blocking-lethal-trifecta-omnigent-contextual-policies" target="_blank">Omnigent 上下文策略如何阻断"致命三重奏"组合攻击</a></div>
+    <div class="card-en">EN: Databricks' Omnigent contextual policies block the "lethal trifecta" — risk that only emerges when requests combine.</div>
+    <div class="card-meta">
+      <span class="source">Databricks Blog（RSS）</span>
+      <span class="time">今天</span>
+      <span class="card-tag" style="background:#cffafe;color:#155e75">Agent 安全</span>
+    </div>
+    <div class="card-summary">Omnigent 的上下文策略可阻断"致命三重奏"组合攻击——即多个<span class="highlight">看似无害</span>的请求叠加后形成的恶意行为。该机制在单个请求层面不设防，而是在<span class="highlight">组合上下文</span>中识别并拦截风险，从而在不牺牲正常功能的前提下提升安全性。</div>
+    <div class="card-summary-en">EN — Defense moves from per-request filtering to combinatorial context evaluation, preserving functionality while catching emergent misuse.</div>
+  </div>
+
+  <div class="card card-paper">
+    <div class="card-title"><a href="https://www.databricks.com/blog/how-ground-genie-agents-both-structured-data-and-documents-without-losing-governance" target="_blank">Databricks 如何让 Genie Agents 同时基于结构化数据与文档运行且不丢治理</a></div>
+    <div class="card-en">EN: Grounding agents on structured data and documents simultaneously — without losing governance.</div>
+    <div class="card-meta">
+      <span class="source">Databricks Blog（RSS）</span>
+      <span class="time">今天 07:08</span>
+      <span class="card-tag" style="background:#cffafe;color:#155e75">数据治理</span>
+    </div>
+    <div class="card-summary">Databricks 介绍如何让 Genie Agents 同时基于结构化数据与文档运行且不牺牲治理能力。文章指出：构建自动化简单业务任务的智能体虽易，但要在统一治理框架下融合两类数据源、确保安全合规地执行查询，仍需解决<span class="highlight">数据权限、血缘追踪与策略管控</span>三个关键问题。</div>
+    <div class="card-summary-en">EN — The hard part is not the agent but the substrate: permissions, lineage and policy control across structured and unstructured sources.</div>
+  </div>
+
+  <div class="card card-paper">
+    <div class="card-title"><a href="https://www.marktechpost.com/2026/08/10/implementing-a-minimax-h3-multimodal-video-and-audio-generation-pipeline-with-comfyui-apis" target="_blank">用 ComfyUI API 实现 MiniMax-H3 多模态视频与音频生成流水线</a></div>
+    <div class="card-en">EN: A headless ComfyUI pipeline for MiniMax-H3 text-to-video and reference-conditioned generation.</div>
+    <div class="card-meta">
+      <span class="source">MarkTechPost（RSS）</span>
+      <span class="time">今天 13:44</span>
+      <span class="card-tag" style="background:#cffafe;color:#155e75">工程实践</span>
+    </div>
+    <div class="card-summary">教程演示以 ComfyUI 作为<span class="highlight">无头推理后端</span>构建端到端 MiniMax-H3 视频生成工作流：通过 Python 直接构建执行图，支持文生视频、首尾帧条件生成和参考图像条件生成，并自动根据 GPU 显存选择 <span class="highlight">quality / balanced / squeeze</span> 三种权重配置。流水线涵盖模型自动下载、节点模式校验、音视频联合解码与进度监控，无需图形界面即可复现。</div>
+    <div class="card-summary-en">EN — Auto-selects weight configurations by available VRAM; covers model download, node schema validation, joint A/V decoding and progress monitoring.</div>
+  </div>
+</div>
+
+<!-- ===== 优秀研报与论文提炼 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-research)"></div>
+    <div class="section-title">📚 优秀研报与论文提炼 <span class="section-title-en">/ Research Digest</span></div>
+    <div class="section-count">4 条</div>
+  </div>
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://www.a16z.news/p/can-agents-use-a-computer-yet-weve" target="_blank">智能体真的会用电脑吗？a16z 用数据给出答案</a></div>
+    <div class="card-en">EN: a16z — computer-use agents hit 85% on OSWorld-Verified, above the ~72% human tester baseline.</div>
+    <div class="card-meta">
+      <span class="source">a16z：News（RSS）</span>
+      <span class="time">今天</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">能力基准</span>
+    </div>
+    <div class="card-summary">a16z 数据显示，计算机操作智能体在 OSWorld-Verified 基准上的最佳成绩已从一年前的 <span class="highlight">42% 升至 85%</span>，<span class="highlight">超过人类测试者约 72% 的水平</span>，Claude Fable 5 以 85% 领先。这是本期最重要的单一数据点：能力越过人类基线，意味着"agent 能不能用"的问题结束，"在哪些工作流里先替代"的问题开始。</div>
+    <div class="card-summary-en">EN — The single most consequential datapoint today: crossing the human baseline shifts the question from feasibility to sequencing of substitution.</div>
+    <div class="trend-wrap">
+      <div class="trend-row">
+        <div class="trend-label">OSWorld-Verified 最佳成绩（一年前）</div>
+        <div class="trend-bar-bg"><div class="trend-bar" style="width:42%;background:linear-gradient(90deg,#93c5fd,#60a5fa)">42%</div></div>
+      </div>
+      <div class="trend-row">
+        <div class="trend-label">人类测试者基线</div>
+        <div class="trend-bar-bg"><div class="trend-bar" style="width:72%;background:linear-gradient(90deg,#a5b4fc,#818cf8)">72%</div></div>
+      </div>
+      <div class="trend-row">
+        <div class="trend-label">Claude Fable 5（当前最佳）</div>
+        <div class="trend-bar-bg"><div class="trend-bar" style="width:85%;background:linear-gradient(90deg,#6366f1,#4f46e5)">85%</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://www.anthropic.com/research/riemann-zeta" target="_blank">Claude 未发布研究版将黎曼 zeta 函数零点下界从 41.6% 提升至 67.2%</a></div>
+    <div class="card-en">EN: An unreleased research Claude raises the proven lower bound on zeta zeros satisfying RH from 41.6% to 67.2%.</div>
+    <div class="card-meta">
+      <span class="source">Anthropic：Research</span>
+      <span class="time">今天 01:46</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">数学突破</span>
+    </div>
+    <div class="card-summary">Anthropic 员工让 Claude 尝试攻克黎曼猜想，虽未成功，但一个<span class="highlight">未发布的研究版 Claude</span> 在相关问题上取得突破：将满足黎曼猜想的 zeta 函数零点比例下界从 <span class="highlight">41.6% 提升至 67.2%</span>。注意两个限定词——"未发布"与"未成功攻克猜想本身"，这决定了它的可复现边界。</div>
+    <div class="card-summary-en">EN — Two qualifiers bound the claim: the model is unreleased, and RH itself remains unproven. What advanced is a bound, not the conjecture.</div>
+  </div>
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://www.theverge.com/ai-artificial-intelligence/977273/the-ai-takeover-of-mathematics-has-begun" target="_blank">OpenAI 用 Astra 模型攻克 10 道数学难题，数学家既兴奋又担忧</a></div>
+    <div class="card-en">EN: OpenAI's unreleased Astra solves 10 long-open math problems, with 250+ pages of proofs and Lean verification.</div>
+    <div class="card-meta">
+      <span class="source">The Verge：AI（RSS）</span>
+      <span class="time">今天 19:00</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">科研自动化</span>
+    </div>
+    <div class="card-summary">OpenAI 宣布其未发布的 Astra 模型解决了 <span class="highlight">10 道长期悬而未决</span>的数学难题，涵盖球体堆积、纠错码、非 sofic 群存在性等领域，并发布超 <span class="highlight">250 页论文</span>及 <span class="highlight">Lean 验证结果</span>。Lean 形式化验证是关键——结果可被机器核验，而非"看起来对"。与 Anthropic 的 zeta 进展同日出现，AI 参与原创数学研究从个案走向趋势。</div>
+    <div class="card-summary-en">EN — Lean formalization is the load-bearing detail: results are machine-checkable rather than merely plausible. Landing the same day as Anthropic's zeta result marks a pattern, not a one-off.</div>
+  </div>
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://blog.ml.cmu.edu/2026/08/10/forking-sequences-part-i-statistically-and-computationally-efficient-multi-horizon-forecasting" target="_blank">Forking-Sequences：一种统计与计算上更高效的多步预测训练范式</a></div>
+    <div class="card-en">EN: CMU formalizes forking-sequences — multi-horizon forecasting with no extra parameters and one forward pass.</div>
+    <div class="card-meta">
+      <span class="source">CMU：Machine Learning Blog</span>
+      <span class="time">今天</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">训练范式</span>
+    </div>
+    <div class="card-summary">CMU 研究团队正式定义并系统评测 forking-sequences 训练范式：<span class="highlight">无需新增参数</span>，在<span class="highlight">一次前向传播</span>中跨所有预测创建日期编码解码整条序列。对时序预测类任务（含金融时序）具有直接的成本效率含义。</div>
+    <div class="card-summary-en">EN — No additional parameters, single forward pass across all forecast creation dates; directly relevant to cost efficiency in time-series forecasting.</div>
+  </div>
+</div>
+
+<!-- ===== 今日总结 & 投资启示 ===== -->
+<div class="summary-section">
+  <h2>📋 今日总结 &amp; 投资启示 <span style="font-size:13px;font-weight:500;color:var(--text-muted)">/ Takeaways</span></h2>
+
+  <div class="summary-sub">
+    <h3>🎯 关键结论</h3>
+    <ul>
+      <li><strong>同日三家押注"本地常驻智能体"，路线从参数军备切向激活效率</strong>：NVIDIA Nemotron 3.5 Lightning（30B MoE / 3B 激活 / 1M 上下文 / token 生成最高 4x / 任务耗时 −30% / RTX PC·DGX Spark·Jetson 可跑）、Meta Muse Glimmer（30B 开放权重 / Apache 2.0 / 消费级 Mac 或高性能 GPU PC 可跑）、蚂蚁 Ling-3.0-tiny（7.9B 总 / <span class="highlight">1.3B 激活</span> / BF16·FP8·INT4）。三者在<span class="highlight">同一天</span>落地同一叙事，指向端侧算力与推理框架层受益，纯云端 token 规模叙事被稀释。</li>
+      <li><strong>Anthropic 或成史上最大 IPO，且被迫正面回应中国竞争</strong>：估值 <span class="highlight">9,650 亿美元</span>、年化收入超 <span class="highlight">470 亿美元</span>，最快 9 月或 10 月初上市。真正的信号不是估值，而是它<span class="highlight">主动向投资者"淡化"来自中国 AI 企业的竞争影响</span>——说明这已成为发行方必须应答的尽调议题。对"互联网时代 vs AI 时代竞争格局"的对比框架，这是一个可长期跟踪的叙事锚点。</li>
+      <li><strong>英伟达融资结构从"自担"转向"第三方动员"</strong>：与 Apollo、BlackRock、Blackstone、Brookfield、Goldman Sachs、KKR 共建<span class="highlight">独立融资平台</span>，动员超 5000 亿美元第三方资本。对照本档案库 7/28 报告记录的"7500 亿循环融资信任危机"，本次把资本方前置到独立载体，是风险从英伟达自身资产负债表向第三方转移的<span class="highlight">结构性回应</span>。观察点：该平台的资产定价与退出机制是否公开。</li>
+      <li><strong>智能体电脑操作能力已越过人类基线</strong>：a16z 数据显示 OSWorld-Verified 最佳成绩一年内 <span class="highlight">42% → 85%</span>，人类测试者约 72%。能力跨过人类线，问题就从"能不能用"变为"哪些工作流先被替代、替代节奏多快"。这是本期对消费与互联网商业模式冲击最直接的一条。</li>
+      <li><strong>AI 产出可机器核验的原创科研成果，从个案变趋势</strong>：OpenAI Astra 攻克 10 道悬而未决数学难题、发布 250+ 页论文并附 <span class="highlight">Lean 形式化验证</span>；Anthropic 未发布研究版 Claude 将 zeta 零点下界 41.6% → 67.2%。两件事同日出现。Lean 验证是关键分水岭——结果可被机器核验，而非依赖同行"看起来对"。</li>
+      <li><strong>治理能力正从合规成本变成采购门槛</strong>：Databricks 同日两篇（Genie Agents 跨结构化数据与文档的统一治理、Omnigent 上下文策略阻断"致命三重奏"组合攻击）；反面案例是 tl;dv 因缺租户隔离暴露 <span class="highlight">18.1 万段</span>会议录音、涉 84,312 用户与 23 国政府会议、报告后 <span class="highlight">6 个月未修</span>。企业级 agent 的竞争维度正从"能力"转向"可治理"。</li>
+      <li><strong>阿里把对话做成服务分发入口</strong>：千问开放平台开放手机 / PC / AI 眼镜三类终端，首批覆盖物流、房产、本地生活、理财、汽车等十余领域，用户可 @ 服务或点角标进智能体完成咨询→推荐→下单闭环，并提供账号、AI 支付、订单接入基础设施。这是"超级 App 入口"逻辑在 AI 时代的重演，对消费与互联网竞争格局的含义值得单独跟踪。</li>
+    </ul>
+    <div class="lens">
+      <strong>🧭 叙事透镜</strong>：本期<span class="highlight">一手信源占比高</span>（NVIDIA / Meta / Anthropic / OpenAI 官方发布，LMSYS / Databricks / Linear 技术博客，Jensen Huang 与 Zuckerberg 本人 X），二手转述少，叙事事实比偏低 = 信息质量较高。可信度排序建议：官方技术博客（可复现细节）&gt; 官方产品发布（口径可信但选择性披露）&gt; 媒体转述（IT之家 / The Verge）&gt; KOL 解读。<br>需要打折的两处：① 智谱 ZCode 的 +2.39% 通过率与 1.8 倍额度为<span class="highlight">厂商自测</span>；② Astra 与研究版 Claude 均为<span class="highlight">未发布模型</span>，外部无法复现。另注意 Gary Marcus 当日文章直接以 Meta 新模型为例，指出开放权重≠开源——与 Meta 的"开放"叙事构成对冲，不宜单边采信。
+    </div>
+    <div class="en-note">
+      <strong>EN — Bottom line.</strong> Three labs shipped the same thesis on the same day: small-activation models for always-on local agents (NVIDIA 30B/3B, Meta 30B Apache-2.0, Ant 7.9B/1.3B), shifting value toward edge compute and the inference-framework layer. Anthropic's reported ~$965B / $47B-ARR IPO is notable less for size than for the fact that downplaying Chinese competition has become a required answer for issuers. NVIDIA moved from balance-sheet-backed to third-party-mobilized capital, a structural reply to the circular-financing critique logged in our 7/28 issue. And computer-use agents crossed the human baseline (85% vs ~72% on OSWorld-Verified) — the question is no longer capability but sequencing. Discount two claims: vendor-run ZCode benchmarks, and results from unreleased models (Astra, research Claude).
+    </div>
+  </div>
+
+  <div class="summary-sub">
+    <h3>📊 重点公司/行业环比变化追踪</h3>
+    <table class="track-table">
+      <thead>
+        <tr>
+          <th>标的/行业</th>
+          <th>方向</th>
+          <th>变化</th>
+          <th>对比基准</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>英伟达(NVIDIA)</td>
+          <td class="up">↑积极</td>
+          <td>与六大资管机构共建独立融资平台，动员超5000亿美元第三方资本；风险敞口由自身资产负债表向第三方转移，结构性回应"循环融资"质疑；同日发布 Nemotron 3.5 Lightning 巩固端侧生态</td>
+          <td>较本库7/28报告（7500亿循环融资争议）</td>
+        </tr>
+        <tr>
+          <td>Anthropic</td>
+          <td class="up">↑积极</td>
+          <td>最快9月/10月初IPO，估值9650亿美元、年化收入超470亿美元，或成史上最大IPO；研究版Claude取得zeta函数数学突破；但主动向投资者淡化中国AI竞争影响</td>
+          <td>较本库7/28报告</td>
+        </tr>
+        <tr>
+          <td>Meta</td>
+          <td class="up">↑积极</td>
+          <td>Muse Glimmer 30B以Apache 2.0开放权重发布、消费级硬件可跑；扎克伯格同日发长文"超级智能人人可用"，叙事与产品同步——较7/28"无新模型/产品发布"明显转积极</td>
+          <td>较本库7/28报告</td>
+        </tr>
+        <tr>
+          <td>OpenAI</td>
+          <td class="up">↑积极</td>
+          <td>GPT-5.6-Cyber切入网络安全垂类；未发布Astra模型攻克10道数学难题并附Lean验证；Zapier企业落地案例给出明确工时ROI</td>
+          <td>较本库7/28报告</td>
+        </tr>
+        <tr>
+          <td>阿里 / 通义千问</td>
+          <td class="up">↑积极</td>
+          <td>千问开放平台上线，手机/PC/AI眼镜三终端 + 十余领域服务闭环 + AI支付与订单基础设施；Qwen-MM-Plugins推动多模态智能体</td>
+          <td>较本库7/28报告</td>
+        </tr>
+        <tr>
+          <td>智谱(Zhipu)</td>
+          <td class="up">↑积极（产品面）</td>
+          <td>ZCode四大功能上线，厂商自测GLM-5.2+ZCode通过率高2.39%、缓存命中>98%、有效额度近1.8倍。注：7/28报告曾记录其港股跌18.5%，本期无股价数据，仅产品面改善</td>
+          <td>较本库7/28报告</td>
+        </tr>
+        <tr>
+          <td>蚂蚁百灵(Ling)</td>
+          <td class="up">↑积极</td>
+          <td>Ling-3.0-tiny开源：7.9B总参数/1.3B激活，同步提供BF16、FP8、INT4三版本，切入端侧与低成本批量推理</td>
+          <td>本期新增覆盖</td>
+        </tr>
+        <tr>
+          <td>Google</td>
+          <td class="up">↑积极</td>
+          <td>Ads与Analytics智能体化：AI Overviews摘要、AI洞察卡片、Ask Advisor基准对比，基于Gemini，英文账户beta</td>
+          <td>较本库7/28报告</td>
+        </tr>
+        <tr>
+          <td>Databricks</td>
+          <td class="up">↑积极</td>
+          <td>同日两篇治理与安全方案（Genie跨结构化+文档统一治理、Omnigent阻断"致命三重奏"），把治理做成企业级agent护城河</td>
+          <td>本期新增覆盖</td>
+        </tr>
+        <tr>
+          <td>端侧算力/消费级GPU</td>
+          <td class="up">↑积极</td>
+          <td>NVIDIA、Meta、蚂蚁同日押注本地常驻智能体，低激活参数+多精度权重成为共同路线；推理框架层(SGLang Day-0)成为分发通道</td>
+          <td>较本库7/28报告</td>
+        </tr>
+        <tr>
+          <td>AI会议记录工具赛道</td>
+          <td class="down">↓消极</td>
+          <td>tl;dv因缺租户隔离暴露18.1万段会议录音，涉84,312用户、35,003域名、23国政府会议，约1000场实时会议可被闯入，报告后6个月未修，赛道信任受损</td>
+          <td>本期新增覆盖</td>
+        </tr>
+        <tr>
+          <td>开放权重/开源争议</td>
+          <td>—</td>
+          <td>Meta以Apache 2.0发布权重推动"开放"叙事，Gary Marcus同日撰文指开放权重≠开源（无训练数据、预处理与算法），透明度争议延续无定论</td>
+          <td>较本库7/28报告（开源vs闭源内战）</td>
+        </tr>
+        <tr>
+          <td>月之暗面 / MiniMax</td>
+          <td>—</td>
+          <td>本时段无一手动态进入数据源（MiniMax仅以第三方ComfyUI教程形式出现，非官方发布）</td>
+          <td>较本库7/28报告</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="en-note">
+      <strong>EN — Note on the table.</strong> Direction is assessed on information flow within the coverage window, not on share-price action; no market-price data entered today's source set. Comparisons marked "较本库7/28报告" reference our own archived issue of 2026-07-28. Per Chinese market convention, red denotes positive and green denotes negative.
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>📊 数据来源：AI HOT（aihot.virxact.com）· 数字生命卡兹克 AI 资讯速递 · 每日精选 + 当日日报双通道</p>
+  <p>🕐 生成时间：2026-08-11 22:50 北京时间 | 覆盖窗口：8/10 22:00 ~ 8/11 22:00 BJT | 30 张卡片 / 31 条溯源链接</p>
+  <p>⚠️ 本报告仅供研究参考，不构成投资建议。所有资讯均保留原文链接可溯源；厂商自测数据与未发布模型结论已在正文标注。</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026-07-05</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f0f0f5;
+    color: #1a1a2e;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px 60px; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #4338ca 100%);
+    color: #fff;
+    padding: 48px 32px 40px;
+    border-radius: 0 0 24px 24px;
+    margin-bottom: 32px;
+    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.25);
+  }
+  .header h1 { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
+  .header .subtitle { font-size: 15px; opacity: 0.9; margin-bottom: 20px; }
+  .header .meta-bar { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; opacity: 0.95; }
+  .header .meta-item { display: flex; align-items: center; gap: 6px; }
+  .header .meta-item::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.7); }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .stat-chip {
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #4b5563;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .stat-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .stat-num { font-weight: 800; color: #1a1a2e; font-size: 15px; }
+
+  /* Section */
+  .section { margin-bottom: 36px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e5e7eb;
+  }
+  .section-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
+  .section-title { font-size: 20px; font-weight: 700; color: #1a1a2e; }
+  .section-count {
+    font-size: 13px;
+    font-weight: 600;
+    color: #9ca3af;
+    margin-left: auto;
+    background: #f3f4f6;
+    padding: 3px 12px;
+    border-radius: 20px;
+  }
+
+  /* Card */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-left: 4px solid transparent;
+    transition: box-shadow 0.2s, transform 0.15s;
+  }
+  .card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.1); transform: translateY(-1px); }
+  .card-industry { border-left-color: #f59e0b; }
+  .card-kol { border-left-color: #10b981; }
+  .card-product { border-left-color: #8b5cf6; }
+  .card-paper { border-left-color: #06b6d4; }
+  .card-report { border-left-color: #3b82f6; }
+  .card-funding { border-left-color: #f97316; }
+
+  .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .card-title a {
+    color: #1e293b;
+    text-decoration: none;
+    border-bottom: 1.5px solid transparent;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .card-title a:hover { color: #6366f1; border-bottom-color: #6366f1; }
+
+  .card-meta {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+  .card-source {
+    background: #f3f4f6;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #6b7280;
+  }
+  .card-time { color: #9ca3af; }
+  .card-tag {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .tag-breaking { background: #fef3c7; color: #92400e; }
+  .tag-developing { background: #dbeafe; color: #1e40af; }
+  .tag-exclusive { background: #fce7f3; color: #9d174d; }
+  .tag-preview { background: #e0e7ff; color: #3730a3; }
+
+  .card-summary {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.65;
+  }
+  .card-summary .highlight {
+    background: linear-gradient(120deg, rgba(99,102,241,0.12) 0%, rgba(99,102,241,0.06) 100%);
+    color: #4338ca;
+    font-weight: 600;
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  /* Summary section */
+  .summary-section {
+    background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+    border-radius: 16px;
+    padding: 32px 28px;
+    margin-top: 40px;
+    border: 1px solid #c7d2fe;
+  }
+  .summary-section h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #3730a3;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .summary-item {
+    background: rgba(255,255,255,0.7);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    border-left: 3px solid #6366f1;
+  }
+  .summary-item p {
+    font-size: 14px;
+    color: #312e81;
+    line-height: 1.7;
+  }
+  .summary-item .highlight {
+    background: rgba(99,102,241,0.15);
+    color: #4338ca;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 32px 20px;
+    font-size: 12px;
+    color: #9ca3af;
+    line-height: 1.8;
+  }
+  .footer .divider { width: 60px; height: 2px; background: #d1d5db; margin: 0 auto 16px; border-radius: 2px; }
+
+  /* EN bilingual */
+  .card-title-en {
+    font-size: 13px;
+    color: #9ca3af;
+    font-weight: 500;
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  @media (max-width: 640px) {
+    .header { padding: 32px 20px 28px; }
+    .header h1 { font-size: 22px; }
+    .card { padding: 16px 18px; }
+    .stats-bar { gap: 8px; }
+    .stat-chip { padding: 8px 12px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container" style="padding: 0;">
+    <h1>AI 每日全景报告</h1>
+    <div class="subtitle">AI Daily Panorama Report · 2026年7月5日（周日）</div>
+    <div class="meta-bar">
+      <div class="meta-item">覆盖时段：2026-07-04 22:00 ~ 2026-07-05 22:00（北京时间）</div>
+      <div class="meta-item">收录条目：23 条</div>
+      <div class="meta-item">数据源：AI HOT + WebSearch 多渠道交叉验证</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="stat-chip"><span class="stat-dot" style="background:#f59e0b;"></span>行业动态 <span class="stat-num">7</span></div>
+    <div class="stat-chip"><span class="stat-dot" style="background:#10b981;"></span>大V观点 &amp; 深度报告 <span class="stat-num">6</span></div>
+    <div class="stat-chip"><span class="stat-dot" style="background:#8b5cf6;"></span>模型/产品/应用 <span class="stat-num">3</span></div>
+    <div class="stat-chip"><span class="stat-dot" style="background:#06b6d4;"></span>技术进展 &amp; 论文 <span class="stat-num">3</span></div>
+    <div class="stat-chip"><span class="stat-dot" style="background:#3b82f6;"></span>优秀报告 <span class="stat-num">2</span></div>
+    <div class="stat-chip"><span class="stat-dot" style="background:#f97316;"></span>投融资动态 <span class="stat-num">2</span></div>
+  </div>
+
+  <!-- Section 1: Industry News -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-dot" style="background:#f59e0b;"></div>
+      <div class="section-title">🏭 行业动态</div>
+      <div class="section-count">7 条</div>
+    </div>
+
+    <div class="card card-industry">
+      <div class="card-title"><a href="https://www.edgen.tech/news/post/china-ai-rule-forces-bytedance-alibaba-to-drop-14000-agents" target="_blank">中国首部 AI 拟人化交互监管生效在即：字节豆包与阿里通义被迫下线超 14,000 个 AI 智能体</a></div>
+      <div class="card-title-en">China's first AI anthropomorphic interaction regulation forces ByteDance and Alibaba to drop 14,000+ agents before July 15</div>
+      <div class="card-meta">
+        <span class="card-source">Edgen.tech / 多源</span>
+        <span class="card-time">今天 08:00</span>
+        <span class="tag-breaking">突发</span>
+      </div>
+      <div class="card-summary">
+        中国首部针对 AI 拟人化交互的《人工智能拟人化交互服务管理暂行办法》将于 <span class="highlight">7 月 15 日</span>生效。上海网信办已于 6 月 26 日先行清理了 <span class="highlight">14,000+ 个不合规 AI 智能体</span>，近 100 家平台接受合规约谈。字节跳动豆包将于 7 月 15 日停用智能体功能，用户导流至 CatBox 应用；阿里通义千问将于 7 月 10 日停止交互式智能体服务。MiniMax "脱衣" AI 工具和赌博类智能体被重点打击。阿里已转向企业端，开放 Agent 接口给瑞幸咖啡、肯德基、蜜雪冰城、东方航空等测试。<span class="highlight">消费级 AI 智能体赛道从"抢用户"转向"拼合规"</span>，中小平台面临出清。
+      </div>
+    </div>
+
+    <div class="card card-industry">
+      <div class="card-title"><a href="https://www.moneycontrol.com/news/business/foxconn-q2-revenue-jumps-40-on-booming-ai-demand-beats-estimates-13966326.html" target="_blank">富士康 Q2 营收同比飙升 40% 至 2.513 万亿新台币（约 787 亿美元），AI 服务器需求强劲超预期</a></div>
+      <div class="card-title-en">Foxconn Q2 revenue jumps 40% to T$2.513T ($78.7B) on booming AI server demand, beats estimates</div>
+      <div class="card-meta">
+        <span class="card-source">Reuters / Moneycontrol</span>
+        <span class="card-time">今天 11:28</span>
+      </div>
+      <div class="card-summary">
+        富士康（鸿海）周日公布 Q2 营收 <span class="highlight">2.513 万亿新台币（约 787 亿美元）</span>，同比增长 <span class="highlight">39.8%</span>，超过 LSEG SmartEstimate 的 2.372 万亿预期。云端和网络产品部门受 AI 需求驱动实现强劲增长，消费电子（含 iPhone）亦表现显著。作为 <span class="highlight">NVIDIA 最大服务器组装商</span>，富士康业绩直接验证了 AI 基础设施需求周期仍在加速。但公司警告全球政治环境"波动"。
+      </div>
+    </div>
+
+    <div class="card card-industry">
+      <div class="card-title"><a href="https://theaicronicle.com/en/news/economics/semiconductor-slide-ai-spending-concerns-2026" target="_blank">半导体板块集体回调：AI 支出 ROI 质疑升温，市场从"狂买 GPU"转向"精挑细选"</a></div>
+      <div class="card-title-en">Semiconductor stocks slide amid AI spending concerns — the "golden age" meets balance-sheet reality</div>
+      <div class="card-meta">
+        <span class="card-source">Bloomberg / The AI Chronicle</span>
+        <span class="card-time">今天 21:13</span>
+      </div>
+      <div class="card-summary">
+        Bloomberg 高级编辑 Mike Shepard 报道，半导体股面临显著压力，投资者开始质疑 AI 基础设施支出在 2026 年后的可持续性。三大因素共振：①云计算巨头从"抢购 GPU"转向审视能效和单位效用；②< span class="highlight">电力供应瓶颈</span>——多地数据中心已触及电网容量上限；③台海地缘风险被更激进定价。分析师指出市场正从"数量积累"阶段进入"<span class="highlight"> specialization/ASIC 专用化</span>"阶段，"并非所有人去超市都需要开法拉利"。
+      </div>
+    </div>
+
+    <div class="card card-industry">
+      <div class="card-title"><a href="https://www.england.nhs.uk/2026/07/nhs-accelerates-artificial-intelligence-rollout-to-cut-waiting-times-and-improve-care-for-millions/" target="_blank">英国 NHS 加速 AI 部署：App 内嵌 AI 分诊工具，百亿英镑技术投资落地</a></div>
+      <div class="card-title-en">NHS accelerates AI rollout: AI triage tool built into NHS App to direct patients</div>
+      <div class="card-meta">
+        <span class="card-source">NHS England / The Telegraph</span>
+        <span class="card-time">今天 10:00</span>
+      </div>
+      <div class="card-summary">
+        英国国家医疗服务体系（NHS）宣布在 NHS App 中嵌入 AI 分诊工具，通过询问患者一系列问题来判断最合适的就诊服务（GP、急诊、药房等），旨在缩短候诊时间。该工具是 <span class="highlight">100 亿英镑 NHS 技术投资</span>计划的一部分。这是欧洲公共医疗系统中最大规模的 AI 患者分流部署之一，标志着 AI 从商业场景向公共服务核心流程的渗透。
+      </div>
+    </div>
+
+    <div class="card card-industry">
+      <div class="card-title"><a href="https://indico.un.org/event/1023375/overview" target="_blank">联合国首届 AI 治理全球对话明日（7/6）在日内瓦开幕：193 个成员国参与，与首尔 ICML 同步</a></div>
+      <div class="card-title-en">Inaugural UN Global Dialogue on AI Governance convenes in Geneva July 6-7, 193 member states</div>
+      <div class="card-meta">
+        <span class="card-source">UN / ITU / UNESCO</span>
+        <span class="card-time">明日开幕</span>
+        <span class="tag-preview">前瞻</span>
+      </div>
+      <div class="card-summary">
+        联合国大会授权的首届 AI 治理全球对话将于 <span class="highlight">7 月 6-7 日</span>在日内瓦 Palexpo 举行，193 个成员国代表团与私营部门、学术界共同参与，目标是建立首个 AI 多边治理框架，涵盖 AI 获取、安全、问责和主权。同期还有 WSIS Forum 2026（7/6-10）和 ITU AI for Good Summit（7/7-10）。值得注意的是，日内瓦的政策对话与首尔的 ICML 2026 技术大会<span class="highlight">同期同区域举行</span>——技术前沿与治理框架之间的"结构性差距"成为 2026 年 AI 发展的决定性条件。
+      </div>
+    </div>
+
+    <div class="card card-industry">
+      <div class="card-title"><a href="https://www.techtimes.com/articles/319684/20260704/icml-2026-opens-monday-seoul-agentic-ai-tops-record-year-peer-review-strains.htm" target="_blank">ICML 2026 首尔开幕在即：23,918 篇投稿创纪录翻倍，Agentic AI 成核心主题</a></div>
+      <div class="card-title-en">ICML 2026 opens in Seoul: record 23,918 submissions, agentic AI takes center stage</div>
+      <div class="card-meta">
+        <span class="card-source">TechTimes</span>
+        <span class="card-time">昨天 22:00</span>
+      </div>
+      <div class="card-summary">
+        ICML 2026 将于 <span class="highlight">7 月 6 日</span>在首尔 COEX 开幕（7 月 5 日注册开放）。投稿数从去年的 12,107 篇飙升至 <span class="highlight">23,918 篇</span>（翻倍），录用 6,352 篇（录用率 26.6%）。247 个研讨会提案中 <span class="highlight">60 个涉及 "Agentic AI"</span>——被描述为"按 ICML 标准也极为罕见"。六大主题演讲涵盖 AI 安全（Pascale Fung，开幕）、经济学（Susan Athey）、RL 理论（Sham Kakade）、药物发现（Aviv Regev）、对齐（Verena Rieser）和 AI 评估批判（Arvind Narayanan）。主会议业界注册已售罄。
+      </div>
+    </div>
+
+    <div class="card card-industry">
+      <div class="card-title"><a href="https://www.cnbc.com/2026/07/05/macquarie-chinese-ai-chip-stocks.html" target="_blank">麦格理：现在是买入中国 AI 芯片股的"最佳时机"，点名一只首选</a></div>
+      <div class="card-title-en">Macquarie says now is the 'best time' to buy Chinese AI chip stocks</div>
+      <div class="card-meta">
+        <span class="card-source">CNBC</span>
+        <span class="card-time">今天 20:00</span>
+      </div>
+      <div class="card-summary">
+        麦格理（Macquarie）研报指出，当前是买入中国 AI 芯片股的<span class="highlight">"最佳时机"</span>，理由包括：政府持续政策支持、行业快速扩张、以及成本效益竞争优势。该行最不看好的是海光信息（Hygon），担忧其市场份额流失风险。这一推荐与同期半导体板块整体回调形成<span class="highlight">中美分化</span>信号——美股半导体因 AI ROI 质疑回调，而中国 AI 芯片在国产替代逻辑下获外资看好。
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: KOL Opinions -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-dot" style="background:#10b981;"></div>
+      <div class="section-title">💬 大V观点 &amp; 深度报告</div>
+      <div class="section-count">6 条</div>
+    </div>
+
+    <div class="card card-kol">
+      <div class="card-title"><a href="https://finance.biggo.com/news/13344dcd-b632-46c0-a905-375e682e58b8" target="_blank">Karpathy 警告 AI 行业：基础模型才是核心，Agent 炒作或重蹈 OpenAI 五年弯路</a></div>
+      <div class="card-title-en">Karpathy warns: Foundation models are the core, agent hype risks repeating OpenAI's five-year detour</div>
+      <div class="card-meta">
+        <span class="card-source">Finance Biggo</span>
+        <span class="card-time">2 小时前</span>
+        <span class="tag-breaking">最新</span>
+      </div>
+      <div class="card-summary">
+        OpenAI 联合创始人 Andrej Karpathy 发出严厉行业警告，认为当前 AI 行业最大的错误是<span class="highlight">"强迫 Agent 工作，却忽视底层基础模型"</span>。他警示过度炒作 AI Agent 可能重蹈 OpenAI 过去五年的弯路——暗示 OpenAI 曾在 Agent 方向投入大量资源但收效不及预期。这一观点与同期 ICML 2026 将 Agentic AI 列为核心主题形成<span class="highlight">微妙张力</span>：学术界全力拥抱 Agent，而 Karpathy 呼吁回归模型能力本身。
+      </div>
+    </div>
+
+    <div class="card card-kol">
+      <div class="card-title"><a href="https://www.moneycontrol.com/news/trends/perplexity-ceo-aravind-srinivas-says-microsoft-created-the-knowledge-worker-to-sell-more-software-13966260.html" target="_blank">Perplexity CEO Srinivas 做客 Joe Rogan 播客：微软发明"知识工作者"概念是为了卖更多软件</a></div>
+      <div class="card-title-en">Perplexity CEO on Joe Rogan podcast: Microsoft created the "knowledge worker" to sell more software</div>
+      <div class="card-meta">
+        <span class="card-source">Moneycontrol（Joe Rogan 播客）</span>
+        <span class="card-time">今天 08:03</span>
+        <span class="tag-exclusive">播客一手信源</span>
+      </div>
+      <div class="card-summary">
+        Perplexity CEO Aravind Srinivas 在 Joe Rogan Experience 播客中表示，微软在比尔·盖茨时代推动"每张办公桌一台电脑"的战略<span class="highlight">塑造了现代"知识工作者"概念</span>——让人们依赖电子表格、文字处理器和邮件软件作为必备职业技能，本质上是一台高效卖软件的机器。他认为 AI 应将焦点从"拥有答案"转向"<span class="highlight">提出更好的问题</span>"，鼓励好奇心。这一观点对知识工作的未来定义具有启发意义。
+      </div>
+    </div>
+
+    <div class="card card-kol">
+      <div class="card-title"><a href="https://fortune.com/2026/07/05/west-shore-wj-werzyn-ai-claude-hallucination/" target="_blank">Fortune 深度：用 AI 翻倍营收却少招 1,000 人——宾州浴室翻新公司的 AI 原生实践</a></div>
+      <div class="card-title-en">The CEO using AI to double revenue with 1,000 fewer hires: "Nobody's going to replace the last mile"</div>
+      <div class="card-meta">
+        <span class="card-source">Fortune</span>
+        <span class="card-time">今天 17:30</span>
+      </div>
+      <div class="card-summary">
+        宾州家居翻新公司 West Shore Home 创始人 B.J. Werzyn 向 Fortune 详述其 AI 部署实践：自研 Hawkeye 系统（LIDAR + 计算机视觉，1 分钟完成浴室 3D 扫描）+ Felix 报价引擎，2025 年营收 <span class="highlight">9.33 亿美元</span>，2026 年有望突破 10 亿。公司现有 3,200+ 员工，计划以约 6,000 人实现 20 亿美元营收（原需 7,000 人）。Werzyn 坦承 Claude 仍有幻觉——讨论 EBITDA 时突然说"2028 财年你将有 <span class="highlight">260 毫米的 EBITDA</span>"。核心判断：<span class="highlight">"没人能替代最后一英里"</span>——AI 处理测量、报价、排期，人类负责安装。
+      </div>
+    </div>
+
+    <div class="card card-kol">
+      <div class="card-title"><a href="https://fortune.com/2026/07/05/why-doesnt-gen-z-trust-ai-box-office-youtube-directors-backrooms-obsession/" target="_blank">Fortune：好莱坞最年轻的电影人如何暴露 Z 世代对 AI 的信任悖论</a></div>
+      <div class="card-title-en">How Hollywood's youngest filmmakers are exposing Gen Z's real problem with AI</div>
+      <div class="card-meta">
+        <span class="card-source">Fortune</span>
+        <span class="card-time">2 小时前</span>
+      </div>
+      <div class="card-summary">
+        Fortune 深度报道揭示一个矛盾现象：<span class="highlight">最精通生成式 AI 工具的 Z 世代反而对 AI 信任度最低</span>。一批凭借 YouTube 和院线崛起的年轻电影人正在成为"AI 怀疑论者"的代表——他们大量使用 AI 工具进行创作，却对 AI 生成内容的真实性持高度警惕。文章指出这对品牌的启示：使用 AI 时必须建立信任机制，而非单纯追求效率。<span class="highlight">"使用越多，信任越少"</span>的悖论对 AI 产品设计和营销策略具有深远影响。
+      </div>
+    </div>
+
+    <div class="card card-kol">
+      <div class="card-title"><a href="https://www.scientificamerican.com/article/ai-ruining-skills/" target="_blank">科学美国人：AI 正在毁掉我们的技能吗？早期结果不乐观</a></div>
+      <div class="card-title-en">Scientific American: Is AI ruining our skills? Early results are in — and they're not good</div>
+      <div class="card-meta">
+        <span class="card-source">Scientific American</span>
+        <span class="card-time">今天 15:00</span>
+      </div>
+      <div class="card-summary">
+        Scientific American 发表分析文章，综合多项早期研究指出 AI 工具的广泛使用<span class="highlight">可能正在削弱人类核心技能</span>。这与此前 26,000 名学生追踪 30 个月的研究结果一致——使用 AI 后作业分数提升 18%，但闭卷考试下降 20%，升学考试下降 18-24%，且影响完全显现需约两年。文章强调"延迟毒性"效应：短期性能提升掩盖了长期认知退化，对教育政策和企业培训设计具有警示意义。
+      </div>
+    </div>
+
+    <div class="card card-kol">
+      <div class="card-title"><a href="https://fortune.com/2026/07/05/kevin-oleary-ai-opportunities/" target="_blank">Shark Tank 的 Kevin O'Leary：如果今天 25 岁，会追逐 AI 领域这两个 booming 机会</a></div>
+      <div class="card-title-en">Shark Tank's Kevin O'Leary says if he were 25 today, he'd chase these two booming AI opportunities</div>
+      <div class="card-meta">
+        <span class="card-source">Fortune</span>
+        <span class="card-time">今天 21:40</span>
+      </div>
+      <div class="card-summary">
+        知名投资人 Kevin O'Leary（Shark Tank）表示，如果自己今天 25 岁，会全力追逐 AI 领域的两个 booming 机会。虽然具体方向未在标题中披露，但其判断逻辑值得关注——O'Leary 以<span class="highlight">现金流和基本面投资</span>著称，他的 AI 布局信号暗示资本从"模型层烧钱竞赛"向"可商业化应用层"迁移的趋势正在加速。
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: Model/Product/App -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-dot" style="background:#8b5cf6;"></div>
+      <div class="section-title">🚀 模型/产品/应用更新</div>
+      <div class="section-count">3 条</div>
+    </div>
+
+    <div class="card card-product">
+      <div class="card-title"><a href="https://www.marktechpost.com/2026/07/05/llamaindex-legal-kb-agentic-retrieval-over-index-v2-with-retrieve-find-read-and-grep-tools" target="_blank">LlamaIndex 发布 legal-kb：基于 Index v2 的法律文档智能体检索参考应用</a></div>
+      <div class="card-title-en">LlamaIndex launches legal-kb: Agentic Retrieval over Index v2 with retrieve, find, read, and grep tools</div>
+      <div class="card-meta">
+        <span class="card-source">MarkTechPost</span>
+        <span class="card-time">今天 15:50</span>
+      </div>
+      <div class="card-summary">
+        LlamaIndex 发布 legal-kb，基于 Index v2（LlamaParse Platform）的法律文档知识库参考应用。采用 Retrieval Harness 模式，赋予 Agent 四个文件系统风格工具：retrieve（混合语义检索 + rerank + 引用）、findFiles（精确/模糊文件名搜索）、readFile（带偏移量原始内容读取）、grepFile（正则匹配 + 字符位置）。底层基于 <span class="highlight">Vercel AI SDK 6 的 ToolLoopAgent</span>，支持 OpenAI 或 Anthropic 模型，用户可自带 API key。这标志着 RAG 从"检索增强"向"<span class="highlight">Agent 主导的结构化检索</span>"范式演进。
+      </div>
+    </div>
+
+    <div class="card card-product">
+      <div class="card-title"><a href="https://aiagentstore.ai/ai-agent-news/2026-july" target="_blank">Cryptonite 推出 Personal AI Agent Hub：MCP 协议驱动的多 Agent 编排平台</a></div>
+      <div class="card-title-en">Cryptonite launches Personal AI Agent Hub with multi-agent orchestration via MCP</div>
+      <div class="card-meta">
+        <span class="card-source">AI Agent Store</span>
+        <span class="card-time">昨天 22:00</span>
+      </div>
+      <div class="card-summary">
+        Cryptonite 发布 Personal AI Agent Hub，定位为"智能指挥中心"，允许成员连接和编排多个外部 LLM 与原生 Cryptonite Agent。使用 <span class="highlight">MCP（Model Context Protocol）</span>作为通用连接器，支持研究、交易寻源、外联、尽职调查和战略执行等多 Agent 工作流与智能交接。主编排 Agent 管理上下文并委派任务给其他模型——这一架构为许多内部"AI 运维"技术栈提供了<span class="highlight">实用蓝图</span>，标志着多 Agent 编排从技术演示走向产品化。
+      </div>
+    </div>
+
+    <div class="card card-product">
+      <div class="card-title"><a href="https://www.bleepingcomputer.com/news/artificial-intelligence/claude-fable-5-isnt-permanently-leaving-subscriptions-anthropic-says/" target="_blank">Claude Fable 5 订阅移除倒计时：Anthropic 澄清"非永久性"，7 月 7 日后转按量计费</a></div>
+      <div class="card-title-en">Claude Fable 5 subscription removal: Anthropic clarifies "not permanent", transitions to usage-based July 7</div>
+      <div class="card-meta">
+        <span class="card-source">BleepingComputer</span>
+        <span class="card-time">7月7日生效</span>
+        <span class="tag-developing">发展中</span>
+      </div>
+      <div class="card-summary">
+        Anthropic 澄清 Claude Fable 5 在 <span class="highlight">7 月 7 日</span>后将从订阅服务中移除"并非永久性"变更，公司预期该模型将在使用量计费窗口外回归。Pro/Max 订阅用户的每周使用限额将被取消，需额外消耗积分。这是继 Fable 5 出口管制解除（6/30）和付费窗口开启（6/23）后的又一商业化调整。<span class="highlight">订阅制红利时代终结</span>——顶级模型从"包月无限用"转向"按量计费"，对重度开发者的成本结构产生直接影响。
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: Tech & Papers -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-dot" style="background:#06b6d4;"></div>
+      <div class="section-title">🔬 技术进展 &amp; 论文</div>
+      <div class="section-count">3 条</div>
+    </div>
+
+    <div class="card card-paper">
+      <div class="card-title"><a href="https://www.techtimes.com/articles/319684/20260704/icml-2026-opens-monday-seoul-agentic-ai-tops-record-year-peer-review-strains.htm" target="_blank">ICML 2026 Oral 论文"Do We Need Adam?"：SGD 在 RL 微调阶段匹配甚至超越 AdamW</a></div>
+      <div class="card-title-en">ICML 2026 Oral: "Do We Need Adam?" — SGD matches or beats AdamW in RL fine-tuning</div>
+      <div class="card-meta">
+        <span class="card-source">ICML 2026 / TechTimes</span>
+        <span class="card-time">昨天 22:00</span>
+      </div>
+      <div class="card-summary">
+        ICML 2026 Oral 论文（arXiv: 2602.07729）揭示：SGD（随机梯度下降）在 LLM 训练的 RL 微调阶段<span class="highlight">匹配或优于 AdamW</span>，且仅需更新不到 <span class="highlight">0.02% 的模型参数</span>——比 AdamW 少 1,000 倍以上的参数更新。这意味着大模型的 RL 微调可能比当前实践假设的<span class="highlight">更节省内存和算力</span>，对降低 RLHF/RLVR 成本具有直接工程意义。
+      </div>
+    </div>
+
+    <div class="card card-paper">
+      <div class="card-title"><a href="https://www.techtimes.com/articles/319684/20260704/icml-2026-opens-monday-seoul-agentic-ai-tops-record-year-peer-review-strains.htm" target="_blank">ICML 2026 同行评审危机：398 名审稿人因使用 LLM 被水印注入技术抓获</a></div>
+      <div class="card-title-en">ICML 2026 peer review crisis: 398 reviewers caught using LLMs via watermark prompt injection</div>
+      <div class="card-meta">
+        <span class="card-source">ICML 2026 / TechTimes</span>
+        <span class="card-time">昨天 22:00</span>
+        <span class="tag-breaking">突发</span>
+      </div>
+      <div class="card-summary">
+        ICML 2026 首次大规模使用水印提示注入技术检测 LLM 审稿：在每篇论文 PDF 中嵌入机器可读指令（从 17 万词词典中随机抽 2 个短语，概率 < 百亿分之一），前沿 LLM 遵循率超 <span class="highlight">80%</span>。结果标记 795 篇评审（约 1%），涉及 506 名审稿人，其中 <span class="highlight">398 名"互惠审稿人"</span>违规，导致 497 篇论文被桌面拒稿。组织者坦承该方法"并非难以规避"，1% 检测率应视为<span class="highlight">下限估计</span>。NeurIPS 已跟进采用类似方法。这是学术界 AI 滥用治理的里程碑事件。
+      </div>
+    </div>
+
+    <div class="card card-paper">
+      <div class="card-title"><a href="https://aiagentstore.ai/ai-agent-news/2026-july" target="_blank">Residual Context Diffusion：回收扩散语言模型丢弃 token，准确率提升 5-10 分</a></div>
+      <div class="card-title-en">Residual Context Diffusion: Recycling discarded tokens from diffusion LMs improves accuracy 5-10 points</div>
+      <div class="card-meta">
+        <span class="card-source">AI Agent Store</span>
+        <span class="card-time">今天 12:00</span>
+      </div>
+      <div class="card-summary">
+        研究者提出 Residual Context Diffusion 技术，通过回收扩散语言模型（Diffusion LM）中被丢弃的 token 数据，将准确率提升 <span class="highlight">5-10 分</span>，在最难的数学基准上<span class="highlight">几乎翻倍</span>。同期还有一项基于 Claude 的 autoresearch 循环实验报告：仅在优化指标被严格指定且可客观衡量时，自主研究循环才取得有意义进展——这对 Agent 自主科研的可行性边界提供了重要实证。
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5: Deep Reports -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-dot" style="background:#3b82f6;"></div>
+      <div class="section-title">💡 优秀报告/深度研报</div>
+      <div class="section-count">2 条</div>
+    </div>
+
+    <div class="card card-report">
+      <div class="card-title"><a href="https://theaicronicle.com/en/news/economics/semiconductor-slide-ai-spending-concerns-2026" target="_blank">深度分析：半导体板块回调——市场重置还是下行拐点？</a></div>
+      <div class="card-title-en">Semiconductor Stocks Slide: Market Reset or Downturn? — A Great Reset Analysis</div>
+      <div class="card-meta">
+        <span class="card-source">The AI Chronicle</span>
+        <span class="card-time">今天 21:13</span>
+      </div>
+      <div class="card-summary">
+        该深度报告系统分析了 2026 年 7 月半导体板块回调的结构性原因：①云计算巨头从"抢购 GPU"转向<span class="highlight">能效和单位效用审视</span>；②美国和欧洲多地数据中心触及<span class="highlight">电力供应上限</span>，买芯片也无法运行；③台海地缘风险被更激进定价；④市场从通用 GPU 向<span class="highlight">ASIC 专用芯片</span>转型。核心判断："并非泡沫破裂，而是市场成熟化——第一阶段囤积原始算力结束，第二阶段专业化开始。投资者需区分'卖铲子给淘金者'的公司和'真正找到金矿'的公司。"
+      </div>
+    </div>
+
+    <div class="card card-report">
+      <div class="card-title"><a href="https://aiagentstore.ai/ai-agent-news/2026-july" target="_blank">AI Agent 从演示走向生产：团队知识编码、大规模漏洞搜寻与工业协同部署</a></div>
+      <div class="card-title-en">AI Agents moving from demo to production: institutional knowledge, vulnerability hunting, industrial co-working</div>
+      <div class="card-meta">
+        <span class="card-source">AI Agent Store</span>
+        <span class="card-time">今天 12:00</span>
+      </div>
+      <div class="card-summary">
+        该报告梳理了 AI Agent 从演示走向生产环境的三个趋势：①团队将<span class="highlight">机构知识编码为可复用技能</span>；②大规模自动化搜寻软件漏洞（与 ICML 2026 的 Agentic AI 焦点呼应）；③重工业中部署与人类操作员协同的 Agent。报告同时披露一项基于 Claude 的文件压缩实验——autoresearch 循环仅在优化指标被严格指定时才取得有意义进展，揭示 Agent 自主科研的<span class="highlight">可行性边界</span>。
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 6: Funding -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-dot" style="background:#f97316;"></div>
+      <div class="section-title">💰 投融资动态</div>
+      <div class="section-count">2 条</div>
+    </div>
+
+    <div class="card card-funding">
+      <div class="card-title"><a href="https://247wallst.com/2026/07/05/michael-burry-micron-short/" target="_blank">Michael Burry 大规模做空美光可能是他迄今最大的投资失误</a></div>
+      <div class="card-title-en">Why Michael Burry's massive bet against Micron could be his biggest mistake yet</div>
+      <div class="card-meta">
+        <span class="card-source">24/7 Wall St.</span>
+        <span class="card-time">今天 18:00</span>
+      </div>
+      <div class="card-summary">
+        以做空次贷闻名的投资人 Michael Burry 对美光科技（Micron）建立了大规模空头头寸。但分析认为，AI 对存储芯片（HBM/DRAM）的持续需求增长可能使这一押注成为他最大的失误。美光作为 <span class="highlight">HBM3E 核心供应商</span>（用于 NVIDIA Hopper/Blackwell），受益于 AI 服务器需求周期。与富士康 Q2 +40% 营收验证一致，AI 硬件需求链条仍在加速。Burry 的空头逻辑可能低估了 AI 对存储需求的<span class="highlight">结构性拉动</span>。
+      </div>
+    </div>
+
+    <div class="card card-funding">
+      <div class="card-title"><a href="https://www.cnbc.com/2026/07/05/macquarie-chinese-ai-chip-stocks.html" target="_blank">麦格理力荐中国 AI 芯片股：国产替代窗口期 + 成本优势 = "最佳买入时机"</a></div>
+      <div class="card-title-en">Macquarie: "Best time" to buy Chinese AI chip stocks — domestic substitution window + cost advantage</div>
+      <div class="card-meta">
+        <span class="card-source">CNBC</span>
+        <span class="card-time">今天 20:00</span>
+      </div>
+      <div class="card-summary">
+        麦格理发表研报称当前是买入中国 AI 芯片股的<span class="highlight">"最佳时机"</span>，逻辑包括：①政府持续政策支持（十五五规划 AI 全学段教育写入 + 国产替代）；②行业快速扩张；③成本效益竞争优势。该行最不看好海光信息（Hygon），担忧市场份额流失。在美股半导体因 AI ROI 质疑回调的同时，中国 AI 芯片在<span class="highlight">国产替代 + 估值洼地</span>逻辑下获外资看好，形成中美半导体投资逻辑分化。
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary & Investment Insights -->
+  <div class="summary-section">
+    <h2>📋 今日总结 &amp; 投资启示</h2>
+
+    <div class="summary-item">
+      <p><strong>1. 中国 AI 监管进入"精准打击"阶段：</strong>《AI 拟人化交互管理暂行办法》7 月 15 日生效，<span class="highlight">14,000+ 个智能体被清理</span>，豆包和通义被迫下线消费级 Agent 功能。这是继 2023 年生成式 AI 管理办法后的又一标志性监管事件。投资启示：消费级 AI Agent 赛道合规成本急剧上升，<span class="highlight">企业级 Agent（阿里已转向瑞幸/肯德基/东方航空）成为确定性增长方向</span>；中小平台面临出清，利好头部公司集中度提升。</p>
+    </div>
+
+    <div class="summary-item">
+      <p><strong>2. 半导体板块"结构性分化"信号明确：</strong>富士康 Q2 营收 +40% 验证 AI 服务器需求仍在加速，但同期半导体股因 ROI 质疑回调。Bloomberg 分析师指出市场正从<span class="highlight">"数量积累"向"ASIC 专用化"转型</span>。投资启示：通用 GPU 增长预期面临下修，专用推理芯片（ASIC/自研芯片）和能效优化方向值得关注；中国 AI 芯片在国产替代逻辑下与美股形成<span class="highlight">反向走势</span>（麦格理力荐）。</p>
+    </div>
+
+    <div class="summary-item">
+      <p><strong>3. Karpathy vs ICML 的"Agent 路线之争"：</strong>ICML 2026 将 Agentic AI 列为核心主题（60/247 研讨会提案涉及），而 Karpathy 同日警告<span class="highlight">"Agent 炒作可能重蹈 OpenAI 五年弯路"</span>。Meta 承认 1450 亿美元投入后 AI Agent 进度落后（昨日报道）。投资启示：Agent 概念股短期面临"预期消化"风险，<span class="highlight">基础模型能力仍是竞争核心</span>，过度依赖 Agent 叙事的公司需警惕估值回调。</p>
+    </div>
+
+    <div class="summary-item">
+      <p><strong>4. 学术界 AI 滥用治理里程碑：</strong>ICML 2026 用水印注入技术抓获 <span class="highlight">398 名使用 LLM 的审稿人</span>，497 篇论文被桌面拒稿。NeurIPS 已跟进。这标志着学术界从"讨论 AI 伦理"进入"<span class="highlight">技术执法 AI 滥用</span>"阶段。投资启示：AI 检测/水印/溯源技术赛道将获学术和监管双重需求驱动，相关安全公司值得关注。</p>
+    </div>
+
+    <div class="summary-item">
+      <p><strong>5. AI 商业化从"工具效率"向"组织重构"深化：</strong>West Shore Home 案例（Fortune）展示 AI 原生企业以 <span class="highlight">6,000 人实现原需 7,000 人的 20 亿美元营收</span>，但 CEO 坦承 Claude 仍有"260 毫米 EBITDA"级幻觉。Z 世代"使用越多信任越少"的悖论（Fortune）对 AI 产品设计提出新挑战。投资启示：<span class="highlight">"最后一英里"的人类监督仍是刚需</span>，纯 AI 替代叙事需修正为"AI 赋能 + 人类把关"的混合模型。</p>
+    </div>
+
+    <div class="summary-item">
+      <p><strong>6. 联合国 AI 治理全球对话明日开幕，技术-治理"双轨并行"格局成型：</strong>日内瓦（193 国政策对话）与首尔（11,000+ 研究者技术大会）<span class="highlight">同期同区域</span>举行，标志技术前沿与治理框架的差距成为 2026 年 AI 发展的"决定性结构条件"。投资启示：全球 AI 监管协调机制启动将影响跨国 AI 公司的<span class="highlight">合规成本和市场准入</span>，提前布局合规能力的企业将获竞争优势。</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="divider"></div>
+    <p>数据来源：AI HOT API（aihot.virxact.com）+ WebSearch 多渠道交叉验证（Bloomberg / Reuters / Fortune / CNBC / TechTimes / NHS / UN / ICML / The AI Chronicle / AI Agent Store / MarkTechPost / BleepingComputer / Edgen.tech / Moneycontrol / Scientific American 等）</p>
+    <p>生成时间：2026-07-05 22:00（北京时间）| 自动化生成 · 仅供参考，不构成投资建议</p>
+    <p>覆盖时段：2026-07-04 22:00 ~ 2026-07-05 22:00（北京时间）| 每条资讯均已通过发布时间 + 事件时间"两闸"核验</p>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026-07-08</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: #f0f0f5; color: #1a1a2e; line-height: 1.7; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px 40px; }
+  /* Header */
+  .header { background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #4338ca 100%); color: #fff; padding: 36px 28px 28px; border-radius: 0 0 20px 20px; margin-bottom: 24px; box-shadow: 0 8px 32px rgba(99,102,241,0.25); }
+  .header h1 { font-size: 26px; font-weight: 800; margin-bottom: 8px; letter-spacing: 0.5px; }
+  .header .subtitle { font-size: 14px; opacity: 0.85; margin-bottom: 16px; }
+  .header .meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 13px; }
+  .header .meta span { background: rgba(255,255,255,0.15); padding: 4px 12px; border-radius: 20px; backdrop-filter: blur(4px); }
+  .header .meta strong { font-weight: 700; }
+  /* Stats bar */
+  .stats-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .stat-chip { background: #fff; border: 1px solid #e2e2ed; border-radius: 10px; padding: 8px 14px; font-size: 13px; display: flex; align-items: center; gap: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+  .stat-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .stat-chip strong { font-weight: 700; color: #1a1a2e; }
+  /* Section */
+  .section { margin-bottom: 28px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #e8e8f0; }
+  .section-header .sec-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
+  .section-header h2 { font-size: 18px; font-weight: 700; color: #1a1a2e; }
+  .section-header .count { font-size: 13px; color: #888; margin-left: auto; background: #f0f0f5; padding: 2px 10px; border-radius: 10px; }
+  /* Card */
+  .card { background: #fff; border-radius: 12px; margin-bottom: 14px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: box-shadow 0.2s, transform 0.15s; border: 1px solid #f0f0f5; }
+  .card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.1); transform: translateY(-2px); }
+  .card-inner { display: flex; }
+  .card-bar { width: 5px; flex-shrink: 0; }
+  .card-body { padding: 14px 18px; flex: 1; }
+  .card-title { font-size: 15px; font-weight: 600; color: #1a1a2e; margin-bottom: 6px; line-height: 1.5; }
+  .card-title a { color: #4f46e5; text-decoration: none; }
+  .card-title a:hover { text-decoration: underline; }
+  .card-meta { font-size: 12px; color: #999; margin-bottom: 8px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .card-meta .source { color: #6366f1; font-weight: 600; }
+  .card-meta .time { color: #aaa; }
+  .card-meta .tag { background: #f0f0f5; color: #666; padding: 1px 8px; border-radius: 8px; font-size: 11px; }
+  .card-summary { font-size: 13.5px; color: #444; line-height: 1.65; }
+  /* Colors */
+  .c-industry { background: #f59e0b; }
+  .c-opinion { background: #10b981; }
+  .c-product { background: #8b5cf6; }
+  .c-tech { background: #06b6d4; }
+  .c-report { background: #3b82f6; }
+  .c-funding { background: #f97316; }
+  /* Insights */
+  .insights { background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 50%, #dbeafe 100%); border-radius: 16px; padding: 28px; margin-top: 36px; border: 1px solid #c7d2fe; }
+  .insights h2 { font-size: 20px; font-weight: 800; color: #3730a3; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .insight-item { background: rgba(255,255,255,0.7); border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; border-left: 4px solid #6366f1; }
+  .insight-item p { font-size: 13.5px; color: #312e81; line-height: 1.7; }
+  .insight-num { font-weight: 800; color: #4f46e5; margin-right: 4px; }
+  .highlight { background: #fef08a; padding: 1px 4px; border-radius: 3px; font-weight: 700; color: #1a1a2e; }
+  /* Footer */
+  .footer { text-align: center; padding: 28px 0 8px; font-size: 12px; color: #999; line-height: 1.8; }
+  .footer .sources { margin-bottom: 6px; }
+  .footer .disclaimer { color: #bbb; font-size: 11px; }
+  /* Responsive */
+  @media (max-width: 600px) {
+    .header { padding: 24px 18px; }
+    .header h1 { font-size: 20px; }
+    .card-body { padding: 12px 14px; }
+    .insights { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>AI 每日全景报告</h1>
+    <div class="subtitle">Daily AI Panorama Report — 中英双语 · 可视化可溯源</div>
+    <div class="meta">
+      <span>📅 <strong>2026年7月8日</strong></span>
+      <span>⏱ 覆盖时段：<strong>7/7 22:00 — 7/8 22:00 北京时间</strong></span>
+      <span>📊 共 <strong>25</strong> 条</span>
+    </div>
+  </div>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="stat-chip"><span class="stat-dot c-industry"></span>行业动态 <strong>7</strong></div>
+    <div class="stat-chip"><span class="stat-dot c-opinion"></span>大V观点 <strong>5</strong></div>
+    <div class="stat-chip"><span class="stat-dot c-product"></span>模型/产品 <strong>6</strong></div>
+    <div class="stat-chip"><span class="stat-dot c-tech"></span>技术/论文 <strong>3</strong></div>
+    <div class="stat-chip"><span class="stat-dot c-report"></span>深度报告 <strong>2</strong></div>
+    <div class="stat-chip"><span class="stat-dot c-funding"></span>投融资 <strong>2</strong></div>
+  </div>
+
+  <!-- Section 1: 行业动态 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="sec-dot c-industry"></span>
+      <h2>🏭 行业动态</h2>
+      <span class="count">7 条</span>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-industry"></div><div class="card-body">
+        <div class="card-title"><a href="https://www.ithome.com/0/973/922.htm" target="_blank">美国商务部批准 OpenAI 大规模发布 GPT-5.6，Sol 明日亮相</a></div>
+        <div class="card-meta"><span class="source">IT之家</span><span class="time">今天 11:30</span><span class="tag">监管 · 模型发布</span></div>
+        <div class="card-summary">美国商务部正式批准 OpenAI 大规模发布 GPT-5.6。OpenAI 宣布 GPT-5.6 Sol 将于本周四完成最后准备后，与 Terra 和 Luna 一同面向公众推出。此前因国家安全考量，美国政府要求分阶段发布，仅允许向经批准的有限实体开放。此次全面放行标志着临时管控结束。获批前，商务部下属 AI 标准与创新中心执行了测试，OpenAI 技术团队驻扎华盛顿配合沟通。美国最新 AI 行政令即将出台，旨在为先进 AI 模型发布建立正式评估框架。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-industry"></div><div class="card-body">
+        <div class="card-title"><a href="https://wixx.com/2026/07/07/exclusive-beijing-is-looking-at-curbing-overseas-access-to-chinas-top-ai-models-sources-say/" target="_blank">中国拟限制外国访问最强 AI 模型——商务部主导，涵盖闭源与开源权重</a></div>
+        <div class="card-meta"><span class="source">Reuters 独家</span><span class="time">昨天 23:14</span><span class="tag">出口管制 · 中美博弈</span></div>
+        <div class="card-summary">Reuters 7月7日独家报道，中国主管部门近月与阿里巴巴、字节跳动、Z.ai 等企业会谈，拟将先进模型（含未发布）留在中国国内。商务部主导、国家发改委参与，表明此举属出口管制而非平台监管。目标涵盖闭源和开源模型，不仅限 API 访问，还包括可下载权重。同时讨论将模型泄漏视为国家安全犯罪，并限制外国资本投资中国 AI 初创。若实施，外国公司将失去低成本模型访问权，全球 AI 市场可能进一步分裂。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-industry"></div><div class="card-body">
+        <div class="card-title"><a href="https://x.com/xiaohu/status/2074736623284256881" target="_blank">工信部发布 Claude Code 后门安全风险提示</a></div>
+        <div class="card-meta"><span class="source">X @xiaohu</span><span class="time">今天 14:05</span><span class="tag">安全 · 供应链</span></div>
+        <div class="card-summary">中国工信部发布风险提示，指出 Claude Code 2.1.91 至 2.1.196 版本内置监控机制，未经用户同意即向远程服务器回传用户地域、身份标识等敏感信息。建议相关单位立即全面排查，对受影响版本卸载或升级至已清除后门代码的最新安全版本，并加强开发工具外联权限管控与流量监测，防止敏感数据违规外传。这是继阿里全面禁用 Claude 后，中国官方层面首次对 AI 编码工具发出正式安全警告。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-industry"></div><div class="card-body">
+        <div class="card-title"><a href="https://the-decoder.com/copilot-goes-cheap-as-microsoft-phases-out-openai-and-anthropic-models-to-cut-costs" target="_blank">微软为降成本在 Copilot 中用自研 MAI 模型替换 OpenAI 和 Anthropic 模型</a></div>
+        <div class="card-meta"><span class="source">The Decoder</span><span class="time">今天 02:35</span><span class="tag">企业战略 · 成本</span></div>
+        <div class="card-summary">微软正用自研 MAI 模型替换 Copilot 产品中的 OpenAI 和 Anthropic 模型以降低支出。MAI 模型已在 Excel 和 Outlook 中每周处理数万次请求，但占比仍小。Build 大会上发布推理模型 MAI-Thinking 1，声称编码媲美 Sonnet 4.6 和 Opus 4.6，但基准测试大幅落后，仅与 DeepSeek V3.2 相当。AI 负责人承认目标是削减并消除对 Anthropic 的支出。CEO 暗示未来可能按用量计费，MAI 为默认，第三方模型付费附加。重度 AI 用户在 $200 订阅上可产生高达 $14,000 成本。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-industry"></div><div class="card-body">
+        <div class="card-title"><a href="https://www.ithome.com/0/974/169.htm" target="_blank">加拿大不列颠哥伦比亚省拟起诉 OpenAI：未上报 ChatGPT 暴力对话致校园枪击惨案</a></div>
+        <div class="card-meta"><span class="source">IT之家</span><span class="time">今天 17:55</span><span class="tag">法律责任 · AI伦理</span></div>
+        <div class="card-summary">加拿大不列颠哥伦比亚省 7 月 7 日宣布将起诉 OpenAI，指控其未向执法部门上报一名 ChatGPT 用户 2025 年 6 月封禁前的暴力相关对话内容。该用户随后于今年 2 月在塔布勒岭制造校园枪击案，杀害 8 人。OpenAI CEO 萨姆·奥尔特曼今年 4 月为此公开致歉，承认本应上报但未执行。受害家属已在加州法院提起诉讼，省政府正协调独立诉讼，要求赔偿用于社区重建。此案可能成为 AI 平台内容上报义务的里程碑判例。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-industry"></div><div class="card-body">
+        <div class="card-title"><a href="https://noma.security/blog/gitlost-how-we-tricked-githubs-ai-agent-into-leaking-private-repos" target="_blank">GitLost：Noma Labs 发现 GitHub AI 代理提示词注入漏洞，可泄露私有仓库</a></div>
+        <div class="card-meta"><span class="source">Hacker News 热门</span><span class="time">今天 16:29</span><span class="tag">安全 · 漏洞披露</span></div>
+        <div class="card-summary">Noma Labs 在 GitHub Agentic Workflows 中发现严重提示词注入漏洞 GitLost。未认证攻击者仅需在属于同一组织的公共仓库中创建一个嵌有恶意指令的 Issue，即可诱使基于 Claude 或 GitHub Copilot 的 AI 代理读取并公开该组织内私有仓库的内容。攻击无需编码技能或凭证，根源在于代理将用户可控内容视为可信指令，且 GitHub 的防护措施因 "Additionally" 关键词被绕过。Noma Labs 已公开 PoC 并建议限制跨仓库权限、隔离用户输入。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-industry"></div><div class="card-body">
+        <div class="card-title"><a href="https://arstechnica.com/security/2026/07/hackers-can-use-9-of-the-most-popular-ai-tools-to-assemble-massive-botnets" target="_blank">HalluSquatting：黑客可利用 9 款最流行的 AI 工具组装大规模僵尸网络</a></div>
+        <div class="card-meta"><span class="source">Ars Technica</span><span class="time">今天 15:00</span><span class="tag">安全 · 攻击研究</span></div>
+        <div class="card-summary">提示注入已成为 AI 安全的首要威胁——大语言模型无法区分合法指令与恶意指令。研究人员提出一种名为 HalluSquatting 的新型拉取式提示注入攻击，首次能组装大规模僵尸网络、执行分布式拒绝服务攻击（DDoS）并大规模感染设备。该攻击可作用于 AI 编码工具，标志着提示注入攻击从单点突破转向规模化利用。这意味着 AI 编码工具不仅可能泄露数据，还可能被武器化为攻击基础设施。</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- Section 2: 大V观点 & 深度报告 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="sec-dot c-opinion"></span>
+      <h2>💬 大V观点 &amp; 深度报告</h2>
+      <span class="count">5 条</span>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-opinion"></div><div class="card-body">
+        <div class="card-title"><a href="https://x.com/emollick/status/2074497401578996154" target="_blank">Ethan Mollick：不期望前沿开放权重模型的供给会无限期持续</a></div>
+        <div class="card-meta"><span class="source">X @emollick</span><span class="time">昨天 22:14</span><span class="tag">大V观点</span></div>
+        <div class="card-summary">宾夕法尼亚大学沃顿商学院教授 Ethan Mollick 在 X 上发帖表示，这是他"不期望前沿开放权重模型的流动会无限期持续"的一个关键原因。该帖与中国拟限制外国访问最强 AI 模型的 Reuters 独家同日发生，形成共振——开源 AI 的"黄金时代"可能正在收尾。Mollick 长期关注 AI 对教育和工作的影响，此前曾多次肯定开源模型的民主化价值。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-opinion"></div><div class="card-body">
+        <div class="card-title"><a href="https://x.com/shao__meng/status/2074661249804366310" target="_blank">Claude 开发者官方分享两种多智能体模式：Advisor 和 Orchestrator</a></div>
+        <div class="card-meta"><span class="source">X @shao__meng</span><span class="time">今天 09:06</span><span class="tag">官方实践 · 成本优化</span></div>
+        <div class="card-summary">Claude 开发者官方分享团队高频使用的两种多智能体模式。Advisor 模式：Sonnet 5 作为执行者，通过 tool call 调用 Fable 5 获取指导。SWE-bench Pro（482 题）上，Sonnet 5 单独 75.5%/$0.75，加顾问达 84%/$1.40，Fable 5 单独 91.5%/$2.25；组合方案约 92% 性能、63% 成本。Orchestrator 模式：Fable 5 作为编排者规划并向多个 Sonnet 5 worker 扇出任务。BrowseComp 上，编排方案 86.8%/$18.53 vs 全 Fable 5 90.8%/$40.56；约 96% 性能、46% 成本。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-opinion"></div><div class="card-body">
+        <div class="card-title"><a href="https://mp.weixin.qq.com/s/dsIfi4C-T5Q4emmIh-7yzg" target="_blank">蚂蚁集团周俊 AICon 演讲：从 Token 数量到 Token 密度，万亿参数模型效率优先</a></div>
+        <div class="card-meta"><span class="source">蚂蚁百灵公众号</span><span class="time">今天 09:00</span><span class="tag">企业高管 · 技术战略</span></div>
+        <div class="card-summary">蚂蚁集团副总裁周俊在 AICon 演讲指出，万亿参数模型每运行 15 分钟算力成本约等于一辆特斯拉，效率是智能体时代最需解决的问题。团队提出从"更多 Token"转向"更高 Token 密度"策略，采用 7 份 Lightning Attention 加 1 份 MLA 的混合线性注意力架构，使 256K 长上下文成本从指数级降至线性级。通过 Kpop 算法区分工具调用与自然语言 Token，结合思维链剪枝、自蒸馏等，Token 输出减少约 4 倍而能力不降。千亿参数模型在 Agent 任务中超越部分更大模型。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-opinion"></div><div class="card-body">
+        <div class="card-title"><a href="https://www.tomtunguz.com/the-10b-fde-boom" target="_blank">FDE 爆发：AI 公司 12 个月承诺 97.5 亿美元部署工程</a></div>
+        <div class="card-meta"><span class="source">Tomer Tunguz 博客</span><span class="time">昨天 08:00</span><span class="tag">深度报告 · VC分析</span></div>
+        <div class="card-summary">AI 公司在 12 个月内合计承诺 97.5 亿美元用于建设前部署工程（FDE）团队。三种结构模型浮现：资产负债模型（微软、亚马逊从现有编制调配，Salesforce 承诺 1000 个 FDE 岗位）；独立实体模型（OpenAI Deployment Company 融资 40 亿美元，投后估值 140 亿；Anthropic 从黑石等融资 15 亿美元）；合作伙伴生态系统模型（Google Cloud 承诺 7.5 亿美元合作伙伴基金）。瓶颈从模型能力转向部署——GPT-4、Claude、Gemini 已足够强大，但多数企业无法自行安装配置。FDE 投资构成护城河：切换成本为制度性而非技术性。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-opinion"></div><div class="card-body">
+        <div class="card-title"><a href="http://bair.berkeley.edu/blog/2026/07/07/intelligence-is-free-now-what" target="_blank">BAIR：智能免费，然后呢？——面向、属于、由智能体驱动的数据系统</a></div>
+        <div class="card-meta"><span class="source">Berkeley AI Research Blog</span><span class="time">昨天 17:00</span><span class="tag">深度报告 · 学术前沿</span></div>
+        <div class="card-summary">AI 推理成本急剧下降。GPT-4 级能力从 2023 年初每百万 token 约 30 美元降至今天不到 1 美元，部分供应商已低于 0.10 美元。推理价格每年下降 9 至 900 倍，中位数约 50 倍。知识工作级智能即将近乎免费。这给数据系统带来三重变革：面向智能体的数据系统需支持智能体推测式探索——单个智能体可能并发发起数十个查询，传统数据库连接池和缓存策略需要重新设计；属于智能体的数据系统需要管理智能体生成的中间状态和记忆；由智能体驱动的数据系统将自主优化数据布局和索引。</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- Section 3: 模型/产品/应用更新 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="sec-dot c-product"></span>
+      <h2>🚀 模型/产品/应用更新</h2>
+      <span class="count">6 条</span>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-product"></div><div class="card-body">
+        <div class="card-title"><a href="https://x.com/AIatMeta/status/2074577662840832382" target="_blank">Meta Superintelligence Labs 推出 Muse Image 和 Muse Video</a></div>
+        <div class="card-meta"><span class="source">X @AIatMeta</span><span class="time">今天 03:33</span><span class="tag">多模态生成</span></div>
+        <div class="card-summary">Meta Superintelligence Labs 发布首个媒体生成模型 Muse Image 和 Muse Video。Muse Image 是目前最先进的图像生成模型，能精确遵循指令、精准编辑、多参考构图，并利用 Instagram 社交上下文。它还具备智能体工具使用能力并集成 Muse Spark。用户可通过 Meta AI 应用、网页、Instagram Stories 和 WhatsApp 试用，初始限于部分国家。Muse Video 基于相同预训练基础，实现高视觉保真度并原生支持音频。这是 MSL 成立后首个自研媒体生成模型。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-product"></div><div class="card-body">
+        <div class="card-title"><a href="https://seed.bytedance.com/zh/blog/%E4%B8%8D%E6%AD%A2-%E7%94%9F%E6%88%90-%E6%9B%B4%E6%87%82-%E8%AE%BE%E8%AE%A1-seedream-5-0-pro-%E5%8F%91%E5%B8%83" target="_blank">字节 Seed 发布 Seedream 5.0 Pro：不止"生成"，更懂"设计"</a></div>
+        <div class="card-meta"><span class="source">字节 Seed</span><span class="time">今天 00:00</span><span class="tag">图像生成</span></div>
+        <div class="card-summary">字节 Seed 今日发布多模态图像创作模型 Seedream 5.0 Pro，在图文匹配、结构合理性、文字渲染与画面美感上全面升级。四大核心突破：复杂信息可视化，可生成高密度信息图；交互式精准编辑，支持点选、圈选、草图渲染、色彩与材质替换、图层分离及多图融合，实现像素级编辑；真实的影像与人像质感，还原光影、材质与皮肤肌理；原生多语种输入与生成，支持十余种语言及本地化视觉特征。已陆续在豆包、即梦、火山方舟等平台上线。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-product"></div><div class="card-body">
+        <div class="card-title"><a href="https://claude.com/blog/cowork-web-mobile" target="_blank">Claude Cowork 向移动端和网页端开放，支持跨设备后台运行</a></div>
+        <div class="card-meta"><span class="source">Claude Blog</span><span class="time">今天 00:24</span><span class="tag">产品迭代</span></div>
+        <div class="card-summary">Claude Cowork 正在向移动端和网页端开放，让会话和文件跨设备同步。Beta 版将在未来几周内首先面向 Max 用户推出。Cowork 可让 Claude 跨文件、日历、邮件、即时通讯等工具完成复杂任务，其中超过 90% 的使用场景并非软件开发，而是日常知识工作（业务运营和内容创作）。工作可跨设备跟随用户：在桌面端开始任务，从手机查看进度；关闭笔记本后 Claude 可继续后台运行，支持定时任务（如周一 6 点自动准备客户简报）。双倍 Cowork 使用额度延长至 8 月 5 日。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-product"></div><div class="card-body">
+        <div class="card-title"><a href="https://x.com/NotebookLM/status/2074551227594264799" target="_blank">NotebookLM 短视频概览正式全量上线</a></div>
+        <div class="card-meta"><span class="source">X @NotebookLM</span><span class="time">今天 01:48</span><span class="tag">产品迭代</span></div>
+        <div class="card-summary">短视频概览功能已正式在移动端和网页端面向所有英语用户全面上线。NotebookLM 此前已支持音频概览（播客形式）和思维导图等功能，短视频概览的加入使其内容形态更加多元。用户可基于上传的文档自动生成短视频摘要，适用于快速浏览复杂资料。Google 持续在 NotebookLM 上试验 AI 辅助知识消费的新形态。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-product"></div><div class="card-body">
+        <div class="card-title"><a href="https://github.com/rowboatlabs/rowboat" target="_blank">Rowboat：开源、本地优先的桌面 AI 助手，Claude Desktop 替代方案</a></div>
+        <div class="card-meta"><span class="source">Hacker News 热帖</span><span class="time">今天 00:10</span><span class="tag">开源产品</span></div>
+        <div class="card-summary">Rowboat 是一个开源、本地优先的桌面 AI 助手，将邮件、会议、Slack 等数据索引为 Obsidian 风格的知识图谱，提供持久上下文记忆。内置邮件客户端、浏览器、会议记录器、代码模式（可调用 Claude Code 或 Codex 代理），并支持按事件或定时运行的背景代理。用户可通过 MCP 协议接入 Exa 搜索、GitHub 等外部工具。所有数据以纯 Markdown 格式本地存储，无供应商锁定，支持 Ollama/LM Studio 本地模型或使用 API 密钥的托管模型。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-product"></div><div class="card-body">
+        <div class="card-title"><a href="https://x.com/krea_ai/status/2074589965653303321" target="_blank">Krea 2 身份保留功能上线，配套 ComfyUI 节点同步发布</a></div>
+        <div class="card-meta"><span class="source">X @krea_ai</span><span class="time">今天 04:22</span><span class="tag">图像生成</span></div>
+        <div class="card-summary">Krea 2 的身份保留（ID preservation）功能已发布，配套模型和 ComfyUI 节点也已上线。身份保留是图像生成领域的关键能力——允许用户在多张生成图片中保持人物面部特征一致性，适用于故事板、品牌素材和社交媒体内容创作。ComfyUI 节点的同步发布意味着该功能可被集成到开源工作流中，降低使用门槛。</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- Section 4: 技术进展 & 论文 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="sec-dot c-tech"></span>
+      <h2>🔬 技术进展 &amp; 论文</h2>
+      <span class="count">3 条</span>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-tech"></div><div class="card-body">
+        <div class="card-title"><a href="https://blog.zksecurity.xyz/posts/circl-bugs" target="_blank">AI 审计代理在 Cloudflare CIRCL 密码学库中发现 7 个真实漏洞</a></div>
+        <div class="card-meta"><span class="source">zkSecurity Blog</span><span class="time">今天 12:29</span><span class="tag">安全 · AI审计</span></div>
+        <div class="card-summary">zkSecurity 的 AI 审计代理 zkao 持续扫描 Cloudflare 的 CIRCL 密码学库，使用 Opus 4.6 + skills 和 GPT-5.3 + skills 等模型发现并确认了 7 个真实漏洞。其中包括阈值 RSA 中 float64 精度丢失（AI 自评 Critical）和属性基加密（CP-ABE）访问控制完全失效（Critical，由 zkao 自行发现）。所有漏洞已在上游修复，多数在 HackerOne 上获得确认和奖励。AI 生成的候选发现仍需人工验证，但 zkao 已能自动完成大部分验证工作，标志着 AI 安全审计从实验走向实用。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-tech"></div><div class="card-body">
+        <div class="card-title"><a href="https://www.marktechpost.com/2026/07/07/liquid-ai-antidoom-doom-loops-ftpo" target="_blank">Liquid AI 开源 Antidoom：基于最终 Token 偏好优化的推理模型死循环修复方法</a></div>
+        <div class="card-meta"><span class="source">MarkTechPost</span><span class="time">今天 00:50</span><span class="tag">开源 · 推理优化</span></div>
+        <div class="card-summary">Liquid AI 开源了 Antidoom，一种基于 Final Token Preference Optimization（FTPO）的针对性修复方法，用于减少推理模型中的 doom loop（死循环）问题。该方法定位循环开始的第一个 token，训练模型选择连贯替代项，而不改变整体输出分布。在 LFM2.5-2.6B 上，硬数学和编程任务中的循环率从 10.2% 降至 1.4%；Qwen3.5-4B 上从 22.9% 降至 1%。整套流程可在数小时内完成，全部代码和数据集（LiquidAI/antidoom-mix-v1.0）已开源。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-tech"></div><div class="card-body">
+        <div class="card-title"><a href="https://usefeyn.com/blog/pulpie-pareto-optimal-models-for-cleaning-the-web" target="_blank">Pulpie：210M 参数清理网页的 Pareto 最优模型，成本仅竞品 1/20</a></div>
+        <div class="card-meta"><span class="source">Hacker News 热门</span><span class="time">今天 09:33</span><span class="tag">开源 · 效率</span></div>
+        <div class="card-summary">Pulpie 是一族 Pareto 最优模型，用于从 HTML 页面提取主要内容。其最小模型 pulpie-orange-small（210M 参数）在 WebMainBench 上取得 0.862 的 ROUGE-5 F1 分数，接近 600M 参数的 Dripper（0.864），但成本仅 1/20。在 NVIDIA L4 GPU 上，Pulpie 处理速度 13.7 页/秒，Dripper 仅 0.68 页/秒。清理 10 亿页 HTML，Pulpie 成本约 $7,900，Dripper 需 $159,000。模型采用编码器架构，单次前向传播即可标记每个 HTML 块为内容或模板，已在 HuggingFace 开源。</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- Section 5: 优秀报告/深度研报 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="sec-dot c-report"></span>
+      <h2>💡 优秀报告 / 深度研报</h2>
+      <span class="count">2 条</span>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-report"></div><div class="card-body">
+        <div class="card-title"><a href="https://claude.com/blog/how-people-are-using-claude-cowork" target="_blank">Anthropic 发布 Claude Cowork 使用数据：120 万会话揭示知识工作新形态</a></div>
+        <div class="card-meta"><span class="source">Claude Blog</span><span class="time">今天 00:24</span><span class="tag">用户数据 · 行业洞察</span></div>
+        <div class="card-summary">基于 2026 年 5 月 11-31 日 120 万次匿名会话样本，Claude Cowork 最大用途为业务流程与运营（33.4%），如整理报告、核对表格；其次为内容创作与文案（16.4%），如起草稿件、制作幻灯片；软件开发仅占 8.7%。用户多用它处理跨团队衔接性任务，例如律师处理文档格式、招聘经理汇总面试反馈。这一数据颠覆了"AI 主要用于编程"的固有认知——超过 90% 的使用场景是日常知识工作，说明 AI 的价值锚点正在从开发者向更广泛的知识工作者迁移。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-report"></div><div class="card-body">
+        <div class="card-title"><a href="https://www.fastcompany.com/91520702/y-combinator-garry-tan-agentic-ai-social-media" target="_blank">YC CEO 声称每日用 AI 部署 3.7 万行代码，开发者审查发现前端大量臃肿低效</a></div>
+        <div class="card-meta"><span class="source">Fast Company / Hacker News</span><span class="time">今天 01:52</span><span class="tag">AI编码质量 · 深度分析</span></div>
+        <div class="card-summary">Y Combinator CEO Garry Tan 在 X 上宣称，他与 AI 编码代理每天在五个项目中部署 37000 行代码，并保持连续 72 天发布记录。波兰开发者 Gregorein 深入审查 Tan 网站前端代码，发现大量臃肿与低效问题：页面加载 169 次请求、总计 6.42MB 数据（对比 Hacker News 仅 7 次 12KB）；包含 28 个测试文件、78 个未使用的 JavaScript 控制器、八种格式 Logo（含空文件）、未压缩的旧 PNG 等。Gregorein 指出，AI 虽能快速生成代码，但质量仍应优先于数量——"LoC 不是衡量工程价值的标准"。</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- Section 6: 投融资动态 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="sec-dot c-funding"></span>
+      <h2>💰 投融资动态</h2>
+      <span class="count">2 条</span>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-funding"></div><div class="card-body">
+        <div class="card-title"><a href="https://www.techtimes.com/articles/319824/20260707/sk-hynix-launches-record-28b-nasdaq-listing-hbm-shortage-locks-ai-memory-lead.htm" target="_blank">SK Hynix $28.2B Nasdaq ADR 发行启动，7 月 10 日挂牌——史上最大外国公司美股 IPO</a></div>
+        <div class="card-meta"><span class="source">TechTimes / IPO Scoop</span><span class="time">昨天</span><span class="tag">IPO · 半导体</span></div>
+        <div class="card-summary">SK Hynix 启动史上最大外国公司美股 ADR 发行，拟募资约 $28.21B，股票代码 SKHY，预计 7 月 10 日在 Nasdaq 挂牌。此次上市为美国投资者首次提供对 HBM 主导制造商的直接投资渠道。SK Hynix 凭借 HBM3E 在 AI 内存市场占据主导地位，年内股价已涨约 270%。HBM 短缺持续锁定 AI 内存龙头地位，但渣打此前警告"中段论"——若 AI 算力需求增速放缓，内存价格可能面临周期性回调风险。</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner"><div class="card-bar c-funding"></div><div class="card-body">
+        <div class="card-title"><a href="https://aifundingtracker.com/ai-startup-funding-news-today/" target="_blank">Even Realities 获 $1.5 亿 Pre-Series B 融资，腾讯美团领投 AI 智能眼镜赛道</a></div>
+        <div class="card-meta"><span class="source">AI Funding Tracker</span><span class="time">7月6日</span><span class="tag">融资 · 消费硬件</span></div>
+        <div class="card-summary">Even Realities 完成 $150M Pre-Series B 融资，由腾讯和美团领投，估值达 $10 亿。该公司专注于 AI 智能眼镜，是消费级 AI 硬件赛道的重要玩家。腾讯和美团作为中国互联网巨头联合领投 AI 硬件项目，反映出大厂对 AI 消费终端入口的战略重视。同期 AI 融资追踪器显示，7 月初融资节奏略有放缓——6 月下旬密集出现 Baseten $1.5B（$11-13B 估值）、Together AI $800M（$8.3B 估值）等大额交易后，市场进入消化期。</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- Investment Insights -->
+  <div class="insights">
+    <h2>📋 今日总结 &amp; 投资启示</h2>
+
+    <div class="insight-item">
+      <p><span class="insight-num">1.</span>GPT-5.6 全面解封标志着美国 AI 临时管控框架走向正式化——商务部下属 AI 标准与创新中心执行测试，<span class="highlight">新行政令即将出台</span>，意味着未来前沿模型发布将进入"测试-审批-发布"常态化流程。管控不确定性消除是<span class="highlight">短期利好</span>，但合规成本将系统性计入模型发布周期。OpenAI/Anthropic/Google 均需适配这一新常态。</p>
+    </div>
+
+    <div class="insight-item">
+      <p><span class="insight-num">2.</span>中国拟限制外国访问最强 AI 模型是<span class="highlight">中美 AI"双向脱钩"的关键一步</span>——商务部主导表明这是出口管制行为，涵盖闭源和开源模型及可下载权重。Ethan Mollick 同日发帖称"不期望前沿开放权重模型供给持续"，两件事共振指向<span class="highlight">开源 AI 的"黄金时代"可能正在收尾</span>。海外依赖中国开源模型（DeepSeek/Qwen）的企业需寻找替代方案。</p>
+    </div>
+
+    <div class="insight-item">
+      <p><span class="insight-num">3.</span>微软在 Copilot 中用自研 MAI 模型替换 OpenAI/Anthropic 模型——AI 推理商品化从"战略讨论"进入<span class="highlight">"运营执行"阶段</span>。MAI 在 Excel/Outlook 中每周处理数万次请求，但基准测试仅与 DeepSeek V3.2 相当。微软选择<span class="highlight">性能降级换成本控制</span>，验证 AI 推理"足够好"门槛正在下移。对 OpenAI 而言，最大客户正在变成竞争对手——$14,000/$200 的重度用户成本倒逼必然。</p>
+    </div>
+
+    <div class="insight-item">
+      <p><span class="insight-num">4.</span>AI 编码工具供应链安全风险三连击——工信部对 Claude Code 后门发出正式安全警告，GitLost 漏洞可诱导 GitHub AI 代理泄露私有仓库，HalluSquatting 可利用 AI 工具组装<span class="highlight">大规模僵尸网络</span>。三件事同日发生，标志着 AI 编码工具从"生产力工具"进入<span class="highlight">"国家级安全监管议题"</span>阶段。依赖 Claude Code/Copilot 的企业需重新评估供应链风险。</p>
+    </div>
+
+    <div class="insight-item">
+      <p><span class="insight-num">5.</span>多模态生成赛道竞争白热化——Meta Muse Image/Video 与字节 Seedream 5.0 Pro 同日发布。Meta 利用 Instagram 社交上下文做差异化，字节强化<span class="highlight">像素级精准编辑</span>和多语种能力。两者均免费或低价策略，对 Midjourney/Stable Diffusion 等付费产品构成直接竞争压力。Claude Cowork 数据显示 AI 使用场景<span class="highlight">90% 以上是知识工作而非编程</span>，验证 AI 价值锚点正在从开发者向更广泛的知识工作者迁移。</p>
+    </div>
+
+    <div class="insight-item">
+      <p><span class="insight-num">6.</span>SK Hynix $28.2B Nasdaq IPO 7 月 10 日挂牌在即——史上最大外国公司美股 IPO 验证 HBM 超级周期仍在高位。年内股价已涨<span class="highlight">270%</span>，但需警惕"中段论"风险：若 AI 算力需求增速放缓或 HBM 产能释放超预期，内存价格可能面临<span class="highlight">周期性回调</span>。蚂蚁周俊"Token 密度"演讲从另一角度验证——效率优化正在降低算力消耗增速，中长期对 HBM 需求曲线构成平抑效应。</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="sources">数据来源：AI HOT API · Reuters · IT之家 · The Decoder · Ars Technica · Hacker News · Claude Blog · X (Twitter) · TechCrunch · MarkTechPost · Fast Company · Berkeley AI Research · Tomer Tunguz Blog · zkSecurity · TechTimes · AI Funding Tracker</div>
+    <div>生成时间：2026-07-08 22:00 北京时间 | 自动化调度触发 | GLM-5.2 Thinking</div>
+    <div class="disclaimer">⚠️ 本报告由 AI 自动生成，仅供研究参考，不构成投资建议。数据可能存在延迟或遗漏，请以原始来源为准。</div>
+  </div>
+
+</div>
+</body>
+</html>

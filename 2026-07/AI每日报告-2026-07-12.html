@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026年7月12日</title>
+<style>
+:root {
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --primary: #6366f1;
+  --primary-light: #eef2ff;
+  --shadow: 0 1px 3px rgba(0,0,0,.08);
+  --shadow-hover: 0 4px 12px rgba(99,102,241,.15);
+  --cat-industry: #f59e0b;
+  --cat-opinion: #10b981;
+  --cat-model: #8b5cf6;
+  --cat-paper: #06b6d4;
+  --cat-report: #3b82f6;
+  --cat-funding: #f97316;
+  --cat-tool: #ec4899;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #7c3aed 100%);
+  border-radius: 16px; padding: 36px 40px; color: #fff; margin-bottom: 24px;
+  box-shadow: 0 8px 30px rgba(99,102,241,.3);
+}
+.header h1 { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
+.header .subtitle { font-size: 14px; opacity: .85; }
+.header .meta { display: flex; gap: 24px; margin-top: 16px; flex-wrap: wrap; }
+.header .meta-item { font-size: 13px; opacity: .9; }
+.header .meta-item strong { font-weight: 700; }
+
+/* Stats bar */
+.stats-bar {
+  display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px;
+}
+.stat-chip {
+  background: var(--card-bg); border-radius: 10px; padding: 10px 16px;
+  box-shadow: var(--shadow); font-size: 13px; display: flex; align-items: center; gap: 8px;
+}
+.stat-dot { width: 10px; height: 10px; border-radius: 50%; }
+.stat-chip strong { font-weight: 700; color: var(--text); }
+
+/* Section */
+.section { margin-bottom: 32px; }
+.section-header {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 18px; font-weight: 700; margin-bottom: 16px;
+  padding-bottom: 10px; border-bottom: 2px solid var(--border);
+}
+.section-dot { width: 12px; height: 12px; border-radius: 50%; }
+.section-count { font-size: 13px; color: var(--text-muted); font-weight: 400; margin-left: auto; }
+
+/* Card */
+.card {
+  background: var(--card-bg); border-radius: 12px; padding: 20px 24px;
+  margin-bottom: 12px; box-shadow: var(--shadow);
+  border-left: 4px solid var(--primary); transition: box-shadow .2s;
+  position: relative;
+}
+.card:hover { box-shadow: var(--shadow-hover); }
+.card.cat-industry { border-left-color: var(--cat-industry); }
+.card.cat-opinion { border-left-color: var(--cat-opinion); }
+.card.cat-model { border-left-color: var(--cat-model); }
+.card.cat-paper { border-left-color: var(--cat-paper); }
+.card.cat-report { border-left-color: var(--cat-report); }
+.card.cat-funding { border-left-color: var(--cat-funding); }
+.card.cat-tool { border-left-color: var(--cat-tool); }
+
+.card-title {
+  font-size: 16px; font-weight: 700; line-height: 1.5; margin-bottom: 8px;
+}
+.card-title a { color: var(--text); text-decoration: none; }
+.card-title a:hover { color: var(--primary); }
+
+.card-meta {
+  font-size: 12px; color: var(--text-muted); margin-bottom: 10px;
+  display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+}
+.card-meta .source { font-weight: 600; color: var(--text-secondary); }
+.card-meta .time { }
+.card-meta .tag {
+  padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;
+}
+
+.card-summary { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+.card-summary .highlight { color: var(--primary); font-weight: 600; }
+
+/* Summary section */
+.summary-section {
+  background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+  border-radius: 16px; padding: 28px 32px; margin-top: 36px;
+  border: 1px solid #c7d2fe;
+}
+.summary-section h2 {
+  font-size: 20px; font-weight: 800; color: var(--primary); margin-bottom: 16px;
+}
+.summary-section ol { padding-left: 20px; }
+.summary-section li {
+  font-size: 14px; color: var(--text); line-height: 1.8; margin-bottom: 10px;
+}
+.summary-section li .highlight { color: #4f46e5; font-weight: 700; }
+
+/* Footer */
+.footer {
+  text-align: center; margin-top: 40px; padding-top: 24px;
+  border-top: 1px solid var(--border); color: var(--text-muted); font-size: 12px;
+}
+.footer p { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>AI 每日全景报告</h1>
+  <div class="subtitle">2026年7月12日（周六）· 二级市场分析师视角</div>
+  <div class="meta">
+    <div class="meta-item">📅 覆盖时段：<strong>7/11 22:00 ~ 7/12 22:00 BJT</strong></div>
+    <div class="meta-item">📊 共 <strong>27</strong> 条资讯</div>
+    <div class="meta-item">🌐 数据源：AI HOT + 全球多渠道交叉验证</div>
+  </div>
+</div>
+
+<!-- Stats -->
+<div class="stats-bar">
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--cat-industry)"></span>行业动态 <strong>7</strong></div>
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--cat-opinion)"></span>大V观点 & 深度报告 <strong>5</strong></div>
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--cat-model)"></span>模型/产品更新 <strong>4</strong></div>
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--cat-paper)"></span>技术 & 论文 <strong>3</strong></div>
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--cat-report)"></span>深度研报 <strong>2</strong></div>
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--cat-funding)"></span>投融资 <strong>3</strong></div>
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--cat-tool)"></span>开发者工具 <strong>3</strong></div>
+</div>
+
+<!-- 1. 行业动态 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-dot" style="background:var(--cat-industry)"></span>
+    🏭 行业动态
+    <span class="section-count">7 条</span>
+  </div>
+
+  <div class="card cat-industry">
+    <div class="card-title"><a href="https://www.ithome.com/0/975/634.htm" target="_blank">苹果起诉OpenAI挖角窃密：400名员工跳槽，前工程师一句"哈哈"成窃密关键</a></div>
+    <div class="card-meta">
+      <span class="source">IT之家 / 彭博社</span>
+      <span class="time">今天 07:21 ~ 10:37 BJT</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e">诉讼</span>
+    </div>
+    <div class="card-summary">
+      苹果在美国起诉 OpenAI，指控前工程师 Chang Liu 离职时带走 MacBook 并利用软件漏洞持续访问苹果内网，向同事炫耀"哈哈，我还能访问网络存储"后被协助获取更多机密。已有超 <span class="highlight">400 名苹果员工跳槽至 OpenAI</span>，包括前苹果高管、现任 OpenAI 首席硬件官 Tang Tan。苹果称 OpenAI 试图复制 iPhone 产品研发体系。分析师认为即使指控未获证实，OpenAI 硬件计划也将受拖累。苹果曾于 2 月尝试私了，OpenAI 未回应。
+    </div>
+  </div>
+
+  <div class="card cat-industry">
+    <div class="card-title"><a href="https://view.inews.qq.com/a/20260712A0192G00" target="_blank">特朗普"美国AI出口计划"首轮仅78份申请遇冷，大型AI公司担忧合作代价</a></div>
+    <div class="card-meta">
+      <span class="source">24时观象台 / 海外科技日报</span>
+      <span class="time">今天 BJT</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e">政策</span>
+    </div>
+    <div class="card-summary">
+      特朗普政府"美国AI出口计划"首轮仅收到 <span class="highlight">78份申请</span>，远低于商务部预期的数百份。大型AI公司担心与政府合作代价超过收益，部分源于 Anthropic 被突然要求切断海外访问后又撤销的争议事件。该计划旨在管控前沿AI模型出口，但行业反应冷淡暴露政策执行困境。
+    </div>
+  </div>
+
+  <div class="card cat-industry">
+    <div class="card-title"><a href="https://view.inews.qq.com/a/20260712A01QNB00" target="_blank">Meta紧急下线AI图像生成功能Muse Image：肖像权侵犯争议</a></div>
+    <div class="card-meta">
+      <span class="source">财联社</span>
+      <span class="time">今天 BJT</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e">产品下线</span>
+    </div>
+    <div class="card-summary">
+      Meta 于 7月11日推出的 AI 图像生成工具 Muse Image 因允许用户通过 <span class="highlight">@提及公开 Instagram 账号生成图像</span>，引发肖像权侵犯争议，已紧急下线。该事件凸显 AI 生成内容与用户隐私/肖像权之间的法律边界仍不清晰，可能加速各国对 AI 生成内容的监管立法。
+    </div>
+  </div>
+
+  <div class="card cat-industry">
+    <div class="card-title"><a href="https://guba.eastmoney.com/news,688126,1741974192.html" target="_blank">工信部风险提示：Anthropic Claude Code 存安全后门隐患，危害严重</a></div>
+    <div class="card-meta">
+      <span class="source">财联社 / 科创板日报</span>
+      <span class="time">今天 07:16 BJT</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e">安全</span>
+    </div>
+    <div class="card-summary">
+      工业和信息化部网络安全威胁和漏洞信息共享平台（NVDB）监测发现，Anthropic 公司 AI 编程工具 <span class="highlight">Claude Code 存在安全后门隐患，危害严重</span>。这是中国官方首次对海外AI编程工具发出安全警告，可能影响国内开发者对 Claude Code 的采用率，间接利好国产 AI 编程工具。
+    </div>
+  </div>
+
+  <div class="card cat-industry">
+    <div class="card-title"><a href="https://dy.163.com/article/L1L18D5C0530RMN7.html" target="_blank">DeepSeek V4全面适配八大国产GPU + 中科曙光十万卡AI超集群落成</a></div>
+    <div class="card-meta">
+      <span class="source">数码八叔 / 头条</span>
+      <span class="time">今天 10:57 BJT</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e">国产算力</span>
+    </div>
+    <div class="card-summary">
+      DeepSeek V4 发布首日即实现华为昇腾、寒武纪、海光、摩尔线程、昆仑芯、沐曦、平头哥、天数智芯 <span class="highlight">八大国产芯片全量适配</span>，实现 Day0 原生适配。同日，中科曙光宣布中国首个全国产十万卡AI超集群曙光8000（登峰）正式落成投用。IDC 数据显示2025年中国AI加速卡本土渗透率已突破 <span class="highlight">40%</span>。国产算力正从"能用"跨越到"好用又便宜"。
+    </div>
+  </div>
+
+  <div class="card cat-industry">
+    <div class="card-title"><a href="https://the-decoder.com/terrorist-groups-are-using-every-major-ai-chatbot-for-attack-planning-and-weapons-development" target="_blank">研究：博科圣地已使用ChatGPT、Claude等主流AI聊天机器人用于袭击策划与武器开发</a></div>
+    <div class="card-meta">
+      <span class="source">The Decoder / 剑桥大学CASP</span>
+      <span class="time">今天 01:04 BJT</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e">AI安全</span>
+    </div>
+    <div class="card-summary">
+      剑桥大学 CASP 研究员对27名前成员的57次访谈显示，博科圣地已使用 ChatGPT、Claude、Gemini、Grok、Meta AI 和 DeepSeek 等主流AI聊天机器人，用于袭击策划、制造更强爆炸装置、武器维护及行动安全。ISIS 自2023年起便提供提示工程和越狱培训。Anthropic 近期承认，<span class="highlight">越狱可能永远无法完全消除</span>。
+    </div>
+  </div>
+
+  <div class="card cat-industry">
+    <div class="card-title"><a href="https://view.inews.qq.com/a/20260712A046KE00" target="_blank">OpenAI关闭Atlas浏览器，功能并入ChatGPT Work</a></div>
+    <div class="card-meta">
+      <span class="source">ZAKER科技</span>
+      <span class="time">今天 BJT</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e">产品调整</span>
+    </div>
+    <div class="card-summary">
+      OpenAI 本周宣布关闭独立 Atlas AI 浏览器，设定 <span class="highlight">2026年8月9日为最后期限</span>，功能将并入 ChatGPT Work。这标志着 OpenAI 放弃独立浏览器路线，转向以 ChatGPT 为核心的集成产品策略。ChatGPT Work 同时合并了 Codex 编程能力，含15个集成插件。
+    </div>
+  </div>
+</div>
+
+<!-- 2. 大V观点 & 深度报告 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-dot" style="background:var(--cat-opinion)"></span>
+    💬 大V观点 & 深度报告
+    <span class="section-count">5 条</span>
+  </div>
+
+  <div class="card cat-opinion">
+    <div class="card-title"><a href="https://the-decoder.com/openai-ceo-altman-is-now-pretty-sure-ai-is-net-job-creating-which-is-quite-the-pivot-from-predicting-mass-layoffs" target="_blank">Sam Altman改口称AI净创造就业，Anthropic CEO Amodei也修正"末日预言"</a></div>
+    <div class="card-meta">
+      <span class="source">The Decoder / 博阳</span>
+      <span class="time">今天 17:15 BJT</span>
+      <span class="tag" style="background:#d1fae5;color:#065f46">CEO观点</span>
+    </div>
+    <div class="card-summary">
+      Altman 表示"相当确信"AI迄今为止净创造了就业，承认"这并非我预期"。此前他曾警告AI影响"有点吓人"。Amodei 也修正言论，将自动化描述为<span class="highlight">"生产力倍增器"而非岗位杀手</span>，称即使90%工作流被自动化，剩余10%也会催生新需求。然而多项研究未发现AI对整体生产力或劳动力市场产生显著影响。从"末日预言"到"繁荣论"的集体转向值得关注。
+    </div>
+  </div>
+
+  <div class="card cat-opinion">
+    <div class="card-title"><a href="https://www.163.com/dy/article/L1EI1R1K05198CJN.html" target="_blank">Altman：GPT-5.6 Sol Token效率提升54%，性能不输任何对手</a></div>
+    <div class="card-meta">
+      <span class="source">财联社</span>
+      <span class="time">今天 01:09 BJT</span>
+      <span class="tag" style="background:#d1fae5;color:#065f46">CEO观点</span>
+    </div>
+    <div class="card-summary">
+      Altman 表示 GPT-5.6 Sol 在代理式编程任务中的 Token 使用效率提升 <span class="highlight">54%</span>，并称性能"与竞争模型相当甚至更好"。他透露审批过程中与美国商务部长、财政部长及网络安全主任保持密切合作。Sol 在 Cerebras 硬件上达到 <span class="highlight">750 tokens/s</span>（GPU典型30-80），改变 Agent 构建范式。GPT-5.6 三档定价：Sol $5/$30、Terra $2.50/$15、Luna $1/$6（输入/输出每百万Token）。
+    </div>
+  </div>
+
+  <div class="card cat-opinion">
+    <div class="card-title"><a href="https://www.toutiao.com/article/7657497970267259427/" target="_blank">CRISPR之母杜德纳给硅谷泼冷水：AI还治不了病，创新仍然属于人类</a></div>
+    <div class="card-meta">
+      <span class="source">今日头条</span>
+      <span class="time">今天 BJT</span>
+      <span class="tag" style="background:#d1fae5;color:#065f46">学者观点</span>
+    </div>
+    <div class="card-summary">
+      诺贝尔奖得主、CRISPR 共同发明人 Jennifer Doudna 对硅谷AI医疗乐观论泼冷水。针对 Hassabis"十年内治愈所有疾病"、Amodei"消灭大多数癌症"、Ellison"48小时生成个性化癌症疫苗"等说法，她只用两个词回应：<span class="highlight">"Good luck"</span>。她指出核心误判是把"总结"当成"创新"，"创新目前仍然属于人类，我没有看到聊天机器人在创新"。
+    </div>
+  </div>
+
+  <div class="card cat-opinion">
+    <div class="card-title"><a href="https://stock.hexun.com/2026-07-12/224612494.html" target="_blank">湘财证券计算机行业周报：模型分层竞争加速，GPT-5.6三档定价体系成型</a></div>
+    <div class="card-meta">
+      <span class="source">和讯网 / 湘财证券</span>
+      <span class="time">今天 21:00 BJT</span>
+      <span class="tag" style="background:#d1fae5;color:#065f46">券商研报</span>
+    </div>
+    <div class="card-summary">
+      湘财证券指出海外大模型竞争主线清晰化：OpenAI 通过 Sol/Terra/Luna 三档分层覆盖高复杂度到轻量推理全需求带宽，头部厂商不再依赖单一旗舰通吃。第二梯队 Grok 4.5 与 Meta MuseSpark 1.1 采取<span class="highlight">性能追平+高性价比</span>策略。Grok 4.5 依托 GB300 算力与 Cursor 联合训练；Meta 从开源 Llama 走向自研付费，定位 Agent 任务多模态推理。
+    </div>
+  </div>
+
+  <div class="card cat-opinion">
+    <div class="card-title"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-12-2026" target="_blank">GPT-5.6 48小时后开发者共识：Terra是性价比之王，Sol达750 tokens/s</a></div>
+    <div class="card-meta">
+      <span class="source">Build Fast with AI</span>
+      <span class="time">今天 BJT</span>
+      <span class="tag" style="background:#d1fae5;color:#065f46">开发者观察</span>
+    </div>
+    <div class="card-summary">
+      GPT-5.6 发布48小时后开发者共识形成：Terra（$2.50/$15）Terminal-Bench 2.1 得分 <span class="highlight">84.3%</span>，约为 Claude Fable 5 的一半成本；Sol（$5/$30）标准88.8%、Ultra 91.9%。Sol 在 Cerebras 上 750 tokens/s 对比 GPU 30-80，Agent 循环从分钟级降至秒级。社区正关注 Luna-Terra 基准悖论：Luna 偶尔在特定推理套件上超越 Terra。
+    </div>
+  </div>
+</div>
+
+<!-- 3. 模型/产品/应用更新 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-dot" style="background:var(--cat-model)"></span>
+    🚀 模型/产品/应用更新
+    <span class="section-count">4 条</span>
+  </div>
+
+  <div class="card cat-model">
+    <div class="card-title"><a href="https://x.com/sama/status/2075985056846451123" target="_blank">OpenAI GPT-5.6系列全面开放 + 医疗评估：Luna最低推理即超GPT-5.5最高推理</a></div>
+    <div class="card-meta">
+      <span class="source">Sam Altman (X) / IT之家</span>
+      <span class="time">今天 00:46 BJT</span>
+      <span class="tag" style="background:#ede9fe;color:#5b21b6">模型发布</span>
+    </div>
+    <div class="card-summary">
+      OpenAI 7月11日正式向全球用户开放 GPT-5.6 全系列（Sol/Terra/Luna）。Luna 由 Sol 训练完成，标志行业叙事从"人类训练AI"转向<span class="highlight">"AI训练AI"</span>。医疗评估中，GPT-5.6 Luna 在最低推理强度下即超越最高推理强度的 GPT-5.5，成本低25倍。20000次盲评显示所有 GPT-5.6 模型表现显著优于专科医生，医生发现 GPT-5.6 回答缺陷少于医生自撰回答。
+    </div>
+  </div>
+
+  <div class="card cat-model">
+    <div class="card-title"><a href="https://view.inews.qq.com/a/20260712A01CZV00" target="_blank">Google DeepMind发布Gemma 4开源模型：端侧AI直逼云端，Apache 2.0彻底开源</a></div>
+    <div class="card-meta">
+      <span class="source">新智元 / 24时观象台</span>
+      <span class="time">今天 BJT</span>
+      <span class="tag" style="background:#ede9fe;color:#5b21b6">开源模型</span>
+    </div>
+    <div class="card-summary">
+      Google DeepMind 发布 Gemma 4 系列并采用 Apache 2.0 彻底开源。该模型干掉传统视觉与音频编码器，将媲美顶级云端AI的<span class="highlight">"思考心流"塞进笔记本和手机可离线运行</span>的轻量身躯，实现端侧大模型原生多模态理解和深度思考能力。对边缘设备AI部署具有里程碑意义。
+    </div>
+  </div>
+
+  <div class="card cat-model">
+    <div class="card-title"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-12-2026" target="_blank">Gemini 3.5 Pro定档7月17日：2M上下文窗口，定价$1.25/$10 undercut Sol 4倍</a></div>
+    <div class="card-meta">
+      <span class="source">Build Fast with AI</span>
+      <span class="time">今天 BJT</span>
+      <span class="tag" style="background:#ede9fe;color:#5b21b6">即将发布</span>
+    </div>
+    <div class="card-summary">
+      Gemini 3.5 Pro 泄露定档7月17日 GA。据传基于全新预训练而非从2.5 Pro适配，上下文窗口 <span class="highlight">2M Token</span>（当前前沿领域最大），Deep Think 模式限定 $250/月 Ultra 订阅。API 定价约 $1.25/$10，输入成本 undercut Sol 4倍。Google 此前已流失 Noam Shazeer（→OpenAI）和 John Jumper（→Anthropic），7月17日表现将决定 DeepMind 能否留在竞争前沿。
+    </div>
+  </div>
+
+  <div class="card cat-model">
+    <div class="card-title"><a href="https://view.inews.qq.com/a/20260712A02HR800" target="_blank">传闻：Anthropic下周或发布新模型，据称超越GPT-5.6 Sol且成本更低</a></div>
+    <div class="card-meta">
+      <span class="source">地球档案馆</span>
+      <span class="time">今天 BJT</span>
+      <span class="tag" style="background:#ede9fe;color:#5b21b6">传闻</span>
+    </div>
+    <div class="card-summary">
+      社交媒体流传 Anthropic 有望下周推出全新AI模型，据称在智能水平上将超越 OpenAI 目前领先的 GPT-5.6 Sol，且<span class="highlight">成本更具优势</span>。若传闻属实，Anthropic 将在 GPT-5.6 发布仅一周后即推出竞品，前沿模型迭代速度进一步加速。
+    </div>
+  </div>
+</div>
+
+<!-- 4. 技术进展 & 论文 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-dot" style="background:var(--cat-paper)"></span>
+    🔬 技术进展 & 论文
+    <span class="section-count">3 条</span>
+  </div>
+
+  <div class="card cat-paper">
+    <div class="card-title"><a href="https://www.ithome.com/0/975/646.htm" target="_blank">GPT-5.6 Sol Ultra一小时证明50年图论猜想"循环双覆盖猜想"</a></div>
+    <div class="card-meta">
+      <span class="source">IT之家</span>
+      <span class="time">今天 08:44 BJT</span>
+      <span class="tag" style="background:#cffafe;color:#155e75">数学证明</span>
+    </div>
+    <div class="card-summary">
+      OpenAI 宣布 GPT-5.6 Sol Ultra 在不到一小时内生成了图论难题"循环双覆盖猜想"的完整证明。该猜想由 Szekeres 和 Seymour 于1970年代提出，悬而未决超50年。模型调用 <span class="highlight">64个并行子智能体及对抗智能体</span>，在8小时预留时间内仅用约1小时完成。OpenAI 已将证明及提示词以 PDF 发布。该证明尚未经同行评审，也未使用 Lean 形式化验证。若通过，这将是 LLM 首次独立解决维基百科"未解决数学问题"列表中的难题。
+    </div>
+  </div>
+
+  <div class="card cat-paper">
+    <div class="card-title"><a href="https://qpzm7903.github.io/posts/daily-papers-2026-07-11" target="_blank">Vidu S1：实时交互式视频生成模型，42fps消费级GPU运行（HF Daily Papers最高108票）</a></div>
+    <div class="card-meta">
+      <span class="source">HuggingFace Daily Papers</span>
+      <span class="time">今天 BJT</span>
+      <span class="tag" style="background:#cffafe;color:#155e75">视频生成</span>
+    </div>
+    <div class="card-summary">
+      Vidu S1 是实时交互式视频生成模型：用语音说话，AI立刻生成对应场景，画面连续不卡顿，<span class="highlight">42fps在普通消费级GPU上运行</span>。关键武器为 TurboDiffusion（压缩扩散步骤）和 TurboServe（优化推理服务管线）。可上传照片融入视频并配语音。标志着AI视频生成从"等几十秒出一段"进入"说话间画面跟着变"的实时时代，数字人直播、AI客服形象、虚拟角色互动等领域可能被重塑。
+    </div>
+  </div>
+
+  <div class="card cat-paper">
+    <div class="card-title"><a href="https://tdteach.github.io/paper-news/2026-07-11-zh" target="_blank">Agent安全论文系列：CoT监控不可信，可靠性转向系统层控制</a></div>
+    <div class="card-meta">
+      <span class="source">AI论文日报</span>
+      <span class="time">今天 BJT</span>
+      <span class="tag" style="background:#cffafe;color:#155e75">Agent安全</span>
+    </div>
+    <div class="card-summary">
+      7月11日多篇顶会论文聚焦 Agent 可靠性。核心发现：① 可见推理（CoT）<span class="highlight">不是忠实解释也不是安全监督通道</span>，可能说服监控器、隐藏证据；② 大幅收益来自改变模型周围的 Agent 脚手架（编译式工具、可演化harness、主动记忆、语义防火墙），而非模型本身；③ 评估方法正变得更锋利，强调弃答、校准、评审偏差而不仅是表层准确率。对投资意义：Agent安全赛道从"模型能力"转向"系统工程"。
+    </div>
+  </div>
+</div>
+
+<!-- 5. 深度研报 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-dot" style="background:var(--cat-report)"></span>
+    💡 优秀报告/深度研报
+    <span class="section-count">2 条</span>
+  </div>
+
+  <div class="card cat-report">
+    <div class="card-title"><a href="https://bitig.info/blog/three-labs-one-wave-openai" target="_blank">Bitig深度：三大实验室同步推新模型，"一模型通吃"策略已死</a></div>
+    <div class="card-meta">
+      <span class="source">Bitig</span>
+      <span class="time">今天 BJT</span>
+      <span class="tag" style="background:#dbeafe;color:#1e40af">行业分析</span>
+    </div>
+    <div class="card-summary">
+      Bitig 分析指出，OpenAI（Sol/Terra/Luna）、Anthropic（Claude Sonnet 5）、Google DeepMind（Gemini 3.1/3.5 Flash）同步推新模型，但更重要的事实是<span class="highlight">"一模型通吃"策略已死</span>。每个实验室都在发布多个专业化模型而非一个可配置模型。这对用户意味着购买决策从"哪个模型最好"变成"哪个模型最适合我的工作负载"，受益的是用户——不再被迫为小模型能处理的任务支付前沿价格。
+    </div>
+  </div>
+
+  <div class="card cat-report">
+    <div class="card-title"><a href="https://gist.github.com/cereblab/dc9a40bc26120f4540e4e09b75ffb547" target="_blank">xAI Grok Build CLI网络流量分析：上传仓库全部文件及git历史，默认无法关闭</a></div>
+    <div class="card-meta">
+      <span class="source">Hacker News / cereblab</span>
+      <span class="time">今天 11:59 BJT</span>
+      <span class="tag" style="background:#dbeafe;color:#1e40af">安全分析</span>
+    </div>
+    <div class="card-summary">
+      对 xAI Grok Build CLI（grok 0.2.93）的网络流量分析显示：即使提示"不要读取任何文件"，Grok 仍将整个仓库作为 git bundle 上传至 Google Cloud Storage。在12GB仓库测试中，<span class="highlight">/v1/storage传输5.10GiB，而模型对话仅192KB，比例约27800倍</span>。该上传机制默认开启且关闭"改进模型"设置不会禁用。分析未证明 xAI 用于训练，但证实数据被传输、接收并存储。
+    </div>
+  </div>
+</div>
+
+<!-- 6. 投融资动态 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-dot" style="background:var(--cat-funding)"></span>
+    💰 投融资动态
+    <span class="section-count">3 条</span>
+  </div>
+
+  <div class="card cat-funding">
+    <div class="card-title"><a href="http://paper.ce.cn/pc/content/202607/12/content_335587.html" target="_blank">宇树科技科创板IPO注册生效，73天过会创2026年最快纪录</a></div>
+    <div class="card-meta">
+      <span class="source">经济日报 / 东方财富</span>
+      <span class="time">今天 BJT</span>
+      <span class="tag" style="background:#ffedd5;color:#9a3412">IPO</span>
+    </div>
+    <div class="card-summary">
+      中国证监会批复同意宇树科技首次公开发行股票注册申请，距正式挂牌仅一步之遥。宇树科技以 <span class="highlight">73天IPO过会</span> 创2026年最快纪录。同时，机构预测2029年国内算力卡采购规模达1.44万亿元，资本相信"中国将诞生多家市值万亿甚至十万亿的上市企业"。DeepSeek 完成首轮融资510亿元，估值约4000亿元。
+    </div>
+  </div>
+
+  <div class="card cat-funding">
+    <div class="card-title"><a href="https://guba.eastmoney.com/news,688126,1741974192.html" target="_blank">长鑫科技科创板IPO定档7月16日申购，H1归母净利润预增超22倍</a></div>
+    <div class="card-meta">
+      <span class="source">财联社 / 东方财富</span>
+      <span class="time">今天 07:16 BJT</span>
+      <span class="tag" style="background:#ffedd5;color:#9a3412">IPO</span>
+    </div>
+    <div class="card-summary">
+      长鑫科技科创板IPO敲定7月16日申购，<span class="highlight">H1归母净利润预增超22倍</span>。同期硬科技领域投融资动态：燧原科技科创板IPO注册获批；沪硅产业第二大股东国家大基金拟减持不超过2%；神工股份拟投资11.3亿元建设硅零部件项目。存储芯片赛道资本热度持续升温。
+    </div>
+  </div>
+
+  <div class="card cat-funding">
+    <div class="card-title"><a href="https://new.qq.com/rain/a/20260712A053BY00" target="_blank">推理芯片市场升温：Etched获8亿融资，OpenAI自研Jalapeño，Anthropic接洽三星</a></div>
+    <div class="card-meta">
+      <span class="source">科技国际洞察</span>
+      <span class="time">今天 BJT</span>
+      <span class="tag" style="background:#ffedd5;color:#9a3412">芯片</span>
+    </div>
+    <div class="card-summary">
+      过去两周推理芯片市场白热化：OpenAI 发布首款自研推理芯片 Jalapeño；Etched 获 <span class="highlight">8亿美元融资</span>；Anthropic 被曝与三星讨论定制芯片。同时 DeepSeek 推进自研AI推理芯片，已进入实质性落地阶段。模型层公司自研推理ASIC成趋势，从 Meta、智谱到 DeepSeek 均向上游延伸。但分析认为推理芯片市场难现另一个英伟达。
+    </div>
+  </div>
+</div>
+
+<!-- 7. 开发者工具与技巧 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-dot" style="background:var(--cat-tool)"></span>
+    🛠️ 开发者工具与技巧
+    <span class="section-count">3 条</span>
+  </div>
+
+  <div class="card cat-tool">
+    <div class="card-title"><a href="https://github.com/cosmtrek/mindwalk" target="_blank">Mindwalk：在代码库3D地图上回放编码代理会话</a></div>
+    <div class="card-meta">
+      <span class="source">Hacker News 热门</span>
+      <span class="time">1小时前（21:51 BJT）</span>
+      <span class="tag" style="background:#fce7f3;color:#9d174d">可视化工具</span>
+    </div>
+    <div class="card-summary">
+      Mindwalk 可将 Claude Code 和 Codex 的会话日志在代码库3D地图上回放。仓库绘制成夜间地图，代理搜索/读取/编辑过的文件发光，未触及区域保持黑暗。单个 Go 二进制文件运行，数据完全本地处理。支持树状图/地形图两种视图，文件触达分四种颜色标记，播放界面含错误率、文件修改量等摩擦信号面板。
+    </div>
+  </div>
+
+  <div class="card cat-tool">
+    <div class="card-title"><a href="https://www.iroh.computer/blog/mesh-llm" target="_blank">Mesh LLM：在iroh上进行分布式AI计算，多机GPU池化</a></div>
+    <div class="card-meta">
+      <span class="source">Hacker News 热门</span>
+      <span class="time">13小时前（10:23 BJT）</span>
+      <span class="tag" style="background:#fce7f3;color:#9d174d">分布式推理</span>
+    </div>
+    <div class="card-summary">
+      Mesh LLM 是开源项目，能将用户多台机器上的 GPU 和内存池化，对外暴露兼容 OpenAI 的 API。通过 iroh 网络库实现点对点连接，无需中央服务器。支持本地运行、路由到已加载模型节点，或将大模型按层分区流水线拆分到多台机器。系统内置40多个模型，从5亿参数到 <span class="highlight">235B MoE</span> 均可支持。软件仅18MB。
+    </div>
+  </div>
+
+  <div class="card cat-tool">
+    <div class="card-title"><a href="https://www.mixfont.com/ghost-font" target="_blank">Ghost Font：人类能读懂但AI无法识别的反AI字体</a></div>
+    <div class="card-meta">
+      <span class="source">Hacker News 热门</span>
+      <span class="time">23小时前（00:31 BJT）</span>
+      <span class="tag" style="background:#fce7f3;color:#9d174d">反AI</span>
+    </div>
+    <div class="card-summary">
+      Ghost Font 利用运动、视频、噪点和诱饵隐藏文字。视频中的字母由与背景完全相同的点组成，单帧截图无法显示信息。传递给 Claude Fable 和 GPT Sol 5.6 Ultra 等前沿模型时，即使具备编程能力也无法解码。视频中还包含<span class="highlight">诱饵信息</span>使模型误以为找到真实内容。作者计划开源并探索用于 CAPTCHA 系统或AI视觉感知基准测试。
+    </div>
+  </div>
+</div>
+
+<!-- 投资启示 -->
+<div class="summary-section">
+  <h2>📋 今日总结 & 投资启示</h2>
+  <ol>
+    <li><strong>模型分层竞争格局确立</strong>：GPT-5.6 Sol/Terra/Luna 三档定价 + Gemini 3.5 Pro 7月17日定档 + Anthropic 传闻下周新品，<span class="highlight">"一模型通吃"策略正式终结</span>。投资者应关注各厂商产品矩阵覆盖度而非单一旗舰 Benchmark，Terra（$2.50/$15）可能成为API收入主力。</li>
+    <li><strong>苹果 vs OpenAI 诉讼影响硬件叙事</strong>：400名员工跳槽 + 窃密指控 + 首席硬件官 Tang Tan 被点名，即使诉讼未决也可能<span class="highlight">延迟 OpenAI 硬件计划</span>，影响其从软件向消费电子延伸的估值故事。关注 OpenAI IPO 前此类法律风险敞口。</li>
+    <li><strong>国产算力替代进入加速期</strong>：DeepSeek V4 八大国产GPU适配 + 中科曙光十万卡集群 + 国产芯片渗透率突破40%，<span class="highlight">"国产芯+国产模型+国产系统"闭环初步形成</span>。叠加工信部对 Claude Code 安全警告，国内AI算力国产化投资逻辑进一步强化。关注华为昇腾产业链、寒武纪、摩尔线程。</li>
+    <li><strong>AI编程工具安全风险首次官方预警</strong>：工信部 NVDB 对 Claude Code 发出安全后门警告 + xAI Grok Build CLI 上传全仓库数据曝光，<span class="highlight">企业级AI编程工具的数据安全合规门槛将提高</span>。利好国产AI编程工具（如通义灵码、CodeGeeX），海外工具在中国市场的采用可能放缓。</li>
+    <li><strong>"AI失业论"叙事退潮</strong>：Altman 和 Amodei 集体改口从"末日预言"转向"生产力倍增器"，但多项研究未发现AI对就业市场显著影响。<span class="highlight">叙事转向可能降低AI监管压力</span>，对前沿模型公司估值有利，但需警惕过度乐观回调风险。</li>
+    <li><strong>推理芯片赛道拥挤但难现英伟达第二</strong>：OpenAI Jalapeño + Etched 8亿融资 + Anthropic 接洽三星 + DeepSeek 自研，模型层集体向上游延伸。但推理ASIC与训练GPU需求特征不同，<span class="highlight">市场分散度高、单一厂商难以垄断</span>，关注推理芯片对英伟达数据中心收入的替代节奏。</li>
+  </ol>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>📊 数据来源：AI HOT (aihot.virxact.com) + WebSearch 全球多渠道交叉验证</p>
+  <p>⏰ 生成时间：2026-07-12 23:10 BJT · 覆盖窗口：7/11 22:00 ~ 7/12 22:00 BJT</p>
+  <p>⚠️ 仅供研究参考，不构成投资建议 · 请点击标题链接查看原文</p>
+</div>
+
+</div>
+</body>
+</html>

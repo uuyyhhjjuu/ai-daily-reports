@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026年7月15日</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --primary: #6366f1;
+  --primary-light: #818cf8;
+  --primary-dark: #4f46e5;
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-hover: 0 4px 12px rgba(99,102,241,.12);
+  --c-industry: #f59e0b;
+  --c-opinion: #10b981;
+  --c-model: #8b5cf6;
+  --c-product: #ec4899;
+  --c-paper: #06b6d4;
+  --c-report: #3b82f6;
+  --c-funding: #f97316;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.75; font-size: 15px;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 24px 20px 60px; }
+/* Header */
+.header {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #7c3aed 100%);
+  border-radius: 16px; padding: 36px 40px; color: #fff; margin-bottom: 24px;
+  box-shadow: 0 8px 30px rgba(99,102,241,.25);
+}
+.header h1 { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
+.header .meta { font-size: 13px; opacity: .9; display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; }
+.header .meta span { display: inline-flex; align-items: center; gap: 4px; }
+.header .badge {
+  display: inline-block; background: rgba(255,255,255,.2); border-radius: 20px;
+  padding: 4px 14px; font-size: 13px; margin-top: 10px;
+}
+/* Stats bar */
+.stats {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; padding: 16px 20px;
+  background: var(--card-bg); border-radius: 12px; box-shadow: var(--shadow);
+}
+.stat-item {
+  display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-secondary);
+  padding: 4px 10px; border-radius: 8px; background: #f1f5f9;
+}
+.stat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.stat-num { font-weight: 700; color: var(--text); }
+/* Section */
+.section { margin-bottom: 32px; }
+.section-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+  padding-bottom: 10px; border-bottom: 2px solid var(--border);
+}
+.section-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.section-title { font-size: 18px; font-weight: 700; color: var(--text); }
+.section-count { font-size: 13px; color: var(--text-muted); background: #f1f5f9; padding: 2px 10px; border-radius: 12px; }
+/* Card */
+.card {
+  background: var(--card-bg); border-radius: 12px; padding: 20px 24px; margin-bottom: 12px;
+  box-shadow: var(--shadow); border-left: 4px solid; transition: box-shadow .2s, transform .2s;
+  position: relative; overflow: hidden;
+}
+.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+.card-industry { border-left-color: var(--c-industry); }
+.card-opinion { border-left-color: var(--c-opinion); }
+.card-model { border-left-color: var(--c-model); }
+.card-product { border-left-color: var(--c-product); }
+.card-paper { border-left-color: var(--c-paper); }
+.card-report { border-left-color: var(--c-report); }
+.card-funding { border-left-color: var(--c-funding); }
+.card-title {
+  font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5;
+}
+.card-title a { color: inherit; text-decoration: none; }
+.card-title a:hover { color: var(--primary); }
+.card-title .tag {
+  display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px;
+  margin-left: 8px; vertical-align: middle; font-weight: 600;
+}
+.tag-new { background: #fef3c7; color: #92400e; }
+.tag-leak { background: #ede9fe; color: #5b21b6; }
+.card-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; display: flex; flex-wrap: wrap; gap: 12px; }
+.card-meta .source { color: var(--primary); font-weight: 500; }
+.card-summary { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+.card-summary .highlight { color: var(--primary-dark); font-weight: 600; }
+/* Summary section */
+.summary-section {
+  background: linear-gradient(135deg, #eef2ff 0%, #f0f9ff 100%);
+  border-radius: 16px; padding: 32px 36px; margin-top: 36px;
+  border: 1px solid #c7d2fe;
+}
+.summary-section h2 { font-size: 22px; font-weight: 800; color: var(--primary-dark); margin-bottom: 20px; }
+.summary-section h3 { font-size: 16px; font-weight: 700; color: var(--text); margin: 20px 0 10px; }
+.summary-section ul { padding-left: 20px; }
+.summary-section li { font-size: 14px; color: var(--text-secondary); margin-bottom: 8px; line-height: 1.7; }
+.summary-section .highlight { color: var(--primary-dark); font-weight: 600; }
+.summary-section .pos { color: #059669; font-weight: 600; }
+.summary-section .neg { color: #dc2626; font-weight: 600; }
+.summary-section .neutral { color: var(--text-muted); font-weight: 600; }
+.track-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
+.track-table th { text-align: left; padding: 8px 10px; background: #e0e7ff; color: var(--primary-dark); font-weight: 600; border-radius: 6px; }
+.track-table td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; }
+.track-table .pos { color: #059669; }
+.track-table .neg { color: #dc2626; }
+.track-table .neutral { color: var(--text-muted); }
+/* Footer */
+.footer {
+  text-align: center; margin-top: 40px; padding-top: 24px;
+  border-top: 1px solid var(--border); color: var(--text-muted); font-size: 12px; line-height: 1.8;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>AI 每日全景报告</h1>
+  <div class="meta">
+    <span>2026年7月15日（星期三）</span>
+    <span>覆盖时段：7月14日 22:00 — 7月15日 22:00（北京时间）</span>
+    <span>共 27 条</span>
+  </div>
+  <div class="badge">国内 + 海外 · 中英双语 · 可视化可溯源</div>
+</div>
+
+<div class="stats">
+  <div class="stat-item"><span class="stat-dot" style="background:#f59e0b"></span>行业动态 <span class="stat-num">8</span></div>
+  <div class="stat-item"><span class="stat-dot" style="background:#10b981"></span>大V观点 <span class="stat-num">4</span></div>
+  <div class="stat-item"><span class="stat-dot" style="background:#8b5cf6"></span>模型动态 <span class="stat-num">3</span></div>
+  <div class="stat-item"><span class="stat-dot" style="background:#ec4899"></span>产品动态 <span class="stat-num">4</span></div>
+  <div class="stat-item"><span class="stat-dot" style="background:#06b6d4"></span>技术论文 <span class="stat-num">3</span></div>
+  <div class="stat-item"><span class="stat-dot" style="background:#3b82f6"></span>深度研报 <span class="stat-num">3</span></div>
+  <div class="stat-item"><span class="stat-dot" style="background:#f97316"></span>投融资 <span class="stat-num">2</span></div>
+</div>
+
+<!-- ========== 行业动态 ========== -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-dot" style="background:#f59e0b"></span>
+    <span class="section-title">🏭 行业动态</span>
+    <span class="section-count">8 条</span>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://www.ithome.com/0/977/109.htm" target="_blank">国行 Apple 智能完成备案，阿里千问将集成至 Apple Intelligence 服务中国用户</a></div>
+    <div class="card-meta"><span class="source">IT之家 / X</span><span>今天 18:57</span></div>
+    <div class="card-summary">苹果技术开发（上海）有限公司的 <span class="highlight">"Apple 智能"大模型已于7月8日完成备案</span>。阿里千问将作为 AI 能力集成至 Apple Intelligence，为 iOS、iPadOS、macOS 和 visionOS 的中国用户提供文本与图像理解、内容生成等功能。阿里巴巴董事会主席蔡崇信表示，苹果在选定阿里前曾与多家中国公司洽谈。中国信办已公布包括 Apple Intelligence、华为小艺大模型、OPPO AndesGPT 在内的七项移动端生成式 AI 服务备案信息。</div>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://www.thepaper.cn/newsDetail_forward_33590213" target="_blank">IBM 暴跌 25.21% 创史上最大单日跌幅，客户资本开支从软件急剧转向 AI 硬件基础设施</a></div>
+    <div class="card-meta"><span class="source">澎湃新闻 / 路透社</span><span>今天 04:00</span></div>
+    <div class="card-summary">IBM 公布 Q2 初步营收 <span class="highlight">172 亿美元</span>低于预期，股价暴跌 25.21%，创 1968 年以来最大单日跌幅。CEO Krishna 坦承：<span class="highlight">"客户将季度资本支出急剧转移到服务器、数据存储设备和内存采购上"</span>，以在预期涨价前锁定供应受限的基础设施。IBM z17 大型机及交易处理软件销售疲软，大型订单延期。同日 SK 海力士 ADR 暴涨 <span class="highlight">27%</span>、英伟达涨超 4%，存储芯片板块狂欢。资本市场首次将"跟不上 AI"写入估值模型。</div>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://techcrunch.com/2026/07/14/new-york-state-halts-construction-of-all-new-data-centers" target="_blank">纽约州成全美首个暂停新建大型数据中心的州，50 兆瓦以上项目暂停一年</a></div>
+    <div class="card-meta"><span class="source">TechCrunch</span><span>昨天 23:17</span></div>
+    <div class="card-summary">纽约州州长 Hochul 签署行政令，暂停 50 兆瓦以上数据中心新建许可，预计持续约一年。州独立电网运营商待处理数据中心用电申请高达 <span class="highlight">12 吉瓦</span>。Hochul 表示数据中心不应带来更高的电费、水资源消耗或噪音污染，且不能豁免地方审批。州议会正在推进暂停 20 兆瓦以上数据中心建设一年的法案。全美数十个州已启动数据中心监管立法。</div>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://fortune.com/2026/07/14/data-centers-23-billion-electricity-bills" target="_blank">数据中心已使美国公众电费增加 230 亿美元，回收成本困难重重</a></div>
+    <div class="card-meta"><span class="source">Fortune</span><span>今天 11:51</span></div>
+    <div class="card-summary">数据中心对电力的需求已导致美国公众电费增加 <span class="highlight">230 亿美元</span>，且这一涨价将持续至 2028 年底。电价由州公用事业委员会根据复杂成本分摊规则设定，数据中心承诺的就业和税收往往远低于预期，而电网升级成本被分摊给普通居民。纽约州、弗吉尼亚州等地居民电价涨幅已超过商业和工业用户。</div>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://techcrunch.com/2026/07/14/google-faces-another-ai-training-lawsuit-from-major-publishers" target="_blank">Google 因 AI 训练再遭出版商集体诉讼，潜在罚款可达 100-1000 亿美元</a></div>
+    <div class="card-meta"><span class="source">TechCrunch</span><span>今天 02:33</span></div>
+    <div class="card-summary">包括 Hachette、Cengage、Elsevier 及作家 Scott Turow 在内的出版商团体对 Google 提起集体诉讼，指控其未经授权使用受版权保护的作品训练 Gemini 模型，并故意移除或篡改版权信息。原告援引 Google 内部文件指出，Google 将 Google Books 和 Google Play 上的图书副本非法用于 AI 训练。诉讼在纽约南区联邦地区法院提起。</div>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://cj.sina.cn/articles/view/5115326071/130e5ae7702002xqbm" target="_blank">A股 AI 硬科技集体回调：科创 50 跌 4.25%，存储芯片 / CPO 多股跌停</a></div>
+    <div class="card-meta"><span class="source">格隆汇 / 新浪财经</span><span>今天 15:23</span></div>
+    <div class="card-summary">7月15日 A 股主要指数齐跌，科创 50 指数收盘跌 <span class="highlight">4.25%</span>。存储芯片、CPO 等算力硬件概念重挫，德明利、华天科技、立昂微等跌停。交银国际指出，科技股经历二季度快速上涨后估值过高、交易过分拥挤是主因，但 AI 基建基本面未变，大型云服务商 2026 年资本开支同比大幅上涨后 2027 年预计继续上涨。全球 AI 链股票从年内高点回调，韩美半导体回调超 51%，韩国股市年内已熔断 8 次。</div>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://www.jwview.com/jingwei/html/07-15/679317.shtml" target="_blank">国际清算银行（BIS）警告：AI 基建投资竞赛或引发广泛金融动荡</a></div>
+    <div class="card-meta"><span class="source">Bloomberg / 中新经纬</span><span>今天</span></div>
+    <div class="card-summary">BIS 在研究报告中警告，如果未能证明大规模投资对生产力提升的合理性，超大规模数据中心运营商与 AI 开发商之间的借贷和金融联系将增加更广泛的金融动荡风险。摩根大通和高盛分析师估计，到 2030 年与 AI 相关的支出将接近 <span class="highlight">6 万亿美元</span>，其中大部分通过债务融资。经济学家指出："一个行业建设的产能越多，更大的繁荣不仅更有可能令人失望，而且破坏性也更大。"</div>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://mindgard.ai/blog/cursor-0day-when-full-disclosure-becomes-the-only-protection-left" target="_blank">Cursor IDE 0day 漏洞：打开恶意仓库即可自动执行任意代码，7 个月内仍未修复</a></div>
+    <div class="card-meta"><span class="source">Mindgard 安全研究</span><span>今天 05:27</span></div>
+    <div class="card-summary">安全公司 Mindgard 披露 Cursor IDE 存在严重 0day 漏洞：用户在 Windows 上打开包含恶意 <span class="highlight">git.exe</span> 的仓库时，Cursor 会自动执行该文件，无需任何用户交互。漏洞源于 Cursor 加载项目时在工作区内搜索 Git 二进制文件。Mindgard 在 7 个月内多次报告，Cursor CISO 虽确认但因内部自动化故障导致流程中断，至今已发布 70 多个新版本仍未修复。临时缓解措施包括使用 AppLocker 或在隔离虚拟机中打开不受信任的仓库。</div>
+  </div>
+</div>
+
+<!-- ========== 大V观点 ========== -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-dot" style="background:#10b981"></span>
+    <span class="section-title">💬 大V观点</span>
+    <span class="section-count">4 条</span>
+  </div>
+
+  <div class="card card-opinion">
+    <div class="card-title"><a href="https://www.163.com/dy/article/L1S4RJ4U05312HQV.html" target="_blank">王煜全：大模型竞争核心指标正在被换掉——从跑分转向 Agent / 工具调用 / 成本</a></div>
+    <div class="card-meta"><span class="source">王煜全要闻评论（公众号）</span><span>今天 07:47</span></div>
+    <div class="card-summary">过去一周 GPT-5.6、Grok 4.5、Muse Spark 1.1、Fable 5 四家密集更新，但关键词高度一致：<span class="highlight">编程、Agent、工具调用、更低成本</span>。模型参数和基准测试分数已不再是核心卖点。这意味着 Scaling Law 的对象正在从单纯堆参数扩展到"整个智能系统"——包括强化学习、推理时计算、上下文管理、多 Agent 协作。AI 驱动的新生产力正在进入市场，能否完成现实世界的高价值高风险任务成为新竞争维度。</div>
+  </div>
+
+  <div class="card card-opinion">
+    <div class="card-title"><a href="https://new.qq.com/rain/a/20260715A0258Q00" target="_blank">纳德拉批评部分模型厂商：一边主张合理使用公开数据训练、一边限制蒸馏</a></div>
+    <div class="card-meta"><span class="source">腾讯新闻 / AI新榜</span><span>今天</span></div>
+    <div class="card-summary">微软 CEO 纳德拉公开发声，批评部分模型厂商"一边主张合理使用公开数据训练模型、一边限制他人蒸馏自己的模型"的双重标准行为，建议企业掌握自身数据。此前 Anthropic 曾指控阿里巴巴使用 2.5 万个虚假账号进行 2880 万次交互蒸馏 Claude 模型。纳德拉此番表态在 Codex 周活突破 800 万之际发出，暗示模型生态开放性的边界争议正在升级。</div>
+  </div>
+
+  <div class="card card-opinion">
+    <div class="card-title"><a href="https://mp.weixin.qq.com/s/wm_LM83gyLM-auidBxprZw" target="_blank">AI 开发者实测：每天 Vibe Coding 16 小时后对 Fable 5 与 GPT-5.6 Sol 的实战评测</a></div>
+    <div class="card-meta"><span class="source">数字生命卡兹克（公众号）</span><span>今天 08:02</span></div>
+    <div class="card-summary">作者每天 Vibe Coding 约 16 小时，认为 Claude Fable 5 在大型方案初版设计上<span class="highlight">"当世独一档"</span>，GPT-5.6 Sol 能有效纠错并优化方案。核心流程为：Fable 5 出方案初版 → GPT-5.6 Sol 审查纠错 → 在 Codex 中开启"目标模式"全自动化执行，最长曾连续运行 17 小时。这一实战体验反映出前沿模型在真实开发场景中的互补性分工正在成形。</div>
+  </div>
+
+  <div class="card card-opinion">
+    <div class="card-title"><a href="https://mp.weixin.qq.com/s/QcGHxKohg0gW9e84Nd_9jA" target="_blank">开源"阿福"Skill：用 Claude Code 和 Codex 实现知识管理到排期自动化</a></div>
+    <div class="card-meta"><span class="source">卡尔的AI沃茨（公众号）</span><span>今天 09:52</span></div>
+    <div class="card-summary">作者基于 API 版 Fable 5 和 Codex 开发开源 TODO Skill"阿福"，可将收件箱中的待办资料自动转为 Markdown 任务卡，识别信息不完整项（如视频链接需通过 yt-dlp 和本地 Whisper 提取字幕），并支持批量排期、AI 分组合并、拖拽调整周视图及同步到 Mac 日历或飞书日历。项目已开源在 GitHub，安装仅需一条命令。展示了 AI Agent 在个人知识管理场景的落地能力。</div>
+  </div>
+</div>
+
+<!-- ========== 模型动态 ========== -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-dot" style="background:#8b5cf6"></span>
+    <span class="section-title">🧠 模型动态</span>
+    <span class="section-count">3 条</span>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://prismml.com/news/bonsai-27b" target="_blank">Bonsai 27B：首款可在手机上运行的 27B 级多模态模型，1-bit 量化首次装入 iPhone 17 Pro</a></div>
+    <div class="card-meta"><span class="source">PrismML</span><span>今天 03:51</span></div>
+    <div class="card-summary">Bonsai 27B 基于 Qwen3.6 27B，提供三元（1.71 有效比特/权重，5.9 GB）和 1-bit（1.125 有效比特/权重，3.9 GB）两个变体，后者<span class="highlight">首次将 27B 级模型装入 iPhone 17 Pro</span>。模型支持多步推理、结构化工具调用、视觉任务和计算机使用智能体循环，拥有 262K token 上下文窗口。三元变体保留全精度基线 95% 性能，1-bit 变体保留 90%，数学和编码能力几乎无损。采用 Apache 2.0 开源。</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://developers.googleblog.com/unlocking-the-next-era-of-on-device-ai-with-google-tensor-and-pixel" target="_blank">Google 发布 Gemma 4 E2B 端侧模型，Pixel 10 Tensor SoC 驱动 100% 私有 AI</a></div>
+    <div class="card-meta"><span class="source">Google Developers Blog</span><span>今天 00:51</span></div>
+    <div class="card-summary">在 Google I/O Connect India 上，Google 首次推出轻量级 Gemma 4 E2B 模型，原生运行于设备端，可实现完全离线的多模态功能，包括 AI 聊天、实时图像识别和个人智能体任务。由定制 Tensor SoC 和 TPU 驱动的 Pixel 10 系列支持 100% 私有端侧 AI。开发者即日起可通过新发布的 Tensor SDK beta 及配套开源资源开始构建安全的边缘应用。</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://www.163.com/dy/article/L1S8T6L70511ABV6.html" target="_blank">Claude Opus 5 代号"Honeycomb"惊现 Vertex 平台，最快本周发布<span class="tag tag-leak">最新披露</span></a></div>
+    <div class="card-meta"><span class="source">新智元</span><span>今天 08:58</span></div>
+    <div class="card-summary">一个从未露面的代号"Claude Honeycomb"在 Cursor 模型列表中一闪而过后被撤下。规格显示：100 万 Token 上下文、超高算力档、逐条安全控制，回退链指向 Opus 4.8——能力必然在 4.8 之上。社区推断这即未官宣的 Claude Opus 5，最快本周最迟下周正式亮相。Anthropic 承压剧增：Fable 5 高成本劝退用户，GPT-5.6 稳坐性价比王座，Opus 5 的答案不在"更强"而在"更便宜"。</div>
+  </div>
+</div>
+
+<!-- ========== 产品动态 ========== -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-dot" style="background:#ec4899"></span>
+    <span class="section-title">📦 产品动态</span>
+    <span class="section-count">4 条</span>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://x.com/googleaidevs/status/2077049898059354565" target="_blank">Google AI 发布 Gemini 3.5 Live Translate，支持 70+ 语言近实时语音到语音翻译</a></div>
+    <div class="card-meta"><span class="source">Google AI for Developers (X)</span><span>昨天 23:17</span></div>
+    <div class="card-summary">Gemini 3.5 Live Translate 直接处理原始音频流，保留说话者语调、节奏和音高。东南亚超级应用 Grab 正探索将其用于司机与乘客间跨语言沟通。开发者可通过 Gemini Live API 集成 LiveKit、Fishjam、Pipecat 或 Vision Agents 构建应用。LiveKit 已实现虚拟会议室多语言即时理解，Software Mansion 结合 MoQ 协议突破流媒体瓶颈。</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://www.anthropic.com/news/claude-for-teachers" target="_blank">Anthropic 推出 Claude for Teachers，K-12 教师免费使用高级功能</a></div>
+    <div class="card-meta"><span class="source">Anthropic 官方</span><span>昨天 23:11</span></div>
+    <div class="card-summary">Anthropic 为美国认证的 K-12 教师免费提供高级 Claude 功能、教学技能库及对接全美 50 州学术标准的课程资源。工具连接 Learning Commons，可调用 OpenSciEd、IM v.360 等课程资源，并集成 ASSISTments、Brisk Teaching、Canva Education 等第三方工具。教师数据不用于模型训练，学生信息受 FERPA 合规的 K-12 数据处理附录保护。</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://www.ithome.com/0/977/105.htm" target="_blank">金山办公推出 WPS Comate AI 办公客户端，支持 Skill 技能生态与自动化任务</a></div>
+    <div class="card-meta"><span class="source">IT之家</span><span>今天 16:39</span></div>
+    <div class="card-summary">金山办公在 2026 AI 生产力大会上推出面向员工的 AI 办公客户端 WPS Comate，可连接组织数据与流程。产品提供 AI 岗位专家、Skill 技能生态、自动化任务等六大模块，并支持云端与本地双任务模式，个人用户可直接下载体验。</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://new.qq.com/rain/a/20260715A0704600" target="_blank">OpenAI 首款无屏智能音箱曝光；Codex 周活突破 800 万，单日新增 100 万</a></div>
+    <div class="card-meta"><span class="source">腾讯新闻 / 华尔街见闻</span><span>今天</span></div>
+    <div class="card-summary">OpenAI 正研发一款可移动、无屏幕的智能音箱，定位家庭 AI 伴侣，可控制智能家居、调用 ChatGPT 能力，计划 2027 年上市；苹果已提起商业秘密诉讼试图阻拦。该设备由前苹果设计师艾维团队打造，内置摄像头与可动机械部件。同时，GPT-5.6 上线后 Codex 与 ChatGPT Work 合并周活数日内破 <span class="highlight">800 万</span>，单周用量增 2.5 倍、5 个月涨 7 倍。OpenAI 取消 5 小时上限并多次重置额度。</div>
+  </div>
+</div>
+
+<!-- ========== 技术论文 ========== -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-dot" style="background:#06b6d4"></span>
+    <span class="section-title">🔬 技术论文</span>
+    <span class="section-count">3 条</span>
+  </div>
+
+  <div class="card card-paper">
+    <div class="card-title"><a href="https://arxiv.org/abs/2607.12236" target="_blank">Speculate with Memory: 为 LLM Agent 实现无损加速的推测执行框架</a></div>
+    <div class="card-meta"><span class="source">arXiv:2607.12236</span><span>今天 08:36</span></div>
+    <div class="card-summary">Salesforce AI Research 团队提出为推测执行器配备三种在线记忆系统：对比转移表跟踪动作序列统计、情景记忆检索上下文相似片段、混淆跟踪器抑制重复错误。在六项基准上，记忆增强的推测执行在动作预测上获得 <span class="highlight">19-39%</span> 相对准确率提升，在观察预测任务上提升最高 2.5 倍。所有推测均在空闲时间运行，不增加额外等待时间且不改变执行轨迹，实现完全无损加速。</div>
+  </div>
+
+  <div class="card card-paper">
+    <div class="card-title"><a href="https://arxiv.org/abs/2607.12831" target="_blank">Knowledgeless Language Models：预训练时抑制参数化知识，增强证据接地推理</a></div>
+    <div class="card-meta"><span class="source">arXiv:2607.12831</span><span>今天 22:48</span></div>
+    <div class="card-summary">研究团队提出 KLLMs 范式：在预训练语料中将命名实体匿名化，移除实体关联事实监督的主要通道。这一干预显著降低了闭卷事实召回能力，同时在上下文提供相关信息的任务上往往表现更好。在检索接地场景中，KLLMs 在不完美证据下表现出更强鲁棒性，相对标准语言模型获得 <span class="highlight">20-25%</span> 的提升，并展现出更好的校准和更可靠的弃权行为。</div>
+  </div>
+
+  <div class="card card-paper">
+    <div class="card-title"><a href="https://arxiv.org/abs/2607.11751" target="_blank">When Local Monitors Miss Compositional Harm：诊断多智能体系统中的分布式后门</a></div>
+    <div class="card-meta"><span class="source">arXiv:2607.11751</span><span>今天</span></div>
+    <div class="card-summary">论文形式化了多智能体 LLM 系统中局部监控器的盲区问题：单个 Agent 的行为可能看起来无害，但组合起来构成分布式后门攻击。研究揭示了当前逐 Agent 安全审查机制的系统性弱点，对 MCP 协议和多 Agent 编排框架的安全设计具有直接警示意义。同期 arXiv 还有多篇 Agent 安全论文（HyperSafe 推理时安全恢复、AgentCheck MCP 工具故障复现工作台），反映 Agent 安全正成为研究热点。</div>
+  </div>
+</div>
+
+<!-- ========== 深度研报观点 ========== -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-dot" style="background:#3b82f6"></span>
+    <span class="section-title">💡 深度研报观点</span>
+    <span class="section-count">3 条</span>
+  </div>
+
+  <div class="card card-report">
+    <div class="card-title"><a href="https://k.sina.com.cn/article_7781823105_1cfd53281001017zwg.html" target="_blank">高盛发出"软件熊市"预警：AI 资本开支大转向，从软件远期愿景到硬件业绩兑现</a></div>
+    <div class="card-meta"><span class="source">高盛研究报告 / 新浪财经</span><span>今天</span></div>
+    <div class="card-summary">IBM 暴跌与 SK 海力士狂欢的冰火两重天标志着 AI 产业链投资逻辑发生根本性变化。高盛在研究报告中发出"软件熊市"预警：在底层算力基础设施尚未完全打通、推理成本居高不下的背景下，软件端商业化落地仍需时日，当前估值已严重透支未来预期。同时高盛战略调整仓位，布局具备业绩确定性的中国 AI 价值链，覆盖电力、半导体、AI 基础设施全产业链。资本开支正从"模型训练"向"规模化推理与部署"演进。</div>
+  </div>
+
+  <div class="card card-report">
+    <div class="card-title"><a href="https://neodrop.ai/ja/post/BG3w9qZ66bR" target="_blank">BIS 7 月 AI 出口管制政策简报：AI Diffusion Rule 将被正式撤销，新框架取而代之</a></div>
+    <div class="card-meta"><span class="source">NeoDrop 政策简报</span><span>今天</span></div>
+    <div class="card-summary">美国 BIS 官方议程显示将发布先进 AI 芯片安全出口新规则，并<span class="highlight">正式撤销 2025 年 1 月的 AI Diffusion Rule</span>，由新框架取代。同时实体清单出现 2008 年以来最长空窗——八个月未新增条目。许可证平均处理时间 62 天。报告指出出口管制正从"芯片能不能卖"扩展到"模型、算力、访问身份、网络部署和安全防护能不能被可信验证"。对中国讨论限制海外访问本国最先进 AI 模型的趋势也进行了分析。</div>
+  </div>
+
+  <div class="card card-report">
+    <div class="card-title"><a href="https://www.nbd.com.cn/articles/2026-07-15/4473524.html" target="_blank">一级投资人：AI 行业不存在全局性泡沫，估值虚高仅集中于三类赛道</a></div>
+    <div class="card-meta"><span class="source">每日经济新闻</span><span>今天 18:34</span></div>
+    <div class="card-summary">江远投资创始人张江表示，AI 行业不存在全局性泡沫，仅存在结构性泡沫。估值虚高集中于三类赛道：①无实际业务价值、缺乏稳定订单支撑的<span class="highlight">低端大模型</span>；②同质化建设、无差异化优势的<span class="highlight">智算中心</span>；③没有垂直行业落地场景、通用性弱的<span class="highlight">AI 产品</span>。与之相对，高端算力芯片、手握真实落地订单的 AI 企业估值泡沫极小，市场供给仍存在缺口。一级市场 AI 投资逻辑正从"有没有模型"转向"有没有真实用户与持续留存"。</div>
+  </div>
+</div>
+
+<!-- ========== 投融资 ========== -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-dot" style="background:#f97316"></span>
+    <span class="section-title">💰 投融资</span>
+    <span class="section-count">2 条</span>
+  </div>
+
+  <div class="card card-funding">
+    <div class="card-title"><a href="https://hk.finance.yahoo.com/news/ai%E5%A4%AA%E7%87%92%E9%8C%A2-deepseek%E5%82%B3%E5%86%8D%E5%8B%9F%E4%BA%BA%E6%B0%91%E5%B9%3500%E5%84%84%E5%85%83-%E7%B1%8C%E5%82%99%E7%A7%91%E5%89%B5%E6%9D%BFipo-130004627.html" target="_blank">DeepSeek 传再募 500 亿元人民币，筹备科创板 IPO，投前估值约 740 亿美元</a></div>
+    <div class="card-meta"><span class="source">路透社 / 钜亨网</span><span>今天</span></div>
+    <div class="card-summary">路透社报道，DeepSeek 正计划启动新一轮募资，目标估值约人民币 <span class="highlight">5000 亿元（740 亿美元）</span>，较 6 月首轮融资估值上涨约 11%。此次寻求募集最高 500 亿元人民币。同时 DeepSeek 已开始初步讨论在科创板上市，设定内部目标今年完成 IPO 申请文件提交。创始人梁文锋个人身家已达 <span class="highlight">360 亿美元</span>。连续两轮大规模融资凸显参与全球 AI 竞赛的成本日益高昂——算力、数据中心、自研芯片及人才是主要开支方向。</div>
+  </div>
+
+  <div class="card card-funding">
+    <div class="card-title"><a href="https://wap.cj.sina.cn/pc/7x24/4990262" target="_blank">Anthropic 联合黑石 / Hellman & Friedman 推出独立 AI 服务公司 Ode</a></div>
+    <div class="card-meta"><span class="source">新浪财经</span><span>今天</span></div>
+    <div class="card-summary">Anthropic、黑石集团与 Hellman & Friedman 正式联合推出独立企业人工智能服务公司 Ode with Anthropic，依托今年 5 月收购的 FractionalAI 搭建。投资财团成员包括<span class="highlight">高盛、泛大西洋投资、伦纳德格林合伙公司、阿波罗全球管理、新加坡 GIC 及红杉资本</span>。Ode 整合 Anthropic 前沿模型、资深 AI 工程师与运营管理团队，正大规模招聘工程师、产品负责人及运营管理人员。此举标志着前沿模型公司从 API 供给向企业级落地服务延伸。</div>
+  </div>
+</div>
+
+<!-- ========== 今日总结 & 投资启示 ========== -->
+<div class="summary-section">
+  <h2>📋 今日总结 & 投资启示</h2>
+
+  <h3>关键结论</h3>
+  <ul>
+    <li><span class="highlight">AI 基建开支结构性拐点已至：</span>IBM 暴跌 25.21% 与 SK 海力士暴涨 27% 的完美对称，是资本市场首次将"跟不上 AI"写入估值模型。客户 IT 预算正从软件端系统性迁移至服务器、存储和内存等底层硬件，这一趋势预计持续至 2028 年。</li>
+    <li><span class="highlight">AI 基础设施面临"物理 + 政策"双重约束：</span>纽约州数据中心暂停令（12 吉瓦待并网）+ BIS 出口管制新框架（Diffusion Rule 将被撤销但替代框架尚未落地）+ BIS 金融风险警告（6 万亿美元支出大部分靠债务融资），三条线索指向同一方向——AI 基建的无序扩张正遭遇硬约束。</li>
+    <li><span class="highlight">中国 AI 资本化加速：</span>DeepSeek 再融 500 亿 + 筹备科创板 IPO（估值 740 亿美元），阿里千问选定集成 Apple Intelligence 中国区，显示中国 AI 产业在资本端和产业端双双提速。</li>
+    <li><span class="highlight">前沿模型竞争进入"性价比"阶段：</span>Opus 5 即将发布但打法从"更强"转向"更便宜"，GPT-5.6 以定价优势稳坐性价比王座。竞争核心指标已从跑分切换为 Agent 能力、工具调用和成本效率。</li>
+    <li><span class="highlight">AI 编码工具安全问题持续发酵：</span>Cursor 0day 漏洞 7 个月未修复 + GPT-5.6 Sol 自行删除用户文件 + 多智能体系统分布式后门论文发布，AI 编码工具安全风险正从个案上升为系统性隐患。</li>
+  </ul>
+
+  <h3>📊 重点公司 / 行业环比变化追踪</h3>
+  <table class="track-table">
+    <thead>
+      <tr>
+        <th>标的</th>
+        <th>方向</th>
+        <th>对比基准</th>
+        <th>论据</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>英伟达 (NVIDIA)</td>
+        <td class="pos">↑ 积极</td>
+        <td>较 7/14 收盘</td>
+        <td>美股涨超 4%，受 SK 海力士 ADR 暴涨带动，存储芯片板块共振上行</td>
+      </tr>
+      <tr>
+        <td>IBM</td>
+        <td class="neg">↓ 消极</td>
+        <td>较 7/14 收盘</td>
+        <td>单日暴跌 25.21%，创 1968 年以来最大跌幅，客户 IT 预算从软件转向硬件</td>
+      </tr>
+      <tr>
+        <td>OpenAI</td>
+        <td class="pos">↑ 积极</td>
+        <td>较上周</td>
+        <td>Codex 周活突破 800 万，5 个月涨 7 倍；首款硬件产品（无屏音箱）曝光</td>
+      </tr>
+      <tr>
+        <td>Anthropic</td>
+        <td class="pos">↑ 积极</td>
+        <td>较上周</td>
+        <td>联合黑石推出 Ode 公司进军企业服务；Claude for Teachers 发布；Opus 5 即将上线</td>
+      </tr>
+      <tr>
+        <td>Google / DeepMind</td>
+        <td class="neutral">→ 平稳</td>
+        <td>较上周</td>
+        <td>正面：Gemini 3.5 Live Translate + Gemma 4 E2B 发布；负面：遭出版商集体诉讼，潜在罚款 100-1000 亿美元</td>
+      </tr>
+      <tr>
+        <td>阿里 / 千问</td>
+        <td class="pos">↑ 积极</td>
+        <td>较上周</td>
+        <td>选定集成 Apple Intelligence 中国区，端侧 AI 重大突破；Bonsai 27B 基于 Qwen3.6 验证量化能力</td>
+      </tr>
+      <tr>
+        <td>DeepSeek</td>
+        <td class="pos">↑ 积极</td>
+        <td>较 6 月首轮融资</td>
+        <td>再融 500 亿估值 740 亿美元（+11%），筹备科创板 IPO，创始人身家 360 亿美元</td>
+      </tr>
+      <tr>
+        <td>SK 海力士 / 存储链</td>
+        <td class="pos">↑ 积极</td>
+        <td>较 7/14 收盘</td>
+        <td>ADR 暴涨 27%，较韩股溢价超 50%；HBM 需求持续超越供给，韩国央行驳斥"半导体见顶论"</td>
+      </tr>
+      <tr>
+        <td>算力 / 数据中心行业</td>
+        <td class="neg">↓ 消极</td>
+        <td>较 7 月初</td>
+        <td>纽约州暂停令 + BIS 出口管制新框架 + BIS 金融风险警告，政策与物理约束叠加</td>
+      </tr>
+      <tr>
+        <td>港股 AI 板块</td>
+        <td class="neg">↓ 消极</td>
+        <td>较 7 月初</td>
+        <td>A 股科创 50 跌 4.25%，存储芯片 / CPO 多股跌停；全球 AI 链股票从高点回调超 30%</td>
+      </tr>
+      <tr>
+        <td>AI 编码工具安全</td>
+        <td class="neg">↓ 消极</td>
+        <td>较上周（Grok CLI 事件）</td>
+        <td>Cursor 0day 漏洞 7 个月未修复 + GPT-5.6 Sol 自行删除文件 + 多智能体分布式后门论文</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">
+  <p>📊 数据来源：AI HOT API (aihot.virxact.com) + WebSearch 多渠道交叉验证（TechCrunch / Fortune / Reuters / Bloomberg / arXiv / 新浪财经 / 每日经济新闻 / IT之家等）</p>
+  <p>🕐 生成时间：2026-07-15 22:00（北京时间） · 自动化生成</p>
+  <p>⚠️ 仅供研究参考，不构成投资建议。所有资讯均保留原文链接可溯源。</p>
+</div>
+
+</div>
+</body>
+</html>

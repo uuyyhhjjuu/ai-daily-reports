@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026年7月17日</title>
+<style>
+:root{--primary:#6366f1;--primary-dark:#4f46e5;--bg:#f8fafc;--card-bg:#fff;--text:#1e293b;--text-sec:#64748b;--text-muted:#94a3b8;--border:#e2e8f0;--shadow:0 1px 3px rgba(0,0,0,.08);--shadow-lg:0 8px 30px rgba(99,102,241,.12)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+.container{max-width:900px;margin:0 auto;padding:32px 20px 60px}
+/* Header */
+.header{background:linear-gradient(135deg,#6366f1 0%,#4f46e5 50%,#7c3aed 100%);border-radius:16px;padding:36px 40px;color:#fff;margin-bottom:28px;box-shadow:0 8px 30px rgba(99,102,241,.25)}
+.header h1{font-size:26px;font-weight:700;letter-spacing:-.5px}
+.header .meta{font-size:13px;opacity:.85;margin-top:8px;display:flex;flex-wrap:wrap;gap:16px}
+.header .meta span{display:inline-flex;align-items:center;gap:4px}
+/* Stats bar */
+.stats-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:14px 18px;background:#fff;border-radius:12px;box-shadow:var(--shadow)}
+.stat-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap}
+.stat-chip .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+/* Section */
+.section{margin-bottom:28px}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+.section-header .sec-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.section-header h2{font-size:18px;font-weight:700;flex-grow:1}
+.section-header .count{font-size:13px;color:var(--text-muted);background:#f1f5f9;padding:3px 10px;border-radius:12px}
+/* Card */
+.card{background:var(--card-bg);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:12px;transition:box-shadow .2s,transform .15s}
+.card:hover{box-shadow:var(--shadow-lg);transform:translateY(-1px)}
+.card-body{display:flex}
+.card-bar{width:5px;flex-shrink:0}
+.card-content{padding:16px 20px;flex-grow:1}
+.card-title{font-size:15.5px;font-weight:600;line-height:1.5;margin-bottom:6px}
+.card-title a{color:var(--text);text-decoration:none;transition:color .15s}
+.card-title a:hover{color:var(--primary)}
+.card-meta{font-size:12px;color:var(--text-muted);margin-bottom:8px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.card-meta .source{font-weight:500;color:var(--text-sec)}
+.card-meta .time{color:var(--text-muted)}
+.card-summary{font-size:13.5px;color:var(--text-sec);line-height:1.65}
+.card-summary .highlight{background:linear-gradient(180deg,transparent 55%,#e0e7ff 55%);padding:0 2px;font-weight:600;color:var(--primary-dark)}
+/* Summary section */
+.summary-section{background:linear-gradient(135deg,#eef2ff 0%,#f0f7ff 50%,#faf5ff 100%);border-radius:16px;padding:28px 32px;margin-top:32px;border:1px solid #e0e7ff}
+.summary-section h2{font-size:20px;font-weight:700;margin-bottom:16px;color:var(--primary-dark)}
+.summary-section h3{font-size:15px;font-weight:700;margin:18px 0 10px;color:var(--text)}
+.summary-section ul{list-style:none;padding:0}
+.summary-section li{padding:6px 0;font-size:13.5px;color:var(--text-sec);line-height:1.7;padding-left:20px;position:relative}
+.summary-section li::before{content:"▸";position:absolute;left:0;color:var(--primary);font-weight:700}
+.summary-section .highlight{background:linear-gradient(180deg,transparent 55%,#e0e7ff 55%);padding:0 2px;font-weight:600;color:var(--primary-dark)}
+.tracking-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
+.tracking-table th{text-align:left;padding:8px 10px;border-bottom:2px solid #c7d2fe;font-weight:700;color:var(--text);font-size:12px}
+.tracking-table td{padding:8px 10px;border-bottom:1px solid #e0e7ff;color:var(--text-sec)}
+.tracking-table .up{color:#059669;font-weight:700}
+.tracking-table .down{color:#dc2626;font-weight:700}
+.tracking-table .flat{color:var(--text-muted);font-weight:700}
+/* Footer */
+.footer{text-align:center;margin-top:40px;padding-top:24px;border-top:1px solid var(--border);color:var(--text-muted);font-size:12px;line-height:1.8}
+.footer .disclaimer{margin-top:8px;font-style:italic;opacity:.7}
+/* Responsive */
+@media(max-width:640px){
+  .header{padding:24px 20px}
+  .header h1{font-size:20px}
+  .stats-bar{padding:10px 12px}
+  .card-content{padding:14px 16px}
+  .card-title{font-size:14px}
+  .summary-section{padding:20px 18px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <h1>🤖 AI 每日全景报告</h1>
+  <div class="meta">
+    <span>📅 2026年7月17日（周五）</span>
+    <span>⏱ 覆盖时段：7/16 22:00 — 7/17 22:00 北京时间</span>
+    <span>📊 26 条资讯</span>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <span class="stat-chip"><span class="dot" style="background:#f59e0b"></span>行业动态 7</span>
+  <span class="stat-chip"><span class="dot" style="background:#10b981"></span>大V观点 5</span>
+  <span class="stat-chip"><span class="dot" style="background:#8b5cf6"></span>模型动态 3</span>
+  <span class="stat-chip"><span class="dot" style="background:#ec4899"></span>产品动态 3</span>
+  <span class="stat-chip"><span class="dot" style="background:#06b6d4"></span>技术论文 3</span>
+  <span class="stat-chip"><span class="dot" style="background:#3b82f6"></span>深度研报 3</span>
+  <span class="stat-chip"><span class="dot" style="background:#f97316"></span>投融资 2</span>
+</div>
+
+<!-- ===== 1. 行业动态 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="sec-dot" style="background:#f59e0b"></span>
+    <h2>🏭 行业动态</h2>
+    <span class="count">7 条</span>
+  </div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#f59e0b"></div><div class="card-content">
+    <div class="card-title"><a href="https://www.zhitongcaijing.com/content/detail/1468716.html" target="_blank">谷歌 Gemini 3.5 Pro 三连跳票：编程能力不达标，Alphabet 股价暴跌 4.43%</a></div>
+    <div class="card-meta"><span class="source">彭博社 / 智通财经</span><span class="time">今天 06:00</span></div>
+    <div class="card-summary">谷歌旗舰 AI 模型 Gemini 3.5 Pro 发布推迟数月，核心原因是<span class="highlight">代码生成能力未达内部目标</span>。6月底更新训练数据后性能反而出现"训练退化"。Alphabet 股价一度跌超 5%，收跌 4.43% 报 354.46 美元。10 名现任及前任员工称内部弥漫挫败感，工程师担心在 OpenAI、Anthropic 加速超越下丧失市场优势。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#f59e0b"></div><div class="card-content">
+    <div class="card-title"><a href="https://m.sohu.com/a/1051610421_122014422" target="_blank">智谱 AI 港股暴跌 28.49%，单日市值蒸发超 2000 亿港元</a></div>
+    <div class="card-meta"><span class="source">财经 / 搜狐财经</span><span class="time">今天 16:00 收盘</span></div>
+    <div class="card-summary">智谱（02513.HK）收盘报 1107 港元，单日蒸发约 <span class="highlight">2053 亿港元</span>市值，总市值回落至 5154 亿港元，较 6 月高点已腰斩。7 天前刚完成 314 亿港元配售的机构股东已浮亏 30%。竞争对手 Kimi K3 发布、基石解禁落地、高亏损叠加高估值的基本面矛盾共同施压。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#f59e0b"></div><div class="card-content">
+    <div class="card-title"><a href="https://finance.sina.cn/2026-07-17/detail-iniiccvc8207716.d.html" target="_blank">港股 AI 产业链全线回调：恒生科技跌 4.37%，MiniMax 跌 15.63%</a></div>
+    <div class="card-meta"><span class="source">财联社 / 新浪财经</span><span class="time">今天 16:00 收盘</span></div>
+    <div class="card-summary">恒生科技指数跌 4.37% 报 4623 点，AI 大模型概念股重创。"大模型双雄"智谱跌 28.49%、MiniMax 跌 15.63%。PCB 概念股建滔积层板跌 14.26%，半导体板块英诺赛科跌超 10%。国家发改委同日发布《人工智能合作发展行动计划》八项行动，但未能扭转市场情绪。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#f59e0b"></div><div class="card-content">
+    <div class="card-title"><a href="https://arstechnica.com/tech-policy/2026/07/xai-cant-deny-grok-makes-csam-anymore-so-its-suing-users" target="_blank">xAI 首次起诉 Grok 用户制作儿童性虐待内容，立场发生根本转变</a></div>
+    <div class="card-meta"><span class="source">Ars Technica</span><span class="time">今天 04:26</span></div>
+    <div class="card-summary">xAI 对一名 Grok 用户提起诉讼，指控其利用模型制作 CSAM 图像。此前 xAI 一直否认 Grok 能生成此类内容，此次诉讼标志着<span class="highlight">立场根本转变</span>——从"模型不会生成"转向"追究用户滥用责任"。案件聚焦用户行为而非模型技术缺陷，为 AI 内容安全监管开辟新法律路径。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#f59e0b"></div><div class="card-content">
+    <div class="card-title"><a href="https://venturebeat.com/ai/the-agent-security-gap-54-of-enterprises-have-already-had-an-ai-agent-incident-and-most-still-let-agents-share-credentials" target="_blank">54% 企业已遭遇 AI 智能体安全事件，仅 32% 分配独立凭证</a></div>
+    <div class="card-meta"><span class="source">VentureBeat</span><span class="time">今天 03:02</span></div>
+    <div class="card-summary">对 107 家企业调查显示，<span class="highlight">54% 已遭遇 AI 智能体安全事件</span>（18% 确认事故，36% 险些酿祸）。仅 32% 为每个智能体分配独立身份凭证，30% 将高风险智能体隔离在沙箱中。专用智能体安全产品渗透率极低，多数企业仍依赖模型提供商原生方案。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#f59e0b"></div><div class="card-content">
+    <div class="card-title"><a href="https://www.ithome.com/0/978/277.htm" target="_blank">苹果与 OpenAI 法律战升级：约 40 名前员工收到律师函</a></div>
+    <div class="card-meta"><span class="source">IT之家</span><span class="time">今天 19:10</span></div>
+    <div class="card-summary">苹果已向约 40 名就职于 OpenAI 的前员工发出律师函，要求保存相关文件。苹果称已有<span class="highlight">超 400 名前员工在 OpenAI 工作</span>，正寻求法院禁令阻止 OpenAI 使用苹果信息并要求归还机密。此前苹果起诉 OpenAI 及两名前员，指控通过挖角获取商业机密以加速 AI 硬件研发。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#f59e0b"></div><div class="card-content">
+    <div class="card-title"><a href="https://www.ithome.com/0/977/793.htm" target="_blank">世界人工智能合作组织协定在上海签署，29 国创始成员，总部设中国上海</a></div>
+    <div class="card-meta"><span class="source">IT之家</span><span class="time">昨天 22:38</span></div>
+    <div class="card-summary">7 月 16 日，成立世界人工智能合作组织协定签署仪式在上海举行，外交部长王毅代表中国政府签署协定。该组织为<span class="highlight">独立政府间国际组织</span>，总部设在中国上海，旨在促进 AI 国际合作与全球治理。哈萨克斯坦、老挝、巴基斯坦等 29 国签署协定成为创始成员。</div>
+  </div></div></div>
+</div>
+
+<!-- ===== 2. 大V观点 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="sec-dot" style="background:#10b981"></span>
+    <h2>💬 大V观点</h2>
+    <span class="count">5 条</span>
+  </div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#10b981"></div><div class="card-content">
+    <div class="card-title"><a href="https://openai.com/index/a-scorecard-for-the-ai-age" target="_blank">OpenAI 提出 AI 时代记分卡："有用智能每美元"衡量实际工作价值</a></div>
+    <div class="card-meta"><span class="source">OpenAI 官网</span><span class="time">今天 18:00</span></div>
+    <div class="card-summary">OpenAI 提出 <span class="highlight">"Useful Intelligence per Dollar"（有用智能每美元）</span>作为衡量 AI 投资回报的核心指标，从完成的有用工作量、成功任务的实际成本、结果可靠性三个维度评估。此举意在将行业关注点从"模型参数"和"基准分数"转向实际工作产出与经济价值。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#10b981"></div><div class="card-content">
+    <div class="card-title"><a href="https://36kr.com/p/3899401765422720" target="_blank">沃顿教授 Ethan Mollick：硅谷正遭遇"下一代巨模型失望陷阱"</a></div>
+    <div class="card-meta"><span class="source">36氪 / X (@emollick)</span><span class="time">今天</span></div>
+    <div class="card-summary">沃顿商学院教授 Ethan Mollick 在转发 Gemini 3.5 Pro 延期报道时指出，谷歌的挫折<span class="highlight">完美复刻了 Meta Llama 4 和 xAI Grok 4 的痛苦</span>，行业正遭遇"下一代巨模型失望陷阱"——投入巨额资金训练的新一代模型性能提升远低于预期。仅有 OpenAI 凭借 Orion/GPT-4.5 暂时逃脱。Scaling Law 正在接近物理极限。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#10b981"></div><div class="card-content">
+    <div class="card-title"><a href="https://neodrop.ai/zh-cn/channel/YZ-D0OtYdRh" target="_blank">Cognitive Revolution 播客：davidad 谈 AI 对齐新范式——不只防越狱，还要训练判断力</a></div>
+    <div class="card-meta"><span class="source">The Cognitive Revolution 播客</span><span class="time">今天</span></div>
+    <div class="card-summary">davidad 在 The Cognitive Revolution 播客中解释，为何从 Safeguarded AI 的形式验证路线转向 <span class="highlight">Alignment with Awakening</span>：未来安全关键可能是让 aligned AI 彼此证明、彼此结盟，并避免把模型训练成只会钻奖励空子的系统。对齐不只是防止越狱，而是训练 AI 变得更会判断。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#10b981"></div><div class="card-content">
+    <div class="card-title"><a href="https://neodrop.ai/zh-cn/channel/YZ-D0OtYdRh" target="_blank">No Priors 播客：Booking CEO 谈 AI 旅行代理要先算清 Token 账</a></div>
+    <div class="card-meta"><span class="source">No Priors 播客</span><span class="time">今天</span></div>
+    <div class="card-summary">Booking CEO Glenn Fogel 在 No Priors 播客中解释，AI 旅行代理 Penny 的价值不在聊天界面，而在<span class="highlight">复杂行程规划、客服效率和商业账本</span>：token 成本、转化率、复购、人工兜底都必须算清楚。AI 代理的商业化不能只看用户体验，更要看单位经济模型。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#10b981"></div><div class="card-content">
+    <div class="card-title"><a href="https://neodrop.ai/zh-cn/channel/YZ-D0OtYdRh" target="_blank">Dwarkesh 播客：Adam Brown 谈 AI 想重发现相对论，先得学会什么叫"好线索"</a></div>
+    <div class="card-meta"><span class="source">Dwarkesh Podcast</span><span class="time">今天</span></div>
+    <div class="card-summary">Adam Brown 在 Dwarkesh Podcast 中从等效原理讲到黑洞能量提取，最终将问题落回 AI 科学发现：<span class="highlight">模型要重新发现广义相对论，难点不只是算力</span>，而是能否识别值得追下去的线索。当前 AI 在"找答案"上很强，但在"判断什么值得研究"上仍有本质差距。</div>
+  </div></div></div>
+</div>
+
+<!-- ===== 3. 模型动态 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="sec-dot" style="background:#8b5cf6"></span>
+    <h2>🧠 模型动态</h2>
+    <span class="count">3 条</span>
+  </div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#8b5cf6"></div><div class="card-content">
+    <div class="card-title"><a href="https://www.kimi.com/blog/kimi-k3" target="_blank">Kimi K3 发布：2.8 万亿参数全球最大开源模型，登顶前端编码榜</a></div>
+    <div class="card-meta"><span class="source">Kimi Blog / 新华社</span><span class="time">今天 12:57</span></div>
+    <div class="card-summary">月之暗面发布 Kimi K3，<span class="highlight">2.8 万亿参数 MoE 架构</span>，100 万 token 上下文窗口，是全球首个超 2 万亿级别开源模型。基于 Kimi Delta Attention 和 Attention Residuals 架构创新，综合智力水平仅次于 Claude Fable 5 和 GPT-5.6 Sol。在 Frontend Code Arena 以 1679 分登顶，力压两大闭源巨头。API 定价输入 $3/百万 tokens、输出 $15。<span class="highlight">7 月 27 日开放完整权重</span>。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#8b5cf6"></div><div class="card-content">
+    <div class="card-title"><a href="https://www.marktechpost.com/2026/07/17/nvidia-ai-releases-nemotron-3-embed-an-open-embedding-collection-whose-8b-checkpoint-ranks-1-on-rteb" target="_blank">NVIDIA 发布 Nemotron 3 Embed 系列，8B 版本 RTEB 基准排名第一</a></div>
+    <div class="card-meta"><span class="source">MarkTechPost</span><span class="time">今天 15:53</span></div>
+    <div class="card-summary">NVIDIA 发布 Nemotron 3 Embed 系列，含三个开源 checkpoint。其中 <span class="highlight">8B-BF16 版本在 RTEB 基准上以 78.46 平均 NDCG@10 排名第一</span>。1B-NVFP4 版本在 Blackwell 上吞吐量比 BF16 高 2 倍，精度保留 99.5%。最大序列长度 32,768 tokens，面向企业级检索增强生成（RAG）场景。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#8b5cf6"></div><div class="card-content">
+    <div class="card-title"><a href="https://mp.weixin.qq.com/s/_eaO0wmsiQFGsrE2_zW_Dg" target="_blank">通义实验室发布 Wan-Streamer v0.2：全模态统一架构，端到端延迟仅 550ms</a></div>
+    <div class="card-meta"><span class="source">通义实验室（千问）</span><span class="time">今天 15:14</span></div>
+    <div class="card-summary">通义实验室发布 Wan-Streamer v0.2，将<span class="highlight">"听、看、说、演"统一进单个 Transformer</span>的端到端全模态模型。端到端响应延迟仅 550ms，输出分辨率从 v0.1 的 192×336 提升至 640×368 @ 25FPS。采用 Thinker-Performer 双通路架构，在提升画质的同时维持极低延迟。</div>
+  </div></div></div>
+</div>
+
+<!-- ===== 4. 产品动态 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="sec-dot" style="background:#ec4899"></span>
+    <h2>📦 产品动态</h2>
+    <span class="count">3 条</span>
+  </div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#ec4899"></div><div class="card-content">
+    <div class="card-title"><a href="https://x.ai/news/grok-automations" target="_blank">Grok 推出 Automations 功能：定时或邮件触发，自动执行任务并汇报</a></div>
+    <div class="card-meta"><span class="source">xAI News</span><span class="time">今天 05:39</span></div>
+    <div class="card-summary">xAI 为 Grok 引入 Automations 功能，用户可描述一次任务，让 Grok 按<span class="highlight">计划（一次/每日/工作日/每周/每月/每年）</span>或邮件触发（按发件人、收件人或主题过滤）自动运行。每次执行都是一次完整对话，结果保存至运行历史，支持邮件或应用内通知。定时自动化对所有用户开放，邮件触发需 SuperGrok 订阅。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#ec4899"></div><div class="card-content">
+    <div class="card-title"><a href="https://x.com/ChatGPTapp/status/2077826846373380535" target="_blank">ChatGPT 工作区新增文档、表格、幻灯片编辑功能</a></div>
+    <div class="card-meta"><span class="source">X / ChatGPT (@ChatGPTapp)</span><span class="time">今天 02:44</span></div>
+    <div class="card-summary">OpenAI 在 ChatGPT Work 中上线文档、电子表格和幻灯片的创建与编辑功能，<span class="highlight">直接挑战 Google Workspace 和 Microsoft 365</span>。整合 GPT-5.6 模型族与 Codex 引擎，支持跨应用操作和数小时复杂任务执行。标志着 AI 办公大战从"对话助手"向"替代型数字员工"的战略转型。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#ec4899"></div><div class="card-content">
+    <div class="card-title"><a href="https://blog.google/products-and-platforms/products/workspace/gemini-omni-personal-avatars" target="_blank">Google Vids 上线 Gemini Omni 视频生成与个人数字分身功能</a></div>
+    <div class="card-meta"><span class="source">Google Blog</span><span class="time">今天 00:00</span></div>
+    <div class="card-summary">Google Vids 推出两项更新：Gemini Omni 支持自然语言提示词和图片参考生成、逐步编辑高质量视频片段；<span class="highlight">个人数字分身</span>功能允许用户上传自拍和语音录制后，输入文字即可让数字分身出镜。面向 AI Pro/Ultra 订阅者及 Workspace 商业客户，所有生成内容含不可见 SynthID 水印。</div>
+  </div></div></div>
+</div>
+
+<!-- ===== 5. 技术论文 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="sec-dot" style="background:#06b6d4"></span>
+    <h2>🔬 技术论文</h2>
+    <span class="count">3 条</span>
+  </div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#06b6d4"></div><div class="card-content">
+    <div class="card-title"><a href="https://schema-harness.github.io/" target="_blank">Schema Harness 在 ARC-AGI-3 公开集上取得约 99% 成绩，不改模型权重</a></div>
+    <div class="card-meta"><span class="source">schema-harness.github.io / Hacker News</span><span class="time">今天 16:41</span></div>
+    <div class="card-summary">Schema 框架在 ARC-AGI-3 公开集上，使用 Claude Opus 4.8 和 Fable 5 达到 <span class="highlight">99% RHAE 分数</span>，使用 GPT-5.6 Sol 达到 95.35%。该框架不修改模型权重，而是将原始观测转化为可编辑程序，联合解决状态归因和机制发现问题。此前最强模型 GPT-5.6 Sol 在半私有集上仅得 7.78%。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#06b6d4"></div><div class="card-content">
+    <div class="card-title"><a href="https://www.kimi.com/blog/perception-bench" target="_blank">Moonshot AI 发布 PerceptionBench：多模态模型视觉感知能力诊断基准</a></div>
+    <div class="card-meta"><span class="source">Kimi Blog</span><span class="time">今天 03:11</span></div>
+    <div class="card-summary">Moonshot AI 发布 PerceptionBench，从 40+ 现有基准中模型实际失败案例归纳出视觉感知基准，包含 <span class="highlight">10 项原子感知能力和 3000 道验证题</span>。所有测试模型准确率均未超过 60%，且大量正确答案在重复提问时无法复现，表明模型更多是"猜测"而非真正感知。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#06b6d4"></div><div class="card-content">
+    <div class="card-title"><a href="https://arxiv.org/abs/2607.15161" target="_blank">OPD²：On-Policy Delta Distillation — 用"增量信号"提升推理能力蒸馏</a></div>
+    <div class="card-meta"><span class="source">arXiv:2607.15161</span><span class="time">7月16日提交</span></div>
+    <div class="card-summary">提出新型蒸馏奖励"delta signal"——定义为教师模型与其指令微调前基础模型之间的差异，<span class="highlight">捕获推理微调引入的变化</span>，为转移推理能力提供更直接信号。实验表明 OPD² 在数学、科学和代码推理基准上持续超越传统 on-policy 蒸馏，仅需短周期后训练即可达到强性能。</div>
+  </div></div></div>
+</div>
+
+<!-- ===== 6. 深度研报观点 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="sec-dot" style="background:#3b82f6"></span>
+    <h2>💡 深度研报观点</h2>
+    <span class="count">3 条</span>
+  </div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#3b82f6"></div><div class="card-content">
+    <div class="card-title"><a href="https://www.theatlantic.com/technology/2026/07/generative-ai-engineering-disaster/687901" target="_blank">The Atlantic 深度：生成式 AI 是一场工程灾难，AI 公司抢购 70% 高端内存</a></div>
+    <div class="card-meta"><span class="source">The Atlantic</span><span class="time">今天 08:40</span></div>
+    <div class="card-summary">AI 公司为维持大语言模型运行，可能已购买全球<span class="highlight"> 70% 的高端计算机内存</span>，导致内存与存储价格飙升：两年前 350 美元的硬盘现已涨至 800 美元且缺货，部分笔记本电脑涨价 50%。科技公司计划未来几年将美国数据中心容量扩大 8 倍，部分站点甚至用喷气发动机供电。预测平价入门级电脑可能在 2028 年前消失。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#3b82f6"></div><div class="card-content">
+    <div class="card-title"><a href="https://36kr.com/p/3899401765422720" target="_blank">36 氪深度：谷歌的"塔西佗陷阱"——Gemini 延期背后的官僚主义与算力饥渴</a></div>
+    <div class="card-meta"><span class="source">36氪</span><span class="time">今天</span></div>
+    <div class="card-summary">深度分析 Gemini 3.5 Pro 三连跳票的深层原因：① 内部官僚体系臃肿，一个模型发布需兼顾搜索、地图、YouTube 等产品线需求，"想煮沸整片海洋"；② 工程师"纯血统情结"抵触 AI 生成代码，后强制使用时却遭遇<span class="highlight">算力容量限制</span>——在年资本支出 1800-1900 亿美元的公司里，自家工程师用不上 GPU；③ 内部赛马导致人才流失到 Anthropic 和 OpenAI，形成恶性闭环。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#3b82f6"></div><div class="card-content">
+    <div class="card-title"><a href="https://venturebeat.com/ai/the-agent-evaluation-gap-enterprise-ai-organizations-have-a-reality-alignment-problem-not-a-coverage-problem-and-most-are-shipping-to-production-anyway" target="_blank">VentureBeat 调查：企业 AI 智能体评估的"现实对齐"缺口</a></div>
+    <div class="card-meta"><span class="source">VentureBeat</span><span class="time">今天 00:40</span></div>
+    <div class="card-summary">对 157 家企业调查显示，<span class="highlight">50% 的组织曾部署通过内部评估但导致客户故障的 AI 智能体</span>。仅 5% 完全信任自动化评估，29% 认为评估与现实结果对齐不佳是最大局限。尽管信任度低，66% 企业已允许或计划在 12 个月内实现低风险智能体的全自动、无人工干预部署——"现实对齐"问题远比"覆盖率"问题严重。</div>
+  </div></div></div>
+</div>
+
+<!-- ===== 7. 投融资 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="sec-dot" style="background:#f97316"></span>
+    <h2>💰 投融资</h2>
+    <span class="count">2 条</span>
+  </div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#f97316"></div><div class="card-content">
+    <div class="card-title"><a href="https://www.toutiao.com/article/7663120116854407734" target="_blank">DeepSeek 正式推进 IPO 筹备，投前估值 710 亿美元，梁文锋身家 2440 亿</a></div>
+    <div class="card-meta"><span class="source">彭博 / 金融时报 / 中经</span><span class="time">今天 05:39</span></div>
+    <div class="card-summary">DeepSeek 启动 Pre-IPO 轮募资与 A 股 IPO 筹备，<span class="highlight">投前估值 710 亿美元（约 4800 亿元）</span>，计划年内完成审计、2027 年科创板挂牌。本轮百亿募资将全部用于自建 GW 级算力中心、多模态模型迭代与底层框架研发。创始人梁文锋持股约 31%，净资产 360 亿美元（约 2440 亿元），成为全球 AI 创业者纸面首富。融资设置特殊条款：投资方仅享收益权、无董事会投票权。</div>
+  </div></div></div>
+
+  <div class="card"><div class="card-body"><div class="card-bar" style="background:#f97316"></div><div class="card-content">
+    <div class="card-title"><a href="https://new.qq.com/rain/a20260717A02BWH00" target="_blank">日本 AI 联盟 Noetra 采购 2.75 万枚英伟达 Rubin GPU，2028 年投入运营</a></div>
+    <div class="card-meta"><span class="source">每日经济新闻</span><span class="time">今天</span></div>
+    <div class="card-summary">日本 AI 企业 Noetra 宣布与英伟达合作建设 AI 计算平台，计划部署约<span class="highlight"> 2.75 万枚英伟达 Rubin GPU</span>，2028 年 6 月投入运营。Noetra 由索尼、软银、NEC、本田等企业牵头成立，目标开发多模态 AI 基础模型，重点布局机器人 AI 应用。英伟达同日宣布扩大向日本企业提供机器人开发基础模型 Cosmos。</div>
+  </div></div></div>
+</div>
+
+<!-- ===== SUMMARY ===== -->
+<div class="summary-section">
+  <h2>📋 今日总结 & 投资启示</h2>
+
+  <h3>🔑 关键结论</h3>
+  <ul>
+    <li><strong>谷歌跌落神坛信号：</strong>Gemini 3.5 Pro 三连跳票，编程能力出现"训练退化"，Alphabet 单日跌 4.43%。核心问题不是技术不行，而是<span class="highlight">大公司官僚体系 + 算力内部分配失败</span>——年资本支出 1800 亿美元的公司，自家工程师用不上 GPU。这是 AI 竞赛从"拼参数"转向"拼工程效率与组织力"的标志性拐点。</li>
+    <li><strong>中国开源模型弯道超车：</strong>Kimi K3 以 2.8 万亿参数成为全球最大开源模型，在 Frontend Code Arena 登顶力压 Claude Fable 5 和 GPT-5.6 Sol。7 月 27 日开放权重后，"闭源模型凭什么收高价"的问题将被 2.8 万亿参数级开源体直接拷问。</li>
+    <li><strong>港股 AI 估值泡沫加速挤压：</strong>智谱单日暴跌 28.49% 市值蒸发 2000 亿港元，MiniMax 跌 15.63%。配售股东 7 天浮亏 30%。基石解禁 + 竞争对手模型迭代 + 高亏损基本面三重打压，AI 大模型概念股的"稀缺性溢价"正在退潮，市场回归基本面定价。</li>
+    <li><strong>AI 安全从理论风险变为实操危机：</strong>54% 企业已遭遇 AI 智能体安全事件，50% 曾部署通过测试却导致客户故障。xAI 首次起诉用户制作 CSAM。AI 安全不再是"可能发生"的远期风险，而是"正在发生"的现实成本。</li>
+    <li><strong>AI 办公正面战场开打：</strong>OpenAI ChatGPT Work 上线文档/表格/幻灯片编辑，直接挑战 Google Workspace（30 亿用户）和 Microsoft 365（4.5 亿席位）。AI 办公从"辅助型"走向"替代型"。</li>
+  </ul>
+
+  <h3>📊 重点公司 / 行业环比变化追踪</h3>
+  <table class="tracking-table">
+    <thead>
+      <tr><th>标的</th><th>方向</th><th>对比基准</th><th>论据</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Google / DeepMind</td><td class="down">↓消极</td><td>较上周</td><td>Gemini 3.5 Pro 三连跳票，编程能力退化，股价跌 4.43%；内部官僚主义与算力分配失败暴露组织效率问题</td></tr>
+      <tr><td>智谱 (Zhipu)</td><td class="down">↓消极</td><td>较 6 月高点</td><td>股价已腰斩（-54%），单日暴跌 28.49%，配售股东浮亏 30%；Kimi K3 发布加剧竞争焦虑</td></tr>
+      <tr><td>MiniMax</td><td class="down">↓消极</td><td>较上周</td><td>港股跌 15.63%，恒生科技指数本周跌 2.09%，AI 大模型概念股集体杀跌</td></tr>
+      <tr><td>OpenAI</td><td class="up">↑积极</td><td>较上周</td><td>ChatGPT Work 上线文档编辑挑战 Google/微软腹地；提出"有用智能每美元"投资回报指标；Sol 需求暴涨</td></tr>
+      <tr><td>月之暗面 (Moonshot)</td><td class="up">↑积极</td><td>较上月</td><td>Kimi K3 发布 2.8T 参数全球最大开源模型，登顶前端编码榜；年内 6 轮融资，ARR 突破 3 亿美元</td></tr>
+      <tr><td>xAI</td><td class="flat">→中性</td><td>较上周</td><td>Grok Automations 功能上线拓展产品边界（+），但 CSAM 诉讼暴露内容安全风险（-），方向冲突</td></tr>
+      <tr><td>DeepSeek</td><td class="up">↑积极</td><td>较上月</td><td>投前估值 710 亿美元（3 个月翻 7 倍），正式推进 IPO，梁文锋成全球 AI 创业者纸面首富</td></tr>
+      <tr><td>英伟达 (NVIDIA)</td><td class="flat">→中性</td><td>较上周</td><td>Nemotron 3 Embed 发布 + 日本 Noetra 采购 2.75 万枚 Rubin（+），但美股 AI/芯片股延续回调 -1.5%（-）</td></tr>
+      <tr><td>Anthropic</td><td class="up">↑积极</td><td>较上周</td><td>Claude Code 百万行 Zig→Rust 两周迁移案例展示工程能力；Fable 5 在 Cowork 中可用；Q1 收入增长 80 倍</td></tr>
+      <tr><td>港股 AI 板块</td><td class="down">↓消极</td><td>较上周</td><td>恒生科技跌 4.37%，智谱+MiniMax 领跌，PCB/半导体全线回调，AI 产业链集体杀跌</td></tr>
+      <tr><td>算力 / 数据中心</td><td class="up">↑积极</td><td>较上周</td><td>日本 Noetra 2.75 万枚 Rubin 订单落地，英伟达 Cosmos 扩大日本布局；AI 公司抢购 70% 高端内存推高全链价格</td></tr>
+      <tr><td>AI 编码工具安全</td><td class="down">↓消极</td><td>较上月</td><td>54% 企业遭遇智能体安全事件；50% 部署通过测试却导致客户故障；xAI 首次因 CSAM 起诉用户</td></tr>
+      <tr><td>存储链</td><td class="up">↑积极</td><td>较上周</td><td>AI 公司购买全球 70% 高端内存，硬盘两年涨 128%，预计短缺持续数年</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>📡 数据来源：AI HOT API · WebSearch 多渠道交叉验证（彭博 / The Atlantic / 36氪 / VentureBeat / arXiv 等）</p>
+  <p>🤖 生成时间：2026-07-17 22:00 北京时间 · 自动化生成</p>
+  <p class="disclaimer">⚠️ 本报告仅供研究参考，不构成投资建议。AI 行业变化快，请注意风险。</p>
+</div>
+
+</div>
+</body>
+</html>

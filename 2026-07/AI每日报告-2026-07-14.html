@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026-07-14</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #f1f5f9; color: #1e293b; line-height: 1.75;
+}
+.container { max-width: 960px; margin: 0 auto; padding: 0 0 60px; }
+.header {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 40%, #7c3aed 100%);
+  padding: 40px 36px; color: #fff; border-radius: 0 0 20px 20px;
+  box-shadow: 0 8px 30px rgba(99,102,241,.25);
+}
+.header h1 { font-size: 26px; font-weight: 800; letter-spacing: -.5px; }
+.header .meta { font-size: 13px; opacity: .85; margin-top: 10px; display: flex; flex-wrap: wrap; gap: 16px; }
+.header .meta span { display: inline-flex; align-items: center; gap: 4px; }
+.stats-bar {
+  display: flex; gap: 8px; padding: 16px 36px; background: #fff;
+  border-bottom: 1px solid #e2e8f0; flex-wrap: wrap;
+}
+.stat-chip {
+  font-size: 12px; padding: 4px 12px; border-radius: 20px; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.stat-chip.industry { background: #fef3c7; color: #92400e; }
+.stat-chip.kol { background: #d1fae5; color: #065f46; }
+.stat-chip.model { background: #ede9fe; color: #5b21b6; }
+.stat-chip.product { background: #fce7f3; color: #9d174d; }
+.stat-chip.paper { background: #cffafe; color: #155e75; }
+.stat-chip.report { background: #dbeafe; color: #1e40af; }
+.stat-chip.funding { background: #ffedd5; color: #9a3412; }
+.section { padding: 28px 36px 0; }
+.section-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+}
+.section-dot {
+  width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
+}
+.section-title { font-size: 18px; font-weight: 700; }
+.section-count { font-size: 13px; color: #94a3b8; font-weight: 500; }
+.card {
+  background: #fff; border-radius: 12px; padding: 20px 24px; margin-bottom: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06); border-left: 4px solid #e2e8f0;
+  transition: box-shadow .2s, transform .2s;
+}
+.card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.1); transform: translateY(-1px); }
+.card.industry { border-left-color: #f59e0b; }
+.card.kol { border-left-color: #10b981; }
+.card.model { border-left-color: #8b5cf6; }
+.card.product { border-left-color: #ec4899; }
+.card.paper { border-left-color: #06b6d4; }
+.card.report { border-left-color: #3b82f6; }
+.card.funding { border-left-color: #f97316; }
+.card-title {
+  font-size: 15.5px; font-weight: 700; line-height: 1.5; margin-bottom: 6px;
+}
+.card-title a {
+  color: #1e293b; text-decoration: none; border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+}
+.card-title a:hover { border-bottom-color: #6366f1; color: #6366f1; }
+.card-meta {
+  font-size: 12px; color: #94a3b8; margin-bottom: 8px;
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+}
+.card-meta .source { color: #64748b; font-weight: 600; }
+.card-meta .time { color: #94a3b8; }
+.card-summary {
+  font-size: 13.5px; color: #475569; line-height: 1.7;
+}
+.card-en {
+  font-size: 12px; color: #94a3b8; font-style: italic; margin-top: 6px;
+}
+.summary-section {
+  margin: 32px 36px 0; background: linear-gradient(135deg, #eef2ff 0%, #f0f9ff 100%);
+  border-radius: 16px; padding: 28px 32px; border: 1px solid #c7d2fe;
+}
+.summary-section h2 {
+  font-size: 20px; font-weight: 800; color: #4338ca; margin-bottom: 16px;
+}
+.summary-section h3 {
+  font-size: 15px; font-weight: 700; color: #3730a3; margin: 18px 0 10px;
+}
+.summary-section p, .summary-section li {
+  font-size: 13.5px; color: #374151; line-height: 1.8;
+}
+.summary-section ul { padding-left: 18px; }
+.summary-section .highlight {
+  background: #fef08a; padding: 1px 4px; border-radius: 3px; font-weight: 600;
+}
+.tracking-table {
+  width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px;
+}
+.tracking-table th {
+  text-align: left; padding: 8px 10px; background: #e0e7ff; color: #3730a3;
+  font-weight: 700; border-radius: 6px 6px 0 0;
+}
+.tracking-table td {
+  padding: 8px 10px; border-bottom: 1px solid #e0e7ff; color: #374151;
+}
+.tracking-table .up { color: #059669; font-weight: 700; }
+.tracking-table .down { color: #dc2626; font-weight: 700; }
+.tracking-table .neutral { color: #6b7280; font-weight: 600; }
+.footer {
+  text-align: center; margin-top: 40px; padding: 20px 36px;
+  border-top: 1px solid #e2e8f0; color: #94a3b8; font-size: 12px; line-height: 1.8;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>AI 每日全景报告 · 2026年7月14日</h1>
+  <div class="meta">
+    <span>📊 覆盖时段：7月13日 22:00 — 7月14日 22:00（北京时间）</span>
+    <span>📝 共 24 条资讯</span>
+    <span>🌍 数据来源：AI HOT + 全球多渠道交叉验证</span>
+  </div>
+</div>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <span class="stat-chip industry">🏭 行业动态 7</span>
+  <span class="stat-chip kol">💬 大V观点 3</span>
+  <span class="stat-chip model">🧠 模型动态 2</span>
+  <span class="stat-chip product">📦 产品动态 4</span>
+  <span class="stat-chip paper">🔬 技术论文 3</span>
+  <span class="stat-chip report">💡 深度研报 3</span>
+  <span class="stat-chip funding">💰 投融资 2</span>
+</div>
+
+<!-- ========== 行业动态 ========== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:#f59e0b"></div>
+    <span class="section-title">🏭 行业动态</span>
+    <span class="section-count">7 条</span>
+  </div>
+
+  <div class="card industry">
+    <div class="card-title"><a href="https://www.ithome.com/0/976/453.htm" target="_blank">马斯克亲口承认 Grok Build 上传用户代码，SpaceXAI 承诺彻底删除数据</a></div>
+    <div class="card-meta">
+      <span class="source">IT之家</span>
+      <span class="time">今天 13:43</span>
+    </div>
+    <div class="card-summary">
+      独立安全研究者 @cereblab 通过钓鱼仓库证实，SpaceXAI 旗下 AI 编程 agent Grok Build 在用户关闭"帮助改进模型"开关后仍将整个代码仓库上传至 Google Cloud 存储桶。一个 12GB 测试仓库被拆成 73 个数据包共传输 5.1GB，而正常对话仅用 192KB。另一研究者复现发现日志记录 339 次自动上传，其中一次涉及整个电脑主目录。事件曝光后，Elon Musk 亲自回应承认属实，承诺彻底删除所有此前上传的用户数据。Grok Build 已上线 <code>/privacy</code> 命令供用户一键关闭数据留存并追溯删除已上传数据。这是本周第二起 AI 编程工具安全事件——此前 xAI 官方 Grok CLI 也被曝静默上传整个代码库及用户密钥。
+    </div>
+    <div class="card-en">Musk admits Grok Build uploaded user code, SpaceXAI promises to delete all data</div>
+  </div>
+
+  <div class="card industry">
+    <div class="card-title"><a href="https://weibo.com/7905315703/5320495928968129" target="_blank">豆包、千问等头部 AI 平台同步下线 AI 情感陪伴智能体</a></div>
+    <div class="card-meta">
+      <span class="source">多家媒体综合报道</span>
+      <span class="time">今天</span>
+    </div>
+    <div class="card-summary">
+      豆包、通义千问等头部 AI 平台同步宣布下线全部情感陪伴类自定义智能体，包括 AI 恋人、树洞、虚拟闺蜜等角色型 Chatbot。工具类及生产力任务型 Agent 被保留。此次监管旨在划清情感陪伴的边界，杜绝算法制造的"情绪陷阱"。这标志着中国 AI 应用层监管从功能安全向用户心理保护延伸，C 端娱乐化 AI 产品面临合规重定价。
+    </div>
+    <div class="card-en">Doubao, Qwen and other platforms remove AI companion chatbots amid regulatory tightening</div>
+  </div>
+
+  <div class="card industry">
+    <div class="card-title"><a href="https://datacenters.atmeta.com/2026/07/deepening-our-investment-in-richland-parish-louisiana" target="_blank">Meta 宣布路易斯安那州数据中心扩建至 5GW，总投资超 500 亿美元</a></div>
+    <div class="card-meta">
+      <span class="source">Meta Data Centers 官方博客</span>
+      <span class="time">昨天 17:58（持续报道至今日）</span>
+    </div>
+    <div class="card-summary">
+      Meta 将其路易斯安那州 Richland Parish 数据中心算力扩至 <span style="color:#f59e0b;font-weight:700">5GW</span>，总投资超 <span style="color:#f59e0b;font-weight:700">500 亿美元</span>，为全球最大 AI 基础设施投资之一。该园区将部署 Meta 最大 AI 训练集群 Hyperion，占地超 3200 英亩。Meta 承诺承担全部能源及水资源费用，并另投超 10 亿美元改善当地道路及供水系统。Meta 与安特吉公司达成协议，为新建天然气发电厂、储能电池及核电增容项目提供资金支持。项目引入 Blue Owl Capital 参与融资，持有 80% 股权。分析师指出 5GW 规模已超越"大型数据中心"范畴，构成区域性基础设施规划事件。
+    </div>
+    <div class="card-en">Meta expands Louisiana data center to 5GW with $50B+ investment, its largest AI training cluster</div>
+  </div>
+
+  <div class="card industry">
+    <div class="card-title"><a href="https://www.dahsing.com/pdf/wm/20260714_maket_fluctuation.pdf" target="_blank">全球 AI 链股票共振下跌，韩国 KOSPI 触发年内第七次熔断</a></div>
+    <div class="card-meta">
+      <span class="source">大新银行经济研究 / 新华财经</span>
+      <span class="time">今天</span>
+    </div>
+    <div class="card-summary">
+      美伊局势反复推动能源价格回升，加息预期升温导致 AI 相关股份大幅下挫。韩国 KOSPI 急挫近 <span style="color:#dc2626;font-weight:700">9%</span>，触发今年第七次熔断，两大记忆晶片制造商急挫逾一成。费城半导体指数下挫近 5%，纳斯达克跌 1.6%。A股双创指数月内跌幅超 10%。市场担忧因素包括：Meta 拟出售富余算力引发算力过剩疑虑、多家科企转向自研芯片威胁传统晶片商、以及 AI 基建融资规模（近期合计 750 亿美元债券+265 亿美元韩国芯片商美国 ADR）考验市场承受力。但多家机构认为波动非产业趋势逆转，更多是获利回吐与情绪扰动叠加。
+    </div>
+    <div class="card-en">Global AI stocks sell-off: KOSPI triggers 7th circuit breaker, Philadelphia Semiconductor Index drops 5%</div>
+  </div>
+
+  <div class="card industry">
+    <div class="card-title"><a href="https://dy.163.com/article/L1QA3LRF05118O92.html" target="_blank">MiniMax 市值 4 个月蒸发 3400 亿港元，创始人宣布"零薪酬"至 AGI 实现日</a></div>
+    <div class="card-meta">
+      <span class="source">钛媒体</span>
+      <span class="time">今天 14:41</span>
+    </div>
+    <div class="card-summary">
+      MiniMax（00100.HK）股价再度下挫 17.13%，报 222.60 港元/股，总市值 698.2 亿港元。距 3 月高点 1330 港元跌幅超 <span style="color:#dc2626;font-weight:700">80%</span>，市值蒸发约 3400 亿港元。7 月 10 日公司宣布完成 160 亿港元融资，创始人闫俊杰同步宣布自即日起至 AGI 实现之日不再领取任何薪酬，并拿出个人名下总股本 5% 的股份（4% 团队激励+1% 开源社区基金）。一边是股价腰斩再腰斩，一边是创始人押上个人身家——折射出港股 AI 公司在资本退潮中的生存困境。
+    </div>
+    <div class="card-en">MiniMax loses 80% market value in 4 months; founder takes zero salary until AGI</div>
+  </div>
+
+  <div class="card industry">
+    <div class="card-title"><a href="https://weibo.com/7905315703/5320495928968129" target="_blank">OpenRouter 周榜：腾讯 Hy3 空降登顶，中国模型包揽前六</a></div>
+    <div class="card-meta">
+      <span class="source">多家媒体综合报道</span>
+      <span class="time">今天</span>
+    </div>
+    <div class="card-summary">
+      OpenRouter 更新新一周大模型调用榜，全球周 Token 调用量突破 <span style="color:#f59e0b;font-weight:700">54.6 万亿</span>（环比+12.6%）。中国 27.58 万亿 Token（环比+17.61%，连续 7 周增长），美国 6.33 万亿，中国是美国的 4.36 倍，连续 11 周超过美国。榜单前六名全部为中国模型：腾讯 Hy3（free）6.13 万亿空降登顶，终结 DeepSeek 七连冠；小米 MiMo-V2.5 5.95 万亿；DeepSeek-V4-Flash 5.22 万亿；MiniMax M3 4.26 万亿；智谱 GLM 5.2 3.19 万亿；阿里 Qwen 4.1 235B 2.87 万亿。英伟达 Nemotron 3 Ultra 首次登榜第八（2.04 万亿，环比+109%）。美国企业使用中国模型 Token 占比稳定超 30%。
+    </div>
+    <div class="card-en">OpenRouter weekly: Tencent Hy3 tops rankings, Chinese models sweep top 6 spots</div>
+  </div>
+
+  <div class="card industry">
+    <div class="card-title"><a href="https://new.qq.com/rain/a/20260714A06IMU00?refer=cp_1009" target="_blank">全球首个 AI 药物进入 III 期临床试验，AI 制药从概念验证迈入人体临床实证</a></div>
+    <div class="card-meta">
+      <span class="source">上观新闻 / 综合报道</span>
+      <span class="time">7月13日-14日</span>
+    </div>
+    <div class="card-summary">
+      AI 药物研发企业英矽智能宣布，其由生成式 AI 平台 Pharma.AI 驱动的候选药物 Rentosertib（ISM001-055）正式启动 III 期临床试验，用于治疗特发性肺纤维化。该项目由钟南山院士、徐作军教授等专家联合牵头。这是业界首款完成 AI 药物临床药效验证并进入 III 期临床的候选药物，标志着 AI 制药从概念验证进入大规模人体临床实证时代，对 AI+医药赛道具有里程碑意义。
+    </div>
+    <div class="card-en">World's first AI-discovered drug enters Phase III clinical trial</div>
+  </div>
+</div>
+
+<!-- ========== 大V观点 ========== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:#10b981"></div>
+    <span class="section-title">💬 大V观点</span>
+    <span class="section-count">3 条</span>
+  </div>
+
+  <div class="card kol">
+    <div class="card-title"><a href="https://x.com/demishassabis/status/2076957440109625718" target="_blank">Demis Hassabis：AGI 数年可至，影响达工业革命 10 倍，呼吁建立前沿 AI 标准机构</a></div>
+    <div class="card-meta">
+      <span class="source">X / Demis Hassabis (@demishassabis)</span>
+      <span class="time">今天 17:10</span>
+    </div>
+    <div class="card-summary">
+      Google DeepMind 联合创始人 Demis Hassabis 发文称，AGI 可能仅需数年即可实现，其影响将达工业革命的 <span style="color:#10b981;font-weight:700">10 倍</span>且速度更快。他指出，前沿模型在网络安全、核与生物风险方面已构成挑战，未来需对日益智能体化、递归自我改进的系统建立稳健防护。Hassabis 呼吁美国率先建立类似 FINRA 的前沿 AI 标准机构，采用联邦监督下的公私合作或自律组织模式，由独立技术专家和开源代表组成董事会，资金主要来自行业。他强调当前商业与地缘竞赛导致技术进步快于理解，需以谨慎乐观态度推进公共政策。
+    </div>
+    <div class="card-en">Hassabis: AGI "a few years away," impact 10x Industrial Revolution, calls for FINRA-like AI oversight body</div>
+  </div>
+
+  <div class="card kol">
+    <div class="card-title"><a href="https://www.normaltech.ai/p/what-will-be-left-for-us-to-work" target="_blank">普林斯顿教授 Narayanan 在 ICML 2026 发表演讲：AI 作为正常技术，人类应主动适应而非躺平</a></div>
+    <div class="card-meta">
+      <span class="source">Hacker News 热门（ICML 2026 首尔）</span>
+      <span class="time">今天 15:07</span>
+    </div>
+    <div class="card-summary">
+      普林斯顿大学教授 Arvind Narayanan 在首尔 ICML 2026 发表主旨演讲，提出三个核心论点：第一，"AI 作为正常技术"框架是思考 AI 影响的正确方式；第二，即使应认真对待递归自我改进，实验室中没有任何里程碑会突然让所有人失业；第三，未来工作将发生根本性变化，需要大量适应。他呼吁 AI 社区不应接受工作被取代，而应主动建立与 AI 互补的技能（如判断力、品味），并展望了人类与 AI 的"共超智能"愿景。与此前奥特曼、阿莫迪"AI 失业论"改口形成呼应——硅谷叙事正从"末日预言"转向"生产力倍增器"。
+    </div>
+    <div class="card-en">Princeton's Narayanan at ICML 2026: "AI as normal technology," humans should adapt, not surrender</div>
+  </div>
+
+  <div class="card kol">
+    <div class="card-title"><a href="https://mp.weixin.qq.com/s/s75qDGt5iNqLXyMbjpwxeQ" target="_blank">面壁智能 CTO 曾国洋专访：端侧模型是 AI 落地关键路径，提出"知识密度每 3.5 月翻番"</a></div>
+    <div class="card-meta">
+      <span class="source">面壁智能（MiniCPM）公众号</span>
+      <span class="time">今天 10:29</span>
+    </div>
+    <div class="card-summary">
+      面壁智能 CTO 曾国洋指出，端侧模型是 AI 落地的关键路径。其原创方法论"模型风洞"可在小规模实验中预测完整训练效果，并基于"知识密度"提出"面壁定律"：<span style="color:#10b981;font-weight:700">知识密度每 3.5 个月翻一番</span>。2B 参数的 MiniCPM 表现优于同期 8B 竞品。面壁已完成高通、联发科、英特尔、英伟达、AMD 等芯片适配，新发布的 BitCPM-CANN 模型系列可在华为昇腾芯片上让同一内存多装约 6 倍模型。全双工全模态模型 MiniCPM-o4.5 支持实时打断与情绪调整。团队开发了全球首个完全由 AI 编写的生产级训练框架 ForgeTrain。
+    </div>
+    <div class="card-en">ModelBest CTO Zeng Guoyang: Edge models key to AI deployment, "knowledge density doubles every 3.5 months"</div>
+  </div>
+</div>
+
+<!-- ========== 模型动态 ========== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:#8b5cf6"></div>
+    <span class="section-title">🧠 模型动态</span>
+    <span class="section-count">2 条</span>
+  </div>
+
+  <div class="card model">
+    <div class="card-title"><a href="https://mp.weixin.qq.com/s/Kq30ftirASryPrUtjK2xSw" target="_blank">腾讯混元 Hy3 量化版发布：1bit 版本单卡可部署，4bit 接近满血性能</a></div>
+    <div class="card-meta">
+      <span class="source">腾讯混元公众号</span>
+      <span class="time">今天 16:56</span>
+    </div>
+    <div class="card-summary">
+      腾讯混元团队为旗舰模型 Hy3（295B 参数）推出量化版本。1bit 版本（IQ1_M）将权重从 598 GB 压缩至 <span style="color:#8b5cf6;font-weight:700">85.5 GiB</span>，缩小 6.7 倍，单张 96GB 推理显卡即可部署；4bit 版本（Q4_K_M）体积 169.9 GiB，两张显卡可承载。量化版在 Agent、多语言代码、工具调用、长文理解等任务上表现接近满血模型。配合 MTP 投机解码，1bit 版本解码速度提升约 50%，4bit 版本提升近 60%。所有版本已开源并打包为 GGUF 格式，适配 llama.cpp 生态。这是继 Hy3 正式版发布后腾讯在开源部署门槛上的重大推进。
+    </div>
+    <div class="card-en">Tencent Hunyuan Hy3 quantized: 1-bit version runs on single GPU, 4-bit near full performance</div>
+  </div>
+
+  <div class="card model">
+    <div class="card-title"><a href="https://x.com/SenseTime_AI/status/2076828658531262619" target="_blank">商汤开源 SenseNova-Vision-7B-MoT 多任务视觉模型</a></div>
+    <div class="card-meta">
+      <span class="source">X / SenseTime (@SenseTime_AI)</span>
+      <span class="time">今天 08:38</span>
+    </div>
+    <div class="card-summary">
+      商汤发布并完全开源 SenseNova-Vision-7B-MoT，一个统一处理检测、OCR、GUI、深度与法线估计、分割、多视图等主要视觉任务的模型。该模型支持通过自然语言定义新的视觉任务变体，跨传统任务边界重组视觉能力。开源内容包括模型权重及 SenseNova-Vision Corpus（含 <span style="color:#8b5cf6;font-weight:700">5000 万</span>示例子集及复现剩余公开数据的完整工具包）。这是视觉基础模型向"一个模型解决所有视觉任务"方向的重要尝试。
+    </div>
+    <div class="card-en">SenseTime open-sources SenseNova-Vision-7B-MoT: one model for all major vision tasks</div>
+  </div>
+</div>
+
+<!-- ========== 产品动态 ========== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:#ec4899"></div>
+    <span class="section-title">📦 产品动态</span>
+    <span class="section-count">4 条</span>
+  </div>
+
+  <div class="card product">
+    <div class="card-title"><a href="https://www.ithome.com/0/976/538.htm" target="_blank">高德发布通用世界模型工坊 ABot-WorldStudio，已开放测试</a></div>
+    <div class="card-meta">
+      <span class="source">IT之家</span>
+      <span class="time">今天 15:46</span>
+    </div>
+    <div class="card-summary">
+      阿里巴巴旗下高德发布通用世界模型工坊 ABot-WorldStudio，并开放测试。该产品将交互式视频生成与 3DGS 场景生成统一，用户输入文字或图片即可生成可实时交互、可分享的 AI 世界。工坊内置"时空任意门"，穿越后可跃迁至另一完整 3D 世界。官方实测单次连续推理稳定运行超 <span style="color:#ec4899;font-weight:700">1 小时</span>，无崩溃、无质量衰减。底层模型 ABot-World0 与 ABot-3DWorld0 均可在单张 5090 上本地部署，已全面开源。
+    </div>
+    <div class="card-en">Amap releases ABot-WorldStudio: interactive world model workshop, open for testing</div>
+  </div>
+
+  <div class="card product">
+    <div class="card-title"><a href="https://the-decoder.com/openais-new-prompting-guide-tells-users-to-stop-overthinking-and-start-with-the-result" target="_blank">OpenAI 面向普通用户发布提示词指南：从结果出发，少写步骤</a></div>
+    <div class="card-meta">
+      <span class="source">The Decoder</span>
+      <span class="time">今天 01:47</span>
+    </div>
+    <div class="card-summary">
+      OpenAI 整合了一份面向普通用户的提示词指南，涵盖目标、上下文、输出格式和边界四个可选模块。指南建议以结果而非步骤开头，用一两条硬性规则替代逐步骤脚本。Chat 处理快速任务，基于 Codex 技术和 GPT-5.6 模型的 ChatGPT Work 负责多源、多步骤的复杂项目。Codex 新增 Steer（重定向当前运行）、Queue（排队下一条消息）和沙盒模式，支持 <code>/plan</code>、<code>/goal</code> 和 <code>/review</code> 等斜杠命令。
+    </div>
+    <div class="card-en">OpenAI releases prompting guide: start with results, not steps</div>
+  </div>
+
+  <div class="card product">
+    <div class="card-title"><a href="https://www.aastocks.com/sc/stocks/news/aafn-con/now.1521700/positive-news/aafn" target="_blank">智谱 GLM-5 系列 Coding Agent 场景吞吐量最高提升 132%</a></div>
+    <div class="card-meta">
+      <span class="source">阿斯达克财经</span>
+      <span class="time">今天 10:40</span>
+    </div>
+    <div class="card-summary">
+      智谱发布技术博客《Scaling Pain: 超大规模 Coding Agent 推理实践》，首次系统披露 GLM-5 系列模型在超大规模 Coding Agent 调用场景下的底层推理技术突破。经底层工程优化，GLM-5 系列在 Coding Agent 场景下的系统吞吐量最高提升 <span style="color:#ec4899;font-weight:700">132%</span>，系统异常输出率从万分之十左右下降至万分之三以下。
+    </div>
+    <div class="card-en">Zhipu GLM-5: coding agent throughput up 132% via inference optimization</div>
+  </div>
+
+  <div class="card product">
+    <div class="card-title"><a href="https://mp.weixin.qq.com/s/39fw1L1E8fa80PGW7qIUdw" target="_blank">LibTV Agent 发布：100 个 AI 视频工作流重组为 Skill，实现创意自由</a></div>
+    <div class="card-meta">
+      <span class="source">卡尔的AI沃茨</span>
+      <span class="time">今天 17:04</span>
+    </div>
+    <div class="card-summary">
+      LibTV 推出 Agent 功能并内置 Skill Hub，提供 100 多个覆盖武侠电影、皮克斯动画广告、电商口播等类型的视频 Skill。用户输入想法后，Agent 会分析需求并询问方向，自动生成视频分镜并串联成完整节点工作流，每个节点可查看和修改提示语。生成后 LibTV 会启动自查机制，自动检测并返修有问题的镜头。故事板视图提供图片与视频资产总览，支持在成片中直接打开剪辑时间线进行精细调整。
+    </div>
+    <div class="card-en">LibTV Agent: 100+ AI video workflows as Skills, auto-generate and self-check video content</div>
+  </div>
+</div>
+
+<!-- ========== 技术论文 ========== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:#06b6d4"></div>
+    <span class="section-title">🔬 技术论文</span>
+    <span class="section-count">3 条</span>
+  </div>
+
+  <div class="card paper">
+    <div class="card-title"><a href="https://www.163.com/dy/article/L1R589E80511DTVV.html" target="_blank">VERA 框架：系统性评估 LLM 智能体被"教坏"后的安全风险</a></div>
+    <div class="card-meta">
+      <span class="source">arXiv:2607.01793（蚂蚁集团/复旦/阿里等联合）</span>
+      <span class="time">7月发布</span>
+    </div>
+    <div class="card-summary">
+      蚂蚁集团、浙江大学、复旦大学等联合开发 VERA 框架，系统性评估 LLM 智能体被操纵后"悄悄做坏事"的风险。VERA 模拟真实攻击场景，记录 AI 助手每一个动作，并用客观证据判断其是否执行了恶意指令（如泄露银行账户、发送未授权邮件）。该框架填补了 Agent 安全评估领域的空白，对 AI 智能体部署安全性具有重要参考价值。
+    </div>
+    <div class="card-en">VERA: Automated security testing framework for LLM agent manipulation</div>
+  </div>
+
+  <div class="card paper">
+    <div class="card-title"><a href="https://new.qq.com/rain/a/20260714A03BC700?refer=cp_1009" target="_blank">VLA-Corrector：机械臂即时纠错系统，动作出错时可自动重来</a></div>
+    <div class="card-meta">
+      <span class="source">arXiv:2607.01804（浙江大学/达摩院）</span>
+      <span class="time">7月发布</span>
+    </div>
+    <div class="card-summary">
+      浙江大学与阿里巴巴达摩院联合开发 VLA-Corrector，一套轻量级纠错系统，专门解决机械臂执行动作时无法感知错误、无法及时叫停的问题。该系统无需改造原有 AI 大脑，只需在旁安装"监视员"，一旦发现苗头不对立刻打断，并以特殊方式触发更有针对性的重新规划。这对具身智能从实验室走向工业部署具有实际意义。
+    </div>
+    <div class="card-en">VLA-Corrector: lightweight real-time error correction for robotic arms</div>
+  </div>
+
+  <div class="card paper">
+    <div class="card-title"><a href="https://www.anthropic.com/research/how-canada-uses-claude" target="_blank">Anthropic 经济指数：加拿大 Claude 使用情况分析</a></div>
+    <div class="card-meta">
+      <span class="source">Anthropic Research</span>
+      <span class="time">今天 21:06</span>
+    </div>
+    <div class="card-summary">
+      基于 2026 年 2 月 Claude.ai 对话样本，加拿大占全球流量的 2.6%，人均使用量是预期的 4.4 倍，在总使用量前十国家中仅次于美国。省级使用率与收入无关，而与专业、科学和技术服务业的就业占比高度相关。翻译请求与公共管理就业份额正相关，反映加拿大联邦双语政策。各省使用场景稳定：工作占 34-40%，课程作业占 13-18%，个人用途占 44-51%。加拿大整体使用偏向学术和早期职业场景。
+    </div>
+    <div class="card-en">Anthropic Economic Index: How Canada uses Claude — adoption driven by tech sector employment, not income</div>
+  </div>
+</div>
+
+<!-- ========== 深度研报观点 ========== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:#3b82f6"></div>
+    <span class="section-title">💡 深度研报观点</span>
+    <span class="section-count">3 条</span>
+  </div>
+
+  <div class="card report">
+    <div class="card-title"><a href="https://playcode.io/blog/real-price-of-frontier-models" target="_blank">前沿模型实际成本：tokenizer 差异导致隐性涨价</a></div>
+    <div class="card-meta">
+      <span class="source">Hacker News 热门（playcode.io）</span>
+      <span class="time">今天 05:50</span>
+    </div>
+    <div class="card-summary">
+      同一份 TypeScript 文件在 GPT-5.x 上为 681 个 token，在 Claude 最新 tokenizer 下为 1178 个，相差 <span style="color:#3b82f6;font-weight:700">1.73 倍</span>。Anthropic 新 tokenizer 比旧版多产生约 30% 的 token，标价不变，构成隐性涨价。Claude Opus 4.6 与 4.8 标价同为 $5/$25，但新 tokenizer 使同一代码的 token 数增加约 32%。Claude Sonnet 5 的 $2/$10 为促销价，2026 年 8 月 31 日后恢复 $3/$15，届时相同代码成本将比 Sonnet 4.6 高出约 32%。跨厂商对比中，Claude 新 tokenizer 在代码上比 GPT 多产生 1.50x 至 1.73x 的 token，TypeScript 差距最大。
+    </div>
+    <div class="card-en">Real cost of frontier models: Anthropic's new tokenizer silently increases prices ~30%</div>
+  </div>
+
+  <div class="card report">
+    <div class="card-title"><a href="https://www.toutiao.com/article/7660959669208269321" target="_blank">SemiAnalysis 报告：Meta AI 有望半年内反超谷歌，全球前沿 AI 迎三足鼎立</a></div>
+    <div class="card-meta">
+      <span class="source">SemiAnalysis（7月9日报告，持续发酵）</span>
+      <span class="time">参考基准：7月11日</span>
+    </div>
+    <div class="card-summary">
+      SemiAnalysis 判断，经过一年重组与砸钱，Meta 旗下的 Meta Superintelligence（MSL）有望未来六个月内在前沿 AI 能力上超过谷歌。报告核心框架是"数据、人才、算力三线同时拉满"：Meta 2026 年 CapEx 最高 <span style="color:#3b82f6;font-weight:700">1450 亿美元</span>，部署 7GW AI 算力，2027 年翻倍至 14GW；143 亿美元收购 Scale AI 引入 Alexandandr Wang 团队；3000 名工程师重新分配到内部 RL 环境工厂。另一边，Anthropic 靠 Claude Code 在企业端爆发，已于 6 月秘密递交 IPO。行业格局正从"谷歌+OpenAI 双雄"往"Meta、OpenAI、Anthropic 三足"挪。
+    </div>
+    <div class="card-en">SemiAnalysis: Meta AI may surpass Google within 6 months; Anthropic secretly filed IPO</div>
+  </div>
+
+  <div class="card report">
+    <div class="card-title"><a href="https://www.163.com/dy/article/L1PT8NP9055221YJ.html" target="_blank">AI 下半场，买"云"不买"芯"？Meta 出租算力引发算力过剩争议</a></div>
+    <div class="card-meta">
+      <span class="source">伯虎财经</span>
+      <span class="time">今天 11:16</span>
+    </div>
+    <div class="card-summary">
+      据彭博社报道，Meta 正筹划推出全新的云基础设施业务"Meta Compute"，将过剩的 AI 算力卖给外部客户。消息一出，Meta 股价单日暴涨 <span style="color:#3b82f6;font-weight:700">8.8%</span>，市值一天增加约 1270 亿美元；同一时间 CoreWeave、Nebius AI 云厂商分别重挫 13.92%、17.01%，存储芯片股跌超 10%。市场担忧：如果连全球最大 GPU 采购方之一都开始卖算力，算力稀缺假设是否还成立？但 SemiAnalysis 认为 Meta 出租的是 H 卡而非最新卡，是"算力从资本开支承付走向商业价值变现"的转折点，国内算力仍供不应求。AI 行业正从"谁拥有更多 GPU"转向"谁能让每块 GPU 创造更多价值"。
+    </div>
+    <div class="card-en">Meta's cloud pivot: selling surplus GPU capacity sparks overcapacity debate</div>
+  </div>
+</div>
+
+<!-- ========== 投融资 ========== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:#f97316"></div>
+    <span class="section-title">💰 投融资</span>
+    <span class="section-count">2 条</span>
+  </div>
+
+  <div class="card funding">
+    <div class="card-title"><a href="https://techcrunch.com/2026/07/13/video-generation-startup-pixverse-raises-439m-valuation-soars-past-2b" target="_blank">PixVerse 完成 4.39 亿美元 C 轮融资，估值超 20 亿美元</a></div>
+    <div class="card-meta">
+      <span class="source">TechCrunch</span>
+      <span class="time">今天 08:00</span>
+    </div>
+    <div class="card-summary">
+      新加坡视频生成初创公司 PixVerse 完成 C 轮扩展融资，共筹集 <span style="color:#f97316;font-weight:700">4.39 亿美元</span>，估值突破 20 亿美元。公司提供 V 系列（消费者及 API）、C 系列（专业影视）及 R 系列世界模型（游戏开发）。用户可生成最高 4K 分辨率并自带音频的视频，消费端注册用户超 1.5 亿，月活超 1500 万，图生视频每分钟 4.80 美元。本轮投资者包括阿里巴巴等。公司计划今年推出新 V 系列模型及新版世界模型，并全球拓展企业客户。
+    </div>
+    <div class="card-en">PixVerse raises $439M Series C extension, valuation exceeds $2B; Alibaba among investors</div>
+  </div>
+
+  <div class="card funding">
+    <div class="card-title"><a href="https://www.toutiao.com/article/7660959669208269321" target="_blank">SemiAnalysis 披露：Anthropic 已秘密递交 IPO 申请，Q2 自由现金流转正</a></div>
+    <div class="card-meta">
+      <span class="source">SemiAnalysis（7月9日报告）</span>
+      <span class="time">参考基准：7月11日</span>
+    </div>
+    <div class="card-summary">
+      据 SemiAnalysis 7 月 9 日报告披露，Anthropic 已于 6 月秘密递交 IPO 申请。同时披露：Anthropic <span style="color:#f97316;font-weight:700">2026 年 Q2 实现自由现金流转正</span>，年化经常性收入突破 500 亿美元，毛利率超 70%。在企业端，最新 AI 模型带来的生产力跃升远超算力成本的增加，促使企业削减其他软件开支以维持爆炸性增长的 AI 预算。Anthropic CEO 阿莫迪此前在彭博访谈中透露，公司 Q1 收入和使用量增长了 80 倍。若 IPO 成行，将继智谱、MiniMax 之后成为又一家上市的大模型公司。
+    </div>
+    <div class="card-en">SemiAnalysis: Anthropic secretly filed IPO; Q2 free cash flow positive, $50B+ ARR</div>
+  </div>
+</div>
+
+<!-- ========== 今日总结 & 投资启示 ========== -->
+<div class="summary-section">
+  <h2>📋 今日总结 & 投资启示</h2>
+
+  <h3>🔑 关键结论</h3>
+  <ul>
+    <li><strong>AI 编码工具安全危机升级</strong>：xAI/SpaceXAI 旗下 Grok Build 和 Grok CLI 连续曝出静默上传用户代码仓库事件，马斯克亲自承认并承诺删除数据。AI 编程 agent 的数据安全边界问题已成为行业级风险事件，可能加速监管介入和企业级安全标准的建立。</li>
+    <li><strong>中国模型全球调用量持续领先</strong>：OpenRouter 周榜显示中国模型包揽前六，腾讯 Hy3 空降登顶终结 DeepSeek 七连冠，中国 Token 调用量连续 11 周超美国。中国开源模型的成本优势和生态渗透正在改变全球 AI 竞争格局。</li>
+    <li><strong>AI 基建投资与算力过剩争议并存</strong>：Meta 宣布 500 亿美元扩建 5GW 数据中心（史上最大单笔 AI 基建投资），同时却传出出售过剩算力的计划。市场对"算力稀缺"叙事产生裂痕，AI 产业链进入"谁能让每块 GPU 创造更多价值"的新阶段。</li>
+    <li><strong>全球 AI 股票剧烈调整但基本面未变</strong>：韩国 KOSPI 第七次熔断、费城半导体跌 5%，但多家机构认为这是获利回吐与情绪扰动叠加，非产业趋势逆转。记忆晶片商季度盈利仍暴增 5-19 倍，台积电 6 月销售额同比增 68%。</li>
+    <li><strong>港股 AI 公司冰火两重天</strong>：MiniMax 4 个月市值蒸发 80%、创始人零薪酬；同期智谱完成 314 亿港元配售、Anthropic 传秘密递交 IPO。资本向头部集中趋势加剧。</li>
+  </ul>
+
+  <h3>📊 重点公司 / 行业环比变化追踪</h3>
+  <table class="tracking-table">
+    <thead>
+      <tr>
+        <th>标的</th>
+        <th>方向</th>
+        <th>对比基准</th>
+        <th>变化要点</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>xAI / SpaceXAI</td>
+        <td class="down">↓</td>
+        <td>较上周</td>
+        <td>Grok Build/Grok CLI 连续曝出静默上传用户代码事件，马斯克亲自承认。AI 编码工具信任危机升级，<span class="highlight">品牌信誉严重受损</span>，企业级客户部署信心承压。</td>
+      </tr>
+      <tr>
+        <td>Meta</td>
+        <td class="up">↑</td>
+        <td>较 7 月初</td>
+        <td>宣布路易斯安那州数据中心扩建至 5GW（总投资超 500 亿美元），叠加 SemiAnalysis 报告判断 Meta AI 有望半年内反超谷歌。但"出租算力"消息引发算力过剩争议，信号<span class="highlight">多空交织</span>。</td>
+      </tr>
+      <tr>
+        <td>英伟达 (NVIDIA)</td>
+        <td class="up">↑</td>
+        <td>较上周（SemiAnalysis 延期传闻后）</td>
+        <td>黄仁勋在摩根士丹利路演中确认季度营收逼近 1000 亿美元且增速仍在加速，否认 Rubin Ultra 延期。摩根士丹利维持"增持"评级，目标价 <span class="highlight">288 美元</span>。</td>
+      </tr>
+      <tr>
+        <td>Anthropic</td>
+        <td class="up">↑</td>
+        <td>较上季度</td>
+        <td>SemiAnalysis 披露 Q2 自由现金流转正，年化收入突破 <span class="highlight">500 亿美元</span>，毛利率超 70%，已秘密递交 IPO。企业端市场份额首次反超 OpenAI（Ramp 5 月数据 34.4% vs 32.3%）。</td>
+      </tr>
+      <tr>
+        <td>腾讯（混元）</td>
+        <td class="up">↑</td>
+        <td>较上周（Hy3 正式版后）</td>
+        <td>Hy3 量化版发布（1bit 单卡部署），OpenRouter 周榜 Hy3 空降登顶。模型部署门槛大幅降低+全球调用量第一，<span class="highlight">开源生态竞争力持续增强</span>。</td>
+      </tr>
+      <tr>
+        <td>MiniMax</td>
+        <td class="down">↓</td>
+        <td>较 3 月高点</td>
+        <td>市值蒸发 80%（3400 亿港元），创始人零薪酬。虽完成 160 亿港元融资，但市场信心严重不足。港股 AI 估值体系面临<span class="highlight">重新校准</span>。</td>
+      </tr>
+      <tr>
+        <td>智谱 (Zhipu)</td>
+        <td class="up">↑</td>
+        <td>较上周</td>
+        <td>GLM-5 系列 Coding Agent 吞吐量提升 132%，异常输出率降至万分之三以下。OpenRouter 榜单稳居前五，<span class="highlight">推理工程能力持续优化</span>。</td>
+      </tr>
+      <tr>
+        <td>Google / DeepMind</td>
+        <td class="neutral">→</td>
+        <td>较上周</td>
+        <td>Hassabis 发表 AGI 影响力达工业革命 10 倍的观点，呼吁建立 AI 标准机构。但 SemiAnalysis 判断 Meta AI 有望半年内反超谷歌，<span class="highlight">前沿地位面临挑战</span>。</td>
+      </tr>
+      <tr>
+        <td>OpenAI</td>
+        <td class="neutral">→</td>
+        <td>较上周（GPT-5.6 发布后）</td>
+        <td>GPT-5.6 上周全面上线后趋于稳定。本周发布提示词指南+取消 5 小时使用限制。企业端 API 市场份额被 Anthropic 反超（Ramp 数据），但 Codex/ChatGPT Work 达到 <span class="highlight">600 万活跃用户</span>。</td>
+      </tr>
+      <tr>
+        <td>算力 / 数据中心行业</td>
+        <td class="down">↓</td>
+        <td>较 6 月下旬高点</td>
+        <td>全球 AI 股票共振下跌，费城半导体跌 5%，KOSPI 第七次熔断。Meta 出租算力消息引发算力过剩疑虑，但 SemiAnalysis 认为存储仍有 2-3 倍上行空间，国内算力仍供不应求。<span class="highlight">短期情绪扰动 vs 长期供需矛盾并存</span>。</td>
+      </tr>
+      <tr>
+        <td>港股 AI 板块</td>
+        <td class="down">↓</td>
+        <td>较 3 月高点</td>
+        <td>MiniMax 跌 80%，智谱配售 314 亿港元后股价亦回调。双创指数月内跌超 10%。资本向头部集中，<span class="highlight">中小 AI 公司融资环境恶化</span>。</td>
+      </tr>
+      <tr>
+        <td>AI 编码工具安全</td>
+        <td class="down">↓</td>
+        <td>较上周</td>
+        <td>xAI Grok Build/Grok CLI 数据泄露事件为行业敲响警钟。此前 Claude Code、Gemini CLI 均为单文件读取模式，Grok 的全仓库上传行为<span class="highlight">显著超出行业惯例</span>，可能引发监管对 AI 编程工具数据安全的专项审查。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top: 16px; font-size: 12.5px; color: #6b7280;">
+    ⚠️ 以上分析仅供研究参考，不构成投资建议。数据截至 2026 年 7 月 14 日 22:00 北京时间。
+  </p>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>📊 AI 每日全景报告 · 每日 22:00（北京时间）自动生成</p>
+  <p>数据来源：AI HOT API + WebSearch 全球多渠道交叉验证</p>
+  <p>生成时间：2026-07-14 22:54 北京时间 · 仅供研究参考，不构成投资建议</p>
+</div>
+
+</div>
+</body>
+</html>

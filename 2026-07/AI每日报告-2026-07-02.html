@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026-07-02</title>
+<style>
+:root {
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --primary: #6366f1;
+  --primary-light: #eef2ff;
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-hover: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+  --c-industry: #f59e0b;
+  --c-opinion: #10b981;
+  --c-product: #8b5cf6;
+  --c-research: #06b6d4;
+  --c-report: #3b82f6;
+  --c-funding: #f97316;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 860px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 40%, #7c3aed 100%);
+  border-radius: 16px; padding: 36px 40px; color: #fff; margin-bottom: 24px;
+  box-shadow: 0 8px 30px rgba(99,102,241,.25);
+}
+.header h1 { font-size: 26px; font-weight: 700; letter-spacing: -.02em; }
+.header .subtitle { font-size: 15px; opacity: .88; margin-top: 8px; }
+.header .meta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; font-size: 13px; opacity: .82; }
+.header .meta span { display: inline-flex; align-items: center; gap: 4px; }
+.header .meta .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.6); }
+
+/* Stats bar */
+.stats {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;
+}
+.stat-chip {
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
+  padding: 8px 14px; font-size: 13px; display: inline-flex; align-items: center; gap: 6px;
+  box-shadow: var(--shadow); transition: box-shadow .2s;
+}
+.stat-chip:hover { box-shadow: var(--shadow-hover); }
+.stat-chip .count { font-weight: 700; color: var(--primary); }
+.stat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* Section */
+.section { margin-bottom: 32px; }
+.section-header {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 14px;
+  font-size: 18px; font-weight: 700; color: var(--text);
+}
+.section-header .dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.section-header .badge {
+  font-size: 12px; font-weight: 600; color: var(--text-muted);
+  background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+  padding: 2px 8px;
+}
+
+/* Card */
+.card {
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
+  padding: 18px 20px 18px 24px; margin-bottom: 12px; position: relative;
+  box-shadow: var(--shadow); transition: box-shadow .2s, transform .15s;
+  overflow: hidden;
+}
+.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+.card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  border-radius: 12px 0 0 12px;
+}
+.card.c-industry::before { background: var(--c-industry); }
+.card.c-opinion::before { background: var(--c-opinion); }
+.card.c-product::before { background: var(--c-product); }
+.card.c-research::before { background: var(--c-research); }
+.card.c-report::before { background: var(--c-report); }
+.card.c-funding::before { background: var(--c-funding); }
+
+.card .title {
+  font-size: 16px; font-weight: 600; color: var(--text); line-height: 1.5;
+}
+.card .title a {
+  color: var(--text); text-decoration: none;
+  border-bottom: 1px solid transparent; transition: border-color .2s, color .2s;
+}
+.card .title a:hover { color: var(--primary); border-bottom-color: var(--primary); }
+.card .meta {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  margin-top: 6px; font-size: 12px; color: var(--text-muted);
+}
+.card .meta .source { font-weight: 500; color: var(--text-secondary); }
+.card .meta .sep { color: var(--border); }
+.card .meta .tag {
+  display: inline-block; padding: 1px 7px; border-radius: 4px;
+  font-size: 11px; font-weight: 600;
+}
+.card .meta .tag-new { background: #fef3c7; color: #92400e; }
+.card .summary {
+  margin-top: 10px; font-size: 14px; color: var(--text-secondary); line-height: 1.65;
+}
+
+/* Insights */
+.insights {
+  background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 50%, #ddd6fe 100%);
+  border-radius: 16px; padding: 28px 32px; margin-top: 36px; margin-bottom: 24px;
+  border: 1px solid #c7d2fe;
+}
+.insights h2 {
+  font-size: 20px; font-weight: 700; color: #3730a3; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.insight-item {
+  background: rgba(255,255,255,.7); border-radius: 10px; padding: 14px 18px;
+  margin-bottom: 10px; font-size: 14px; color: #312e81; line-height: 1.65;
+  border: 1px solid rgba(199,210,254,.5);
+}
+.insight-item:last-child { margin-bottom: 0; }
+.insight-item .label {
+  font-weight: 700; color: #4338ca; margin-right: 4px;
+}
+.highlight {
+  background: #fde68a; color: #78350f; padding: 1px 5px; border-radius: 4px;
+  font-weight: 600; font-size: 13px;
+}
+
+/* Footer */
+.footer {
+  text-align: center; padding: 24px 0; font-size: 12px; color: var(--text-muted);
+  border-top: 1px solid var(--border); margin-top: 20px; line-height: 1.8;
+}
+.footer a { color: var(--primary); text-decoration: none; }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .container { padding: 16px 12px 40px; }
+  .header { padding: 24px 20px; border-radius: 12px; }
+  .header h1 { font-size: 20px; }
+  .card { padding: 14px 16px 14px 20px; }
+  .insights { padding: 20px 18px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>AI 每日全景报告</h1>
+  <div class="subtitle">2026 年 7 月 2 日 · 周四</div>
+  <div class="meta">
+    <span><span class="dot"></span> 覆盖时段：7/1 22:00 — 7/2 22:00 北京时间</span>
+    <span><span class="dot"></span> 收录条目：26 条</span>
+    <span><span class="dot"></span> 数据源：AI HOT + WebSearch 多渠道交叉验证</span>
+  </div>
+</div>
+
+<!-- Stats -->
+<div class="stats">
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--c-industry)"></span> 行业动态 <span class="count">8</span></div>
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--c-opinion)"></span> 大V观点 <span class="count">5</span></div>
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--c-product)"></span> 模型/产品 <span class="count">5</span></div>
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--c-research)"></span> 技术进展 <span class="count">3</span></div>
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--c-report)"></span> 深度报告 <span class="count">2</span></div>
+  <div class="stat-chip"><span class="stat-dot" style="background:var(--c-funding)"></span> 投融资 <span class="count">3</span></div>
+</div>
+
+<!-- ===== 行业动态 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="dot" style="background:var(--c-industry)"></span>
+    行业动态
+    <span class="badge">8 条</span>
+  </div>
+
+  <div class="card c-industry">
+    <div class="title"><a href="https://www.cnbc.com/2026/07/02/openai-proposes-us-government-own-5percent-stake-to-address-political-blowback.html" target="_blank">OpenAI 提议向美国政府转让 5% 股权，估值 426 亿美元</a></div>
+    <div class="meta">
+      <span class="source">CNBC / Financial Times</span>
+      <span class="sep">|</span> 今天 15:39
+      <span class="sep">|</span> <span class="tag tag-new">最新披露</span>
+    </div>
+    <div class="summary">据 FT 援引两位知情人士，OpenAI CEO Sam Altman 在与 Trump 政府的早期谈判中提议向政府转让公司 5% 股权，按 8520 亿美元估值约合 426 亿美元。该方案设想通过主权财富基金载体，要求 Anthropic、Google、Meta 等所有美国头部 AI 公司均出让类似比例股权。Altman 称此举是与公众分享 AI 发展红利的最佳方式。此前 Trump 已将政府持有 AI 公司股权描述为"a beautiful thing"。</div>
+  </div>
+
+  <div class="card c-industry">
+    <div class="title"><a href="https://aitoolsrecap.com/Blog/ai-news-july-2-2026" target="_blank">Meta 禁止应用 AI 部门工程师使用 Claude Code 和 Codex，防止模型蒸馏</a></div>
+    <div class="meta">
+      <span class="source">The Information / AIToolsRecap</span>
+      <span class="sep">|</span> 今天
+      <span class="sep">|</span> <span class="tag tag-new">最新披露</span>
+    </div>
+    <div class="summary">The Information 获取的内部文件显示，Meta 严格限制其应用 AI 部门工程师使用 Claude Code 和 Codex，理由是担心工程师 inadvertently 将 Meta 专有训练数据、架构或技术暴露给 Anthropic 和 OpenAI 模型，构成模型蒸馏。讽刺的是，Meta 工程师日常开发更偏好 Claude Code 和 Codex，禁令引发内部摩擦。蒸馏风险正成为每个主要 AI 实验室的运营关切——企业 AI 编码工具市场即将变得更加复杂。</div>
+  </div>
+
+  <div class="card c-industry">
+    <div class="title"><a href="https://aitoolsrecap.com/Blog/ai-news-july-2-2026" target="_blank">OpenAI 发现新方法可将推理成本减半，叠加 Jalapeño 芯片或致成本骤降 75%</a></div>
+    <div class="meta">
+      <span class="source">The Information / AIToolsRecap</span>
+      <span class="sep">|</span> 今天
+      <span class="sep">|</span> <span class="tag tag-new">最新披露</span>
+    </div>
+    <div class="summary">The Information 报道 OpenAI 发现了一种新的算法级推理成本优化方法，可在现有基础上再降 50%。结合此前公布的 Jalapeño 自研推理芯片（硬件层约降 50%），两者叠加后 GPT-5.5 每百万 token 输出成本可从 30 美元降至约 7.5 美元，逼近 Claude Sonnet 5 的 10 美元标准定价。若官方确认，将对 Anthropic 新定价构成巨大压力。具体技术细节尚未公开。</div>
+  </div>
+
+  <div class="card c-industry">
+    <div class="title"><a href="https://arstechnica.com/ai/2026/07/googles-ai-buildout-drove-37-increase-in-electricity-use-in-2025/" target="_blank">谷歌 AI 建设导致 2025 年用电量增长 37%，超新西兰等国全国用电</a></div>
+    <div class="meta">
+      <span class="source">Ars Technica</span>
+      <span class="sep">|</span> 今天 19:15
+    </div>
+    <div class="summary">谷歌第 11 份年度环境报告显示，2025 年全年用电量同比上涨 37%，创历史最大增幅。数据中心全年消耗超 4200 万兆瓦时，超过新西兰、丹麦、尼日利亚等国总用电量。自 2019 年以来总用电量已增长超 250%。用电激增主要来自 Google Cloud、YouTube 及 AI 产品和服务的数据中心建设。谷歌表示 AI 基础设施建设速度已超过电网脱碳速度。</div>
+  </div>
+
+  <div class="card c-industry">
+    <div class="title"><a href="https://www.ithome.com/0/971/790.htm" target="_blank">证监会同意宇树科技科创板 IPO 注册申请，人形机器人第一股即将登陆 A 股</a></div>
+    <div class="meta">
+      <span class="source">IT之家</span>
+      <span class="sep">|</span> 今天 17:10
+    </div>
+    <div class="summary">7 月 2 日，证监会同意宇树科技股份有限公司首次公开发行股票并在科创板上市的注册申请。宇树科技是全球四足机器人销量领先企业，2016 年由王兴兴在杭州创立，员工超 1000 人。核心优势在于关节电机、减速器、控制器等核心零部件全栈自研，关键部件成本仅为进口产品约 1/3。融资金额预计 42.02 亿元，批复自同意注册之日起 12 个月内有效。</div>
+  </div>
+
+  <div class="card c-industry">
+    <div class="title"><a href="https://techcrunch.com/2026/07/01/meta-like-spacex-looks-to-turn-excess-ai-compute-into-cash/" target="_blank">Meta 筹建云服务业务出售闲置 AI 算力，直接对标 AWS / Google Cloud / Azure</a></div>
+    <div class="meta">
+      <span class="source">TechCrunch / Bloomberg</span>
+      <span class="sep">|</span> 昨天 21:43
+    </div>
+    <div class="summary">据 Bloomberg 报道，Meta 正计划推出云基础设施业务 Meta Compute，对外出售 AI 计算能力和模型访问权限（包括闭源模型 Muse Spark），直接与 AWS、Google Cloud 及 Azure 竞争。Meta 已承诺未来几年投入 1829 亿美元建设 AI 基础设施，俄亥俄州数据中心（规模如曼哈顿）将于今年上线。新业务由基础设施主管 Santosh Janardhan、超级智能实验室负责人 Daniel Gross 和总裁 Dina Powell McCormick 领导。消息公布后 Meta 股价上涨 9%。</div>
+  </div>
+
+  <div class="card c-industry">
+    <div class="title"><a href="https://www.theneuron.ai/explainer-articles/around-the-horn-digest-everything-that-happened-in-ai-today-thursday-july-2-2026/" target="_blank">ByteDance 选择巴西建设中国以外最大数据中心，投资 390 亿美元</a></div>
+    <div class="meta">
+      <span class="source">The Neuron</span>
+      <span class="sep">|</span> 今天
+    </div>
+    <div class="summary">字节跳动选择巴西作为其中国以外最大数据中心的所在地，项目投资达 390 亿美元。此举标志着 ByteDance 全球基础设施扩张进入新阶段，也反映中国科技巨头在监管压力下加速将算力布局向拉美、东南亚等新兴市场转移的战略趋势。</div>
+  </div>
+
+  <div class="card c-industry">
+    <div class="title"><a href="https://aitoolsrecap.com/Blog/ai-news-july-2-2026" target="_blank">Fable 5 出口管制解除内幕：Anthropic 证明 Opus 4.8 / GPT-5.5 / Kimi K2.7 均可复现同一漏洞</a></div>
+    <div class="meta">
+      <span class="source">AIToolsRecap / The Information</span>
+      <span class="sep">|</span> 今天
+      <span class="sep">|</span> <span class="tag tag-new">最新披露</span>
+    </div>
+    <div class="summary">7 月 2 日披露的细节显示，Fable 5 出口管制被解除的核心原因：Anthropic 测试证明 Amazon 报告的越狱漏洞在 Opus 4.8、GPT-5.5 甚至 Kimi K2.7 上均可复现——被管制的"独特能力"实际上在所有前沿模型中都已普遍存在。作为交换，Anthropic 承诺 24/7 越狱监控、HackerOne 漏洞赏金计划，以及政府更早接触未来前沿模型测试。谈判由联合创始人 Tom Brown 主导，而非 CEO Amodei。模型路线图正在成为政策路线图。</div>
+  </div>
+</div>
+
+<!-- ===== 大V观点 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="dot" style="background:var(--c-opinion)"></span>
+    大V观点 & 深度报告
+    <span class="badge">5 条</span>
+  </div>
+
+  <div class="card c-opinion">
+    <div class="title"><a href="https://www.theneuron.ai/explainer-articles/around-the-horn-digest-everything-that-happened-in-ai-today-thursday-july-2-2026/" target="_blank">Ethan Mollick 论 Fable 5 使用体验：从"协作"到"委托"的范式转变</a></div>
+    <div class="meta">
+      <span class="source">The Neuron（引 Ethan Mollick）</span>
+      <span class="sep">|</span> 今天
+      <span class="sep">|</span> <span class="tag tag-new">一手信源</span>
+    </div>
+    <div class="summary">宾大教授 Ethan Mollick 分享 Fable 5 使用体验："使用 Fable 感觉不像一步步协作，更像向一个自主系统委托工作——你给出雄心勃勃的指令，等待，然后评判结果。"他认为 AI 工作正从聊天机器人走向自主代理，专家更像 AI 管理者，通过 harness 和工具委派而非每步提示。Aniket Panjwani 建议将 Fable 5 短暂访问窗口用于规划、项目审查和最难问题诊断，实现工作交给更便宜的模型。</div>
+  </div>
+
+  <div class="card c-opinion">
+    <div class="title"><a href="https://mp.weixin.qq.com/s/l70iUM0bIpG9EdV9Px7QPQ" target="_blank">千问团队朱达：C 端 Agent Harness 的"多快好省"工程哲学与主动服务探索</a></div>
+    <div class="meta">
+      <span class="source">公众号：千问 APP（阿里）</span>
+      <span class="sep">|</span> 今天 18:22
+    </div>
+    <div class="summary">千问团队 2026 年 1 月上线通用复杂任务 Agent，总结"多快好省"方法论：执行时间降至初始 1/3，Token 消耗仅为海外产品 1/10。团队探索从被动响应转向主动服务，构建 User Memory、Environment、Task System、Assistant 四大组件，指出"情商"是主动服务最难环节。朱达提出 Agent 工程从 Prompt Engineering → Harness Engineering → AIWare Engineering 的演进路径，强调"低功耗，够用就行"。</div>
+  </div>
+
+  <div class="card c-opinion">
+    <div class="title"><a href="https://aitoolsrecap.com/Blog/ai-news-july-2-2026" target="_blank">Sam Altman 称政府逐案审批模式为"坏消息"，折射前沿模型监管困境</a></div>
+    <div class="meta">
+      <span class="source">AIToolsRecap / The Information</span>
+      <span class="sep">|</span> 今天
+    </div>
+    <div class="summary">OpenAI CEO Sam Altman 公开称政府对 AI 模型的逐案审批模式为"bad news"——这是他罕见地就 Anthropic 监管处境发表评论。GPT-5.6 Sol/Terra/Luna 目前正处于 Fable 5 刚刚摆脱的受限预览状态。Altman 的担忧反映了所有美国主要 AI 实验室的共识：临时的非正式审查流程创造不可预测的时间线、业务中断，以及相对于不受等效限制的中国实验室的竞争劣势。</div>
+  </div>
+
+  <div class="card c-opinion">
+    <div class="title"><a href="https://www.theneuron.ai/explainer-articles/around-the-horn-digest-everything-that-happened-in-ai-today-thursday-july-2-2026/" target="_blank">Francois Chollet 反驳 AI 失业论：当前 AI 浪潮或增加软件工程师需求</a></div>
+    <div class="meta">
+      <span class="source">The Neuron（引 Francois Chollet）</span>
+      <span class="sep">|</span> 今天
+    </div>
+    <div class="summary">Keras 作者、ARC Prize 创始人 Francois Chollet 持与主流经济学家相反的观点：当前 AI 浪潮不会造成大规模失业，反而可能增加对软件工程师的需求。与此同时，部分以 AI 为由裁员的雇主已开始逆转决策并重新雇用，原因是在边缘案例、不一致输出和质量问题方面遇到困难。Gene Sperling 主张将 AI 生产力收益投资于护理、健康、教育等"双重尊严工作"。</div>
+  </div>
+
+  <div class="card c-opinion">
+    <div class="title"><a href="https://www.theneuron.ai/explainer-articles/around-the-horn-digest-everything-that-happened-in-ai-today-thursday-july-2-2026/" target="_blank">Palantir CEO Alex Karp 炮轰 AI 行业"f***ing insane"，批高费用与军事 AI 外包</a></div>
+    <div class="meta">
+      <span class="source">The Neuron（引 Alex Karp）</span>
+      <span class="sep">|</span> 今天
+    </div>
+    <div class="summary">Palantir CEO Alex Karp 公开称 AI 行业"f***ing insane"，批评行业高费用、数据提取行为，以及将美国军事 AI 外包给硅谷公司的做法。此外，联合国 AI 报告由 Yoshua Bengio 和 Maria Ressa 联合发布，警告世界协调 AI 风险的窗口很窄——集中权力、失效护栏和对共享现实的威胁正变得更难控制。白宫正与 Anthropic、CAISI 和 NSA 合作加速自愿 AI 模型标准和基准。</div>
+  </div>
+</div>
+
+<!-- ===== 模型/产品/应用 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="dot" style="background:var(--c-product)"></span>
+    模型/产品/应用更新
+    <span class="badge">5 条</span>
+  </div>
+
+  <div class="card c-product">
+    <div class="title"><a href="https://github.blog/changelog/2026-07-01-kimi-k2-7-is-now-available-in-github-copilot/" target="_blank">Kimi K2.7 Code 成为 GitHub Copilot 首个开源权重可选模型</a></div>
+    <div class="meta">
+      <span class="source">GitHub Blog / Hacker News</span>
+      <span class="sep">|</span> 今天 16:24
+    </div>
+    <div class="summary">月之暗面 Kimi K2.7 Code 开源权重模型正式上线 GitHub Copilot，成为 Copilot 模型选择器首个可选的开源权重模型，为编程工作流提供更低成本选择。模型由 GitHub 托管于 Microsoft Azure，逐步向 Copilot Pro、Pro+ 和 Max 用户推送，支持 VS Code、Visual Studio、JetBrains、Xcode 等 IDE。后续几周将扩展至 Business 和 Enterprise 版。这标志着开源权重模型正式进入主流企业编码工具生态。</div>
+  </div>
+
+  <div class="card c-product">
+    <div class="title"><a href="https://mp.weixin.qq.com/s/OqL6ID-mAel8XN-slYgXOA" target="_blank">昆仑万维天工 3.2 发布 Skywork Tags：给 AI Agent 一张工牌，加入工作群聊</a></div>
+    <div class="meta">
+      <span class="source">公众号：昆仑万维（天工）</span>
+      <span class="sep">|</span> 今天 10:53
+    </div>
+    <div class="summary">昆仑万维天工 3.2 发布 Skywork Tags，将 AI 智能体以团队成员身份接入 Slack、飞书、钉钉、Discord、Telegram 等即时通讯工具。团队可在原有工作群中 @Skywork 参与讨论，无需切换窗口或迁移数据。有趣发现：共享版 Agent 持续吸收多样上下文后表现反超精心调教的个人版，团队最终完全改用共享版。Skywork Tags 不要求改变工作方式，让 AI 积累团队上下文并越用越强。</div>
+  </div>
+
+  <div class="card c-product">
+    <div class="title"><a href="https://www.ithome.com/0/971/469.htm" target="_blank">AI 版支付宝"蚂蚁阿宝"开放公测，无需邀请码即可体验</a></div>
+    <div class="meta">
+      <span class="source">IT之家</span>
+      <span class="sep">|</span> 今天 10:51
+    </div>
+    <div class="summary">支付宝阿宝 AI 助手正式开放公测，iOS 和安卓用户可直接搜索"阿宝"或"蚂蚁阿宝"体验。开通后右滑进入新版，以对话方式安排办事——例如说"查公积金"，阿宝自动匹配对应小程序和服务入口，用户点击确认即可完成。支付宝承诺所有资金变动与支付环节均需用户本人确认，扫码、转账等功能已预留入口。这标志着中国最大支付平台正式进入 AI 对话式服务时代。</div>
+  </div>
+
+  <div class="card c-product">
+    <div class="title"><a href="https://x.com/Zai_org/status/2072349453361557898" target="_blank">智谱推出 GLM-5.2 官方开发环境 ZCode，支持 BYOK 和 1.5 倍配额</a></div>
+    <div class="meta">
+      <span class="source">X：智谱 Z.ai (@Zai_org)</span>
+      <span class="sep">|</span> 昨天 23:59
+    </div>
+    <div class="summary">智谱推出 ZCode，GLM-5.2 的官方开发环境。GLM Coding Plan 订阅用户可在 ZCode 获得 1.5 倍使用配额，支持 BYOK（自带密钥）与现有订阅和 API 配合使用。适用于 macOS、Windows 和 Linux。此前在 Fable 5 开发者反馈中，atomic.chat 指出 GLM-5.2 以远低于 Opus 4.8 的成本提供竞争性输出——ZCode 的推出进一步降低了国产模型的使用门槛。</div>
+  </div>
+
+  <div class="card c-product">
+    <div class="title"><a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.198" target="_blank">Claude Code v2.1.198 发布：Claude in Chrome 全面可用 + 后台智能体自动创建 PR</a></div>
+    <div class="meta">
+      <span class="source">GitHub Releases</span>
+      <span class="sep">|</span> 今天 04:45
+    </div>
+    <div class="summary">Claude Code v2.1.198 更新要点：Claude in Chrome 全面可用；新增后台智能体通知（agent_needs_input / agent_completed）；新增 /dataviz 技能（图表与仪表盘设计指导 + 配色验证器）；Gateway 增加 AWS 上的 Claude Platform 作为上游；后台智能体在 worktree 中完成代码后自动提交、推送并创建草稿 PR；内置 Explore 智能体继承主会话模型（上限 Opus）。多项稳定性修复。</div>
+  </div>
+</div>
+
+<!-- ===== 技术进展 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="dot" style="background:var(--c-research)"></span>
+    技术进展 & 论文
+    <span class="badge">3 条</span>
+  </div>
+
+  <div class="card c-research">
+    <div class="title"><a href="https://senior-swe-bench.snorkel.ai/" target="_blank">Senior SWE-Bench：最强 AI 智能体 75%+ 高级工程师任务失败</a></div>
+    <div class="meta">
+      <span class="source">Hacker News 热门</span>
+      <span class="sep">|</span> 今天 19:04
+    </div>
+    <div class="summary">Snorkel AI 发布开源基准 Senior SWE-Bench，评估 AI 智能体完成高级软件工程师级别任务的能力。任务分功能开发与 Bug 修复两类，来源于真实仓库 PR。排行榜显示：Claude Opus 4.8 + Mini-SWE-Agent（max effort）通过率仅 24.0%，Claude Sonnet 5 为 19.4%，GPT-5.5 为 16.0%。最强前沿模型在超 75% 任务中未能达到高级工程师级别的正确性与品味。每个功能任务平均涉及 11 个文件，最强智能体也需数百步完成。</div>
+  </div>
+
+  <div class="card c-research">
+    <div class="title"><a href="https://the-decoder.com/ai-agents-can-now-complete-16-percent-of-freelance-jobs-at-pro-quality-up-from-2-5-percent-eight-months-ago" target="_blank">Fable 5 在 RLI 基准达成 16.1% 自动化率，八个月前仅 2.5%</a></div>
+    <div class="meta">
+      <span class="source">The Decoder / CAIS & Scale AI Labs</span>
+      <span class="sep">|</span> 今天 20:37
+    </div>
+    <div class="summary">Remote Labor Index（RLI）衡量 AI 智能体完成 240 个付费自由职业项目（总值 14.4 万美元）的专业质量比例。最新结果：Fable 5 自动化率 16.1%，是八个月前最佳系统 2.5% 的六倍多，超过 Opus 4.8（8.3%）和 GPT-5.5（6.3%）。因政府限制，Fable 5 仅完成 218/240 个项目评估，最坏情况仍达 14.6%。Gemini 3 Pro 仅 1.25%。AI 裁判会高估模型表现（GPT-5.5 评分偏高近三倍），仍需人类评估员检验。多数项目仍无法达到专业质量。</div>
+  </div>
+
+  <div class="card c-research">
+    <div class="title"><a href="https://www.theneuron.ai/explainer-articles/around-the-horn-digest-everything-that-happened-in-ai-today-thursday-july-2-2026/" target="_blank">Cognition 推出 Devin Security Swarm：Agentic MapReduce 架构扫描代码库安全漏洞</a></div>
+    <div class="meta">
+      <span class="source">The Neuron</span>
+      <span class="sep">|</span> 今天
+    </div>
+    <div class="summary">Cognition（Devin 母公司）推出 Devin Security Swarm，采用 Agentic MapReduce 架构——确定性选择器、并行有界分片代理和 reducer——在整个代码库上推理，扫描大型代码库、在沙箱中验证可利用性、提交修复 PR。在 50 个真实 GHSA 漏洞测试中实现 72% 召回率，每次运行成本 90 美元。此外 NVIDIA 发布 Generative Pretrained Controllers，将运动技能标记化，在 600+ 小时运动数据上训练，99.98% 成功率复现运动片段，出现涌现恢复行为。</div>
+  </div>
+</div>
+
+<!-- ===== 深度报告 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="dot" style="background:var(--c-report)"></span>
+    优秀报告/深度研报
+    <span class="badge">2 条</span>
+  </div>
+
+  <div class="card c-report">
+    <div class="title"><a href="https://engineering.fb.com/2026/07/01/data-infrastructure/metas-ai-storage-blueprint-at-scale" target="_blank">Meta 大规模 AI 存储蓝图：数百 EB 级集群如何消除 GPU I/O 等待</a></div>
+    <div class="meta">
+      <span class="source">Meta Engineering Blog</span>
+      <span class="sep">|</span> 今天 00:00
+    </div>
+    <div class="summary">Meta 发布大规模 AI 存储架构详解：运营数百 EB 级存储集群，基于 Tectonic 分层存储层构建 BLOB 存储架构。传统 BLOB 架构的多层元数据查询可导致数百毫秒延迟，使 GPU 因 I/O 等待停顿。新架构将训练栈逐步迁移到 BLOB 存储接口，利用闪存提供可预测的低 pMax 延迟，避免单 GPU 慢速拖慢整批任务。统一数据湖访问支持地理分布 GPU 间数据高速注入与跨区移动。两大核心目标：最大化 GPU 利用率与研究迭代速度。</div>
+  </div>
+
+  <div class="card c-report">
+    <div class="title"><a href="https://www.theneuron.ai/explainer-articles/around-the-horn-digest-everything-that-happened-in-ai-today-thursday-july-2-2026/" target="_blank">Bridgewater × Thinking Machines 案例研究：模型微调达 84.7% 准确率，推理成本降 13.8 倍</a></div>
+    <div class="meta">
+      <span class="source">The Neuron</span>
+      <span class="sep">|</span> 今天
+    </div>
+    <div class="summary">Thinking Machine Lab 协助 Bridgewater（全球最大对冲基金）进行案例研究：使用专家标注数据和策略蒸馏微调模型，实现 84.7% 准确率，错误率比最佳前沿模型减少 29.8%，推理成本降低 13.8 倍。这表明领域专用微调模型在专业任务上可显著超越通用前沿模型，且推理经济性大幅改善——对金融、法律等垂直领域的 AI 落地具有标杆意义。</div>
+  </div>
+</div>
+
+<!-- ===== 投融资 ===== -->
+<div class="section">
+  <div class="section-header">
+    <span class="dot" style="background:var(--c-funding)"></span>
+    投融资动态
+    <span class="badge">3 条</span>
+  </div>
+
+  <div class="card c-funding">
+    <div class="title"><a href="https://www.thenationalnews.com/business/markets/2026/07/01/abu-dhabis-ai-investment-firm-mgx-raises-49bn-for-new-fund/" target="_blank">MGX（阿布扎比）关闭 490 亿美元 AI 基金，超募 45B 目标</a></div>
+    <div class="meta">
+      <span class="source">The National</span>
+      <span class="sep">|</span> 7/1 报道
+    </div>
+    <div class="summary">阿布扎比科技投资公司 MGX 关闭 Fund I，募资 490 亿美元，超过 450 亿美元初始目标。基金覆盖半导体、AI 基础设施和 AI 技术平台全栈，已投资 14 家公司。MGX 由 Mubadala 主权基金和 G42 联合成立，此前参与 Anthropic 650 亿美元 Series H，并联合收购 Aligned Data Centres（约 400 亿美元，史上最大私募数字基础设施交易之一）。同时与 NVIDIA、Bpifrance 合作在巴黎建设欧洲最大 AI 校区（潜在 3GW 算力）。</div>
+  </div>
+
+  <div class="card c-funding">
+    <div class="title"><a href="https://www.theneuron.ai/explainer-articles/around-the-horn-digest-everything-that-happened-in-ai-today-thursday-july-2-2026/" target="_blank">Together AI 融资 8 亿美元，估值从 33 亿飙升至 83 亿</a></div>
+    <div class="meta">
+      <span class="source">The Neuron</span>
+      <span class="sep">|</span> 今天
+    </div>
+    <div class="summary">开源模型推理基础设施公司 Together AI 完成 8 亿美元融资，估值 83 亿美元——较 2025 年初的 33 亿美元估值翻 2.5 倍。资金将用于扩展开放模型和新云基础设施。此外，Venice AI（隐私优先 AI 平台）获 6500 万美元 A 轮融资，估值 10 亿美元，由 Dragonfly 领投，年化收入超 7000 万美元。Twelve Labs（视频 AI 搜索）获 1 亿美元融资，Amazon、NEA、Naver Ventures 投资。</div>
+  </div>
+
+  <div class="card c-funding">
+    <div class="title"><a href="https://www.theneuron.ai/explainer-articles/around-the-horn-digest-everything-that-happened-in-ai-today-thursday-july-2-2026/" target="_blank">宇树科技科创板 IPO 注册获批 + Weave Robotics 家务机器人预购开放</a></div>
+    <div class="meta">
+      <span class="source">IT之家 / The Neuron</span>
+      <span class="sep">|</span> 今天
+    </div>
+    <div class="summary">宇树科技科创板 IPO 注册获批（预计募资 42.02 亿元），A股"人形机器人第一股"即将诞生。海外方面，Weave Robotics 推出家庭机器人 Isaac 1（专注叠衣服等家务），预付款 250 美元 + 月费 449 美元，或一次性 7999 美元，今年秋季开始交付。UBTECH 在深圳 2026 全球发布会推出号称全球首个全尺寸量产超仿生人形机器人 UWORLD U1。机器人赛道从实验室走向商业化交付的拐点信号明确。</div>
+  </div>
+</div>
+
+<!-- ===== 投资启示 ===== -->
+<div class="insights">
+  <h2>📋 今日总结 & 投资启示</h2>
+
+  <div class="insight-item">
+    <span class="label">① AI 国家资本主义化加速。</span>OpenAI 提议向美国政府出让 <span class="highlight">5% 股权（426 亿美元）</span>，并设想 Anthropic / Google / Meta 同步跟进，通过主权财富基金持有。这标志着 AI 公司从纯商业实体向"半公共资产"转型——政府股权意味着政策风险内化为股东权益，但也意味着监管俘获风险上升。关注 OpenAI IPO 估值锚定效应及对其他 AI 公司估值的锚定传导。
+  </div>
+
+  <div class="insight-item">
+    <span class="label">② 蒸馏风险从法律战升级为运营禁令。</span>Meta 内部禁止工程师使用 Claude Code 和 Codex，理由是防止 inadvertent 蒸馏——这是 Anthropic 指控阿里巴巴蒸馏后的 <span class="highlight">首次大厂内部禁令</span>。企业 AI 编码工具市场面临法律合规新变量：大厂法务团队开始将 AI 编码工具使用视为潜在 IP 责任。关注 Cursor / Windsurf 等第三方编码工具是否受益于大厂内部禁令带来的需求溢出。
+  </div>
+
+  <div class="insight-item">
+    <span class="label">③ AI 推理成本"二次腰斩"信号明确。</span>OpenAI 算法层推理成本减半叠加 Jalapeño 芯片硬件层减半，GPT-5.5 输出成本或从 <span class="highlight">30 美元/MTok 降至约 7.5 美元</span>。若确认，将对 Anthropic Sonnet 5（10 美元）定价构成直接冲击。推理成本曲线持续下移意味着：模型层利润率压缩不可逆，竞争壁垒从模型能力向基础设施规模（Meta Compute / AWS 驻场）和垂直微调（Bridgewater 案例 13.8 倍成本降低）迁移。
+  </div>
+
+  <div class="insight-item">
+    <span class="label">④ AI 自动化拐点数据出炉。</span>Fable 5 在 RLI 基准达 <span class="highlight">16.1% 专业质量自动化率</span>（八个月前仅 2.5%），但 Senior SWE-Bench 显示最强模型 75%+ 高级工程师任务失败。两个基准共同指向：AI 在重复性自由职业工作上的替代速度远超预期，但在需要品味和系统级判断的高级工程任务上仍有巨大差距。关注劳动力市场结构性置换而非总量削减的具体行业落地。
+  </div>
+
+  <div class="insight-item">
+    <span class="label">⑤ 中东主权资本创纪录入场。</span>MGX <span class="highlight">490 亿美元 AI 基金</span>关闭（超募），叠加此前的 Anthropic Series H 参与和 400 亿美元 Aligned 收购，阿布扎比正在构建从芯片到数据中心到模型的全栈 AI 投资组合。中东主权资本对 AI 基础设施的配置力度已超越传统硅谷 VC，关注 AI 基础设施资产定价的中东溢价效应。
+  </div>
+
+  <div class="insight-item">
+    <span class="label">⑥ 中国 AI 生态双线突破。</span>国内侧：宇树 IPO 获批（人形机器人资本化里程碑）、Kimi K2.7 首入 GitHub Copilot（开源权重进企业工具链）、蚂蚁阿宝公测（支付 AI 化）、天工 Skywork Tags（Agent 入群聊）。海外侧：ByteDance 390 亿美元巴西数据中心标志中国科技巨头算力出海加速。国产 AI 从"追赶"进入"平行生态构建"阶段，关注国内 AI 硬件（机器人/芯片）和 AI 应用层（支付/办公/编码）的估值修复机会。
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>数据来源：AI HOT API (aihot.virxact.com) + WebSearch（CNBC / Financial Times / Ars Technica / The Information / TechCrunch / The Neuron / AIToolsRecap / IT之家 / GitHub Blog / Meta Engineering Blog 等）</p>
+  <p>报告生成时间：2026-07-02 22:00 北京时间 · 自动化调度生成</p>
+  <p style="margin-top: 8px; color: var(--text-muted);">⚠️ 本报告仅供研究参考，不构成投资建议。AI 行业变化快，请注意信息时效性。</p>
+</div>
+
+</div>
+</body>
+</html>

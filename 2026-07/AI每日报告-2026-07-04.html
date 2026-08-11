@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026-07-04</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;font-size:15px}
+.container{max-width:900px;margin:0 auto;padding:24px 16px 60px}
+.header{background:linear-gradient(135deg,#4f46e5 0%,#6366f1 50%,#818cf8 100%);color:#fff;border-radius:16px;padding:32px 28px;margin-bottom:20px;box-shadow:0 4px 24px rgba(99,102,241,0.25)}
+.header h1{font-size:26px;font-weight:700;margin-bottom:6px;letter-spacing:-0.3px}
+.header .meta{font-size:13px;opacity:0.9;display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:10px}
+.header .meta span{display:inline-flex;align-items:center;gap:4px}
+.header .meta .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.6)}
+.stats-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.stat-chip{background:#fff;border:1px solid #e5e5ea;border-radius:20px;padding:6px 14px;font-size:12px;color:#6366f1;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.stat-chip .count{background:#6366f1;color:#fff;border-radius:10px;padding:1px 7px;font-size:11px}
+.section{margin-bottom:28px}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #f0f0f3}
+.section-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.section-title{font-size:18px;font-weight:700;color:#1d1d1f}
+.section-count{font-size:12px;color:#86868b;font-weight:500;margin-left:auto}
+.card{background:#fff;border-radius:12px;padding:18px 20px;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,0.06);border-left:4px solid #e5e5ea;transition:box-shadow 0.2s}
+.card:hover{box-shadow:0 2px 12px rgba(0,0,0,0.1)}
+.card.industry{border-left-color:#f59e0b}
+.card.kol{border-left-color:#10b981}
+.card.model{border-left-color:#8b5cf6}
+.card.paper{border-left-color:#06b6d4}
+.card.report{border-left-color:#3b82f6}
+.card.funding{border-left-color:#f97316}
+.card-title{font-size:16px;font-weight:600;line-height:1.5;margin-bottom:6px}
+.card-title a{color:#1d1d1f;text-decoration:none}
+.card-title a:hover{color:#6366f1}
+.card-title .tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;margin-left:6px;vertical-align:middle}
+.tag-new{background:#fef3c7;color:#92400e}
+.tag-fresh{background:#dbeafe;color:#1e40af}
+.card-meta{font-size:12px;color:#86868b;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.card-meta .source{font-weight:600;color:#6366f1}
+.card-meta .time{color:#aeaeb2}
+.card-meta .sep{color:#d1d1d6}
+.card-summary{font-size:14px;color:#3a3a3c;line-height:1.65}
+.card-summary .highlight{background:linear-gradient(transparent 60%,#c7d2fe 60%);font-weight:600;padding:0 2px}
+.card-summary .en{color:#86868b;font-size:13px;display:block;margin-top:4px;font-style:italic}
+.insights{background:linear-gradient(135deg,#eef2ff 0%,#e0e7ff 100%);border-radius:16px;padding:24px 22px;margin-top:32px;border:1px solid #c7d2fe}
+.insights h2{font-size:18px;font-weight:700;color:#4338ca;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.insight-item{font-size:14px;color:#3730a3;line-height:1.7;margin-bottom:12px;padding-left:18px;position:relative}
+.insight-item:before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:#6366f1}
+.insight-item .highlight{background:linear-gradient(transparent 60%,#c7d2fe 60%);font-weight:700;color:#312e81;padding:0 2px}
+.footer{text-align:center;margin-top:32px;padding:20px;font-size:12px;color:#aeaeb2;border-top:1px solid #e5e5ea}
+.footer p{margin-bottom:4px}
+@media(max-width:640px){
+.header h1{font-size:22px}
+.card{padding:14px 16px}
+.card-title{font-size:15px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<h1>AI 每日全景报告</h1>
+<div class="meta">
+<span>📅 2026年7月4日（周六）</span>
+<span class="dot"></span>
+<span>⏱ 覆盖时段：7/3 22:00 → 7/4 22:00 北京时间</span>
+<span class="dot"></span>
+<span>📊 共 23 条</span>
+</div>
+</div>
+
+<div class="stats-bar">
+<span class="stat-chip">🏭 行业动态 <span class="count">7</span></span>
+<span class="stat-chip">💬 大V观点 <span class="count">5</span></span>
+<span class="stat-chip">🚀 模型产品 <span class="count">3</span></span>
+<span class="stat-chip">🔬 技术论文 <span class="count">2</span></span>
+<span class="stat-chip">💡 深度报告 <span class="count">3</span></span>
+<span class="stat-chip">💰 投融资 <span class="count">3</span></span>
+</div>
+
+<!-- 🏭 行业动态 -->
+<div class="section">
+<div class="section-header">
+<span class="section-dot" style="background:#f59e0b"></span>
+<span class="section-title">🏭 行业动态</span>
+<span class="section-count">7 条</span>
+</div>
+
+<div class="card industry">
+<div class="card-title"><a href="https://www.ft.com/content/anthropic-china-claude-access-loopholes" target="_blank">Anthropic 封堵中国公司 Claude 访问漏洞，蚂蚁集团等"中转站"通道被切</a></div>
+<div class="card-meta">
+<span class="source">Financial Times</span>
+<span class="sep">·</span>
+<span class="time">今天 约14:00</span>
+</div>
+<div class="card-summary">FT 报道，Anthropic 正系统性地关闭允许中国企业（含蚂蚁集团）通过"中转站"代理服务和云厂商变通方案访问 Claude API 的漏洞。中国工程师仍在寻找新路径。此举系 Anthropic 在 Fable 5 禁令谈判中对美国政府的正式承诺的一部分，与其在参议院银行委员会信件中指控阿里 Qwen 进行 <span class="highlight">2880 万次欺诈性 Claude 交互</span>的蒸馏攻击风险直接挂钩。<span class="en">Anthropic is closing loopholes allowing Chinese firms including Ant Group to access Claude via relay services and cloud workarounds, part of commitments made during Fable 5 ban negotiations.</span></div>
+</div>
+
+<div class="card industry">
+<div class="card-title"><a href="https://www.36kr.com/p/3879721635361032" target="_blank">阿里巴巴全面禁用 Claude 全系产品，7月10日起全员卸载</a></div>
+<div class="card-meta">
+<span class="source">The Information / 36氪</span>
+<span class="sep">·</span>
+<span class="time">今天 上午</span>
+</div>
+<div class="card-summary">阿里巴巴内部下发通知，全面禁用 Anthropic 全系产品（含 Sonnet、Opus、Fable 及 Claude Code），<span class="highlight">7月10日正式生效</span>。直接导火索是开发者社区逆向分析发现 Claude Code 自 v2.1.91 起内置隐蔽用户检测机制，用 Unicode 撇号变体区分中国域名与 AI 实验室账号，被阿里视为后门风险并列入高风险软件名单，推荐员工迁移至自研 Qoder。此举将"AI Coding 供应链安全"从讨论推进到企业强制替换阶段。<span class="en">Alibaba banned all Claude products internally effective July 10, citing Claude Code's covert user detection mechanism as a backdoor risk.</span></div>
+</div>
+
+<div class="card industry">
+<div class="card-title"><a href="https://tech.ifeng.com/c/8uTgZEf35kp" target="_blank">前白宫 AI 顾问 Sriram Krishnan：特朗普时期"不会有 AI 的 FDA"</a></div>
+<div class="card-meta">
+<span class="source">Financial Times</span>
+<span class="sep">·</span>
+<span class="time">今天 约08:00</span>
+</div>
+<div class="card-summary">前白宫 AI 高级政策顾问 Sriram Krishnan 卸任后首次深度专访，明确表示"美国不会设立类似 FDA 的 AI 专职监管机构"，批评行业"末日论"信息传递引发了公众对 AI 的反弹。他指出本届政府倾向通过<span class="highlight">自愿标准框架</span>而非许可制度管理前沿模型，并谈及数据中心社区 backlash 问题。此表态为白宫即将公布的自愿前沿模型标准框架定调。<span class="en">Former White House AI adviser says "there will not be an FDA for AI" under Trump, blaming industry's "doomer" messaging for the AI backlash.</span></div>
+</div>
+
+<div class="card industry">
+<div class="card-title"><a href="https://www.bloomberg.com/news/articles/2026-07-04/hong-kong-china-chip-imports-record-share" target="_blank">香港占中国芯片进口 50%+ 创历史新高，十年间从 33% 飙升</a></div>
+<div class="card-meta">
+<span class="source">Bloomberg</span>
+<span class="sep">·</span>
+<span class="time">今天 约20:30</span>
+</div>
+<div class="card-summary">Bloomberg 援引官方数据，2026 年前五个月中国 <span class="highlight">2390 亿美元</span>芯片进口中，香港占比超过 50%，创历史最高份额，十年前仅约 33%。香港作为芯片转运枢纽的地位持续强化，反映在中美科技脱钩背景下芯片供应链路由的深层重构。这一趋势对半导体出口管制执法构成挑战——经由香港的芯片流向追踪难度显著增加。<span class="en">Hong Kong accounted for 50%+ of China's $239B chip imports in the first five months of 2026, a record share up from ~33% a decade ago.</span></div>
+</div>
+
+<div class="card industry">
+<div class="card-title"><a href="https://the-decoder.com/anthropic-launches-its-own-drug-discovery-programs-to-tackle-diseases-big-pharma-considers-unprofitable/" target="_blank">Anthropic 启动自主药物研发项目，瞄准大药企"不愿做"的 neglected diseases</a></div>
+<div class="card-meta">
+<span class="source">The Decoder</span>
+<span class="sep">·</span>
+<span class="time">今天 约17:00</span>
+</div>
+<div class="card-summary">Anthropic 在 Claude Science 活动上宣布启动自主药物研发项目，聚焦传统药企认为无利可图的被忽视疾病，处于<span class="highlight">临床前阶段</span>。Novartis CEO Vas Narasimhan 参会表示，AI 可将药物研发周期从 12 年缩短至 7-8 年，成功率从 8% 提升至 16%。UCSF 研究者用 Claude Science 在数分钟内发现了团队遗漏一整年的病毒污染。此举标志 AI 公司从"工具提供者"向"研发主体"转型，与 DeepMind/Isomorphic Labs 和 OpenAI/ChatGPT Health 形成三方竞局。<span class="en">Anthropic is launching its own drug development programs for neglected diseases, with Novartis CEO saying AI could cut timelines from 12 to 7-8 years.</span></div>
+</div>
+
+<div class="card industry">
+<div class="card-title"><a href="https://variety.com/2026/film/news/midjourney-studios-ai-copyright-discovery-1236800902/" target="_blank">Midjourney 反诉要求 Disney、Universal、Warner Bros. 披露内部 AI 使用全貌</a></div>
+<div class="card-meta">
+<span class="source">Variety</span>
+<span class="sep">·</span>
+<span class="time">今天 约10:00</span>
+</div>
+<div class="card-summary">在 Disney/Universal/Warner Bros. 2025 年起诉 Midjourney 侵犯版权后，Midjourney 向联邦法官提起动议，要求三大制片厂在法庭上<span class="highlight">全面披露内部 AI 使用情况</span>，包括 AI 在创作流程中的角色。此前一名法官于 6 月 16 日限制了 Midjourney 的证据开示范围，Midjourney 现提起上诉要求推翻该限制。此案可能成为 AI 时代版权诉讼中"双向证据开示"的标志性判例——原告自身的 AI 使用同样可能被审视。<span class="en">Midjourney wants Disney, Universal, and Warner Bros. to reveal in court how they use AI across their companies.</span></div>
+</div>
+
+<div class="card industry">
+<div class="card-title"><a href="https://www.bloomberg.com/news/articles/2026-07-04/china-quant-fund-ai-boom" target="_blank">中国量化基金 AUM 因 AI 采用翻倍至 3840 亿美元</a></div>
+<div class="card-meta">
+<span class="source">Bloomberg</span>
+<span class="sep">·</span>
+<span class="time">今天</span>
+</div>
+<div class="card-summary">Bloomberg 报道，中国量化基金管理资产规模在不到一年时间内<span class="highlight">翻倍至约 3840 亿美元</span>，AI 技术的快速采用是核心驱动因素。这一增长反映 AI 在金融量化领域的渗透正在加速，同时也引发对市场稳定性和监管关注的讨论。与前 DeepMind 研究员创立的 EquiLibre（见投融资版块）形成中外共振——AI 量化正成为资本配置的新主线。<span class="en">China's quant fund assets under management have more than doubled to ~$384B in less than a year amid rapid AI adoption.</span></div>
+</div>
+</div>
+
+<!-- 💬 大V观点 & 深度报告 -->
+<div class="section">
+<div class="section-header">
+<span class="section-dot" style="background:#10b981"></span>
+<span class="section-title">💬 大V观点 & 深度报告</span>
+<span class="section-count">5 条</span>
+</div>
+
+<div class="card kol">
+<div class="card-title"><a href="https://the-decoder.com/openai-cofounder-envisions-almost-no-interface-future-where-nobody-learns-software-anymore/" target="_blank">Greg Brockman：未来"几乎无界面"，没人需要学软件</a></div>
+<div class="card-meta">
+<span class="source">The Decoder</span>
+<span class="sep">·</span>
+<span class="time">今天 约18:00</span>
+</div>
+<div class="card-summary">OpenAI 联合创始人 Greg Brockman 坦承 2023 年力推的 ChatGPT Plugins "完全失败，因为模型还没准备好"。他展望未来方向是"几乎无界面、无产品"的<span class="highlight">隐形上下文感知代理</span>——用户不再学习软件，而是将数字任务移交给持久运行的 Agent。但 OpenAI 自身产品（如 Codex）与这一愿景仍有巨大差距，模型可靠性不足仍是核心瓶颈。Brockman 的反思呼应了 Anthropic/Microsoft 纷纷派工程师驻场企业客户的趋势——AI 落地远比"发布产品"复杂。<span class="en">OpenAI co-founder Greg Brockman admits Plugins "didn't work at all because the models weren't ready," envisions an "almost no interface" future.</span></div>
+</div>
+
+<div class="card kol">
+<div class="card-title"><a href="https://aitoolsrecap.com/Blog/fable-5-ban-behind-the-scenes-full-story-2026" target="_blank">Fable 5 禁令 20 天内幕首次详曝：Amazon CEO 致电财长 → NSA 拒初版修复 → 逐机构审批<span class="tag tag-new">最新披露</span></a></div>
+<div class="card-meta">
+<span class="source">Axios / AIToolsRecap</span>
+<span class="sep">·</span>
+<span class="time">今天</span>
+</div>
+<div class="card-summary">Axios 发布迄今最详细的 Fable 5 禁令内幕报道。事件链条：Amazon CEO Andy Jassy 致电<span class="highlight">财长 Bessent</span>（而非国安官员）→ 白宫幕僚长 Susie Wiles 升级 → 数小时内触发出口管制令 → 商务部长 Lutnick 按 Trump 指示致电 Amodei → Anthropic 派工程师赴华盛顿 → NSA 审查初版修复后表示"不够好" → 20 天逐机构批准至 7/1 全部放行。关键发现：网络安全专家公开信指出其他领先模型同样存在 Amazon 警告的漏洞——Fable 5 被禁 20 天的能力在未受限模型中<span class="highlight">普遍存在且未处理</span>。这成为白宫推进自愿标准框架的最有力论据。<span class="en">Axios reveals the most detailed account of the 20-day Fable 5 ban: Amazon CEO called Treasury Secretary, NSA rejected initial fixes, gradual agency-by-agency approval.</span></div>
+</div>
+
+<div class="card kol">
+<div class="card-title"><a href="https://the-decoder.com/a-26000-student-study-shows-ais-hidden-learning-cost-takes-two-full-years-to-surface" target="_blank">26000 名学生追踪研究：AI 隐藏学习成本需两年才显现，升学考试降 18-24%</a></div>
+<div class="card-meta">
+<span class="source">The Decoder</span>
+<span class="sep">·</span>
+<span class="time">今天 17:08</span>
+</div>
+<div class="card-summary">一项追踪 26000 名 7-12 年级中学生 30 个月的面板数据研究发现：使用 AI 后作业分数提升 18%、完成时间从 64 分钟降至 45 分钟，但<span class="highlight">闭卷考试下降 20%</span>，升学考试成绩下降 18-24%，且完全影响约两年才显现。81% 长期用户作业完成时间低于 50 分钟（外包迹象）。每周使用 AI 一小时损失约 5%，五小时损失 30%。社会学科下降 27%，STEM 下降 22%。这一研究为"AI 削弱深度学习"假说提供了迄今最大规模的实证支撑。<span class="en">A 26,000-student study found AI users scored 18% higher on homework but 20% worse on exams, with the full impact taking two years to surface.</span></div>
+</div>
+
+<div class="card kol">
+<div class="card-title"><a href="https://simonwillison.net/2026/Jul/3/judgement" target="_blank">Simon Willison 论 Fable 的判断力：让模型自行决定，而非硬性规则</a></div>
+<div class="card-meta">
+<span class="source">Simon Willison 博客</span>
+<span class="sep">·</span>
+<span class="time">今天 02:51</span>
+</div>
+<div class="card-summary">Simon Willison 在 AIE 上与 Claude Code 团队交流后建议：让 Fable（及 Opus）用<span class="highlight">自己的判断力</span>工作，而非硬性规定行为。例如直接让 Fable 自行决定何时编写测试，比给出具体规则更好。为应对 Fable 5 涨价，Jesse Vincent 的技巧是让 Fable 将较小任务委托给较低功耗模型（Sonnet 做实现、Haiku 做简单查询）。Anthropic 开发者 Thariq Shihipar 同日发文呼应：Fable 5 时代瓶颈不再是模型本身，而是<span class="highlight">用户的盲点</span>，建议做"盲点扫描"。<span class="en">Simon Willison advises letting Fable use its own judgement rather than rigid rules; Anthropic developer says the bottleneck is now the user's blind spots.</span></div>
+</div>
+
+<div class="card kol">
+<div class="card-title"><a href="https://www.theguardian.com/technology/2026/jul/04/google-deepmind-philosopher-iason-gabriel" target="_blank">Google DeepMind 哲学家 Iason Gabriel 专访：追踪并预言了 LLM 的伦理困境</a></div>
+<div class="card-meta">
+<span class="source">The Guardian</span>
+<span class="sep">·</span>
+<span class="time">今天 约15:00</span>
+</div>
+<div class="card-summary">The Guardian 发表 DeepMind 内部哲学家 Iason Gabriel 的深度专访。Gabriel 的工作追踪并在许多情况下<span class="highlight">预测了</span> LLM 成功带来的伦理挑战——从对齐问题到 AI 对民主制度的潜在威胁。作为 DeepMind 伦理团队的核心成员，他在 AlphaGo 到 Gemini 时代持续为 AI 伦理框架提供哲学基础。这篇专访在行业"加速派"与"减速派"辩论白热化之际，提供了一个罕见的深度思考视角。<span class="en">A profile of Google DeepMind philosopher Iason Gabriel, whose work has tracked and predicted the ethical challenges posed by the success of LLMs.</span></div>
+</div>
+</div>
+
+<!-- 🚀 模型/产品/应用更新 -->
+<div class="section">
+<div class="section-header">
+<span class="section-dot" style="background:#8b5cf6"></span>
+<span class="section-title">🚀 模型/产品/应用更新</span>
+<span class="section-count">3 条</span>
+</div>
+
+<div class="card model">
+<div class="card-title"><a href="https://the-decoder.com/mistrals-open-source-leanstral-1-5-aces-formal-math-benchmarks-and-catches-real-bugs-in-code/" target="_blank">Mistral 开源 Leanstral 1.5：形式化数学满分，还抓了 5 个真实代码 Bug</a></div>
+<div class="card-meta">
+<span class="source">The Decoder</span>
+<span class="sep">·</span>
+<span class="time">今天</span>
+</div>
+<div class="card-summary">Mistral AI 发布 Leanstral 1.5，Apache 2.0 开源，专为 Lean 4 形式化验证语言设计。miniF2F 形式化数学基准<span class="highlight">100% 满分</span>，PutnamBench 672 道题解出 587 道，开源领域第一（仅闭源 Aleph Prover 在 PutnamBench 上更高）。实战中扫描 57 个开源仓库发现 5 个此前未知 Bug，包括 Rust 库 varinteger 的溢出漏洞。119B 总参 6B 激活，Hugging Face 可下载，提供免费 API。形式化验证成 AI 新战场——从数学证明到代码正确性保障。<span class="en">Mistral's open-source Leanstral 1.5 scores 100% on miniF2F, catches 5 real bugs in open-source repos, available under Apache 2.0.</span></div>
+</div>
+
+<div class="card model">
+<div class="card-title"><a href="https://www.qbitai.com/2026/07/442746.html" target="_blank">百曜科技 AURA CellOS：全球首个 LLM-JEPA 架构 AI 虚拟细胞世界模型</a></div>
+<div class="card-meta">
+<span class="source">量子位</span>
+<span class="sep">·</span>
+<span class="time">昨天 22:28</span>
+</div>
+<div class="card-summary">百曜科技发布全球首个基于 LLM-JEPA 架构的 AI 虚拟细胞世界模型 AURA CellOS，基于 <span class="highlight">3.905 亿个人类单细胞转录组</span>训练，覆盖 40 余种人体组织、260 余种细胞类型，是目前公开报道中参数规模最大的单细胞基础模型。关键突破在于首次将 JEPA（联合嵌入预测架构）与世界模型理念系统性引入单细胞研究，让 Yann LeCun 四年前提出的架构在生命科学领域落地。AI 虚拟细胞有望将药物靶点筛选从"年"级压缩到"天"级。<span class="en">AURA CellOS is the world's first LLM-JEPA architecture AI virtual cell world model, trained on 390M human single-cell transcriptomes.</span></div>
+</div>
+
+<div class="card model">
+<div class="card-title"><a href="https://github.com/teamchong/pxpipe" target="_blank">pxpipe：将文本渲染为 PNG 图像压缩 token，Claude Code 账单直降 59-70%</a></div>
+<div class="card-meta">
+<span class="source">GitHub / Hacker News</span>
+<span class="sep">·</span>
+<span class="time">今天 03:19</span>
+</div>
+<div class="card-summary">pxpipe 是一个本地代理，将系统提示、工具文档和历史记录等密集文本渲染为 PNG 图像，利用图像 token 成本取决于像素尺寸的特性压缩输入。在 Fable 5 模型上，约 <span class="highlight">25k 文本 token 压缩为 2.7k 图像 token</span>，端到端账单降低 59-70%。SWE-bench Lite 10 个实例全部通过，成本从 $54 降至 $27。这种"文本→图像→模型理解"的迂回路径反映了 Fable 5 涨价后社区降本创意的爆发。<span class="en">pxpipe renders dense text as PNG images to cut input tokens, reducing Claude Code bills by 59-70% on Fable 5.</span></div>
+</div>
+</div>
+
+<!-- 🔬 技术进展 & 论文 -->
+<div class="section">
+<div class="section-header">
+<span class="section-dot" style="background:#06b6d4"></span>
+<span class="section-title">🔬 技术进展 & 论文</span>
+<span class="section-count">2 条</span>
+</div>
+
+<div class="card paper">
+<div class="card-title"><a href="https://www.ithome.com/0/972/526.htm" target="_blank">全球首款忆阻器神经动力学芯片：单步 2.12ms，较 GPU 提速 50-478 倍，发表于《科学》</a></div>
+<div class="card-meta">
+<span class="source">IT之家</span>
+<span class="sep">·</span>
+<span class="time">今天 13:01</span>
+</div>
+<div class="card-summary">北京大学集成电路学院联合中科院上海微系统所，发布全球首款基于可控存内计算的忆阻器神经动力学芯片。40nm 工艺，存内计算阵列与外围电路总面积仅 0.28mm²，运行频率 50MHz，单步积分仅需 9 级流水。在脑皮层重建等任务中较当前 GPU <span class="highlight">提速 50-478 倍</span>，单步运算时延压缩至 2.12ms，突破神经动力学实时计算瓶颈。成果 7 月 3 日发表于《科学》。这标志着存内计算从"能不能做"进入"够不够快"的工程化阶段。<span class="en">Peking University and CAS unveil the world's first memristor neurodynamics chip, 50-478x faster than GPU, published in Science.</span></div>
+</div>
+
+<div class="card paper">
+<div class="card-title"><a href="https://www.marktechpost.com/2026/07/03/nvidia-ai-introduces-aspire-a-self-improving-robotics-framework-reaching-31-zero-shot-on-libero-pro-long-tasks" target="_blank">NVIDIA ASPIRE 自我改进机器人框架：零样本成功率提升 77 分</a></div>
+<div class="card-meta">
+<span class="source">MarkTechPost</span>
+<span class="sep">·</span>
+<span class="time">今天 14:32</span>
+</div>
+<div class="card-summary">NVIDIA 联合密歇根大学、UIUC、UC Berkeley 提出 ASPIRE 持续学习机器人框架，通过协调器-执行器架构、闭环执行引擎、技能库和进化搜索编写并优化机器人控制程序。编程智能体使用 Claude Code（Claude Opus 4.6，1M token 上下文窗口）。在 LIBERO-Pro 上最高比最强基线<span class="highlight">提升 77 分</span>，Robosuite 双手交接成功率从 20% 提升至 31%。ASPIRE 证明"AI 写代码来控制机器人"的范式在长时程任务中开始产生实质增益。<span class="en">NVIDIA's ASPIRE framework uses Claude Code for self-improving robotics, boosting zero-shot success by 77 points on LIBERO-Pro.</span></div>
+</div>
+</div>
+
+<!-- 💡 优秀报告/深度研报 -->
+<div class="section">
+<div class="section-header">
+<span class="section-dot" style="background:#3b82f6"></span>
+<span class="section-title">💡 优秀报告/深度研报</span>
+<span class="section-count">3 条</span>
+</div>
+
+<div class="card report">
+<div class="card-title"><a href="https://semianalysis.com/2026/07/04/meta-compute-strategy" target="_blank">SemiAnalysis 深度：Meta 算力战略四条路——自用、广告、Neocloud、托管第三方模型</a></div>
+<div class="card-meta">
+<span class="source">SemiAnalysis</span>
+<span class="sep">·</span>
+<span class="time">今天</span>
+</div>
+<div class="card-summary">SemiAnalysis 发布 Meta 算力战略深度分析，指出 Meta 对外租赁算力有四条可能路径：① 自有模型训练 ② 广告系统扩展 ③ 类 SpaceX Neocloud 的算力合约 ④ 托管第三方模型。报告认为 Meta <span class="highlight">可能接近与 Anthropic 达成托管协议</span>，且后续 GPU 采购不会因"卖算力"而放缓——对外租赁是存量盘活而非减产信号。同期 Meta 内部大会上，扎克伯格承认 AI 智能体四个月未如预期加速，但 AI 负责人 Alexandr Wang 称代号"Watermelon"的新模型已在内部基准追上 GPT-5.5（无公开验证），META 股价跌 4.9% 至 $582。<span class="en">SemiAnalysis analyzes Meta's four compute strategies and suggests a potential Anthropic hosting deal; Meta may be close to an Anthropic deal.</span></div>
+</div>
+
+<div class="card report">
+<div class="card-title"><a href="https://news.crunchbase.com/venture/h1-2026-global-funding-report/" target="_blank">Crunchbase H1 2026 全球 VC 报告：5100 亿美元创纪录，OpenAI+Anthropic 独占 43%</a></div>
+<div class="card-meta">
+<span class="source">Crunchbase / AIToolsRecap</span>
+<span class="sep">·</span>
+<span class="time">今天</span>
+</div>
+<div class="card-summary">Crunchbase 发布 2026 上半年全球风投报告：H1 全球 VC 总额达<span class="highlight">5100 亿美元创历史新高</span>，其中 OpenAI 和 Anthropic 合计吸纳 2170 亿美元，占全球初创资本总额的 43%。Anthropic 已聘请英国律所 Freshfields 担任 IPO 顾问（该律所曾服务 Google 320 亿美元收购 Wiz 和 ServiceNow 45 亿美元收购 Armis）。Menlo Ventures 30 亿美元基金中的 Anthropic 股权 reportedly 价值近 140 亿美元。两家公司的 IPO 将成为十年来对初创生态系统最具决定性的资本市场事件。<span class="en">Crunchbase H1 2026: Global VC hits record $510B, with OpenAI and Anthropic alone taking $217B (43% of all startup capital).</span></div>
+</div>
+
+<div class="card report">
+<div class="card-title"><a href="https://thedeepview.io/2026/07/04/apple-silicon-ai-agent-machines" target="_blank">Apple 芯片高管 Q&A：Mac mini 正成为 AI 代理机器首选</a></div>
+<div class="card-meta">
+<span class="source">The Deep View</span>
+<span class="sep">·</span>
+<span class="time">今天</span>
+</div>
+<div class="card-summary">Apple 芯片高级产品经理 Doug Brooks 接受采访，讨论 Mac mini 成为<span class="highlight">AI 代理机器首选</span>的趋势，以及端侧 AI 的未来方向。这反映 Apple 正将"端侧 AI 推理"从营销话术转向实际开发者生态定位——在云端模型成本居高不下的背景下（花旗/Adobe等企业限制旗舰模型使用），具备统一内存架构和 NPU 的 Mac 在本地 Agent 场景中找到了差异化价值。端侧 vs 云端的竞争格局可能因成本压力而重新倾斜。<span class="en">Apple silicon executive says Mac minis are becoming preferred AI agent machines, discusses the future of on-device AI.</span></div>
+</div>
+</div>
+
+<!-- 💰 投融资动态 -->
+<div class="section">
+<div class="section-header">
+<span class="section-dot" style="background:#f97316"></span>
+<span class="section-title">💰 投融资动态</span>
+<span class="section-count">3 条</span>
+</div>
+
+<div class="card funding">
+<div class="card-title"><a href="https://techcrunch.com/2026/07/04/equilibre-ai-quant-hedge-fund-series-a/" target="_blank">EquiLibre：前 DeepMind 三人组创立的 AI 量化公司完成 A 轮，估值 5 亿美元</a></div>
+<div class="card-meta">
+<span class="source">TechCrunch</span>
+<span class="sep">·</span>
+<span class="time">今天 约13:00</span>
+</div>
+<div class="card-summary">总部位于布拉格的 EquiLibre 完成 A 轮融资，估值<span class="highlight">5 亿美元</span>。公司由三位前 Google DeepMind 研究员创立，为量化对冲基金提供 AI 解决方案。这与同日 Bloomberg 报道的"中国量化基金 AUM 因 AI 翻倍至 3840 亿美元"形成共振——AI 量化正成为全球资本配置的新主线。DeepMind 人才外溢效应持续：从扑克 AI 三人组转战量化基金到 EquiLibre，DeepMind 的博弈推理研究正在金融领域找到商业出口。<span class="en">Prague-based EquiLibre, founded by three ex-Google DeepMind researchers, raised a Series A at a $500M valuation for AI quant hedge funds.</span></div>
+</div>
+
+<div class="card funding">
+<div class="card-title"><a href="https://www.techmeme.com/260704/p3" target="_blank">dConstruct Robotics：新加坡空间技术机器人公司完成 1.25 亿美元 A 轮</a></div>
+<div class="card-meta">
+<span class="source">TNGlobal</span>
+<span class="sep">·</span>
+<span class="time">今天 约13:00</span>
+</div>
+<div class="card-summary">新加坡 dConstruct Robotics 完成<span class="highlight">1.25 亿美元 A 轮</span>融资，开发面向 GPS 不可用环境（如地下、室内、工业设施）的空间技术，使自主机器人能在复杂环境中导航。公司技术涵盖 AI 驱动的现实捕捉和自主导航系统。此轮融资反映机器人赛道资本从"人形机器人"向"基础设施/特种场景"扩散——不是所有机器人都需要人形，但几乎所有机器人都需要空间感知。<span class="en">Singapore-based dConstruct Robotics raised a $125M Series A for spatial tech enabling autonomous robots in GPS-denied environments.</span></div>
+</div>
+
+<div class="card funding">
+<div class="card-title"><a href="https://betakit.com/2026/07/04/stathera-series-b-maverick-silicon/" target="_blank">Stathera：MEMS 硅时钟组件厂商完成 5500 万美元 B 轮，Maverick Silicon 领投</a></div>
+<div class="card-meta">
+<span class="source">BetaKit</span>
+<span class="sep">·</span>
+<span class="time">今天 约13:00</span>
+</div>
+<div class="card-summary">蒙特利尔 Stathera 完成<span class="highlight">5500 万美元 B 轮</span>融资，Maverick Silicon 领投，总融资达 7500 万美元。公司专注于 MEMS 基硅时钟组件——芯片的"心跳"元件。在高性能 AI 芯片对时序精度要求不断提升的背景下，硅时钟正成为半导体细分赛道的隐形增长点。Maverick Silicon 的领投也标志着"芯片周边器件"开始获得专业半导体基金的独立配置。<span class="en">Montreal-based Stathera raised a $55M Series B led by Maverick Silicon for MEMS-based silicon timing components, bringing total funding to $75M.</span></div>
+</div>
+</div>
+
+<!-- 投资启示 -->
+<div class="insights">
+<h2>📋 今日总结 & 投资启示</h2>
+
+<div class="insight-item">
+Anthropic 封堵中国 Claude 访问漏洞 + 阿里全面禁用 Claude，标志着 <span class="highlight">AI Coding 供应链安全</span>从讨论进入实操阶段。阿里推荐员工迁移至自研 Qoder，意味着大厂内部 AI 工具栈"国产替代"加速——对国产 AI 编程工具（如通义灵码、Qoder）构成直接利好，同时 Anthropic 在中国企业市场的收入前景进一步恶化。
+</div>
+
+<div class="insight-item">
+Fable 5 禁令内幕首次详曝揭示了一个关键事实：Amazon 举报的"独特能力"在<span class="highlight">所有领先模型中普遍存在且未处理</span>。这意味着白宫正在推进的自愿标准框架将惠及整个行业——一旦标准落地，逐客审批的"Fable 5 式"禁令将不再发生。对 Anthropic（$965B IPO 估值）和 OpenAI（$830B-$1T）的 IPO 路演窗口至关重要。
+</div>
+
+<div class="insight-item">
+Crunchbase H1 2026 数据显示全球 VC 5100 亿创纪录，但<span class="highlight">OpenAI+Anthropic 独占 43%</span>。资本极度集中意味着：① AI 初创生态的"二八效应"已极端化，非头部公司融资难度实质性上升 ② 两家 IPO 将决定 5000 亿+美元资本的回收和再分配路径 ③ Menlo Ventures 3 亿基金中 Anthropic 股权价值 140 亿，VC 行业回报结构正在被 AI 重塑。
+</div>
+
+<div class="insight-item">
+香港占中国芯片进口 50%+ 创新高，叠加中国量化基金 AUM 因 AI 翻倍至<span class="highlight">3840 亿美元</span>，反映两条并行趋势：芯片供应链路由在出口管制下持续重构（香港枢纽化使追踪更难），同时 AI 在中国金融领域的渗透速度超出预期。对半导体设备/封测标的和金融科技/量化 IT 标的构成中期催化。
+</div>
+
+<div class="insight-item">
+26000 人学生研究揭示 AI 教育的<span class="highlight">"延迟毒性"</span>——使用 AI 后作业提升但考试成绩两年后才显现下降，这一发现可能引发教育政策层面的 AI 使用限制浪潮。对教育 AI 公司（如 Khan Academy、作业帮等）构成政策风险，同时为强调"AI 辅助而非替代"的定位提供了实证依据。
+</div>
+
+<div class="insight-item">
+Greg Brockman 承认 Plugins 失败并展望"无界面"未来，叠加 Anthropic 启动自主药物研发——AI 公司正从<span class="highlight">"工具提供者"向"研发主体"转型</span>。当 AI 公司不再只卖 API 而是直接做药、做科学发现，传统药企和科研机构的竞争格局将面临结构性重塑。Novartis CEO 预估 AI 可将药物研发从 12 年缩至 7-8 年，若兑现将重定价整个制药行业估值。
+</div>
+</div>
+
+<div class="footer">
+<p>📊 数据来源：AI HOT API · The Decoder · Bloomberg · TechCrunch · Financial Times · Variety · Axios · AIToolsRecap · SemiAnalysis · Crunchbase · IT之家 · 量子位 · 36氪 · Simon Willison Blog · The Guardian · MarkTechPost · BetaKit · TNGlobal · The Deep View · Hacker News</p>
+<p>🤖 生成时间：2026-07-04 22:00 北京时间 · 自动化调度生成</p>
+<p>⚠️ 本报告仅供研究参考，不构成投资建议。AI 行业变化极快，请以原始来源为准。</p>
+</div>
+
+</div>
+</body>
+</html>

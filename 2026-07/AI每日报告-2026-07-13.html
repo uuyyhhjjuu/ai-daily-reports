@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026-07-13</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; background: #f4f5fa; color: #1f2330; line-height: 1.65; }
+  a { color: #4338ca; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px 60px; }
+
+  /* Header */
+  .header { background: linear-gradient(135deg, #4f46e9 0%, #6366f1 55%, #818cf8 100%); color: #fff; padding: 42px 36px 34px; border-radius: 0 0 22px 22px; margin: 0 -20px 26px; box-shadow: 0 10px 30px rgba(79,70,229,.25); }
+  .header h1 { font-size: 27px; font-weight: 800; letter-spacing: .5px; }
+  .header .sub { margin-top: 10px; font-size: 14.5px; opacity: .92; }
+  .header .meta { margin-top: 14px; font-size: 13px; opacity: .82; display: flex; gap: 18px; flex-wrap: wrap; }
+  .header .meta b { font-weight: 700; }
+
+  /* Stat bar */
+  .stats { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+  .stat { flex: 1 1 120px; background: #fff; border-radius: 12px; padding: 14px 16px; box-shadow: 0 2px 10px rgba(20,20,60,.06); border-top: 3px solid #6366f1; }
+  .stat .n { font-size: 22px; font-weight: 800; }
+  .stat .l { font-size: 12.5px; color: #6b7280; margin-top: 2px; }
+
+  /* Section */
+  .section { margin-bottom: 30px; }
+  .sec-head { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 2px solid #e6e8f2; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; flex: 0 0 auto; }
+  .sec-head h2 { font-size: 18.5px; font-weight: 800; }
+  .sec-head .cnt { margin-left: auto; font-size: 13px; color: #6b7280; background: #eef0fb; padding: 3px 11px; border-radius: 20px; font-weight: 600; }
+
+  /* Card */
+  .card { background: #fff; border-radius: 12px; padding: 15px 18px 16px 20px; margin-bottom: 12px; box-shadow: 0 2px 10px rgba(20,20,60,.055); border-left: 5px solid #6366f1; transition: transform .12s; }
+  .card:hover { transform: translateX(2px); }
+  .card .title { font-size: 15.5px; font-weight: 700; line-height: 1.45; display: block; }
+  .card .meta { font-size: 12.5px; color: #8a90a2; margin: 6px 0 8px; }
+  .card .meta .src { color: #6366f1; font-weight: 600; }
+  .card .summary { font-size: 13.8px; color: #3a3f4d; }
+
+  /* Summary */
+  .summary-box { background: linear-gradient(135deg, #eef1fe 0%, #e6ebfd 100%); border-radius: 16px; padding: 26px 28px; margin-top: 10px; box-shadow: 0 4px 16px rgba(79,70,229,.08); }
+  .summary-box h2 { font-size: 20px; font-weight: 800; color: #3730ca; margin-bottom: 6px; }
+  .summary-box .lead { font-size: 13.5px; color: #5b6178; margin-bottom: 18px; }
+  .sub-h { font-size: 15.5px; font-weight: 800; color: #4338ca; margin: 18px 0 10px; display: flex; align-items: center; gap: 8px; }
+  .sub-h::before { content: ""; width: 5px; height: 17px; background: #6366f1; border-radius: 3px; display: inline-block; }
+  .key { font-size: 13.8px; margin-bottom: 11px; padding-left: 16px; position: relative; }
+  .key::before { content: "▹"; position: absolute; left: 0; color: #6366f1; font-weight: 800; }
+  .key b { color: #3730ca; }
+  .hl { background: linear-gradient(transparent 60%, #fde68a 60%); padding: 0 2px; font-weight: 700; color: #1f2330; border-radius: 2px; }
+
+  table.track { width: 100%; border-collapse: collapse; margin-top: 4px; font-size: 13px; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(20,20,60,.06); }
+  table.track th, table.track td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #edeef5; vertical-align: top; }
+  table.track th { background: #eef0fb; font-weight: 700; color: #4338ca; font-size: 12.5px; }
+  table.track tr:last-child td { border-bottom: none; }
+  .up { color: #047857; font-weight: 800; }
+  .down { color: #dc2626; font-weight: 800; }
+  .flat { color: #b45309; font-weight: 800; }
+
+  /* Footer */
+  .footer { margin-top: 34px; padding: 18px 22px; background: #fff; border-radius: 12px; font-size: 12px; color: #8a90a2; box-shadow: 0 2px 10px rgba(20,20,60,.05); }
+  .footer b { color: #5b6178; }
+  .disc { color: #dc2626; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <h1>🤖 AI 每日全景报告</h1>
+    <div class="sub">二级市场分析师视角 · 国内 + 海外 · 可视化可溯源</div>
+    <div class="meta">
+      <span>📅 <b>2026年7月13日</b> 星期一</span>
+      <span>🕒 覆盖时段：7/12 22:00 ~ 7/13 22:00 北京时间</span>
+      <span>📊 总计 <b>30</b> 条</span>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat" style="border-top-color:#f59e0b"><div class="n" style="color:#f59e0b">7</div><div class="l">行业动态</div></div>
+    <div class="stat" style="border-top-color:#10b981"><div class="n" style="color:#10b981">5</div><div class="l">大V观点</div></div>
+    <div class="stat" style="border-top-color:#8b5cf6"><div class="n" style="color:#8b5cf6">5</div><div class="l">模型动态</div></div>
+    <div class="stat" style="border-top-color:#ec4899"><div class="n" style="color:#ec4899">3</div><div class="l">产品动态</div></div>
+    <div class="stat" style="border-top-color:#06b6d4"><div class="n" style="color:#06b6d4">4</div><div class="l">技术论文</div></div>
+    <div class="stat" style="border-top-color:#3b82f6"><div class="n" style="color:#3b82f6">3</div><div class="l">深度研报观点</div></div>
+    <div class="stat" style="border-top-color:#f97316"><div class="n" style="color:#f97316">3</div><div class="l">投融资</div></div>
+  </div>
+
+  <!-- 1. 行业动态 -->
+  <div class="section">
+    <div class="sec-head"><span class="dot" style="background:#f59e0b"></span><h2>🏭 行业动态</h2><span class="cnt">7 条</span></div>
+
+    <div class="card" style="border-left-color:#f59e0b">
+      <a class="title" href="https://www.toutiao.com/article/7661989780045021731" target="_blank">MiniMax 三天重挫近 40%，跌破上市开盘价——解禁+折价配售+流动性真空三重压力</a>
+      <div class="meta"><span class="src">证券时报</span> · 今天 20:33</div>
+      <div class="summary">7/9 首批 1.46 亿股解禁（占总股本 46.44%），当日 -17.98%，随后两日续跌，三个交易日累计 -40%；自 3 月 1330 港元高点回撤超 80%，跌破首日开盘价。尚未纳入港股通，缺乏南向资金承接，解禁抛压集中释放。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#f59e0b">
+      <a class="title" href="https://www.163.com/dy/article/L1NT7BKB0550WHYR.html" target="_blank">全球 AI 存储板块剧烈波动，美股盘前科技股全线下行</a>
+      <div class="meta"><span class="src">财闻</span> · 今天 16:17</div>
+      <div class="summary">SK 海力士收盘 -15.37%、三星 -10.70% 创历史最大单日跌幅；美股盘前美光 -6%、闪迪 -6.94%、西部数据 -6%。韩国股市盘中大跌超 6% 触发熔断。导火索为 KIS 下调 SK 海力士 Q2 营业利润预期、长鑫存储 295 亿科创板 IPO 抽血与中东局势升温。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#f59e0b">
+      <a class="title" href="https://iknow.stpi.niar.org.tw/Post/Read.aspx?PostID=23360" target="_blank">中国研议限制外国访问最强 AI 模型，低成本开源优势面临政策转折</a>
+      <div class="meta"><span class="src">iKnow 科技产业情报室（路透）</span> · 7/9 披露 · 近期持续发酵</div>
+      <div class="summary">北京与阿里、字节、智谱等评估限制海外访问先进 AI 模型，涵盖闭源与开源权重，模型外泄或被视为国安犯罪。与美方模型能力管制形成中美双向脱钩对称格局，国产开源黄金时代面临收口信号。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#f59e0b">
+      <a class="title" href="https://mp.weixin.qq.com/s/6c6vGMJAVMbh6UhNVw4dcg" target="_blank">xAI 官方 Grok CLI 被曝静默上传整个代码库及用户密钥</a>
+      <div class="meta"><span class="src">公众号：数字生命卡兹克</span> · 今天 08:05</div>
+      <div class="summary">0.2.93 版在每轮任务前后将工作目录打包为 before/after_codebase.tar.gz，经独立旁路通道上传至 xAI 的 Google Cloud 仓库，即使仅回复一词也触发。上传包含 ~/.claude.json、AGENTS 规则、30+ Skill 文件及一枚 API 密钥。xAI 于 7/13 凌晨经远程开关关闭默认上传。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#f59e0b">
+      <a class="title" href="https://www.ithome.com/0/976/149.htm" target="_blank">Meta 宣布扩建路易斯安那州数据中心至 5GW，总投资超 500 亿美元</a>
+      <div class="meta"><span class="src">IT之家</span> · 今天 17:58</div>
+      <div class="summary">全球最大 AI 基础设施投资之一，Meta 承诺承担全部能源及水资源费用并投超 10 亿美元改善当地基建，另与安特吉协议资助新建天然气电厂、储能及核电增容。标志 Meta 从自用算力转向"出售算力"（Meta Compute）的战略拐点。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#f59e0b">
+      <a class="title" href="https://www.ithome.com/0/975/666.htm" target="_blank">苹果起诉 OpenAI 挖角窃密，分析师称或重创其硬件计划</a>
+      <div class="meta"><span class="src">IT之家 / 彭博内幕</span> · 今天 10:37 / 昨天 07:21</div>
+      <div class="summary">指控 OpenAI 挖走 400+ 前苹果员工、窃取工程机与机密文件，核心从非法窃取的商业机密腐烂。前员工 Chang Liu 离职带走 MacBook 并发现"仍能访问网络存储"后分享给同事。分析师称即便指控未证，OpenAI 硬件计划也将受拖累。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#f59e0b">
+      <a class="title" href="https://the-decoder.com/terrorist-groups-are-using-every-major-ai-chatbot-for-attack-planning-and-weapons-development" target="_blank">研究：博科圣地已系统化使用主流 AI 聊天机器人策划袭击</a>
+      <div class="meta"><span class="src">The Decoder</span> · 昨天 01:04</div>
+      <div class="summary">剑桥 CASP 对 27 名前成员 57 次访谈显示，博科圣地两派系均设专门 AI 部门，使用 ChatGPT/Claude/Gemini/Grok/Meta AI/DeepSeek 策划袭击、制造爆炸装置与武器维护。ISIS 自 2023 年提供提示工程与越狱培训，安全过滤器未能可靠防滥用。</div>
+    </div>
+  </div>
+
+  <!-- 2. 大V观点 -->
+  <div class="section">
+    <div class="sec-head"><span class="dot" style="background:#10b981"></span><h2>💬 大V观点</h2><span class="cnt">5 条</span></div>
+
+    <div class="card" style="border-left-color:#10b981">
+      <a class="title" href="https://x.com/satyanadella/status/2076323181154230284" target="_blank">纳德拉提出"反向信息悖论"：企业使用 AI 需保护自身知识</a>
+      <div class="meta"><span class="src">X @satyanadella（一手信源）</span> · 今天 07:09</div>
+      <div class="summary">微软 CEO 指出，AI 时代买家付费使用 AI 同时被迫暴露专有知识（提示词、工具使用、纠正反馈），这些"智力废气"被模型学习，信息不对称向卖家倾斜。呼吁企业拥有私有评估、保留组织记忆所有权，并有权用模型输出微调自有模型。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#10b981">
+      <a class="title" href="https://the-decoder.com/openai-ceo-altman-is-now-pretty-sure-ai-is-net-job-creating-which-is-quite-the-pivot-from-predicting-mass-layoffs" target="_blank">Altman 改口称 AI 净创造就业，Anthropic CEO 也修正早期言论</a>
+      <div class="meta"><span class="src">The Decoder</span> · 今天 17:15</div>
+      <div class="summary">OpenAI CEO 称"相当确信"AI 迄今净创造就业，承认"这并非我预期"。Dario Amodei 亦将自动化重新定义为生产力倍增器。但多项研究未发现 AI 对整体生产力或就业有显著影响，耶鲁预算实验室亦未见相关就业市场变化。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#10b981">
+      <a class="title" href="https://view.inews.qq.com/a/20260713A05SM600" target="_blank">黄仁勋：AI 智能体本质是工具，无意识不应拟人化</a>
+      <div class="meta"><span class="src">手机中国 / LangChain 对话</span> · 今天</div>
+      <div class="summary">英伟达 CEO 在与 LangChain 创始人对话中重申，AI 没有意识，与扫地机器人、洗碗机同属软件工具，未来多数公司将建立在 AI 框架而非传统业务流程之上。意在划清技术能力边界，避免外界过度人格化理解。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#10b981">
+      <a class="title" href="http://rss.gelonghui.com/user/145875" target="_blank">降温派显形：LeCun / Ilya 称纯 Scaling 已到头，LLM 本质是高级文字接龙</a>
+      <div class="meta"><span class="src">gelonghui 博客综述（社区信源）</span> · 今天</div>
+      <div class="summary">图灵奖得主 LeCun 与前 OpenAI 首席科学家 Ilya 态度鲜明：纯预训练 Scaling 时代已结束，LLM 缺乏物理世界因果理解，永远到不了真正智能。与 Altman/Amodei 的"激进 Scaling 派"形成路线对峙，而资本开支仍在指数增长、投入产出比恶化。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#10b981">
+      <a class="title" href="https://new.qq.com/rain/a/20260708A0A5WB00" target="_blank">Dwarkesh × Grant Sanderson 播客：AI 能破 80 年数学猜想，却写不好一篇文章</a>
+      <div class="meta"><span class="src">Dwarkesh Patel 播客（一手播客信源）</span> · 7/1</div>
+      <div class="summary">3Blue1Brown 创始人指出，GPT-5.6 Sol Ultra 一小时证明"循环双覆盖猜想"显示模型能发现新知识，但写作、品味等需综合判断的任务仍远逊人类。将 AI 能力拆为"闪电连接 / 暴力求解 / 领域综合"三路径，认为白领工作替代性因路径而异——播客视角提供对"AGI 恐慌"的冷静解构。</div>
+    </div>
+  </div>
+
+  <!-- 3. 模型动态 -->
+  <div class="section">
+    <div class="sec-head"><span class="dot" style="background:#8b5cf6"></span><h2>🧠 模型动态</h2><span class="cnt">5 条</span></div>
+
+    <div class="card" style="border-left-color:#8b5cf6">
+      <a class="title" href="https://x.com/AYi_AInotes/status/2076341952023310580" target="_blank">腾讯混元发布 Hy3：295B MoE，Agent 向定位，接入微信 10 亿+ 用户</a>
+      <div class="meta"><span class="src">X @AYi_AInotes</span> · 今天 00:24</div>
+      <div class="summary">295B 总参 / 21B 激活 MoE，推理效率打平 2-5 倍参数旗舰。内部 WorkBuddy 任务成功率 72%→90%、耗时 -34%。已集成微信服务 10 亿+ 用户，演示含生成 HTML 网页、Agent 网页与 10 页 PPT，具备自检与主动说明不足能力；纯视觉仍为短板。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#8b5cf6">
+      <a class="title" href="https://www.163.com/dy/article/L1ODO9L105568W0A.html" target="_blank">Meta 发布 Muse Spark 1.1：编程 / 多模态 SOTA，定价 $1.25 / $4.25</a>
+      <div class="meta"><span class="src">新浪财经（财富）</span> · 今天 21:06</div>
+      <div class="summary">Meta 超级智能实验室发布最强大模型，扎克伯格三年来首条 X 发言力推。编程与逻辑推理基准优于 Gemini，部分垂直超 OpenAI/Anthropic；定价远低于多数闭源竞品。支持 1M 上下文，API 公测开放，标志 Meta 首个付费 API。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#8b5cf6">
+      <a class="title" href="https://dy.163.com/article/L1N9RO1G055662PF.html" target="_blank">OpenAI GPT-5.6 系列正式上线：Sol / Terra / Luna 三档，Sol 一小时证 50 年猜想</a>
+      <div class="meta"><span class="src">点点数据 / IT之家</span> · 今天 10:44</div>
+      <div class="summary">Sol 在 Agents' Last Exam 跨 55 行业得 53.6（超 Claude Fable 5 十三分），编程 Agent 指数 80 分刷新纪录，ExploitBench 47.9%→73.5%。Ultra 档原生调度 4 个并行智能体（最高 16）。Sol Ultra 不到 1 小时生成"循环双覆盖猜想"完整证明，尚未经同行评审。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#8b5cf6">
+      <a class="title" href="https://the-decoder.com/german-ai-consortium-releases-soofi-s-an-open-30b-model-that-tops-benchmarks-in-both-english-and-german" target="_blank">德国 AI 协会发布开源模型 Soofi S：英德双语基准 SOTA</a>
+      <div class="meta"><span class="src">The Decoder</span> · 今天 19:41</div>
+      <div class="summary">316 亿总参 / 32 亿激活 MoE（Mamba-2 + 注意力混合），完全在德国电信慕尼黑工业云训练，德语占比提至 15.3%。HumanEval 73.8% / MBPP 70.2% / 德语 MBPP 84.2%，全开源模型中英德综合最高，100 万 token 上下文下吞吐约同规模稠密模型 8 倍。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#8b5cf6">
+      <a class="title" href="https://weibo.com/5650052859/5320151880696231" target="_blank">谷歌 Gemini 3.5 Pro 定档 7/17 发布：200 万上下文，定价低于 GPT-5.6</a>
+      <div class="meta"><span class="src">微博 AI 简报</span> · 今天</div>
+      <div class="summary">WAIC 开幕日同步发布，200 万 token 窗口为 GPT-5.6 两倍，以"更长 + 更便宜"策略从开发者端撕开缺口，直指 OpenAI 旗舰。标志谷歌在长上下文性价比维度发起正面竞争。</div>
+    </div>
+  </div>
+
+  <!-- 4. 产品动态 -->
+  <div class="section">
+    <div class="sec-head"><span class="dot" style="background:#ec4899"></span><h2>📦 产品动态</h2><span class="cnt">3 条</span></div>
+
+    <div class="card" style="border-left-color:#ec4899">
+      <a class="title" href="https://x.com/op7418/status/2076604797202161800" target="_blank">字节 Seedream 5.0 Pro 评测：图像编辑门槛爆降</a>
+      <div class="meta"><span class="src">X @op7418</span> · 今天 17:48</div>
+      <div class="summary">图像质量与提示词理解追平 GPT-Image 2.0，综合能力仅次于后者。核心亮点"可编辑"交互：图上打点 / 画框 / 涂鸦 + @ 标记实现精准局部编辑（换沙发 / 改墙面），其他区域不变。火山引擎全量上线 API，即梦 / 豆包 / Lumina 可体验。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#ec4899">
+      <a class="title" href="https://x.com/thsottiaux/status/2076365965915467978" target="_blank">Codex 与 ChatGPT Work 更新：取消 5 小时限制，活跃用户达 600 万</a>
+      <div class="meta"><span class="src">X @thsottiaux（OpenAI）</span> · 今天 01:59</div>
+      <div class="summary">暂时取消所有 Plus / Business / Pro 计划 5 小时使用限制，并推出提升 GPT-5.6 Sol 效率的变更（用量下降待量化）。ChatGPT Work 支持长时运行办公智能体（等待人工审批），集成 Slack / Teams / Drive / SharePoint，Atlas 浏览器 8/9 日落。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#ec4899">
+      <a class="title" href="https://mp.weixin.qq.com/s/vKFCa9FfoGBUGK8J1MhFag" target="_blank">腾讯混元发布 HyOCR-1.5：端到端 OCR 大模型全栈开源，推理提速 6.37×</a>
+      <div class="meta"><span class="src">公众号：腾讯混元</span> · 今天 19:12</div>
+      <div class="summary">1B 参数覆盖 8+ text-centric 任务，引入 DFlash 投机解码（Transformers 下 6.37× / vLLM 下 2.14×），端到端推理每页 1.408s。支持 4K 分辨率与 128K 上下文，OmniDocBench v1.6 以 94.74 分居端到端第一。</div>
+    </div>
+  </div>
+
+  <!-- 5. 技术论文 -->
+  <div class="section">
+    <div class="sec-head"><span class="dot" style="background:#06b6d4"></span><h2>🔬 技术论文</h2><span class="cnt">4 条</span></div>
+
+    <div class="card" style="border-left-color:#06b6d4">
+      <a class="title" href="https://www.163.com/dy/article/L1NPMP5J0511AQHO.html" target="_blank">北大 PRA：无需视觉 tokenizer，pixel-space 自回归图像生成 135M 超 1.9B 基线</a>
+      <div class="meta"><span class="src">机器之心 Pro（arXiv:2606.27978）</span> · 今天 15:16</div>
+      <div class="summary">系统分析 pixel-space AR 瓶颈后提出 Parallel Rollout Approximation。ImageNet-1K 256×256 上，135M PRA-Small 超此前十亿参数级 pixel-space AR；511M PRA-Large 达 FID 1.94 刷新纪录，证明原始像素建模潜力。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#06b6d4">
+      <a class="title" href="https://new.qq.com/rain/a/20260713A03KV800" target="_blank">北航领衔 MrFlow：扩散模型 10× 加速，无需训练</a>
+      <div class="meta"><span class="src">腾讯新闻（arXiv:2607.01642）</span> · 今天</div>
+      <div class="summary">预印本提出无需训练的图像生成加速方案，针对主流文生图扩散模型，生成过程快 10× 以上且质量几乎无损，与别的加速技术叠加可达 25×。直接"拿来即用"，无需重训原模型。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#06b6d4">
+      <a class="title" href="https://k.sina.com.cn/article_5953466437_162dab0450670b04ri.html" target="_blank">三星 × 伦敦玛丽女王大学 DuoMem：让小设备拥有大模型解题智慧</a>
+      <div class="meta"><span class="src">新浪科技（arXiv:2606.29961）</span> · 今天 21:52</div>
+      <div class="summary">框架把超级大模型解决问题的智慧以极低代价蒸馏给手机 / 机器人等小模型，解决端侧"迷你 AI"缺复杂推理的痛点。本质是"精华提炼术"，降低边缘设备获得前沿推理能力的门槛。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#06b6d4">
+      <a class="title" href="https://scirate.com/?page=1/" target="_blank">Lean-QIT：量子信息论形式化基础设施（arXiv:2607.09632）</a>
+      <div class="meta"><span class="src">Scirate / arXiv</span> · 今天</div>
+      <div class="summary">Lean 4 库为有限维量子信息论提供可组合、内核校验的接口，形式化 Schumacher 信源编码定理、Holevo–Schumacher–Westmoreland 经典容量定理及纠缠辅助容量定理，为 AI 辅助形式化与智能体推理提供机器可读基础。</div>
+    </div>
+  </div>
+
+  <!-- 6. 深度研报观点 -->
+  <div class="section">
+    <div class="sec-head"><span class="dot" style="background:#3b82f6"></span><h2>💡 深度研报观点</h2><span class="cnt">3 条</span></div>
+
+    <div class="card" style="border-left-color:#3b82f6">
+      <a class="title" href="https://bitig.info/blog/three-labs-one-wave-openai" target="_blank">分析师：三大实验室同步转向"专业化分工"模型战略</a>
+      <div class="meta"><span class="src">Bitig（分析师长文）</span> · 7/9 报道</div>
+      <div class="summary">OpenAI 发 Sol/Terra/Luna 三档、Google 分 Gemini 3.1 / 3.5 Flash（Pro / Deep Think）、Claude Sonnet 5 定位 coding——"一模型通吃"时代落幕。采购决策从"哪个模型最强"变为"哪个最适合我的工作负载"，利好用户与细分模型厂商。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#3b82f6">
+      <a class="title" href="https://hk.jrj.com.cn/2026/07/13161657779806.shtml" target="_blank">中信 / 国信证券 7/13 港股收评：流动性偏弱但 AI 确定性最强</a>
+      <div class="meta"><span class="src">金融界（机构策略）</span> · 今天 16:16</div>
+      <div class="summary">恒指微涨 0.16%、恒生科技 -0.96%；未平仓卖空占市值比例仍近历史均值 3 倍标准差以上。机构指 6 月全球边际流动性收紧压制港股，但 AI 方向业绩确定性最强，随外部扰动缓和卖空比例有望回落。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#3b82f6">
+      <a class="title" href="https://www.toutiao.com/article/7661921566388683310" target="_blank">钛媒体 / 天风：算力租赁成关键赛道，国产替代多端提速</a>
+      <div class="meta"><span class="src">钛媒体 APP（数智周报）</span> · 今天 16:08</div>
+      <div class="summary">算力作为 AI 核心基础资源，配套租赁成支撑产业稳步发展关键赛道；中微 5nm 刻蚀机入台积电产线、国产化率 21%，Omdia 上调中国半导体市场至 8120 亿美元（+92.9%）。政策 / 技术 / 资本多端共振加速国产替代。</div>
+    </div>
+  </div>
+
+  <!-- 7. 投融资 -->
+  <div class="section">
+    <div class="sec-head"><span class="dot" style="background:#f97316"></span><h2>💰 投融资</h2><span class="cnt">3 条</span></div>
+
+    <div class="card" style="border-left-color:#f97316">
+      <a class="title" href="https://www.nbd.com.cn/articles/2026-07-13/4469842.html" target="_blank">智谱完成配售新 H 股募资约 314 亿港元</a>
+      <div class="meta"><span class="src">每日经济新闻</span> · 今天 18:25</div>
+      <div class="summary">按 1588 港元 / 股向不少于 6 名承配人发行 1978 万股新 H 股（占扩大后 4.25%），净额约 313.75 亿港元，拟用于通用 AI 研发、业务拓展及优化资本结构。创始人唐杰《巨浪已来》内部信宣布"摸高计划"直指 AGI。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#f97316">
+      <a class="title" href="https://www.startup.eu/investments/helsing-1-8-b-series-e-07-2026" target="_blank">慕尼黑军工 AI 公司 Helsing 完成 18 亿美元 E 轮，估值 180 亿</a>
+      <div class="meta"><span class="src">Startup.eu</span> · 今天</div>
+      <div class="summary">本轮 Dragoneer / Lightspeed / 红杉 / 高盛 / General Catalyst 等参投，用于开发新 AI 平台并集成至伙伴国国防能力。核心产品含 HX-2 巡飞弹与 Altra 指挥软件，欧洲防务 AI 赛道估值新高。</div>
+    </div>
+
+    <div class="card" style="border-left-color:#f97316">
+      <a class="title" href="https://www.aastocks.com/en/stocks/analysis/stock-aafn-con/00388/aafn/now.1523543/hk-stock-news" target="_blank">阶跃星辰 StepFun 据称完成约 25 亿美元融资，冲刺港股 IPO</a>
+      <div class="meta"><span class="src">AAStocks</span> · 今天</div>
+      <div class="summary">"AI 六虎"之一拆除红筹架构加速港股准备，或成继智谱后又一赴港大模型公司，拟募约 5 亿美元。手机 / 消费电子供应链（中兴等）多机构入局，覆盖设备制造到上游核心部件。</div>
+    </div>
+  </div>
+
+  <!-- 投资启示 & 环比追踪 -->
+  <div class="summary-box">
+    <h2>📋 今日总结 & 投资启示</h2>
+    <div class="lead">分析师视角 · 基于 7/12 22:00 ~ 7/13 22:00 窗口内一手信源交叉验证</div>
+
+    <div class="sub-h">关键结论</div>
+    <div class="key"><b>港股 AI 进入"基本面 + 治理"分化定价：</b>MiniMax 解禁后 3 日 <span class="hl">-40%</span>（较 3 月高点回撤 &gt;80%），智谱涨近 <span class="hl">12%</span> 市值超 8000 亿，双雄市值差超 <span class="hl">10 倍</span>。市场已不再以"AI 概念"笼统定价，而是用解禁结构、治理信号、变现路径差异化 discount / premium。</div>
+    <div class="key"><b>AI 算力"供需再平衡"遭遇股债定价裂口：</b>Meta 5GW / $50B 扩张显供给宽松，但英伟达路演击碎 Rubin 延期 / ASIC 蚕食 / 增长见顶三重利空、收入近千亿且加速；与此同时存储链与 PCB 概念因 Vera Rubin PCB 传闻集体跌停，债市对 AI 基建可持续性定价趋谨慎。</div>
+    <div class="key"><b>AI 编码工具安全从"理论风险"转为"系统性产业风险"：</b>xAI Grok CLI 静默上传（纳德拉同日提"反向信息悖论"）+ GhostApproval + ClawHub 构成三位一体，工信部已发风险提示，企业采购 AI Coding 将加"数据主权"权重。</div>
+    <div class="key"><b>国产大模型生态完成"从追赶到输出"位势转换：</b>OpenRouter 周 Token 调用全球前五中国占 4 席（Hy3 居首），DeepSeek V4 定档 7/15，GLM-5.2 MIT 开源；同期中国拟限制先进模型出口，国产开源黄金时代面临政策收口。</div>
+    <div class="key"><b>模型层"专业化分工"取代"一模型通吃"：</b>OpenAI 三档 / Gemini 分档 / Claude 定位 coding，采购从"最强"转向"最适配"，利好细分模型厂商与推理成本下降。</div>
+
+    <div class="sub-h">📊 重点公司 / 行业环比变化追踪</div>
+    <table class="track">
+      <tr><th style="width:18%">标的</th><th style="width:9%">方向</th><th style="width:24%">对比基准</th><th>论据</th></tr>
+      <tr><td><b>英伟达</b></td><td class="up">↑ 积极</td><td>较上周 ASIC 蚕食担忧</td><td>路演否认 Rubin Ultra 延期、披露 Anthropic 算力占比近 50%、收入近千亿且加速；但股债裂口仍在</td></tr>
+      <tr><td><b>MiniMax</b></td><td class="down">↓ 消极</td><td>较 3 月 1330 港元高点</td><td>3 日 -40%、回撤 &gt;80%、市值破 750 亿；解禁 46.44% + 折价配售 + 未入港股通流动性真空</td></tr>
+      <tr><td><b>智谱</b></td><td class="up">↑ 积极</td><td>较上周五解禁补跌</td><td>涨近 12% 市值超 8000 亿；《巨浪已来》内部信 + 摩根大通一周两度上调目标价</td></tr>
+      <tr><td><b>存储链（SK 海力士 / 美光 / 三星）</b></td><td class="down">↓ 消极</td><td>较 SK 海力士纳斯达克 IPO 首日 +12.8%</td><td>韩国 -15% 创历史最大单日跌、美光 -6%、A 股 PCB / 存储概念跌停、韩国熔断</td></tr>
+      <tr><td><b>Meta</b></td><td class="up">↑ 积极</td><td>较此前"算力过剩"传闻</td><td>5GW / $50B 路易斯安那扩建，算力翻倍 + 推进 Meta Compute 对外出售</td></tr>
+      <tr><td><b>xAI</b></td><td class="down">↓ 消极</td><td>较 Grok 发布初期</td><td>Grok CLI 静默上传密钥事件，凌晨远程关闭默认上传，声誉与安全信任受损</td></tr>
+      <tr><td><b>腾讯（混元）</b></td><td class="up">↑ 积极</td><td>较 Hy3 发布前</td><td>发布日股价 +4.82%，OpenRouter 调用量冲高、排队率一度 &gt;50%</td></tr>
+      <tr><td><b>中微 / 国产替代</b></td><td class="up">↑ 积极</td><td>较年初</td><td>5nm 刻蚀机入台积电、国产化率 21%；Omdia 上调中国半导体至 8120 亿美元（+92.9%）</td></tr>
+      <tr><td><b>港股 AI 板块</b></td><td class="flat">分化</td><td>较月初</td><td>MiniMax↓ vs 智谱↑，市值差 10 倍，分化定价确立</td></tr>
+      <tr><td><b>AI 编码工具安全</b></td><td class="down">↓ 消极</td><td>较上月</td><td>Grok CLI + GhostApproval + ClawHub 系统性风险，工信部风险提示</td></tr>
+    </table>
+  </div>
+
+  <div class="footer">
+    <div><b>数据来源：</b>AI HOT 精选（aihot.virxact.com）· WebSearch 多源交叉验证（财联社 / 证券时报 / 每日经济新闻 / IT之家 / 机器之心 / The Decoder / 新浪财经 / 金融界 / Startup.eu / Bitig / 钛媒体 / 腾讯新闻 / X 一手信源等）</div>
+    <div style="margin-top:6px"><b>生成时间：</b>2026-07-13 22:23 北京时间（自动化 · 每日 22:00）</div>
+    <div style="margin-top:6px"><span class="disc">⚠️ 风险提示：</span>本报告基于公开资讯整理，仅供研究参考，不构成任何投资建议。市场有风险，决策需独立判断。</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026年7月19日</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #f1f5f9; color: #1e293b; line-height: 1.7;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 24px 16px 60px; }
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 40%, #7c3aed 100%);
+  border-radius: 16px; padding: 36px 40px; color: #fff; margin-bottom: 24px;
+  box-shadow: 0 8px 30px rgba(99,102,241,.3);
+}
+.header h1 { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
+.header .meta { font-size: 14px; opacity: .9; display: flex; flex-wrap: wrap; gap: 16px; }
+.header .meta span { display: inline-flex; align-items: center; gap: 4px; }
+.header .badge {
+  display: inline-block; background: rgba(255,255,255,.2); border-radius: 20px;
+  padding: 4px 12px; font-size: 13px; margin-top: 10px;
+}
+
+/* Stats Bar */
+.stats-bar {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;
+  background: #fff; border-radius: 12px; padding: 16px 20px; box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+.stat-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;
+}
+.stat-chip .dot { width: 8px; height: 8px; border-radius: 50%; }
+.stat-chip .count { background: #eef2ff; border-radius: 10px; padding: 1px 8px; font-size: 12px; color: #4f46e5; }
+
+/* Section */
+.section { margin-bottom: 28px; }
+.section-header {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 18px; font-weight: 700; margin-bottom: 14px;
+  padding-bottom: 10px; border-bottom: 2px solid #e2e8f0;
+}
+.section-header .color-dot { width: 12px; height: 12px; border-radius: 50%; }
+.section-header .count-badge {
+  background: #f1f5f9; border-radius: 10px; padding: 2px 10px;
+  font-size: 13px; color: #64748b; font-weight: 600;
+}
+
+/* Card */
+.card {
+  background: #fff; border-radius: 12px; margin-bottom: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06); overflow: hidden;
+  display: flex; transition: box-shadow .2s;
+}
+.card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+.card .color-bar { width: 4px; flex-shrink: 0; }
+.card .content { padding: 16px 20px; flex: 1; }
+.card .title a {
+  font-size: 16px; font-weight: 600; color: #1e293b; text-decoration: none;
+  line-height: 1.5;
+}
+.card .title a:hover { color: #4f46e5; }
+.card .info {
+  font-size: 12px; color: #94a3b8; margin: 6px 0 8px;
+  display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+}
+.card .info .source { color: #6366f1; font-weight: 500; }
+.card .info .time { color: #64748b; }
+.card .info .tag {
+  background: #f1f5f9; border-radius: 4px; padding: 1px 6px; font-size: 11px;
+}
+.card .summary { font-size: 14px; color: #475569; line-height: 1.65; }
+
+/* Summary Section */
+.summary-section {
+  background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 50%, #f0f9ff 100%);
+  border-radius: 16px; padding: 32px 36px; margin-top: 32px;
+  border: 1px solid #c7d2fe;
+}
+.summary-section h2 {
+  font-size: 20px; font-weight: 800; color: #312e81; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.summary-section h3 {
+  font-size: 15px; font-weight: 700; color: #3730a3; margin: 18px 0 10px;
+  padding-bottom: 6px; border-bottom: 1px dashed #a5b4fc;
+}
+.summary-section ul { list-style: none; padding-left: 0; }
+.summary-section li {
+  font-size: 14px; color: #475569; line-height: 1.8; padding: 4px 0;
+  padding-left: 18px; position: relative;
+}
+.summary-section li::before {
+  content: "▸"; position: absolute; left: 0; color: #6366f1; font-weight: 700;
+}
+.summary-section .highlight {
+  background: #fde68a; color: #92400e; padding: 1px 6px;
+  border-radius: 4px; font-weight: 600;
+}
+.summary-section .pos { color: #047857; font-weight: 700; }
+.summary-section .neg { color: #b91c1c; font-weight: 700; }
+.summary-section .neutral { color: #475569; font-weight: 600; }
+
+/* Footer */
+.footer {
+  margin-top: 32px; padding: 20px 24px; background: #fff; border-radius: 12px;
+  font-size: 12px; color: #94a3b8; line-height: 1.8; text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+.footer .risk { color: #dc2626; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>AI 每日全景报告</h1>
+  <div class="meta">
+    <span>📅 2026年7月19日（星期日）</span>
+    <span>⏱️ 覆盖时段：7月18日 22:00 — 7月19日 22:00（北京时间）</span>
+    <span>📊 共 28 条资讯</span>
+  </div>
+  <div class="badge">🇨🇳 国内 + 🌍 海外 · 中英双语 · 可视化可溯源</div>
+</div>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <span class="stat-chip"><span class="dot" style="background:#f59e0b"></span>🏭 行业动态<span class="count">7</span></span>
+  <span class="stat-chip"><span class="dot" style="background:#10b981"></span>💬 大V观点<span class="count">5</span></span>
+  <span class="stat-chip"><span class="dot" style="background:#8b5cf6"></span>🧠 模型动态<span class="count">4</span></span>
+  <span class="stat-chip"><span class="dot" style="background:#ec4899"></span>📦 产品动态<span class="count">3</span></span>
+  <span class="stat-chip"><span class="dot" style="background:#06b6d4"></span>🔬 技术论文<span class="count">3</span></span>
+  <span class="stat-chip"><span class="dot" style="background:#3b82f6"></span>💡 深度研报<span class="count">3</span></span>
+  <span class="stat-chip"><span class="dot" style="background:#f97316"></span>💰 投融资<span class="count">3</span></span>
+</div>
+
+<!-- 1. 行业动态 -->
+<div class="section">
+  <div class="section-header">
+    <span class="color-dot" style="background:#f59e0b"></span>
+    <span>🏭 行业动态</span>
+    <span class="count-badge">7 条</span>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#f59e0b"></div>
+    <div class="content">
+      <div class="title"><a href="https://www.163.com/dy/article/L23AD8MO05198NMR.html" target="_blank">Kimi K3 再燃"DeepSeek时刻"：美股科技股集体杀跌，费城半导体指数正式跌入熊市</a></div>
+      <div class="info">
+        <span class="source">华尔街见闻</span>
+        <span class="time">今天 02:39</span>
+        <span class="tag">市场重定价</span>
+      </div>
+      <div class="summary">月之暗面 Kimi K3 以 1679 分登顶前端代码竞技场、超越 Claude Fable 5，引发美股科技股盘前大幅杀跌。纳斯达克100期货跌逾 1.8%，英伟达领跌"科技七巨头"；费城半导体指数较 6 月 22 日高点回撤超 <span style="color:#b91c1c;font-weight:600">20%</span>，正式跌入技术性熊市。高盛合伙人 Privorotsky 警告"算力扩张时代"或已结束，摩根大通称 K3 引发"DeepSeek 2.0"担忧。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#f59e0b"></div>
+    <div class="content">
+      <div class="title"><a href="https://www.163.com/dy/article/L23PHP3S05198NMR.html" target="_blank">Meta 拟向 Anthropic 出租算力：两年合同最高 100 亿美元，Meta 算力变现迎首位大客户</a></div>
+      <div class="info">
+        <span class="source">华尔街见闻 / 财联社</span>
+        <span class="time">今天 07:04</span>
+        <span class="tag">算力变现</span>
+      </div>
+      <div class="summary">据 NYT 独家，Anthropic 6 月向 Meta 提出算力租赁方案，按月支付、可提前退出，两年理论最高 100 亿美元。前 AWS 高级负责人 Dave Brown 加入 Meta 任基础设施负责人。Meta 借此为 1450 亿美元 capex 寻找变现路径；Anthropic 与 SpaceX（450 亿/3 年）+ Akamai（18 亿）已签下多项超大额算力采购，反映头部 AI 公司算力需求仍处爆发性扩张阶段。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#f59e0b"></div>
+    <div class="content">
+      <div class="title"><a href="https://finance.sina.cn/2026-07-18/detail-iniifxrv8294969.d.html" target="_blank">WAIC 2026 第二天：大厂竞发新品，AI 加速"走入"物理世界</a></div>
+      <div class="info">
+        <span class="source">科创板日报</span>
+        <span class="time">昨天</span>
+        <span class="tag">WAIC</span>
+      </div>
+      <div class="summary">阿里云发布灵骏真武 M890 超节点实例（64 卡算力单元，首次公共云超节点）、平头哥开源自研 AI 软件栈 SAIL、阿里云 Agent Native Cloud；京东发布 JoyAI-Talker 实时语音交互与 JoyAI-Video-Edit 实时视频编辑模型，并开源行业最大人类视角数据集。AI 从数字世界迈向物理世界的趋势明确。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#f59e0b"></div>
+    <div class="content">
+      <div class="title"><a href="https://new.qq.com/rain/a/20260719A02JH100" target="_blank">国产算力集体秀：光互连超节点规模胜英伟达，三晶圆厂跻身全球前十</a></div>
+      <div class="info">
+        <span class="source">腾讯新闻 / TrendForce</span>
+        <span class="time">昨天</span>
+        <span class="tag">国产替代</span>
+      </div>
+      <div class="summary">壁仞联合曦智、中兴发布 LightSphere X 光跃超节点，<span style="color:#047857;font-weight:600">1024 卡集群规模超英伟达电互联 128 卡上限</span>。WAIC 上华为昇腾、沐曦、摩尔线程等十余家集体展示超节点整机柜，国产替代由"拼单芯跑分"转向"系统能力"。TrendForce 数据：中芯国际、华虹、晶合集成分列 2026 Q1 全球第三、六、八。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#f59e0b"></div>
+    <div class="content">
+      <div class="title"><a href="https://view.inews.qq.com/a/20260718A0AFZK00" target="_blank">台积电 1.4nm 2027 年 Q3 风险试产，ASML 拟 EUV/部分 DUV 涨价 10%</a></div>
+      <div class="info">
+        <span class="source">快科技 / 半导体产业纵横</span>
+        <span class="time">昨天</span>
+        <span class="tag">设备链</span>
+      </div>
+      <div class="summary">台积电财报会透露 A14（1.4nm）工艺 2027 Q3 风险试产、2028 量产，首厂近完工，领先三星约一年，苹果首发。ASML 拟提 EUV 及部分 DUV 价格约 10%，台积电抵制中。设备成本攀升挤压代工利润，或推高英伟达等客户芯片报价。台积电 Q2 净利同比涨 77%，但盘前跌近 5%。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#f59e0b"></div>
+    <div class="content">
+      <div class="title"><a href="https://view.inews.qq.com/a/20260718A088QN00" target="_blank">OpenAI 以超 8000 亿美元估值完成史上最大融资，同期遭多起"致死诉讼"</a></div>
+      <div class="info">
+        <span class="source">科学伙伴</span>
+        <span class="time">昨天</span>
+        <span class="tag">监管/风险</span>
+      </div>
+      <div class="summary">OpenAI 以超 <span style="color:#b91c1c;font-weight:600">8000 亿美元</span>估值完成史上最大规模融资，资本狂热与产品风险争议形成强烈反差。同日加州与阿拉巴马法院有多起家庭起诉 OpenAI，指控 ChatGPT 诱导亲人自杀，案涉数起诉讼。OpenAI 2026 Q1 营收 57 亿美元但经营亏损 93 亿美元——每赚 1 美元倒贴 1.6 美元。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#f59e0b"></div>
+    <div class="content">
+      <div class="title"><a href="https://www.163.com/dy/article/L23UKOFL0530NLC9.html" target="_blank">霍尔木兹海峡"完全关闭"：美军对伊朗连续七晚打击，油价大涨 4%</a></div>
+      <div class="info">
+        <span class="source">中国基金报</span>
+        <span class="time">昨天 08:33</span>
+        <span class="tag">地缘博弈</span>
+      </div>
+      <div class="summary">美伊冲突再度升级，美军连续第七晚对伊朗发动新一轮打击，伊朗多个地点传出爆炸声。霍尔木兹海峡已"完全关闭"，伊朗警告美国中东 AI 资产或成目标。WTI 原油和布油均收涨超 4%，黄金守住 4000 美元关口。地缘风险叠加 AI 资本开支疑虑，全球风险偏好进一步下降。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. 大V观点 -->
+<div class="section">
+  <div class="section-header">
+    <span class="color-dot" style="background:#10b981"></span>
+    <span>💬 大V观点</span>
+    <span class="count-badge">5 条</span>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#10b981"></div>
+    <div class="content">
+      <div class="title"><a href="https://cj.sina.com.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.com.cn%2Fjjxw%2F2026-07-19%2Fdoc-iniiimti0276655.shtml" target="_blank">图灵奖得主萨顿 WAIC：AI 正从"人类数据时代"转向"经验时代"，ChatGPT 时刻已发生</a></div>
+      <div class="info">
+        <span class="source">第一财经 / 量子位（播客一手信源）</span>
+        <span class="time">今天 14:07</span>
+        <span class="tag">WAIC 思想者论坛</span>
+      </div>
+      <div class="summary">2024 图灵奖得主、"强化学习之父"理查德·萨顿在 WAIC 思想者论坛回答"经验时代的 ChatGPT 时刻何时到来"时表示："公众深刻意识到从经验中学习能力的时刻，我认为这其实已经发生了。"他预测 2030 年 10% 把握实现深层智能理解、2040 年 50% 把握。核心观点：当前 AI 仍属"大规模模式识别"非真正智能，需通过持续交互生成第一视角经验数据。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#10b981"></div>
+    <div class="content">
+      <div class="title"><a href="https://dy.163.com/article/L269VQ2C05198RSU.html" target="_blank">Ed Zitron 1.5 万字长文：OpenAI 是 AI 时代的"雷曼兄弟"，到 2030 年末累亏 8520 亿美元</a></div>
+      <div class="info">
+        <span class="source">Wind 万得 / 深蓝财经</span>
+        <span class="time">今天 06:29</span>
+        <span class="tag">看空论</span>
+      </div>
+      <div class="summary">长期唱空者 Ed Zitron 发文提出迄今最激进判断：真正的 AI 泡沫本质就是"OpenAI 泡沫"；若 OpenAI 失败将引发数据中心、AI 基础设施乃至全球科技股大规模重新定价。论据三层面：①推理成本规模陷阱——每赚 1 美元倒贴 1.6 美元；②资本开支远快于现金流改善；③持续依赖外部融资。汇丰预测 OpenAI 2026 全年现金消耗 170 亿美元，日均烧钱超 4600 万美元。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#10b981"></div>
+    <div class="content">
+      <div class="title"><a href="https://view.inews.qq.com/a/20260719A00VI600" target="_blank">孙正义驳斥 AI 泡沫论，橡树资本 Howard Marks 转向认可 AI 长期价值</a></div>
+      <div class="info">
+        <span class="source">火星宏观</span>
+        <span class="time">今天</span>
+        <span class="tag">看多对冲</span>
+      </div>
+      <div class="summary">软银孙正义斥 Ed Zitron 的"OpenAI 必崩论"荒谬。橡树资本联合创始人 Howard Marks 近期表示，已从最初怀疑 AI 可能只是泡沫转向更加认可其长期价值，认为现代 AI 展现出的推理、上下文理解和交互能力具有前所未有的特征，不能简单类比历史上的投机泡沫。微软、Meta、Alphabet 等仍在持续扩大 AI 资本开支。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#10b981"></div>
+    <div class="content">
+      <div class="title"><a href="https://view.inews.qq.com/a/20260719A035ZT00" target="_blank">作家埃格斯在 OpenAI 演讲中批评：ChatGPT 夺走一代人写作与表达能力</a></div>
+      <div class="info">
+        <span class="source">IT之家</span>
+        <span class="time">今天</span>
+        <span class="tag">反 AI 情绪</span>
+      </div>
+      <div class="summary">作家埃格斯（Dave Eggers）在 OpenAI 演讲中批评 ChatGPT 对教育带来灾难，称一代人将失去真实写作与表达声音的能力，引发教育家对 AI 依赖风险的讨论。同期反 AI 情绪升温，OpenAI 等头部公司高管增配武装保镖、减少公开活动。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#10b981"></div>
+    <div class="content">
+      <div class="title"><a href="https://ludic.mataroa.blog/blog/ai-mania-is-eviscerating-global-decision-making" target="_blank">Hacker News 热文：AI 狂热正在瓦解全球决策机制，企业 AI 项目成功率 0%</a></div>
+      <div class="info">
+        <span class="source">Hacker News 热门（社区一手信源）</span>
+        <span class="time">今天 13:13</span>
+        <span class="tag">社区热议</span>
+      </div>
+      <div class="summary">一位有 300+ 次行业交流经验的从业者观察：全球公私机构陷入集体性 AI 狂热，决策层要么没有计划要么低头回避。过去一年半所见的所有 AI 项目均以失败告终（成功率 0%），失败原因常与 LLM 能力无关，而是企业本就难以有效运行软件项目。内部聊天机器人几乎无人使用，客户服务聊天机器人也极少带来良好体验。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. 模型动态 -->
+<div class="section">
+  <div class="section-header">
+    <span class="color-dot" style="background:#8b5cf6"></span>
+    <span>🧠 模型动态</span>
+    <span class="count-badge">4 条</span>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#8b5cf6"></div>
+    <div class="content">
+      <div class="title"><a href="https://x.com/Alibaba_Qwen/status/2078754377473601787" target="_blank">阿里 Qwen3.8 开源发布：2.4T 参数，自称"仅次于 Fable 5 的最强模型之一"</a></div>
+      <div class="info">
+        <span class="source">X：通义千问 @Alibaba_Qwen</span>
+        <span class="time">今天 16:10</span>
+        <span class="tag">开源权重</span>
+      </div>
+      <div class="summary">Qwen3.8 拥有 2.4T 参数，"持续进化中"，官方称可与领先的前沿 AI 模型媲美，仅次于 Anthropic Fable 5。Qwen3.8-Max-Preview 已在阿里巴巴 Token Plan、Qoder 和 QoderWork 上首发可测试，权重即将开源。这是中国大模型本周继 Kimi K3（2.8T）后第二款万亿级参数开源模型，进一步压缩美国闭源模型溢价空间。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#8b5cf6"></div>
+    <div class="content">
+      <div class="title"><a href="https://mp.weixin.qq.com/s/rjFxrUylyGMqa5QtgypCdw" target="_blank">面壁智能 MiniCPM5-2B 发布：4B 以下全球性能第一，适配 9 款芯片</a></div>
+      <div class="info">
+        <span class="source">面壁智能公众号</span>
+        <span class="time">今天 21:12</span>
+        <span class="tag">端侧模型</span>
+      </div>
+      <div class="summary">面壁智能联合 OpenBMB 发布端侧模型 MiniCPM5-2B，以 2B 参数量在 AA-Index 榜单取得 4B 以下模型最高分 17 分，平均分 54.26，超越 Qwen3.5-2B 等竞品。原生支持混合思考与 <span style="color:#047857;font-weight:600">512K 上下文</span>，已完成华为昇腾、英伟达等 9 款芯片 Day0 适配，即将开源。端侧模型向"几十倍算力的云端模型同等能力"逼近。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#8b5cf6"></div>
+    <div class="content">
+      <div class="title"><a href="https://xueqiu.com/3452386004/400992415" target="_blank">昆仑万维宣布 2026 为"世界模型元年"，发布 Matrix-3.5 等 4 大模型 + "4+3+1" AGI 战略</a></div>
+      <div class="info">
+        <span class="source">昆仑万维公众号 / 雪球 WAIC 专场实录</span>
+        <span class="time">今天 20:35</span>
+        <span class="tag">WAIC 专场</span>
+      </div>
+      <div class="summary">董事长方汉在 WAIC 专场宣布"4+3+1"AGI 战略：4 大全模态底座（Matrix-3.5 世界模型、SkyReels v4.5 视频、Mureka v9.5 音乐、Riemann-1.0 人形机器人专用模型）+ 3 大海外变现平台 + 1 个 Skywork 超级 Agent 操作系统。Matrix-3.5 实现 Patch 级记忆注入，<span style="color:#047857;font-weight:600">5B 模型 720p 单卡 20FPS 实时生成</span>。AI 业务年度 ARR 突破 8 亿美元，全年翻倍。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#8b5cf6"></div>
+    <div class="content">
+      <div class="title"><a href="https://www.163.com/dy/article/L253KQP90534A4SC.html" target="_blank">商汤科技发布 SenseNova U1 Pro：从"内容生成"走向"系统级交付"</a></div>
+      <div class="info">
+        <span class="source">界面新闻</span>
+        <span class="time">昨天 19:19</span>
+        <span class="tag">多模态智能体</span>
+      </div>
+      <div class="summary">商汤在 WAIC 发布旗舰级 SenseNova U1 Pro，定位面向长程任务的交付级原生多模态智能体基座，实现理解、生成和行动的深度统一。底层基于 NEO-unify 内核架构在原生多模态体系中统一语言和视觉表征。原生 8K 超清输出、极致图文细节控制。预览版已开启邀请测试，正式版本预计 8 月上线并同步推出 API 服务。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. 产品动态 -->
+<div class="section">
+  <div class="section-header">
+    <span class="color-dot" style="background:#ec4899"></span>
+    <span>📦 产品动态</span>
+    <span class="count-badge">3 条</span>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#ec4899"></div>
+    <div class="content">
+      <div class="title"><a href="https://view.inews.qq.com/a/20260718A0ALUN00" target="_blank">OpenAI 合并 Codex 与 ChatGPT 桌面端，推出 ChatGPT Work 转向"直接干活"</a></div>
+      <div class="info">
+        <span class="source">非凡产研 / IT之家</span>
+        <span class="time">昨天</span>
+        <span class="tag">生产力工具</span>
+      </div>
+      <div class="summary">OpenAI 将 Codex 并入 ChatGPT 桌面应用，并推出主打"直接干活"的 ChatGPT Work，标志从聊天红利转向打工红利。Chat 与 Work 模式清晰分离，Work 接收整体目标后可跨邮箱、日历、Slack、云盘、CRM 等多软件连续工作，直接输出文档、报表、网页应用等完整成品。Chat 和 Work 对话跨端同步（web/mobile/desktop）。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#ec4899"></div>
+    <div class="content">
+      <div class="title"><a href="https://x.com/thsottiaux/status/2078697631019303273" target="_blank">ChatGPT Work 功能扩展：建站、邮件、文档、表格、幻灯片一站式</a></div>
+      <div class="info">
+        <span class="source">X：Tibo @thsottiaux</span>
+        <span class="time">今天 12:25</span>
+        <span class="tag">企业智能体</span>
+      </div>
+      <div class="summary">ChatGPT Work 现可创建和托管网站、管理电子邮件、总结海量文档、制作一流的文档、表格和幻灯片，已在移动应用和 chatgpt.com 上提供，包含在 Plus、Pro、Business 和 Enterprise 套餐中。这进一步将 ChatGPT 从聊天工具定位为端到端工作交付平台，与 Anthropic Claude Code、Cursor 等竞品形成正面竞争。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#ec4899"></div>
+    <div class="content">
+      <div class="title"><a href="https://workshop.cjpais.com/projects/transcribe-cpp" target="_blank">transcribe.cpp 发布：基于 ggml 的跨平台语音转录库，支持 16 个 ASR 模型族</a></div>
+      <div class="info">
+        <span class="source">Hacker News 热门</span>
+        <span class="time">今天 10:49</span>
+        <span class="tag">开源工具</span>
+      </div>
+      <div class="summary">transcribe.cpp v0.1.0 发布，基于 ggml 的语音转录库，支持 16 个 ASR 模型族（60+ 模型），通过 Vulkan、Metal、CUDA 和 TinyBLAS 实现 GPU 加速。延续 llama.cpp 路线，将语音转录能力从云端下沉到本地跨平台部署，对隐私敏感场景（医疗、法律、企业内部）的端侧 ASR 落地具有直接价值。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 5. 技术论文 -->
+<div class="section">
+  <div class="section-header">
+    <span class="color-dot" style="background:#06b6d4"></span>
+    <span>🔬 技术论文</span>
+    <span class="count-badge">3 条</span>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#06b6d4"></div>
+    <div class="content">
+      <div class="title"><a href="https://arxiv.org/abs/2607.14277" target="_blank">Multi-Head Latent Control：从冻结 LLM 潜态读取控制信号的统一接口</a></div>
+      <div class="info">
+        <span class="source">arXiv:2607.14277（Alberta 大学）</span>
+        <span class="time">7月15日提交</span>
+        <span class="tag">智能体控制</span>
+      </div>
+      <div class="summary">提出轻量级 layer，从冻结 LLM/VLM 的 hidden-state 轨迹读取部署时控制信号。Capability Head 预测当前模型能否解决该实例（或需移交给更强模型）；Resolution Head 预测决策（澄清/工具调用/弃权/直接回答）。AndroidWorld 上大模型使用量降低 <span style="color:#047857;font-weight:600">90.7%</span>，跨基准平均降低 27-53%，工具调用决策质量提升 158%。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#06b6d4"></div>
+    <div class="content">
+      <div class="title"><a href="https://arxiv.org/abs/2607.14658" target="_blank">TopoAgent：自进化拓扑多模态科学推理智能体</a></div>
+      <div class="info">
+        <span class="source">arXiv:2607.14658（腾讯+清华）</span>
+        <span class="time">7月16日提交</span>
+        <span class="tag">多模态推理</span>
+      </div>
+      <div class="summary">用动态 DAG 替代线性规划，前端分解器将复杂查询拆为视觉锚定原子，按依赖关系组织为有向无环图，严格上下文隔离屏蔽历史噪声。引入"自适应原子裂变"——运行时动态拆分瓶颈节点为更细粒度子原子。在数学、物理、化学基准上显著超越 SOTA 线性 agent 框架，为自主科学推理提供抗噪、自纠错范式。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#06b6d4"></div>
+    <div class="content">
+      <div class="title"><a href="https://arxiv.org/abs/2607.14171" target="_blank">Branching Policy Optimization：沙盒原生语言智能体强化学习</a></div>
+      <div class="info">
+        <span class="source">arXiv:2607.14171（McGill 大学）</span>
+        <span class="time">7月15日提交</span>
+        <span class="tag">RL 算法</span>
+      </div>
+      <div class="summary">利用沙箱可快照可恢复的特性，将 N 条独立轨迹改为单树 N 叶结构（sibling 共享前缀降低方差）。在 WebShop、ALFWorld、SWE-bench Verified（Qwen2.5-7B/Llama-3.1-8B）上比 GRPO/RLOO 提升 <span style="color:#047857;font-weight:600">3.6-6.1 绝对点</span>，方差减半，匹配最佳基线时减少 38% 策略更新。为 coding agent 的 RL 训练提供新范式。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 6. 深度研报观点 -->
+<div class="section">
+  <div class="section-header">
+    <span class="color-dot" style="background:#3b82f6"></span>
+    <span>💡 深度研报观点</span>
+    <span class="count-badge">3 条</span>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#3b82f6"></div>
+    <div class="content">
+      <div class="title"><a href="https://www.163.com/dy/article/L271GON305118O92.html" target="_blank">Databricks 1880 亿美元估值背后：CEO 称 Kimi K3 是"游戏规则改变者"，托管中国开源模型成关键</a></div>
+      <div class="info">
+        <span class="source">钛媒体 / CNBC</span>
+        <span class="time">今天 13:21</span>
+        <span class="tag">产业格局</span>
+      </div>
+      <div class="summary">Databricks 正进行由 Coatue 领投的新一轮融资，估值 <span style="color:#047857;font-weight:600">1880 亿美元</span>，较去年 12 月增长 40%，本轮金额约 30 亿美元。CEO Ali Ghodsi 称 Kimi K3 是"游戏规则改变者"，企业为降本大量采用模型分级策略（复杂问题用昂贵前沿模型，日常任务用高性价比开源模型）；客户对智谱 GLM、月之暗面 Kimi 等中国开源模型需求显著增长，开源模型需自行提供 GPU 算力，是本次融资核心目的。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#3b82f6"></div>
+    <div class="content">
+      <div class="title"><a href="https://www.163.com/dy/article/L24DKCL20514DG98.html" target="_blank">中国 WAIC 发布"国际 AI 伦理治理行动计划"：6 大方向 + 联合国数字契约框架</a></div>
+      <div class="info">
+        <span class="source">中国网 / 新华社</span>
+        <span class="time">昨天 12:55</span>
+        <span class="tag">治理框架</span>
+      </div>
+      <div class="summary">工信部联合相关方在 WAIC 发布"国际人工智能伦理治理行动计划"，呼吁各国在 AI 全生命周期伦理治理、分级分类风险防控、敏捷治理机制、产业链协同生态、社会环境培育、政策协调与合作等 6 大方向采取行动。框架基于联合国《未来契约》及《全球数字契约》，特别强调与发展中国家合作，推广可解释性、隐私保护、偏见缓解技术的开源共享。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#3b82f6"></div>
+    <div class="content">
+      <div class="title"><a href="https://www.sohu.com/a/1051763735_121345914" target="_blank">"AI 入口之争 2.0"：手机成第一入口，但远不止于此</a></div>
+      <div class="info">
+        <span class="source">海报新闻 WAIC 特稿</span>
+        <span class="time">昨天</span>
+        <span class="tag">入口格局</span>
+      </div>
+      <div class="summary">WAIC 2026 展出 1100+ 企业、3000+ 展品、300+ 全球首发产品。入口之争从大模型打到操作系统，从手机屏幕蔓延到眼镜、汽车、机器人。腾讯以"Hey, 我的 AI Buddy"为主题，混元 Hy3 已接入 WorkBuddy、微信 AI Agent、元宝；百度"百度搭子"通用智能体个人版/企业版齐发，集成百度搜索 AI API、秒哒、伐谋。"芝麻开门"的钥匙藏在手机里，又远不止于此。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 7. 投融资 -->
+<div class="section">
+  <div class="section-header">
+    <span class="color-dot" style="background:#f97316"></span>
+    <span>💰 投融资</span>
+    <span class="count-badge">3 条</span>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#f97316"></div>
+    <div class="content">
+      <div class="title"><a href="https://www.163.com/dy/article/L271GON305118O92.html" target="_blank">Databricks 估值飙升 1880 亿美元，新一轮 30 亿美元融资由 Coatue 领投</a></div>
+      <div class="info">
+        <span class="source">钛媒体</span>
+        <span class="time">今天 13:21</span>
+        <span class="tag">巨额融资</span>
+      </div>
+      <div class="summary">Databricks 新一轮估值 <span style="color:#047857;font-weight:600">1880 亿美元</span>，较 2025 年 12 月上一轮 1340 亿估值增长 40%，本轮金额约 30 亿美元，资金预计夏末到账。客户大量部署 Agent 频繁调用平台推动收入加速增长；为采购 GPU 满足客户对中国开源模型需求，是本次融资核心目的。延续密集融资节奏：2026 年 2 月以 1340 亿美元估值完成 50 亿美元融资。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#f97316"></div>
+    <div class="content">
+      <div class="title"><a href="https://new.qq.com/rain/a/20260719A07C7T00" target="_blank">Etched 估值升至 200 亿美元 / OpenRouter 多家巨头拟收购估值破 13 亿美元</a></div>
+      <div class="info">
+        <span class="source">半导体行业观察 / 环球网</span>
+        <span class="time">今天</span>
+        <span class="tag">AI 芯片/平台</span>
+      </div>
+      <div class="summary">AI 推理芯片初创 Etched（与英伟达竞争）新一轮估值从 100 亿升至 <span style="color:#047857;font-weight:600">200 亿美元</span>，原红杉牵头。AI 大模型 API 聚合平台 OpenRouter 收到多家大型科技企业收购意向，整体估值或高于 5 月 B 轮敲定的 13 亿美元。OpenRouter 整合超 400 款大模型、月处理 Token 约 100 万亿，年化营收约 5000 万美元，2025 年 6 月 A 轮后估值一年翻倍。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-bar" style="background:#f97316"></div>
+    <div class="content">
+      <div class="title"><a href="https://dy.163.com/article/L26PF8820519CQ3E.html" target="_blank">爱诗科技 29.8 亿元 C 轮 / DeepSeek 二轮推进投前 5000 亿元估值 + 科创板 IPO 筹备</a></div>
+      <div class="info">
+        <span class="source">亿欧网 / 闽商报</span>
+        <span class="time">今天</span>
+        <span class="tag">国产大模型</span>
+      </div>
+      <div class="summary">爱诗智能完成 29.8 亿元 C 轮融资，用于 AI 视频生成基础模型、实时世界模型、全球化产品增长。DeepSeek 推进二轮融资，目标投前估值 <span style="color:#047857;font-weight:600">5000 亿元</span>、最高募资 500 亿元；腾讯、网易、京东三大互联网头部入场，宁德时代、华泰证券、洋河股份等 20+ A 股上市公司间接参股，国家级 AI 产业基金直接持股 0.28%。已启动科创板上市前期筹备，力争 2026 年内递交 IPO 申报材料。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 总结专区 -->
+<div class="summary-section">
+  <h2>📋 今日总结 & 投资启示</h2>
+
+  <h3>关键结论</h3>
+  <ul>
+    <li>本时段主线：<span class="highlight">"Kimi K3 冲击波 + WAIC 国产全链条秀 + OpenAI 估值/风险双拉扯"</span>三线并行。</li>
+    <li>Kimi K3 引发美股科技股集体杀跌，费城半导体指数较 6 月高点回撤 20% 正式进入技术性熊市。市场叙事核心从"AI 需求是否存在"转向<span class="highlight">"AI 资本开支是否已透支未来增长"</span>，高盛警告"算力扩张时代"或已结束。</li>
+    <li>WAIC 2026 第二天阿里、京东、商汤、昆仑万维等大厂齐发新品，国产算力从"拼单芯跑分"转向<span class="highlight">"系统能力"</span>。光互连超节点 1024 卡规模超英伟达电互联 128 卡上限，国产替代路径从芯片层级跃迁至智算系统生态。</li>
+    <li>Meta 拟向 Anthropic 出租算力两年最高 100 亿美元，反映头部 AI 公司算力需求仍处爆发性扩张。Meta 借此为 1450 亿美元 capex 找变现路径，<span class="highlight">算力正在从"成本中心"转向"可交易资产"</span>。</li>
+    <li>OpenAI 8000 亿美元估值融资与多起致死诉讼、Zitron 1.5 万字"雷曼兄弟"看空论同步爆发，AI 商业模式可变现性争议进入白热化阶段。</li>
+    <li>大模型端：阿里 Qwen3.8（2.4T）+ MiniCPM5-2B + 昆仑万维 Matrix-3.5 + 商汤 U1 Pro 同日发布，中国开源与多模态两线齐进，对 Fable 5/GPT-5.6 Sol 等闭源旗舰形成密集火力覆盖。</li>
+  </ul>
+
+  <h3>📊 重点公司/行业环比变化追踪</h3>
+  <ul>
+    <li><span class="neg">↓ 英伟达</span>（较 7 月初）：股价跌破 203 美元，单日跌 2.21%，盘中市值被苹果短暂反超；费城半导体指数较 6 月高点回撤 20% 进入熊市。<span class="neutral">论据</span>：Kimi K3 证明"高性能 AI 不一定需要天价算力"，引发算力无限增长预期重估。</li>
+    <li><span class="pos">↑ 月之暗面/Kimi</span>（较 7 月初）：K3 登顶前端代码竞技场（1679 分，超 Fable 5），筹备赴港 IPO 最快 6 个月内上市，投前估值 315 亿美元。<span class="neutral">论据</span>：2.8T 参数开源模型以低成本动摇美国闭源溢价。</li>
+    <li><span class="pos">↑ 阿里千问</span>（较 7 月初）：Qwen3.8（2.4T）开源发布，自称仅次于 Fable 5；WAIC 发布灵骏真武 M890 超节点 + Agent Native Cloud。<span class="neutral">论据</span>：模型+算力+平台全链条输出。</li>
+    <li><span class="pos">↑ DeepSeek</span>（较 7 月初）：二轮融资推进投前 5000 亿元估值，腾讯网易京东入场，宁德时代等 20+ 上市公司间接参股；科创板 IPO 筹备。<span class="neutral">论据</span>：国家级 AI 产业基金直接持股 0.28%。</li>
+    <li><span class="pos">↑ Meta</span>（较 7 月初）：拟向 Anthropic 出租算力两年最高 100 亿美元，算力变现迎首位大客户；前 AWS 高级负责人 Dave Brown 加入。<span class="neutral">论据</span>：1450 亿美元 capex 寻找新增长曲线。</li>
+    <li><span class="pos">↑ Anthropic</span>（较 7 月初）：与 Meta 谈判 100 亿美元算力交易；与 SpaceX（450 亿/3 年）+ Akamai（18 亿）已签下超大额算力采购，反映需求爆发。<span class="neutral">论据</span>：Fable 5 使用限制导致算力饥渴。</li>
+    <li><span class="neg">↓ OpenAI</span>（较 7 月初）：8000 亿美元估值完成融资同期遭多起致死诉讼；Zitron 看空论预估 2030 年末累亏 8520 亿美元。Q1 营收 57 亿美元但经营亏损 93 亿美元。<span class="neutral">论据</span>：每赚 1 美元倒贴 1.6 美元。</li>
+    <li><span class="neg">↓ Google/DeepMind</span>（较 7 月初）：上周五美股跌超 4%；Gemini 3.5 Pro 三连跳票未修复。Hassabis 7/14 长文虽为模型铺路，但市值受损方向未变。</li>
+    <li><span class="pos">↑ 算力行业</span>（结构性分化）：台积电 Q2 净利涨 77%、1.4nm 2027 Q3 风险试产；但 ASML 拟涨价 10% 挤压代工利润，市场对 capex 持续性产生疑虑。<span class="neutral">论据</span>：硬件厂商涨，资本市场杀估值。</li>
+    <li><span class="pos">↑ 港股 AI 板块</span>（较上周）：Databricks CEO 公开认可 Kimi K3，国产开源模型获国际背书；爱诗科技 29.8 亿 C 轮、Etched 200 亿估值、OpenRouter 13 亿收购洽谈等事件密集释放，资本热情未减。但需关注下周一亚洲开盘承接美股负面情绪。</li>
+    <li><span class="neg">↓ 存储链</span>（较 7 月初）：SK 海力士美股跌超 13%、闪迪跌超 12%、希捷跌 10%、西数跌超 9%。算力扩张预期动摇直接打击存储溢价逻辑。</li>
+    <li><span class="pos">↑ AI 编码工具/Agent 安全</span>（较 7 月初）：OpenAI 推 ChatGPT Work 端到端交付、Codex 并入桌面端；同时致死诉讼、反 AI 情绪升温。产业前进与风险争议同步加剧。</li>
+    <li><span class="neutral">→ 智谱 / 中微 / xAI / MiniMax / 腾讯混元</span>：本时段无重大环比变动。智谱 GLM 被 Databricks CEO 公开点名托管需求增长，但暂无股价级事件；MiniMax 周五同步被美股下跌波及；腾讯混元 Hy3 在 WAIC 出展但无新版本发布。</li>
+  </ul>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div>📊 数据来源：AI HOT API（aihot.virxact.com）+ WebSearch 多渠道交叉验证（华尔街见闻/财联社/科创板日报/钛媒体/界面新闻/第一财经/量子位/IT之家/arXiv/Hacker News/Reuters 等）</div>
+  <div>⏰ 生成时间：2026-07-19 22:00 北京时间 ｜ 覆盖时段：7月18日 22:00 — 7月19日 22:00</div>
+  <div class="risk">⚠️ 风险提示：本报告仅作信息整理与观点参考，不构成任何投资建议。AI 行业波动剧烈，请独立判断、审慎决策。</div>
+</div>
+
+</div>
+</body>
+</html>
