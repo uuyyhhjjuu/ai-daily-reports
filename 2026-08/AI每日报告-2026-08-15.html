@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026-08-15</title>
+<style>
+:root {
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --primary: #6366f1;
+  --primary-light: #eef2ff;
+  --shadow: 0 1px 3px rgba(0,0,0,.08);
+  --shadow-hover: 0 4px 16px rgba(99,102,241,.15);
+  --c-industry: #f59e0b;
+  --c-kol: #10b981;
+  --c-model: #8b5cf6;
+  --c-product: #ec4899;
+  --c-paper: #06b6d4;
+  --c-research: #3b82f6;
+  --c-finance: #f97316;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #7c3aed 100%);
+  border-radius: 16px; padding: 36px 40px; color: #fff; margin-bottom: 28px;
+  box-shadow: 0 8px 30px rgba(99,102,241,.3);
+}
+.header h1 { font-size: 26px; font-weight: 700; letter-spacing: -.5px; }
+.header .h1-en { font-size: 14px; font-weight: 500; opacity: .85; margin-top: 4px; letter-spacing: .3px; }
+.header .meta { font-size: 14px; opacity: .9; margin-top: 10px; display: flex; flex-wrap: wrap; gap: 16px; }
+.header .meta span { display: inline-flex; align-items: center; gap: 4px; }
+.header .badge {
+  display: inline-block; background: rgba(255,255,255,.2); padding: 2px 10px;
+  border-radius: 20px; font-size: 12px; margin-top: 12px;
+}
+
+/* Stats Bar */
+.stats-bar {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;
+  background: var(--card-bg); border-radius: 12px; padding: 16px 20px; box-shadow: var(--shadow);
+}
+.stat-item {
+  display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-secondary);
+  padding: 4px 10px; border-radius: 8px; background: var(--bg);
+}
+.stat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.stat-num { font-weight: 700; color: var(--text); }
+
+/* Section */
+.section { margin-bottom: 32px; }
+.section-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+  padding-bottom: 8px; border-bottom: 2px solid var(--border); cursor: pointer; user-select: none;
+}
+.section-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.section-title { font-size: 18px; font-weight: 700; }
+.section-title-en { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+.section-count { font-size: 13px; color: var(--text-muted); margin-left: auto; }
+.toggle-hint { font-size: 12px; color: var(--primary); margin-left: 10px; white-space: nowrap; }
+.collapsed .section-body { display: none; }
+
+/* Card */
+.card {
+  background: var(--card-bg); border-radius: 12px; padding: 20px 24px;
+  margin-bottom: 12px; box-shadow: var(--shadow);
+  border-left: 4px solid var(--primary);
+  transition: box-shadow .2s, transform .2s;
+  position: relative; overflow: hidden;
+}
+.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+.card-industry { border-left-color: var(--c-industry); }
+.card-kol { border-left-color: var(--c-kol); }
+.card-model { border-left-color: var(--c-model); }
+.card-product { border-left-color: var(--c-product); }
+.card-paper { border-left-color: var(--c-paper); }
+.card-research { border-left-color: var(--c-research); }
+.card-finance { border-left-color: var(--c-finance); }
+
+.card-title {
+  font-size: 16px; font-weight: 600; line-height: 1.5; margin-bottom: 4px;
+}
+.card-title a { color: var(--text); text-decoration: none; }
+.card-title a:hover { color: var(--primary); }
+
+.card-en {
+  font-size: 13px; color: var(--text-muted); font-style: italic;
+  margin-bottom: 8px; line-height: 1.5;
+}
+
+.card-meta {
+  display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.card-meta .source { font-weight: 500; color: var(--text-secondary); }
+.card-meta .time { color: var(--primary); font-weight: 500; }
+.card-tag {
+  display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 4px;
+  font-weight: 500;
+}
+
+.card-summary {
+  font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+}
+.card-summary .highlight {
+  color: var(--primary); font-weight: 600;
+}
+.card-summary-en {
+  font-size: 13px; color: var(--text-muted); line-height: 1.65;
+  margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border);
+}
+
+/* News Table */
+.news-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 4px 0 10px; }
+.news-table th {
+  text-align: left; padding: 9px 12px; background: rgba(99,102,241,.08);
+  color: var(--text); font-weight: 600; border-bottom: 2px solid var(--primary);
+}
+.news-table td {
+  padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top;
+}
+.news-table .t { color: var(--primary); font-weight: 600; white-space: nowrap; }
+.news-table .e { color: var(--c-finance); font-weight: 500; }
+
+/* Chart */
+.chart-wrap {
+  background: var(--card-bg); border-radius: 12px; padding: 20px 24px;
+  margin-bottom: 14px; box-shadow: var(--shadow); border-left: 4px solid var(--c-research);
+}
+.chart-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.chart-note { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
+.chart-wrap svg { width: 100%; height: auto; display: block; }
+
+/* Summary Section */
+.summary-section {
+  background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+  border-radius: 16px; padding: 32px 36px; margin-top: 36px;
+  border: 1px solid #e0e7ff;
+}
+.summary-section h2 {
+  font-size: 20px; font-weight: 700; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 8px;
+}
+.summary-sub { margin-bottom: 24px; }
+.summary-sub h3 {
+  font-size: 16px; font-weight: 700; margin-bottom: 12px;
+  color: var(--text); display: flex; align-items: center; gap: 6px;
+}
+.summary-sub ul { list-style: none; padding-left: 0; }
+.summary-sub li {
+  font-size: 14px; color: var(--text-secondary); margin-bottom: 10px;
+  padding-left: 18px; position: relative; line-height: 1.7;
+}
+.summary-sub li::before {
+  content: "▸"; position: absolute; left: 0; color: var(--primary); font-weight: 700;
+}
+.summary-sub li .highlight { color: var(--primary); font-weight: 600; }
+.summary-sub .up { color: #dc2626; font-weight: 600; }
+.summary-sub .down { color: #16a34a; font-weight: 600; }
+.summary-sub .lens {
+  background: rgba(99,102,241,.08); border-radius: 8px; padding: 12px 16px;
+  margin-top: 12px; font-size: 13px; color: var(--text-secondary); border-left: 3px solid var(--primary);
+}
+.summary-sub .en-note {
+  font-size: 13px; color: var(--text-muted); margin-top: 10px; line-height: 1.65;
+  padding-top: 10px; border-top: 1px dashed #c7d2fe;
+}
+
+/* Tracking Table */
+.track-table {
+  width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px;
+}
+.track-table th {
+  text-align: left; padding: 8px 12px; background: rgba(99,102,241,.08);
+  color: var(--text); font-weight: 600; border-bottom: 2px solid var(--primary);
+}
+.track-table td {
+  padding: 8px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary);
+}
+.track-table .up { color: #dc2626; font-weight: 600; }
+.track-table .down { color: #16a34a; font-weight: 600; }
+
+/* Sources / Collapsible */
+.sources-box { margin-top: 4px; }
+.sources-toggle {
+  display: inline-block; cursor: pointer; font-size: 13px; font-weight: 600;
+  color: var(--primary); background: var(--primary-light); padding: 6px 14px; border-radius: 8px;
+}
+.sources-list { margin-top: 12px; font-size: 13px; color: var(--text-secondary); }
+.sources-list.hidden { display: none; }
+.sources-list ol { padding-left: 22px; }
+.sources-list li { margin-bottom: 6px; line-height: 1.6; }
+.sources-list a { color: var(--primary); word-break: break-all; }
+
+/* Footer */
+.footer {
+  text-align: center; margin-top: 48px; padding-top: 24px;
+  border-top: 1px solid var(--border); color: var(--text-muted); font-size: 12px;
+}
+.footer p { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>🤖 AI 每日全景报告</h1>
+  <div class="h1-en">AI Daily Panorama Report · Bilingual Edition</div>
+  <div class="meta">
+    <span>📅 2026年8月15日（周六）</span>
+    <span>🕐 覆盖时段：8月15日 00:00 ~ 8月15日 24:00 北京时间</span>
+    <span>📊 共 32 条 / 16 个溯源来源</span>
+  </div>
+  <div class="badge">数据来源：WebSearch 多源检索（AI 资讯聚合 + 官方博客 + 外资行研报）· 每条均附原文链接</div>
+</div>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-model)"></div>国内进展 <span class="stat-num">5</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-product)"></div>海外动态 <span class="stat-num">7</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-industry)"></div>行业与资本 <span class="stat-num">7</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-kol)"></div>大V观点 <span class="stat-num">2</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-paper)"></div>技术进展 <span class="stat-num">3</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-research)"></div>研报论文 <span class="stat-num">5</span></div>
+</div>
+
+<!-- ===== 当日要闻表 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-research)"></div>
+    <div class="section-title">📌 当日要闻表 <span class="section-title-en">/ Day-at-a-glance</span></div>
+    <div class="section-count">8 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+    <table class="news-table">
+      <thead><tr><th style="width:120px">时间</th><th>事件</th><th>影响</th></tr></thead>
+      <tbody>
+        <tr><td class="t">8月15日 10:00</td><td>Google 发布 Gemini 3.7 Flash，价格为前代一半</td><td class="e">编码/智能体推理成本骤降，价格战向推理层蔓延</td></tr>
+        <tr><td class="t">8月15日 14:30</td><td>阿里开源 Qwen3.8 系列，27B 版消费级显卡可跑</td><td class="e">国产开源模型"集团军"成型，端侧部署门槛再降</td></tr>
+        <tr><td class="t">8月15日</td><td>智谱发布 GLM-5.3，编程能力较前代提升约 50%</td><td class="e">国产模型能力逼近前沿，开源榜登顶在望</td></tr>
+        <tr><td class="t">8月15日</td><td>Databricks 完成 50 亿美元融资，估值 1900 亿美元</td><td class="e">企业 Agent 基建估值锚定，资本向基础设施集中</td></tr>
+        <tr><td class="t">8月15日</td><td>SpaceX 以 600 亿美元全股票收购 Cursor</td><td class="e">AI 编程赛道军备竞赛升级，算力与代码智能体整合</td></tr>
+        <tr><td class="t">8月15日</td><td>Anthropic 洽购以色列 Decart AI 约 60 亿美元</td><td class="e">或为史上最大收购，算力效率成战略资产</td></tr>
+        <tr><td class="t">8月15日</td><td>欧盟 AI Act 透明度/水印条款正式执行（8/2 生效）</td><td class="e">全球 AI 监管进入落地期，合成内容须机器可读水印</td></tr>
+        <tr><td class="t">8月15日</td><td>高盛：2026 美国 AI 投资近 6000 亿美元，约 GDP 2%</td><td class="e">资本开支成为宏观经济变量，挤出效应有限但存在</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== 国内大模型与应用进展 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-model)"></div>
+    <div class="section-title">🇨🇳 国内大模型与应用进展 <span class="section-title-en">/ China: Models &amp; Applications</span></div>
+    <div class="section-count">5 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://www.toutiao.com/a1873565164273676" target="_blank">阿里开源 Qwen3.8 系列：27B 版消费级显卡可跑，Qwen3.8-Max 达 2.4 万亿参数</a></div>
+    <div class="card-en">EN: Alibaba open-sources Qwen3.8 — a 27B dense model (Apache 2.0, runs on consumer GPUs) plus a 2.4T-param Max flagship.</div>
+    <div class="card-meta">
+      <span class="source">听松613 / 头条 AI 前沿日报</span>
+      <span class="time">8月15日 14:30</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">开源模型</span>
+    </div>
+    <div class="card-summary">阿里巴巴正式开源 Qwen3.8，其中 <span class="highlight">27B 参数版本</span>超越上代 Qwen3.7-Plus，采用 <span class="highlight">Apache 2.0</span> 协议，消费级显卡即可运行；同步确认 Qwen3.8-Max 规模达 <span class="highlight">2.4 万亿参数</span>。千问全球下载量已突破 30 亿次。国产大模型从"以价换量"转向"开源 + 超大参数"双轨并进。</div>
+    <div class="card-summary-en">EN — Two-track move: open-weight mid-size for the edge, trillion-param Max to contest the frontier; total Qwen downloads past 3 billion.</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://blog.aichanning.cn/ai-daily-2026-08-15" target="_blank">智谱发布 GLM-5.3：编程能力提升约 50%，Terminal Bench 3.0 开源第一</a></div>
+    <div class="card-en">EN: Zhipu releases GLM-5.3 (743B params) — coding up ~50%, #1 open-source on Terminal Bench 3.0.</div>
+    <div class="card-meta">
+      <span class="source">AI 日报 blog.aichanning.cn</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">国产大模型</span>
+    </div>
+    <div class="card-summary">智谱 AI 发布 GLM-5.3，总参数 <span class="highlight">7430 亿</span>，通过后训练 Scaling 大幅提升智能上界，编程能力较前代提升约 <span class="highlight">50%</span>，在 Terminal Bench 3.0 等公开基准中拿下<span class="highlight">开源第一</span>。完整权重将在两周内开源，API 同步上线，并面向政企提供离线部署版本。</div>
+    <div class="card-summary-en">EN — Post-training scaling lifts the intelligence ceiling; weights to be open-sourced within two weeks, with an offline enterprise edition.</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://blog.aichanning.cn/ai-daily-2026-08-15" target="_blank">小红书开源 dots3-note Preview：280B 总参 / 16B 激活，512K 上下文</a></div>
+    <div class="card-en">EN: Xiaohongshu (RED) open-sources dots3-note Preview — 280B total / 16B active, 512K context, multimodal.</div>
+    <div class="card-meta">
+      <span class="source">AI 日报 blog.aichanning.cn</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">开源模型</span>
+    </div>
+    <div class="card-summary">小红书技术团队开源 <span class="highlight">dots3-note Preview</span>，总参数 <span class="highlight">280B</span>、激活 <span class="highlight">16B</span>，支持 <span class="highlight">512K 上下文</span>与多模态，定位长程 Agent 与复杂推理。低激活参数路线与同日 Qwen3.8、GLM-5.3 形成"中国开源周"的密集发布态势。</div>
+    <div class="card-summary-en">EN — Low-activation MoE for long-horizon agents; joins a密集 domestic open-source release wave on the same day.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://www.toutiao.com/a1873565164273676" target="_blank">DeepSeek V4 Pro 0813 正式版上线，API 大幅涨价；Harness 智能体框架开源</a></div>
+    <div class="card-en">EN: DeepSeek ships V4 Pro 0813 GA (1.6T params) and open-sources DeepSeek Harness; API prices rise.</div>
+    <div class="card-meta">
+      <span class="source">听松613 / 头条 AI 前沿日报</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">Agent 框架</span>
+    </div>
+    <div class="card-summary">DeepSeek 发布 V4 Pro 0813 正式版，旗舰模型 <span class="highlight">1.6 万亿参数</span>，DeepSWE 从 12.8 升至 62.7、CyberGym 从 52.7 升至 83.3；同步开源智能体执行框架 <span class="highlight">DeepSeek Harness</span>（"一切皆插件"，GitHub 12 小时破 5 万星），被视为 Agent 领域的"安卓"时刻。API 最高涨价 11 倍，标志"低价红利"时代落幕。</div>
+    <div class="card-summary-en">EN — The "price-war" posture is reversed: rising API prices + an open agent framework signal a shift from commoditized inference to platform play.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://blog.aichanning.cn/ai-daily-2026-08-15" target="_blank">Google Sheets canvas：自然语言把表格转成交互式迷你应用</a></div>
+    <div class="card-en">EN: Google Sheets canvas turns natural-language prompts into interactive mini-apps, deepening Gemini into the office suite.</div>
+    <div class="card-meta">
+      <span class="source">AI 日报 blog.aichanning.cn</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">办公智能体</span>
+    </div>
+    <div class="card-summary">Google 推出 Sheets canvas，用自然语言即可把电子表格转成交互式迷你应用，Gemini 继续向办公套件深处钻。与 Gemini 3.7 Flash 的低价编码能力形成闭环——办公自动化从"函数公式"走向"对话即应用"。</div>
+    <div class="card-summary-en">EN — Office suites become app platforms via conversation; part of Google's deeper Gemini-ification of Workspace.</div>
+  </div>
+</div>
+</div>
+
+<!-- ===== 海外大模型与应用动态 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-product)"></div>
+    <div class="section-title">🌍 海外大模型与应用动态 <span class="section-title-en">/ Global: Models &amp; Products</span></div>
+    <div class="section-count">7 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://pondero.ai/news/2026-08-15-daily-brief" target="_blank">Google 发布 Gemini 3.7 Flash：编码与智能体优化，价格减半</a></div>
+    <div class="card-en">EN: Google launches Gemini 3.7 Flash for coding/agents at half the price of 3.6 Flash.</div>
+    <div class="card-meta">
+      <span class="source">Pondero AI Daily Brief（8/15）</span>
+      <span class="time">8月15日 10:00</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">前沿模型</span>
+    </div>
+    <div class="card-summary">Gemini 3.7 Flash 于 8月13日 抵达，Google 称其最强 Flash 级模型，主攻编码与智能体工作流。定价 <span class="highlight">$0.75 / 百万输入、$3.75 / 百万输出</span>，为 3.6 Flash 的一半（限时至 12/31），提供 <span class="highlight">100 万 token 上下文</span>、单次最多 6.4 万输出 token。已在 Gemini API、Gemini Spark、AI Studio 上线。</div>
+    <div class="card-summary-en">EN — A 50% price cut on the Flash tier is the most immediate reason for teams to evaluate it for coding/agentic workloads.</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://www.globenewswire.com/fr/news-release/2026/08/13/3344804/0/en/cerebras-powers-ultrafast-mode-for-openai-s-gpt-5-6-sol.html" target="_blank">OpenAI × Cerebras 预览 GPT-5.6 Sol "Ultrafast"：速度最高 14 倍</a></div>
+    <div class="card-en">EN: OpenAI + Cerebras preview GPT-5.6 Sol Ultrafast — up to 750 tokens/s, 14x Standard, no quality loss.</div>
+    <div class="card-meta">
+      <span class="source">Cerebras 官方新闻稿（8/13）</span>
+      <span class="time">8月15日 持续发酵</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">推理加速</span>
+    </div>
+    <div class="card-summary">OpenAI 联合 Cerebras 推出 Ultrafast 服务层级，GPT-5.6 Sol 输出速度最高 <span class="highlight">750 tokens/s</span>，为标准模式约 <span class="highlight">14 倍</span>，且不降智。Humanity's Last Exam（2500 题）仅 11 小时答完，Claude Fable 5 需 78 小时。架构核心是将权重常驻于晶圆级芯片 44GB 片上 SRAM，绕开 GPU 显存带宽瓶颈。早期客户含 Jane Street、Podium。</div>
+    <div class="card-summary-en">EN — Inference speed becomes a product tier; wafer-scale SRAM removes the memory-bandwidth bottleneck that constrains GPU serving.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://pondero.ai/news/2026-08-15-daily-brief" target="_blank">OpenAI 接入 Google Drive 与 macOS 历史：ChatGPT 走向"环境上下文"</a></div>
+    <div class="card-en">EN: OpenAI adds Google Drive to ChatGPT Library and macOS Computer History for ambient context.</div>
+    <div class="card-meta">
+      <span class="source">Pondero AI Daily Brief（8/15）</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">生态整合</span>
+    </div>
+    <div class="card-summary">8月14日 两项 ChatGPT 能力上线：① Google Drive 接入 ChatGPT Library，Plus/Pro/Business/Enterprise 用户可在对话内浏览、@ 引用并编辑 Docs/Sheets/Slides，文件不重新上传 OpenAI 服务器；② macOS Computer History，可选功能，让 ChatGPT 与 Codex 引用过往应用与网页活动以形成跨会话持久上下文（仅记录交互事件，排除隐私浏览）。</div>
+    <div class="card-summary-en">EN — Both target Pro/Business/Enterprise; the macOS feature records interaction events, not screenshots or audio.</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://www.toutiao.com/a1873565164273676" target="_blank">xAI 发布 Grok 4.6：专注长程 Agent 与复杂工作流</a></div>
+    <div class="card-en">EN: xAI releases Grok 4.6 — long-horizon agents, coding, knowledge work; $2/$6 per M in/out tokens.</div>
+    <div class="card-meta">
+      <span class="source">听松613 / 头条 AI 前沿日报</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">前沿模型</span>
+    </div>
+    <div class="card-summary">xAI 发布 Grok 4.6 前沿模型，专注长程 Agent、编程、知识工作与交互式应用开发，在推理、工程、STEM 与 Agent 数据上扩展训练。API 定价 <span class="highlight">$2 / 百万输入、$6 / 百万输出</span>，可通过 Grok Build、Cursor、OpenRouter、Vercel 多平台使用。</div>
+    <div class="card-summary-en">EN — Priced below frontier peers; available across multiple platforms including OpenRouter and Cursor.</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://www.toutiao.com/a1873565164273676" target="_blank">微软发布 MAI-Thinking-1 推理模型：完全从零训练，不依赖蒸馏</a></div>
+    <div class="card-en">EN: Microsoft ships MAI-Thinking-1 (35B active / ~1T total, sparse MoE), trained from scratch, no distillation.</div>
+    <div class="card-meta">
+      <span class="source">听松613 / 头条 AI 前沿日报</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">推理模型</span>
+    </div>
+    <div class="card-summary">微软 AI 团队发布 MAI-Thinking-1 推理模型（<span class="highlight">35B 活跃参数、约 1T 总参数</span>，稀疏 MoE），完全从零训练、不依赖任何第三方模型蒸馏。AIME 2025 达 97.0%、AIME 2026 达 94.5%，SWE-Bench Pro 与 Claude Opus 4.6 持平，盲测优于 Claude Sonnet 4.6。标志大厂自研底座摆脱"蒸馏依赖"。</div>
+    <div class="card-summary-en">EN — From-scratch training avoids distillation; competitive with Opus 4.6 on agentic SWE benchmarks.</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://www.toutiao.com/a1873565164273676" target="_blank">Google DeepMind 发布 AlphaEvolve：自进化算法打破多项数学纪录</a></div>
+    <div class="card-en">EN: DeepMind's AlphaEvolve combines Gemini + evolutionary search; beats 56-year-old Strassen algorithm.</div>
+    <div class="card-meta">
+      <span class="source">听松613 / 头条 AI 前沿日报</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">科研自动化</span>
+    </div>
+    <div class="card-summary">Google DeepMind 推出 AlphaEvolve，将 Gemini 大语言模型与进化优化结合，实现代码库级自主算法改进。已部署至 Google 数据中心回收 <span class="highlight">0.7% 闲置算力</span>；解决 11 维空间"kissing number"问题（593 个球）；在 4×4 复数矩阵乘法上将乘法次数从 <span class="highlight">49 降至 48</span>，超越诞生 56 年的 Strassen 算法。</div>
+    <div class="card-summary-en">EN — Beats a 56-year-old algorithm; deployed internally to reclaim idle compute in Google data centers.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://www.toutiao.com/a1873565164273676" target="_blank">Anthropic 推出 SynthID-Text 水印检测 API，遵守欧盟 AI Act</a></div>
+    <div class="card-en">EN: Anthropic ships a SynthID-Text watermark detection API so third parties can detect Claude-generated text.</div>
+    <div class="card-meta">
+      <span class="source">听松613 / Pondero（8/15）</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">合规/水印</span>
+    </div>
+    <div class="card-summary">Anthropic 推出基于 SynthID 的水印检测 API，允许第三方开发者检测文本是否由 Claude 生成，以遵守欧盟 AI Act 的内容溯源要求；Google 同日允许用户关闭 Gemini 及 Flow 的可见"闪烁"水印，但不可见的 SynthID 数字水印与 C2PA 元数据仍保留。监管驱动的水印技术进入产品化阶段。</div>
+    <div class="card-summary-en">EN — Watermarking moves from research to product as the EU AI Act's transparency rules take effect (Aug 2).</div>
+  </div>
+</div>
+</div>
+
+<!-- ===== 行业动态与资本 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-industry)"></div>
+    <div class="section-title">🏭 行业动态与资本 <span class="section-title-en">/ Industry &amp; Capital</span></div>
+    <div class="section-count">7 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+  <div class="card card-finance">
+    <div class="card-title"><a href="https://pondero.ai/news/2026-08-15-daily-brief" target="_blank">Databricks 完成 50 亿美元融资，估值 1900 亿美元</a></div>
+    <div class="card-en">EN: Databricks raises $5B at a $190B valuation; ARR crosses $7B as agent demand surges.</div>
+    <div class="card-meta">
+      <span class="source">Pondero / Databricks 官方（8/13）</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#fed7aa;color:#9a3412">融资</span>
+    </div>
+    <div class="card-summary">Databricks 宣布完成 <span class="highlight">50 亿美元</span>战略融资，投后估值 <span class="highlight">1900 亿美元</span>（2026 年第二次融资），Coatue 领投，Blackstone、MGX、T. Rowe Price、Sixth Street 参投。公司年化营收突破 <span class="highlight">70 亿美元</span>、Q2 同比增长超 80%。资金投向三款企业 Agent 产品：Lakebase（Serverless Postgres）、Genie（AI 同事）、Unity AI Gateway（多云多模型治理与成本层）。</div>
+    <div class="card-summary-en">EN — The raise is a direct bet on enterprise-agent infrastructure; Lakehouse alone crossed $1.5B ARR.</div>
+  </div>
+
+  <div class="card card-finance">
+    <div class="card-title"><a href="https://www.toutiao.com/a1873565164273676" target="_blank">SpaceX 以 600 亿美元全股票收购 Cursor，xAI 同步推出 Grok Bot</a></div>
+    <div class="card-en">EN: SpaceX acquires Cursor for $60B all-stock; xAI launches always-on Grok Bot.</div>
+    <div class="card-meta">
+      <span class="source">听松613 / 头条 AI 前沿日报</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#fed7aa;color:#9a3412">并购</span>
+    </div>
+    <div class="card-summary">SpaceX 宣布以 <span class="highlight">600 亿美元全股票</span>完成对 AI 编程公司 Cursor（母公司 Anysphere）的收购，创科技行业史上最大收购之一，Cursor 团队将接入 SpaceX 大规模 GPU 算力联合迭代 Grok 系列代码能力。xAI 同日推出常驻智能体 Grok Bot——关机后仍替用户干活，正式杀入"Vibe Coding"战场。</div>
+    <div class="card-summary-en">EN — A space + coding crossover; xAI's Grok Bot pushes the "always-on local agent" thesis further.</div>
+  </div>
+
+  <div class="card card-finance">
+    <div class="card-title"><a href="https://www.quadradigitalsolutions.com/en/daily-ai-briefing" target="_blank">Anthropic 洽购以色列 Decart AI 约 60 亿美元</a></div>
+    <div class="card-en">EN: Anthropic in talks to buy Decart AI for ~$6B — its largest acquisition, for GPU efficiency.</div>
+    <div class="card-meta">
+      <span class="source">Quadra Digital Daily AI Briefing</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#fed7aa;color:#9a3412">并购</span>
+    </div>
+    <div class="card-summary">Anthropic 据报正洽谈收购以色列初创 Decart AI（实时生成视频与 GPU 效率软件），交易估值约 <span class="highlight">60 亿美元</span>，较其 5 月 40 亿美元估值溢价约 50%。若落地将是 Anthropic 史上最大收购，目标是在 IPO 前从算力效率侧挤出更多性能——"效率即战略资产"逻辑延续。</div>
+    <div class="card-summary-en">EN — Compute efficiency becomes a strategic asset ahead of a widely anticipated IPO.</div>
+  </div>
+
+  <div class="card card-finance">
+    <div class="card-title"><a href="https://www.quadradigitalsolutions.com/en/daily-ai-briefing" target="_blank">Manus 因中国监管令脱离 Meta，重获独立运营</a></div>
+    <div class="card-en">EN: Manus to regain independence as Chinese regulators unwind Meta's $2B acquisition.</div>
+    <div class="card-meta">
+      <span class="source">Quadra Digital Daily AI Briefing</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#fed7aa;color:#9a3412">监管/并购</span>
+    </div>
+    <div class="card-summary">AI 智能体创业公司 Manus 表示将"很快恢复独立运营"，此前中国监管机构以"外资投资中国 origin 技术"相关规则，责令 Meta 解除对其 <span class="highlight">20 亿美元</span>收购。Meta 已切断 Manus 内部系统访问并禁止员工使用其工具。事件成为"中资 AI 技术出海并购"监管收紧的早期信号。</div>
+    <div class="card-summary-en">EN — An early signal of tightening scrutiny over foreign acquisition of Chinese-origin AI technology.</div>
+  </div>
+
+  <div class="card card-finance">
+    <div class="card-title"><a href="https://pondero.ai/news/2026-08-15-daily-brief" target="_blank">Dynatrace 以 9.15 亿美元收购 Arize，强化 AI 可观测性</a></div>
+    <div class="card-en">EN: Dynatrace acquires Arize for $915M, bolstering AI observability and LLM evaluation.</div>
+    <div class="card-meta">
+      <span class="source">Pondero AI Daily Brief（8/15）</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#fed7aa;color:#9a3412">并购</span>
+    </div>
+    <div class="card-summary">可观测性厂商 Dynatrace 以 <span class="highlight">9.15 亿美元</span>收购 AI 评估平台 Arize。随着企业把 LLM/Agent 投入生产，模型监控、漂移检测与评测成为刚需，AI 可观测性赛道估值被重估。</div>
+    <div class="card-summary-en">EN — As agents hit production, observability/eval becomes a must-have layer, not a nice-to-have.</div>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://www.quadradigitalsolutions.com/en/daily-ai-briefing" target="_blank">CME 拟推出 GPU 期货合约，AI 算力成可交易金融资产</a></div>
+    <div class="card-en">EN: CME to launch GPU futures — compute becomes a tradable financial asset.</div>
+    <div class="card-meta">
+      <span class="source">Quadra Digital Daily AI Briefing</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#fef3c7;color:#92400e">算力金融化</span>
+    </div>
+    <div class="card-summary">CME 集团计划推出 <span class="highlight">GPU 期货合约</span>，使 AI 算力正式成为可交易金融资产。叠加英伟达联合六大金融机构动员超 5000 亿美元 AI 基建资本，算力正从"科技公司自建"走向"金融资产证券化"。</div>
+    <div class="card-summary-en">EN — Compute is being financialized: futures contracts + $500B capital vehicles turn GPUs into an asset class.</div>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://pondero.ai/news/2026-08-15-daily-brief" target="_blank">Pony.ai 与 Uber 推 2000 辆 Robotaxi 欧洲扩张</a></div>
+    <div class="card-en">EN: Pony.ai and Uber plan a 2,000-robotaxi European expansion.</div>
+    <div class="card-meta">
+      <span class="source">Pondero AI Daily Brief（8/15）</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#fef3c7;color:#92400e">自动驾驶</span>
+    </div>
+    <div class="card-summary">Pony.ai（小马智行）与 Uber 宣布将部署 <span class="highlight">2000 辆 Robotaxi</span> 推进欧洲市场扩张，AI 在实体出行场景的商业化落地加速，Robotaxi 从试点走向规模化运营。</div>
+    <div class="card-summary-en">EN — Robotaxi moves from pilots to scale as AV players partner with global ride-hailing networks.</div>
+  </div>
+</div>
+</div>
+
+<!-- ===== KOL / 大V 观点 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-kol)"></div>
+    <div class="section-title">🎙️ KOL / 大V 观点 <span class="section-title-en">/ Voices &amp; Opinions</span></div>
+    <div class="section-count">2 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+  <div class="card card-kol">
+    <div class="card-title"><a href="https://blog.aichanning.cn/ai-daily-2026-08-15" target="_blank">Anthropic 多智能体研究：45 个协调智能体在 2700 万 token 中发现 266 个漏洞</a></div>
+    <div class="card-en">EN: Anthropic's multi-agent study — 45 coordinated agents over 27M tokens surfaced 266 vulnerabilities.</div>
+    <div class="card-meta">
+      <span class="source">AI 日报 blog.aichanning.cn</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#d1fae5;color:#065f46">多智能体</span>
+    </div>
+    <div class="card-summary">Anthropic 披露多智能体系统研究：<span class="highlight">45 个</span>协调智能体在 <span class="highlight">2700 万 token</span> 运行中发现 <span class="highlight">266 个漏洞</span>，系统性研究多智能体系统的风险与能力边界。能力跃升的同时，风险也呈系统性——为后续"智能体安全"议题埋下伏笔（次日 Anthropic 即发布专项风险报告）。</div>
+    <div class="card-summary-en">EN — Capability and risk scale together: 45 agents found 266 vulnerabilities, a preview of agentic-security concerns.</div>
+  </div>
+
+  <div class="card card-kol">
+    <div class="card-title"><a href="https://blog.aichanning.cn/ai-daily-2026-08-15" target="_blank">"Research Gold" 丑闻：标榜"100% 人类撰写"的医学研究服务，审稿人竟是 AI 虚构</a></div>
+    <div class="card-en">EN: "Research Gold" scandal — a "100% human-written" medical research service used fictitious AI reviewers.</div>
+    <div class="card-meta">
+      <span class="source">AI 日报 blog.aichanning.cn / Hacker News</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#d1fae5;color:#065f46">AI 滥用</span>
+    </div>
+    <div class="card-summary">标榜"100% 人类撰写、绝不使用 AI"的医学研究服务 Research Gold 被曝审稿人皆为 AI 虚构。这是 AI 滥用与"反 AI"叙事反噬的讽刺案例，也凸显内容溯源与"人类 authored"声明的可验证性问题。</div>
+    <div class="card-summary-en">EN — A cautionary tale on AI-washing and the verifiability of "human-authored" claims.</div>
+  </div>
+</div>
+</div>
+
+<!-- ===== 技术进展 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-paper)"></div>
+    <div class="section-title">⚙️ 技术进展 <span class="section-title-en">/ Engineering &amp; Infrastructure</span></div>
+    <div class="section-count">3 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+  <div class="card card-paper">
+    <div class="card-title"><a href="https://www.toutiao.com/a1873565164273676" target="_blank">英伟达开源 Nemotron 3.5 Lightning：300 亿参数，单 GPU 可跑</a></div>
+    <div class="card-en">EN: NVIDIA open-sources Nemotron 3.5 Lightning — 30B, runs on a single GPU; Nemotron 4 (1T) in the works.</div>
+    <div class="card-meta">
+      <span class="source">听松613 / 头条 AI 前沿日报</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#cffafe;color:#155e75">端侧模型</span>
+    </div>
+    <div class="card-summary">英伟达开源 Nemotron 3.5 Lightning，<span class="highlight">300 亿参数</span>，可在单 GPU 上运行，专为常驻智能体设计。据悉英伟达正研发万亿参数的 Nemotron 4 系列，对标全球前沿开源大模型。硬件厂商下场做开源权重，意在用软件生态绑定自家算力。</div>
+    <div class="card-summary-en">EN — Hardware vendors shipping open weights to lock in their compute stack; Nemotron 4 (1T) reportedly next.</div>
+  </div>
+
+  <div class="card card-paper">
+    <div class="card-title"><a href="https://www.toutiao.com/a1873565164273676" target="_blank">DeepSeek Harness 开源：12 小时 GitHub 破 5 万星</a></div>
+    <div class="card-en">EN: DeepSeek Harness — "everything is a plugin" agent framework, 50k stars in 12 hours.</div>
+    <div class="card-meta">
+      <span class="source">听松613 / 头条 AI 前沿日报</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#cffafe;color:#155e75">Agent 框架</span>
+    </div>
+    <div class="card-summary">DeepSeek 发布首个 Agent 产品 DeepSeek Harness，采用"一切皆插件"的开源框架设计，开发者可自由更换模型、工具、界面及核心循环组件。GitHub 公开仅 <span class="highlight">12 小时即破 5 万星</span>，涨速惊人，被视为 Agent 领域的"安卓"时刻。</div>
+    <div class="card-summary-en">EN — A plugin-everything framework; the velocity (50k stars / 12h) signals developer hunger for open agent stacks.</div>
+  </div>
+
+  <div class="card card-paper">
+    <div class="card-title"><a href="https://blog.aichanning.cn/ai-daily-2026-08-15" target="_blank">Google Sheets canvas：自然语言生成交互式迷你应用</a></div>
+    <div class="card-en">EN: Sheets canvas turns prompts into interactive mini-apps — a step toward agentic office suites.</div>
+    <div class="card-meta">
+      <span class="source">AI 日报 blog.aichanning.cn</span>
+      <span class="time">8月15日</span>
+      <span class="card-tag" style="background:#cffafe;color:#155e75">办公自动化</span>
+    </div>
+    <div class="card-summary">见"国内进展"卡片：Google 把自然语言转交互式应用的能力嵌入 Sheets，办公套件向"对话即应用"演进，是 Agent 落地的轻量级入口。</div>
+    <div class="card-summary-en">EN — Low-friction agent entry point inside the world's most-used spreadsheet.</div>
+  </div>
+</div>
+</div>
+
+<!-- ===== 优秀研报与论文提炼（含外资行） ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-research)"></div>
+    <div class="section-title">📚 优秀研报与论文提炼 <span class="section-title-en">/ Research Digest · Sell-side</span></div>
+    <div class="section-count">5 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://ca.investing.com/news/stock-market-news/goldman-sachs-warns-ai-investment-may-be-crowding-out-other-business-spending-4791750" target="_blank">高盛：2026 美国 AI 投资近 6000 亿美元，约 GDP 的 2%</a></div>
+    <div class="card-en">EN: Goldman Sachs — US AI investment ~$600B in 2026 (≈2% of GDP); crowding-out limited but real.</div>
+    <div class="card-meta">
+      <span class="source">Goldman Sachs（8/10–8/11 研报，Jessica Rindels / David Mericle）</span>
+      <span class="time">8月15日 引用</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">外资行宏观</span>
+    </div>
+    <div class="card-summary">高盛经济学家估计，美国 AI 投资 2026 年将达近 <span class="highlight">6000 亿美元</span>（约占 GDP 2%），近期占企业固定投资超 10%、设备投资约 15%。报告认为对 GDP 的挤出效应<span class="highlight">有限</span>：过去一年约挤出 500 亿美元其他支出（约 300 亿来自被替代的科技投资、100 亿+ 来自建筑、约 100 亿来自更高借贷成本），并估计 AI 投资仅给 2026 年 GDP 增长贡献 <span class="highlight">0.1 个百分点</span>。</div>
+    <div class="card-summary-en">EN — Headline takeaway: both AI's GDP contribution and its crowding-out are "smaller than often thought" — ~$50B incremental crowding-out in 2026.</div>
+  </div>
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://news.futunn.com/post/76866156?ns_stock_id=201926" target="_blank">摩根士丹利：上调超大规模厂商 2027/2028 资本开支至 1.2 万 / 1.4 万亿美元</a></div>
+    <div class="card-en">EN: Morgan Stanley raises 2027/2028 hyperscaler capex to $1.2T / $1.4T; 2026 US big-tech capex revised $433B→$805B.</div>
+    <div class="card-meta">
+      <span class="source">摩根士丹利（Brian Nowak 团队）/ 富途</span>
+      <span class="time">8月15日 引用</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">外资行基建</span>
+    </div>
+    <div class="card-summary">大摩将全球五大超大规模云厂商（Meta、亚马逊、微软、谷歌、SpaceX）2027/2028 年资本开支预测显著上调至约 <span class="highlight">1.2 万亿 / 1.4 万亿美元</span>；对 2026 年美国大型科技巨头资本开支预期从一年前的 4330 亿美元大幅上修至 <span class="highlight">8050 亿美元</span>。AI 基建是当下最确定的宏观成长变量之一。</div>
+    <div class="card-summary-en">EN — Capex revisions keep climbing; the AI infrastructure super-cycle is being priced into multiples across the stack.</div>
+  </div>
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://news.futunn.com/post/76866156?ns_stock_id=201926" target="_blank">野村：三星 / SK 海力士目标价大幅上调，重估为"AI 基础设施成长资产"</a></div>
+    <div class="card-en">EN: Nomura lifts Samsung (₩670k, +225%) and SK Hynix (₩4.7M, +255%) targets — re-rate memory as AI infra.</div>
+    <div class="card-meta">
+      <span class="source">野村证券 / 富途</span>
+      <span class="time">8月15日 引用</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">外资行半导体</span>
+    </div>
+    <div class="card-summary">野村将三星电子目标价由 59 万韩元上调至 <span class="highlight">67 万韩元</span>（12 个月潜在涨幅 225%），SK 海力士由 400 万上调至 <span class="highlight">470 万韩元</span>（潜在涨幅 255.5%）。逻辑：AI 训练/推理/数据中心扩张使存储需求持续高于供给；HBM 与通用存储进入共振式超级周期；两家约 6 倍预期市盈率显著低于台积电约 20 倍，未充分反映 ROE 上升。</div>
+    <div class="card-summary-en">EN — Memory re-rated from cyclical PC/phone stock to structural AI-infra asset; HBM + DRAM super-cycle thesis.</div>
+  </div>
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://www.163.com/dy/article/L3H928R90519D45U.html" target="_blank">摩根士丹利《开放权重模型与三种未来情景》：提出"杰文斯悖论"</a></div>
+    <div class="card-en">EN: Morgan Stanley — open-weight models may raise total compute demand via the Jevons Paradox.</div>
+    <div class="card-meta">
+      <span class="source">摩根士丹利报告（8/4）/ 网易</span>
+      <span class="time">8月15日 引用</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">外资行算力</span>
+    </div>
+    <div class="card-summary">大摩报告提出与传统担忧相反的观点：开放权重模型<span class="highlight">不一定削弱</span>算力需求。更低的使用成本加快 AI 普及，形成典型"杰文斯悖论"——单次推理变便宜后，企业把 AI 用于更多任务，最终推高 token、算力、电力与基础设施的总需求。无论模型开放程度如何，英伟达等硬件厂商均有望受益。</div>
+    <div class="card-summary-en">EN — Cheaper inference → more tasks → more total compute; a bull case for NVIDIA regardless of open vs closed.</div>
+  </div>
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://www.techflowpost.com/en-US/article/33099" target="_blank">高盛 GS SUSTAIN：全球数据中心电力需求到 2030 年激增 170%</a></div>
+    <div class="card-en">EN: Goldman Sachs GS SUSTAIN — global data-center power demand +170% by 2030; efficiency inflection near.</div>
+    <div class="card-meta">
+      <span class="source">Goldman Sachs Research（8/6 报告）</span>
+      <span class="time">8月15日 引用</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">外资行能源</span>
+    </div>
+    <div class="card-summary">高盛 8/6 发布的 GS SUSTAIN 报告将 2030 年全球数据中心电力需求增速预测从 117% 上调至 <span class="highlight">170%</span>，累计增量超日本 2023 年全国用电量；八大超大规模厂商 2026 年 capex+R&D 合计将达 <span class="highlight">1.2 万亿美元</span>。报告同时指出 AI 创新周期正从"评估与梦想期"转向"执行与效率期"，电网（变压器、开关柜、高压互联）成为比芯片更硬的瓶颈。</div>
+    <div class="card-summary-en">EN — Grid, not chips, is the binding near-term constraint; community opposition and labor shortages add risk.</div>
+  </div>
+</div>
+</div>
+
+<!-- ===== 数据可视化（内联 SVG） ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-research)"></div>
+    <div class="section-title">📈 数据可视化 <span class="section-title-en">/ Inline SVG Chart</span></div>
+    <div class="section-count">1 图</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+    <div class="chart-wrap">
+      <div class="chart-title">超大规模厂商资本开支预测（万亿美元）— 摩根士丹利</div>
+      <div class="chart-note">来源：Morgan Stanley（Brian Nowak 团队）2026年8月研报。纵轴单位：万亿美元/年。</div>
+      <svg viewBox="0 0 680 320" role="img" aria-label="超大规模厂商资本开支预测柱状图">
+        <!-- grid -->
+        <line x1="80" y1="40" x2="80" y2="270" stroke="#e2e8f0" stroke-width="1"/>
+        <line x1="80" y1="270" x2="640" y2="270" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="80" y1="205" x2="640" y2="205" stroke="#eef2f7" stroke-width="1"/>
+        <line x1="80" y1="140" x2="640" y2="140" stroke="#eef2f7" stroke-width="1"/>
+        <line x1="80" y1="75" x2="640" y2="75" stroke="#eef2f7" stroke-width="1"/>
+        <text x="64" y="274" font-size="11" fill="#94a3b8" text-anchor="end">0</text>
+        <text x="64" y="209" font-size="11" fill="#94a3b8" text-anchor="end">0.4</text>
+        <text x="64" y="144" font-size="11" fill="#94a3b8" text-anchor="end">0.8</text>
+        <text x="64" y="79" font-size="11" fill="#94a3b8" text-anchor="end">1.2</text>
+        <!-- 2026: 0.805T -> scale: 1T = 195px (from 270 to 75) -->
+        <rect x="150" y="113" width="110" height="157" rx="6" fill="#818cf8"/>
+        <text x="205" y="103" font-size="13" font-weight="700" fill="#4338ca" text-anchor="middle">$0.81T</text>
+        <text x="205" y="290" font-size="12" fill="#64748b" text-anchor="middle">2026E</text>
+        <!-- 2027: 1.2T -->
+        <rect x="300" y="35" width="110" height="235" rx="6" fill="#6366f1"/>
+        <text x="355" y="25" font-size="13" font-weight="700" fill="#4338ca" text-anchor="middle">$1.20T</text>
+        <text x="355" y="290" font-size="12" fill="#64748b" text-anchor="middle">2027E</text>
+        <!-- 2028: 1.4T -->
+        <rect x="450" y="3" width="110" height="267" rx="6" fill="#4f46e5"/>
+        <text x="505" y="293" font-size="13" font-weight="700" fill="#312e81" text-anchor="middle">$1.40T</text>
+        <text x="505" y="290" font-size="12" fill="#64748b" text-anchor="middle">2028E</text>
+        <text x="360" y="312" font-size="11" fill="#94a3b8" text-anchor="middle">注：覆盖 Meta / 亚马逊 / 微软 / 谷歌 / SpaceX 五家超大规模厂商 capex（万亿美元/年）</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 今日总结 & 投资启示 ===== -->
+<div class="summary-section">
+  <h2>📋 今日总结 &amp; 投资启示 <span style="font-size:13px;font-weight:500;color:var(--text-muted)">/ Takeaways</span></h2>
+
+  <div class="summary-sub">
+    <h3>🎯 关键结论 / Key Takeaways</h3>
+    <ul>
+      <li><strong>国产开源模型进入"集团军"阶段</strong>：同日 Qwen3.8（27B Apache 2.0 消费级可跑 + 2.4T Max）、GLM-5.3（743B，编程 +50%）、dots3-note（280B/16B 激活，512K）、DeepSeek V4 Pro（1.6T）密集发布，中国开源模型在<span class="highlight">规模、开放、生态</span>三线并进，海外下载占比显著上升。</li>
+      <li><strong>推理速度被产品化为独立层级</strong>：OpenAI × Cerebras 的 GPT-5.6 Sol Ultrafast 将速度本身做成按性能分层收费的商业策略（750 tokens/s、14 倍），晶圆级 SRAM 绕开 GPU 显存带宽瓶颈。速度从"硬件 footnote"升级为"定价与包装杠杆"。</li>
+      <li><strong>价格战从模型层烧到推理层</strong>：Google Gemini 3.7 Flash 价格减半、DeepSeek 逆势涨价 11 倍、Grok 4.6 低价入局——"选一家焊死"被证伪，按需路由（编码走 Opus、批量走 DeepSeek/Kimi、端侧兜底本地开源）成为主流策略。</li>
+      <li><strong>资本向 AI 基础设施集中，应用层腰部被绕开</strong>：Databricks $50 亿 / $1900 亿估值、Anthropic 洽购 Decart $60 亿、SpaceX 600 亿收购 Cursor、CME 拟推 GPU 期货。高盛估算 2026 美国 AI 投资近 $6000 亿（≈GDP 2%），但挤出效应有限。</li>
+      <li><strong>算力金融化开启</strong>：英伟达联合六大金融机构动员超 5000 亿美元 AI 基建资本，CME 拟推 GPU 期货，算力从"科技公司自建"走向"金融资产证券化"。需警惕"循环融资"与债务风险。</li>
+      <li><strong>监管进入落地期</strong>：欧盟 AI Act 透明度/水印条款（8/2 生效）正式执行，Anthropic 推出 SynthID-Text 检测 API，Google 保留不可见水印；Manus 因中国监管令脱离 Meta，预示中资 AI 技术出海并购审查收紧。</li>
+    </ul>
+    <div class="lens">
+      <strong>🧭 叙事透镜</strong>：本期一手信源占比高（Cerebras、Databricks、Google、Anthropic 官方/新闻稿，摩根士丹利/高盛/野村研报），二手转述较少，信息质量较高。可信度排序：官方新闻稿 &gt; 外资行研报（有量化模型支撑）&gt; 聚合日报 &gt; 大V解读。需打折的两处：① GPT-5.6 Sol Ultrafast 的 HLE/GDP-Val 对比为 Cerebras 自测（vendor-run）；② 部分聚合日报对 8/15 与 8/16 事件存在口径交叉，已按绝对日期归并。
+    </div>
+    <div class="en-note">
+      <strong>EN — Bottom line.</strong> China's open-source models shipped as a coordinated wave (Qwen3.8, GLM-5.3, dots3-note, DeepSeek V4 Pro), narrowing the frontier gap on scale and openness. Inference speed became a product tier (OpenAI×Cerebras Ultrafast), while price competition spread from models to routing. Capital concentrated in infrastructure (Databricks $190B, Cursor $60B, GPU futures), and regulation moved from draft to enforcement (EU AI Act watermarks). Discount: Cerebras' self-run benchmarks, and some aggregator date-overlap.
+    </div>
+  </div>
+
+  <div class="summary-sub">
+    <h3>📊 重点公司/行业环比变化追踪 / Tracking</h3>
+    <table class="track-table">
+      <thead>
+        <tr><th>标的/行业</th><th>方向</th><th>变化</th><th>对比基准</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>阿里巴巴 / 通义千问</td><td class="up">↑积极</td><td>开源 Qwen3.8（27B 消费级可跑 + 2.4T Max），下载量破 30 亿；集团军式开源压制闭源定价权</td><td>较上一报告期</td></tr>
+        <tr><td>智谱(Zhipu)</td><td class="up">↑积极</td><td>GLM-5.3 发布，编程 +50%、Terminal Bench 3.0 开源第一，两周内开源权重</td><td>较上一报告期</td></tr>
+        <tr><td>DeepSeek</td><td class="up">↑中性偏多</td><td>V4 Pro 1.6T 转正 + Harness 框架开源（12h 破 5 万星），但 API 涨价 11 倍告别价格战</td><td>较上一报告期</td></tr>
+        <tr><td>Google</td><td class="up">↑积极</td><td>Gemini 3.7 Flash 价格减半（编码/智能体优化）；Sheets canvas 嵌入办公；保留不可见水印</td><td>较上一报告期</td></tr>
+        <tr><td>OpenAI</td><td class="up">↑积极</td><td>GPT-5.6 Sol Ultrafast（Cerebras，14 倍）；接入 Google Drive 与 macOS 历史；环境上下文能力增强</td><td>较上一报告期</td></tr>
+        <tr><td>微软</td><td class="up">↑积极</td><td>MAI-Thinking-1 从零训练推理模型（35B 活跃/1T 总），摆脱蒸馏依赖</td><td>本期新增覆盖</td></tr>
+        <tr><td>xAI</td><td class="up">↑积极</td><td>Grok 4.6 发布（长程 Agent）；Grok Bot 常驻智能体</td><td>本期新增覆盖</td></tr>
+        <tr><td>Databricks</td><td class="up">↑积极</td><td>$50 亿融资、估值 $1900 亿，ARR 破 $70 亿，押注企业 Agent 三件套</td><td>本期新增覆盖</td></tr>
+        <tr><td>Anthropic</td><td class="up">↑积极</td><td>洽购 Decart $60 亿；SynthID-Text 检测 API 合规化</td><td>较上一报告期</td></tr>
+        <tr><td>英伟达(NVIDIA)</td><td class="up">↑积极</td><td>Nemotron 3.5 Lightning 开源；联合六大机构动员 $5000 亿 AI 基建资本</td><td>较上一报告期</td></tr>
+        <tr><td>存储 / HBM（三星、SK海力士）</td><td class="up">↑积极</td><td>野村大幅上调目标价（三星 +225%、海力士 +255%），重估为 AI 基础设施资产</td><td>较上一报告期</td></tr>
+        <tr><td>AI 基建 / 电网</td><td class="up">↑积极</td><td>高盛：2030 数据中心电力需求 +170%；电网成比芯片更硬瓶颈；CME 拟推 GPU 期货</td><td>较上一报告期</td></tr>
+        <tr><td>中资 AI 出海并购</td><td class="down">↓消极</td><td>Manus 因监管令脱离 Meta，预示中资 AI 技术并购审查收紧</td><td>本期新增覆盖</td></tr>
+      </tbody>
+    </table>
+    <div class="en-note">
+      <strong>EN — Note on the table.</strong> Direction assessed on information flow within the coverage window, not share-price action; no market-price data entered today's source set. Per Chinese market convention, red denotes positive and green denotes negative. Comparisons reference our own archived issues of 2026-08-11 and earlier.
+    </div>
+  </div>
+
+  <div class="summary-sub">
+    <h3>💡 投资结论（中英双语） / Investment Conclusion</h3>
+    <ul>
+      <li><span class="highlight">结论一（算力与电力）</span>：大摩/高盛/野村一致看多 AI 基建链。资本开支上修（2026 美国大科技 $8050 亿、2027/2028 全球五大 $1.2 万/$1.4 万亿）、电力需求 2030 +170%、存储进入 HBM 超级周期——<span class="up">硬件（GPU、HBM、电力设备、电网）与推理云是最确定性受益环节</span>。</li>
+      <li><span class="highlight">结论二（模型层分化）</span>：国产开源"集团军"压低闭源模型定价权，但 DeepSeek 逆势涨价显示头部厂商开始从"算力补贴"转向"平台/生态"变现。<span class="up">路由层（OpenRouter 类）与 Agent 框架价值抬升</span>，单一模型厂商护城河收窄。</li>
+      <li><span class="highlight">结论三（风险）</span>：算力金融化（GPU 期货、$5000 亿资本平台）放大"循环融资"与债务风险；欧盟水印/透明度执法与中资出海并购审查，构成<span class="down">合规与地缘双重约束</span>，需警惕估值在盈利上调周期见顶后的回撤。</li>
+    </ul>
+    <div class="en-note">
+      <strong>EN — Investment Conclusion.</strong> (1) Compute &amp; power: Morgan Stanley, Goldman and Nomura are aligned bullish on the AI-infrastructure chain — rising capex, +170% data-center power by 2030, and an HBM super-cycle make GPUs, HBM, power equipment and the grid the most defensive beneficiaries. (2) Model-layer divergence: China's open-source wave compresses closed-model pricing power, yet DeepSeek's price hikes signal a shift from compute subsidy to platform/ecosystem monetization; routing and agent frameworks gain value. (3) Risks: financialization of compute (GPU futures, $500B vehicles) amplifies circular-financing and debt risk; EU watermark enforcement and Chinese outbound-M&amp;A scrutiny add compliance and geopolitical constraints.
+    </div>
+  </div>
+</div>
+
+<!-- ===== 数据来源 ===== -->
+<div class="summary-section" style="background:linear-gradient(135deg,#f8fafc 0%,#eef2ff 100%);margin-top:24px">
+  <h2>🔗 数据来源 <span style="font-size:13px;font-weight:500;color:var(--text-muted)">/ Sources（16 个）</span></h2>
+  <div class="sources-box">
+    <span class="sources-toggle" onclick="document.getElementById('src15').classList.toggle('hidden')">展开 / 收起 全部来源</span>
+    <div class="sources-list hidden" id="src15">
+      <ol>
+        <li>Pondero AI Daily Brief（2026-08-15）：<a href="https://pondero.ai/news/2026-08-15-daily-brief" target="_blank">https://pondero.ai/news/2026-08-15-daily-brief</a></li>
+        <li>AI 日报 blog.aichanning.cn（2026-08-15）：<a href="https://blog.aichanning.cn/ai-daily-2026-08-15" target="_blank">https://blog.aichanning.cn/ai-daily-2026-08-15</a></li>
+        <li>Quadra Digital Daily AI Briefing：<a href="https://www.quadradigitalsolutions.com/en/daily-ai-briefing" target="_blank">https://www.quadradigitalsolutions.com/en/daily-ai-briefing</a></li>
+        <li>听松613 / 头条 AI 前沿日报（2026-08-15）：<a href="https://www.toutiao.com/a1873565164273676" target="_blank">https://www.toutiao.com/a1873565164273676</a></li>
+        <li>Cerebras 官方新闻稿（2026-08-13）：<a href="https://www.globenewswire.com/fr/news-release/2026/08/13/3344804/0/en/cerebras-powers-ultrafast-mode-for-openai-s-gpt-5-6-sol.html" target="_blank">https://www.globenewswire.com/.../cerebras-powers-ultrafast-mode</a></li>
+        <li>Goldman Sachs（Investing.com 转载，2026-08-11）：<a href="https://ca.investing.com/news/stock-market-news/goldman-sachs-warns-ai-investment-may-be-crowding-out-other-business-spending-4791750" target="_blank">https://ca.investing.com/.../goldman-sachs-warns-ai-investment</a></li>
+        <li>摩根士丹利 / 野村（富途转载）：<a href="https://news.futunn.com/post/76866156?ns_stock_id=201926" target="_blank">https://news.futunn.com/post/76866156</a></li>
+        <li>摩根士丹利《开放权重模型与三种未来情景》（网易转载）：<a href="https://www.163.com/dy/article/L3H928R90519D45U.html" target="_blank">https://www.163.com/dy/article/L3H928R90519D45U.html</a></li>
+        <li>高盛 GS SUSTAIN 报告（TechFlowPost）：<a href="https://www.techflowpost.com/en-US/article/33099" target="_blank">https://www.techflowpost.com/en-US/article/33099</a></li>
+        <li>OpenAI × Cerebras Ultrafast（Unite.AI）：<a href="https://www.unite.ai/cerebras-runs-openais-gpt-5-6-sol-at-750-tokens-per-second-in-new-ultrafast-tier" target="_blank">https://www.unite.ai/cerebras-runs-openais-gpt-5-6-sol</a></li>
+        <li>GenAI Daily（Ultrafast）：<a href="https://genaidaily.com/openai-launches-ultrafast-tier-with-750-token-speed-for-gpt-5-6-sol" target="_blank">https://genaidaily.com/openai-launches-ultrafast-tier</a></li>
+        <li>机器之心（GPT-5.6 Sol Ultrafast 解读）：<a href="https://www.qbitai.com" target="_blank">https://www.qbitai.com</a></li>
+        <li>Weekly AI 大事（ima.qq.com）：<a href="https://ima.qq.com/wiki/?shareId=2876b026293b5f6191eb3d8906920fdb03472b3fcedd3466ca154d521823884a" target="_blank">https://ima.qq.com/wiki/.../每周AI大事</a></li>
+        <li>AI HOT 聚合（aihot.virxact.com）：<a href="https://aihot.virxact.com" target="_blank">https://aihot.virxact.com</a></li>
+        <li>TechCrunch（开放权重模型安全缺口）：<a href="https://techcrunch.com/2026/08/04/open-weight-ai-models-are-catching-up-to-the-frontier-the-safety-gap-remains" target="_blank">https://techcrunch.com/2026/08/04/open-weight-ai-models</a></li>
+        <li>投融资日报（腾讯新闻）：<a href="https://new.qq.com/rain/a/20260812A07HAS00" target="_blank">https://new.qq.com/rain/a/20260812A07HAS00</a></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>📊 数据来源：WebSearch 多源检索（AI 资讯聚合 + 官方博客/新闻稿 + 高盛/摩根士丹利/野村研报）· 每条均附原文链接</p>
+  <p>🕐 生成时间：2026-08-18（历史补生成）| 覆盖窗口：8月15日 00:00 ~ 24:00 北京时间 | 32 张卡片 / 16 个溯源来源</p>
+  <p>⚠️ 本报告仅供研究参考，不构成投资建议。所有资讯均保留原文链接可溯源；厂商自测数据与未发布模型结论已在正文标注。</p>
+</div>
+
+</div>
+
+<script>
+document.querySelectorAll('.section-header').forEach(function(h){
+  h.addEventListener('click', function(){
+    var s = h.closest('.section');
+    s.classList.toggle('collapsed');
+    var hint = h.querySelector('.toggle-hint');
+    if(hint){ hint.textContent = s.classList.contains('collapsed') ? '▸ 展开' : '▾ 收起'; }
+  });
+});
+</script>
+</body>
+</html>

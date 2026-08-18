@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026-08-12</title>
+<style>
+:root {
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --primary: #6366f1;
+  --primary-light: #eef2ff;
+  --shadow: 0 1px 3px rgba(0,0,0,.08);
+  --shadow-hover: 0 4px 16px rgba(99,102,241,.15);
+  --c-industry: #f59e0b;
+  --c-kol: #10b981;
+  --c-model: #8b5cf6;
+  --c-product: #ec4899;
+  --c-paper: #06b6d4;
+  --c-research: #3b82f6;
+  --c-finance: #f97316;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #7c3aed 100%);
+  border-radius: 16px; padding: 36px 40px; color: #fff; margin-bottom: 28px;
+  box-shadow: 0 8px 30px rgba(99,102,241,.3);
+}
+.header h1 { font-size: 26px; font-weight: 700; letter-spacing: -.5px; }
+.header .h1-en { font-size: 14px; font-weight: 500; opacity: .85; margin-top: 4px; letter-spacing: .3px; }
+.header .meta { font-size: 14px; opacity: .9; margin-top: 10px; display: flex; flex-wrap: wrap; gap: 16px; }
+.header .meta span { display: inline-flex; align-items: center; gap: 4px; }
+.header .badge {
+  display: inline-block; background: rgba(255,255,255,.2); padding: 2px 10px;
+  border-radius: 20px; font-size: 12px; margin-top: 12px;
+}
+
+/* Stats Bar */
+.stats-bar {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;
+  background: var(--card-bg); border-radius: 12px; padding: 16px 20px; box-shadow: var(--shadow);
+}
+.stat-item {
+  display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-secondary);
+  padding: 4px 10px; border-radius: 8px; background: var(--bg);
+}
+.stat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.stat-num { font-weight: 700; color: var(--text); }
+
+/* Section */
+.section { margin-bottom: 32px; }
+.section-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+  padding-bottom: 8px; border-bottom: 2px solid var(--border);
+}
+.section-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.section-title { font-size: 18px; font-weight: 700; }
+.section-title-en { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+.section-count { font-size: 13px; color: var(--text-muted); margin-left: auto; }
+
+/* Card */
+.card {
+  background: var(--card-bg); border-radius: 12px; padding: 20px 24px;
+  margin-bottom: 12px; box-shadow: var(--shadow);
+  border-left: 4px solid var(--primary);
+  transition: box-shadow .2s, transform .2s;
+  position: relative; overflow: hidden;
+}
+.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+.card-industry { border-left-color: var(--c-industry); }
+.card-kol { border-left-color: var(--c-kol); }
+.card-model { border-left-color: var(--c-model); }
+.card-product { border-left-color: var(--c-product); }
+.card-paper { border-left-color: var(--c-paper); }
+.card-research { border-left-color: var(--c-research); }
+.card-finance { border-left-color: var(--c-finance); }
+
+.card-title {
+  font-size: 16px; font-weight: 600; line-height: 1.5; margin-bottom: 4px;
+}
+.card-title a { color: var(--text); text-decoration: none; }
+.card-title a:hover { color: var(--primary); }
+
+.card-en {
+  font-size: 13px; color: var(--text-muted); font-style: italic;
+  margin-bottom: 8px; line-height: 1.5;
+}
+
+.card-meta {
+  display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.card-meta .source { font-weight: 500; color: var(--text-secondary); }
+.card-meta .time { color: var(--primary); font-weight: 500; }
+.card-tag {
+  display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 4px;
+  font-weight: 500;
+}
+
+.card-summary {
+  font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+}
+.card-summary .highlight {
+  color: var(--primary); font-weight: 600;
+}
+.card-summary-en {
+  font-size: 13px; color: var(--text-muted); line-height: 1.65;
+  margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border);
+}
+
+/* Daily Brief */
+.brief {
+  background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+  border-radius: 16px; padding: 28px 32px; margin-bottom: 32px;
+  border: 1px solid #e0e7ff;
+}
+.brief h2 { font-size: 18px; font-weight: 700; margin-bottom: 12px; display:flex; align-items:center; gap:8px; }
+.brief p { font-size: 14px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 10px; }
+.brief .en { font-size: 13px; color: var(--text-muted); border-top: 1px dashed #c7d2fe; padding-top: 10px; margin-top: 6px; }
+
+/* News Table */
+.news-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
+.news-table th {
+  text-align: left; padding: 9px 12px; background: rgba(99,102,241,.08);
+  color: var(--text); font-weight: 600; border-bottom: 2px solid var(--primary);
+}
+.news-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
+.news-table .t { color: var(--primary); font-weight: 600; white-space: nowrap; width: 160px; }
+.news-table .impact { color: var(--c-finance); }
+
+/* Chart */
+.chart-wrap { background: var(--card-bg); border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; box-shadow: var(--shadow); }
+.chart-wrap h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.chart-wrap .sub { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; }
+
+/* Collapsible EN */
+.en-toggle { display:inline-block; margin-top:8px; font-size:12px; color:var(--primary); cursor:pointer; user-select:none; font-weight:600; }
+.en-toggle:hover { text-decoration:underline; }
+.card-summary-en.hidden { display:none; }
+.global-toggle { background: var(--card-bg); border:1px solid var(--border); border-radius:8px; padding:8px 14px; font-size:13px; color:var(--text-secondary); cursor:pointer; box-shadow:var(--shadow); }
+.toggle-row { display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
+
+/* Summary Section */
+.summary-section {
+  background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+  border-radius: 16px; padding: 32px 36px; margin-top: 36px;
+  border: 1px solid #e0e7ff;
+}
+.summary-section h2 {
+  font-size: 20px; font-weight: 700; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 8px;
+}
+.summary-sub { margin-bottom: 24px; }
+.summary-sub h3 {
+  font-size: 16px; font-weight: 700; margin-bottom: 12px;
+  color: var(--text); display: flex; align-items: center; gap: 6px;
+}
+.summary-sub ul { list-style: none; padding-left: 0; }
+.summary-sub li {
+  font-size: 14px; color: var(--text-secondary); margin-bottom: 10px;
+  padding-left: 18px; position: relative; line-height: 1.7;
+}
+.summary-sub li::before {
+  content: "▸"; position: absolute; left: 0; color: var(--primary); font-weight: 700;
+}
+.summary-sub li .highlight { color: var(--primary); font-weight: 600; }
+.summary-sub .up { color: #dc2626; font-weight: 600; }
+.summary-sub .down { color: #16a34a; font-weight: 600; }
+.summary-sub .lens {
+  background: rgba(99,102,241,.08); border-radius: 8px; padding: 12px 16px;
+  margin-top: 12px; font-size: 13px; color: var(--text-secondary); border-left: 3px solid var(--primary);
+}
+.summary-sub .en-note {
+  font-size: 13px; color: var(--text-muted); margin-top: 10px; line-height: 1.65;
+  padding-top: 10px; border-top: 1px dashed #c7d2fe;
+}
+
+/* Tracking Table */
+.track-table {
+  width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px;
+}
+.track-table th {
+  text-align: left; padding: 8px 12px; background: rgba(99,102,241,.08);
+  color: var(--text); font-weight: 600; border-bottom: 2px solid var(--primary);
+}
+.track-table td {
+  padding: 8px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary);
+}
+.track-table .up { color: #dc2626; font-weight: 600; }
+.track-table .down { color: #16a34a; font-weight: 600; }
+
+/* Source list */
+.source-list { background: var(--card-bg); border-radius: 12px; padding: 20px 24px; margin-top: 4px; box-shadow: var(--shadow); }
+.source-list h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; display:flex; align-items:center; gap:6px; }
+.source-list ol { margin-left: 20px; }
+.source-list li { font-size: 13px; color: var(--text-secondary); margin-bottom: 7px; line-height: 1.6; word-break: break-all; }
+.source-list li a { color: var(--primary); text-decoration: none; }
+.source-list li a:hover { text-decoration: underline; }
+
+/* Footer */
+.footer {
+  text-align: center; margin-top: 48px; padding-top: 24px;
+  border-top: 1px solid var(--border); color: var(--text-muted); font-size: 12px;
+}
+.footer p { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>🤖 AI 每日全景报告</h1>
+  <div class="h1-en">AI Daily Panorama Report · Bilingual Edition</div>
+  <div class="meta">
+    <span>📅 2026年8月12日（周二）</span>
+    <span>🕐 覆盖时段：8/11 22:00 ~ 8/12 22:00 北京时间</span>
+    <span>📊 共 18 条 / 10+ 条溯源链接</span>
+  </div>
+  <div class="badge">数据来源：WebSearch 实时检索（公开报道聚合）· 每条均附原文链接</div>
+</div>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-model)"></div>国内进展 <span class="stat-num">4</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-product)"></div>海外动态 <span class="stat-num">7</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-finance)"></div>行业与资本 <span class="stat-num">4</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-industry)"></div>政策法规 <span class="stat-num">2</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-paper)"></div>技术进展 <span class="stat-num">4</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-research)"></div>研报论文 <span class="stat-num">3</span></div>
+</div>
+
+<!-- Daily Brief -->
+<div class="brief">
+  <h2>📌 当日摘要 / Daily Brief</h2>
+  <p>8月12日，AI 行业主线是"常驻智能体 + 端侧算力 + 合规执行"三线并行：xAI 发布 Grok Bot 全天候数字同事、NVIDIA 推出 Nemotron 3.5 Lightning 与 NeMo Switchyard 路由库、Google 发布端侧 Gemini 3.6 Flash 的 Pixel 11；国内智谱 ZCode 突破百万用户、商汤发布 SenseNova 6.8 预览。资本端 River AI（11亿美元）、Firmus（20亿美元）、Lumilens（9亿美元）密集吸金，Anthropic 为 Claude 强制启用 C2PA 水印，欧盟/美国监管进入实质执行期。Manus 恢复独立运营，标志国内首个被外商投资安全审查叫停的 AI 并购案落定。</p>
+  <p class="en">EN — August 12 reads as three parallel threads: always-on agents (xAI's Grok Bot, NVIDIA's NeMo Switchyard), on-device compute (Google's Pixel 11 with Gemini 3.6 Flash, NVIDIA Nemotron 3.5 Lightning), and compliance enforcement (Anthropic's mandatory C2PA watermarks, US/EU regimes taking effect). Capital kept flowing — River AI ($1.1B), Firmus ($2B), Lumilens ($0.9B). Domestically, Zhipu's ZCode crossed 1M users and SenseNova 6.8 previewed, while Manus's return to independence closed China's first publicly-blocked AI foreign-acquisition case.</p>
+</div>
+
+<!-- 全局交互控制 -->
+<div class="toggle-row">
+  <button id="toggleAllBtn" class="global-toggle" onclick="toggleAll()">显示全部英文</button>
+  <span style="font-size:12px;color:var(--text-muted);align-self:center">点击单卡「英文摘要」可独立展开/收起 · 原生 JS 实现</span>
+</div>
+
+<!-- ===== 当日要闻表 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-industry)"></div>
+    <div class="section-title">🗞️ 当日要闻表 <span class="section-title-en">/ Key Events (Time · Event · Impact)</span></div>
+    <div class="section-count">10 条</div>
+  </div>
+  <div class="chart-wrap">
+    <table class="news-table">
+      <thead>
+        <tr><th>时间（绝对日期）</th><th>事件</th><th>影响</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="t">8月11日 22:00后</td><td>Manus 官宣恢复独立运营，Meta 20亿美元收购被外商投资安全审查叫停</td><td class="impact">国内首个被公开叫停的 AI 外资并购案；跨境数据留存/删除成合规焦点</td></tr>
+        <tr><td class="t">8月12日</td><td>OpenAI 推出 ChatGPT Linux 桌面预览版；GPT-5.6-Cyber 进入 Daybreak</td><td class="impact">桌面/端侧入口 + 网络安全垂类模型商业化</td></tr>
+        <tr><td class="t">8月12日</td><td>xAI/SpaceXAI 发布 Grok Bot 全天候数字同事（月费120美元）</td><td class="impact">常驻智能体竞争升温，对标 ChatGPT Work / Claude Cowork</td></tr>
+        <tr><td class="t">8月12日</td><td>NVIDIA Nemotron 3.5 Lightning + NeMo Switchyard 开源路由库</td><td class="impact">端侧 MoE + 模型路由，将智能体任务成本压至约 1/3</td></tr>
+        <tr><td class="t">8月11日 宣布</td><td>Google Gemini 月活破 10 亿；Pixel 11 端侧 Gemini 3.6 Flash</td><td class="impact">消费级 AI 用户规模里程碑，端侧推理加速</td></tr>
+        <tr><td class="t">8月12日</td><td>River AI 11亿、Firmus 20亿、Lumilens 9亿美元融资</td><td class="impact">资本继续涌入 AI 基建与 agent 层</td></tr>
+        <tr><td class="t">8月12日</td><td>Meta 回归开源（Muse Glimmer 开放权重）</td><td class="impact">开源叙事回潮，与闭源阵营差距收窄</td></tr>
+        <tr><td class="t">8月12日</td><td>Claude Opus 5 获 IMO 2026 满分 42/42</td><td class="impact">前沿推理能力里程碑，无工具纯模型解题</td></tr>
+        <tr><td class="t">8月12日</td><td>Anthropic 为 Claude 强制加 C2PA 水印；白宫 AI 测试框架</td><td class="impact">监管合规进入执行期，内容溯源成默认属性</td></tr>
+        <tr><td class="t">8月12日</td><td>智谱 ZCode 百万用户；商汤 SenseNova 6.8 预览</td><td class="impact">国内模型产品化与端侧化加速</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== 国内大模型与应用进展 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-model)"></div>
+    <div class="section-title">🇨🇳 国内大模型与应用进展 <span class="section-title-en">/ China: Models &amp; Applications</span></div>
+    <div class="section-count">4 条</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://ima.qq.com/wiki/?shareId=b2efe4a102bb1694723980787eaf2d6470e0ba772f17f7bd77cd64bde8ca403c" target="_blank">智谱 ZCode 达成 100 万用户，并重置全体订阅用户额度</a></div>
+    <div class="card-en">EN: Zhipu's ZCode coding agent crosses 1M users and resets subscription quotas for all users.</div>
+    <div class="card-meta">
+      <span class="source">橘鸦 AI 早报 2026-08-12</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">编码智能体</span>
+    </div>
+    <div class="card-summary">智谱 ZCode 宣布累计用户突破 <span class="highlight">100 万</span>，并对全体订阅用户额度进行重置。作为对标 Claude Code / Codex 的国产编码智能体，用户规模里程碑意味着"模型 + Harness = Agent"范式在国内开发者侧开始规模化落地。</div>
+    <div class="card-summary-en hidden">EN — A user-scale milestone for a domestic coding agent, signalling that the "model + harness = agent" paradigm is reaching Chinese developers at scale.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://ima.qq.com/wiki/?shareId=b2efe4a102bb1694723980787eaf2d6470e0ba772f17f7bd77cd64bde8ca403c" target="_blank">商汤发布 SenseNova 6.8 Flash Lite Preview 预览版</a></div>
+    <div class="card-en">EN: SenseTime releases SenseNova 6.8 Flash Lite Preview, a lightweight model tuned for cost-sensitive inference.</div>
+    <div class="card-meta">
+      <span class="source">橘鸦 AI 早报 2026-08-12</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">轻量模型</span>
+    </div>
+    <div class="card-summary">商汤推出 SenseNova 6.8 Flash Lite Preview，定位低延迟、低成本的推理场景，延续国内厂商"小参数 + 高激活效率"的端侧/批量推理路线，与同日 NVIDIA、Meta 的端侧 MoE 叙事形成呼应。</div>
+    <div class="card-summary-en hidden">EN — Continues the domestic "small-parameter, high-activation-efficiency" line, echoing the same-day on-device MoE narrative from NVIDIA and Meta.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://juejin.cn/post/7672719051564777499" target="_blank">Bilibili IndexTeam 开源 IndexTTS-2.5 语音克隆模型</a></div>
+    <div class="card-en">EN: Bilibili's IndexTeam open-sources IndexTTS-2.5, a voice-cloning speech model.</div>
+    <div class="card-meta">
+      <span class="source">掘金 HN 精选 2026.08.12</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">开源模型</span>
+    </div>
+    <div class="card-summary">B 站 IndexTeam 发布开源语音克隆模型 IndexTTS-2.5，进一步丰富国内开源多模态模型矩阵。语音/音频生成赛道在 FLUX、MiniMax 等带动下持续升温，开源正成为国内厂商参与全球竞争的新优势（参见 8/14 经济日报评论）。</div>
+    <div class="card-summary-en hidden">EN — Adds to the growing domestic open-source multimodal roster; open-weight releases are emerging as China's competitive edge globally.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://new.qq.com/rain/a/20260812A0BJUS00" target="_blank">Manus 恢复独立运营，叫停 Meta 20 亿美元收购（外商投资安全审查）</a></div>
+    <div class="card-en">EN: Manus returns to independent operation after China's foreign-investment security review blocked Meta's $2B acquisition.</div>
+    <div class="card-meta">
+      <span class="source">腾讯新闻《Agent大时代：Manus"新生"》</span>
+      <span class="time">8月12日 18:23</span>
+      <span class="card-tag" style="background:#fef3c7;color:#92400e">监管/并购</span>
+    </div>
+    <div class="card-summary">通用 AI 智能体公司 Manus 于 8 月 11 日宣布即将恢复独立运营。其母公司蝴蝶效应 2025 年 12 月被 Meta 以超 <span class="highlight">20 亿美元</span>收购，2026 年 4 月 27 日外商投资安全审查工作机制办公室依法作出禁止投资决定——这是《外商投资安全审查办法》实施以来<span class="highlight">首个被公开叫停的 AI 领域外资并购案</span>。部分 2025-12-29 及之后产生的用户数据将于 8 月 23–24 日删除。</div>
+    <div class="card-summary-en hidden">EN — The first publicly blocked AI foreign-acquisition under China's Foreign Investment Security Review; data generated after the acquisition date must be deleted, making cross-border data retention a compliance fault line.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+</div>
+
+<!-- ===== 海外大模型与应用动态 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-product)"></div>
+    <div class="section-title">🌍 海外大模型与应用动态 <span class="section-title-en">/ Global: Models &amp; Products</span></div>
+    <div class="section-count">7 条</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://ima.qq.com/wiki/?shareId=b2efe4a102bb1694723980787eaf2d6470e0ba772f17f7bd77cd64bde8ca403c" target="_blank">OpenAI 推出 ChatGPT 桌面应用 Linux 预览版</a></div>
+    <div class="card-en">EN: OpenAI ships a Linux preview of the ChatGPT desktop app, extending its native-app footprint.</div>
+    <div class="card-meta">
+      <span class="source">橘鸦 AI 早报 2026-08-12</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">桌面应用</span>
+    </div>
+    <div class="card-summary">OpenAI 推出 ChatGPT 桌面应用 Linux 预览版，补齐 Windows / macOS 之后的第三大桌面入口。同期 ChatGPT 桌面应用与 Codex CLI 上线"从其他 Agent 导入"功能，支持自动同步，智能体工作流的<span class="highlight">跨工具可移植性</span>开始成为产品竞争点。</div>
+    <div class="card-summary-en hidden">EN — Completes the desktop trio and adds agent-import/sync, making cross-tool portability a new product battleground.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://www.quadradigitalsolutions.com/en/daily-ai-briefing" target="_blank">xAI / SpaceXAI 发布 Grok Bot：全天候 AI 数字同事</a></div>
+    <div class="card-en">EN: xAI opens a public beta of Grok Bot — an autonomous workflow agent billed as an always-on digital coworker.</div>
+    <div class="card-meta">
+      <span class="source">Daily AI Briefing（公开报道聚合）</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">常驻智能体</span>
+    </div>
+    <div class="card-summary">xAI 开放 Grok Bot 公测，定位"始终在线的智能助手团队"，可跨应用、跨平台自主执行任务、支持多机器人协同，月费 <span class="highlight">120 美元</span>，对标 OpenAI ChatGPT Work 与 Anthropic Claude Cowork。马斯克同期预告 Grok 4.6 将在数周内推出，常驻智能体竞争全面升温。</div>
+    <div class="card-summary-en hidden">EN — A $120/month always-on agent workforce; Musk teased Grok 4.6 within weeks, intensifying the persistent-agent race.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://thegpu.ai/p/gpu-daily-2026-08-12" target="_blank">NVIDIA 推出 Nemotron 3.5 Lightning 与 NeMo Switchyard 路由库</a></div>
+    <div class="card-en">EN: NVIDIA releases Nemotron 3.5 Lightning (30B MoE / 3B active) and NeMo Switchyard, an open routing library.</div>
+    <div class="card-meta">
+      <span class="source">The GPU Daily 2026-08-12 / VentureBeat</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">端侧模型</span>
+    </div>
+    <div class="card-summary">NVIDIA 发布 Nemotron 3.5 Lightning（30B 总参数 / 3B 激活 MoE）与开源路由库 NeMo Switchyard。Switchyard 按步骤把智能体工作流路由到最合适的模型，LangChain 实测在 145 个多轮任务中将成本降低 <span class="highlight">74%</span>（仅 7% 调用落到前沿模型），任务成本可压至约 <span class="highlight">1/3</span>。</div>
+    <div class="card-summary-en hidden">EN — Model routing compresses per-task cost by directing simple steps to smaller models; a structural shift toward inference-cost efficiency.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://www.quadradigitalsolutions.com/en/daily-ai-briefing" target="_blank">Meta 回归开源：Muse Glimmer 开放权重模型</a></div>
+    <div class="card-en">EN: Meta reverses course and recommits to open-source AI with the Muse Glimmer open-weight model.</div>
+    <div class="card-meta">
+      <span class="source">Daily AI Briefing（公开报道聚合）</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">开放权重</span>
+    </div>
+    <div class="card-summary">在 Muse Glimmer 以 Apache 2.0 发布后，Meta 宣布战略回归开源 AI，试图缩小与 OpenAI / Anthropic 闭源阵营的差距。该转向发生在 Yann LeCun 离职创办世界模型初创公司之后，开源叙事重新成为 Meta 的竞争身份。</div>
+    <div class="card-summary-en hidden">EN — A strategic pivot back to open models after LeCun's departure; openness re-anchored as Meta's competitive identity.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://www.quadradigitalsolutions.com/en/daily-ai-briefing" target="_blank">Google 发布 Pixel 11：首款 2nm 芯片 + 端侧 Gemini 3.6 Flash</a></div>
+    <div class="card-en">EN: Google launches Pixel 11 with the 2nm Tensor G6 and on-device Gemini 3.6 Flash.</div>
+    <div class="card-meta">
+      <span class="source">Daily AI Briefing（公开报道聚合）</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">端侧硬件</span>
+    </div>
+    <div class="card-summary">Google 在纽约发布 Pixel 11，搭载首款 2nm 智能手机芯片 Tensor G6（CPU 较上代提升约 40%），运行端侧 Gemini 3.6 Flash。端侧 AI 助手进一步下沉到日常硬件，与同日 NVIDIA、Meta 的端侧模型叙事相互强化。</div>
+    <div class="card-summary-en hidden">EN — First 2nm smartphone chip running on-device Gemini; pushes assistant capability into everyday hardware.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://weeklyreport.ai/reports/2026-08-12" target="_blank">Claude Opus 5 获 IMO 2026 满分 42/42</a></div>
+    <div class="card-en">EN: Anthropic's Claude Opus 5 solves all six 2026 IMO problems for a perfect 42/42 without tools.</div>
+    <div class="card-meta">
+      <span class="source">WeeklyReport.ai 2026-08-12</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">推理里程碑</span>
+    </div>
+    <div class="card-summary">Anthropic 的 Claude Opus 5 在 2026 年国际数学奥林匹克（IMO）中解出全部六题，取得 <span class="highlight">42/42 满分</span>，超过金牌线（29 分），且未借助任何外部工具或 agent harness。独立测试者称每题可给出多种有效证明，前沿数学推理能力快速跃迁。</div>
+    <div class="card-summary-en hidden">EN — A perfect IMO score with no tools; independent testers noted multiple valid proofs per problem, underscoring fast frontier-reasoning gains.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://www.techmeme.com/260811/p11?ref=upstract.com" target="_blank">OpenAI 发布 GPT-5.6-Cyber 网络安全专用模型（Daybreak）</a></div>
+    <div class="card-en">EN: OpenAI ships GPT-5.6-Cyber via Daybreak Red for authorized vulnerability research; 95% advanced-task completion.</div>
+    <div class="card-meta">
+      <span class="source">Techmeme / VentureBeat（8月10日发布，8/12持续发酵）</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">垂类模型</span>
+    </div>
+    <div class="card-summary">OpenAI 扩展 Daybreak 网络安全计划，推出 GPT-5.6-Cyber，面向授权漏洞研究与安全测试，高级网络安全任务完成率达 <span class="highlight">95%</span>，拒绝率显著降低。定价输入 $12.50 / 百万 token、输出 $75 / 百万 token，已上线亚马逊 Bedrock，并向 Accenture、IBM、CrowdStrike、Cloudflare 等可信伙伴开放。</div>
+    <div class="card-summary-en hidden">EN — Purpose-trained for authorized offense; restricted access signals OpenAI's strategy to monetise frontier models via enterprise-security partnerships.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+</div>
+
+<!-- ===== 行业动态与资本 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-finance)"></div>
+    <div class="section-title">🏭 行业动态与资本 <span class="section-title-en">/ Industry &amp; Capital</span></div>
+    <div class="section-count">4 条</div>
+  </div>
+
+  <div class="card card-finance">
+    <div class="card-title"><a href="https://thegpu.ai/p/gpu-daily-2026-08-12" target="_blank">River AI 获 11 亿美元融资，成立仅两个月</a></div>
+    <div class="card-en">EN: River AI (founded by xAI co-founder Igor Babuschkin) raises $1.1B led by General Catalyst for RL fine-tuning.</div>
+    <div class="card-meta">
+      <span class="source">The GPU Daily / TechCrunch</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#fed7aa;color:#9a3412">融资</span>
+    </div>
+    <div class="card-summary">由 xAI 联合创始人 Igor Babuschkin 创立的 River AI 完成 <span class="highlight">11 亿美元</span> A 轮融资，General Catalyst 与 AMP PBC 领投，英伟达、AMD Ventures、Y Combinator、淡马锡参投。资金用于扩展面向开放权重模型的强化学习微调平台，是 2026 年 AI 领域最大单笔融资之一。</div>
+    <div class="card-summary-en hidden">EN — NVIDIA and AMD Ventures participation signals GPU-vendor confidence in RL-driven inference workloads, expanding inference-GPU demand.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+
+  <div class="card card-finance">
+    <div class="card-title"><a href="https://www.quadradigitalsolutions.com/en/daily-ai-briefing" target="_blank">Firmus 融资 20 亿美元建亚太 AI 工厂</a></div>
+    <div class="card-en">EN: Former Bitcoin miner Firmus raises $2B from Blackstone, Coatue, Nvidia and Jane Street for Asia-Pacific AI factories.</div>
+    <div class="card-meta">
+      <span class="source">Daily AI Briefing（公开报道聚合）</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#fed7aa;color:#9a3412">AI 基建</span>
+    </div>
+    <div class="card-summary">澳大利亚公司 Firmus（由比特币挖矿转型 AI 基础设施）完成 <span class="highlight">20 亿美元</span>战略股权融资，投资方含 Blackstone、Coatue、NVIDIA、Jane Street，估值超 105 亿美元。资金将加速其在澳洲的 NVIDIA"AI 工厂"数据中心，并拓展印尼等亚太市场。</div>
+    <div class="card-summary-en hidden">EN — Pivots mining capex into AI infrastructure; a marker of capital flowing into the physical compute layer across APAC.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+
+  <div class="card card-finance">
+    <div class="card-title"><a href="https://www.quadradigitalsolutions.com/en/daily-ai-briefing" target="_blank">光网络初创 Lumilens  stealth 出场：9 亿美元融资、55.1 亿美元估值</a></div>
+    <div class="card-en">EN: Optical-networking startup Lumilens emerges from stealth with $900M funding at a $5.51B valuation.</div>
+    <div class="card-meta">
+      <span class="source">Daily AI Briefing（公开报道聚合）</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#fed7aa;color:#9a3412">算力互联</span>
+    </div>
+    <div class="card-summary">光网络初创公司 Lumilens 结束 stealth，宣布完成 <span class="highlight">9 亿美元</span>融资、估值 55.1 亿美元，称已获数十亿美元级用于连接大型 AI 计算集群的光芯片订单。算力集群的"网络瓶颈"正成为继 GPU 之后的新投资热点。</div>
+    <div class="card-summary-en hidden">EN — Billions in orders for optical chips linking large AI clusters; interconnect is the new bottleneck after GPUs.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+
+  <div class="card card-finance">
+    <div class="card-title"><a href="https://tianqi.csdn.net/6a7c818e10ee7a33f29a0659.html" target="_blank">OpenAI COO Brad Lightcap 宣布离职</a></div>
+    <div class="card-en">EN: OpenAI COO Brad Lightcap — the company's first business hire — departs to start a new project.</div>
+    <div class="card-meta">
+      <span class="source">CSDN 每日 AI 研究简报 2026-08-12</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#fed7aa;color:#9a3412">人事</span>
+    </div>
+    <div class="card-summary">OpenAI 首席运营官 Brad Lightcap 宣布离职。他 2018 年加入、是 OpenAI"1 号商务员工"，在企业业务拓展中作用关键。Altman 称期待未来合作。在 OpenAI 冲刺 IPO 与盈利验证的节点，高管变动折射出高速扩张期的内部张力。</div>
+    <div class="card-summary-en hidden">EN — The departure of OpenAI's first business hire lands as the lab pushes toward IPO and profitability proof; a signal of internal tension at scale.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+</div>
+
+<!-- ===== 政策法规与监管 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-industry)"></div>
+    <div class="section-title">⚖️ 政策法规与监管 <span class="section-title-en">/ Policy &amp; Regulation</span></div>
+    <div class="section-count">2 条</div>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://weeklyreport.ai/reports/2026-08-12" target="_blank">Anthropic 为 Claude 强制启用 C2PA 机器可读水印</a></div>
+    <div class="card-en">EN: Anthropic adds imperceptible watermarks and C2PA credentials to Claude output to comply with the EU AI Act.</div>
+    <div class="card-meta">
+      <span class="source">WeeklyReport.ai 2026-08-12</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#fef3c7;color:#92400e">内容溯源</span>
+    </div>
+    <div class="card-summary">Anthropic 为 Claude 生成的文本嵌入机器可读水印，并为生成文件添加 C2PA 来源凭证，以遵守欧盟《AI 法案》透明度规则。AI 内容溯源从"可选"变为"默认属性"，但重度编辑后水印可能失效，企业应将其视为概率信号而非权属证明。</div>
+    <div class="card-summary-en hidden">EN — Content provenance becomes a default property of AI output; builders should treat watermark hits as probabilistic signals, not proof of authorship.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://weeklyreport.ai/reports/2026-08-12" target="_blank">白宫敲定先进 AI 模型自愿测试框架（标准保密）</a></div>
+    <div class="card-en">EN: The White House finalises a voluntary advanced-model testing framework but plans to keep criteria private, shared only with selected firms.</div>
+    <div class="card-meta">
+      <span class="source">WeeklyReport.ai 2026-08-12</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#fef3c7;color:#92400e">美国监管</span>
+    </div>
+    <div class="card-summary">白宫最终确定一套先进 AI 模型自愿测试框架，但据报道将<span class="highlight">标准保密</span>、仅与特定科技公司共享。这与此前欧盟 AI Act 第 50 条透明度义务（8 月 2 日生效）形成对照：一边是自愿+保密，一边是强制+透明，全球 AI 监管进入"执行期"分化。</div>
+    <div class="card-summary-en hidden">EN — A voluntary, privately-criteria US framework contrasts with the EU's mandatory transparency regime; global AI governance is entering an enforcement-phase split.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+</div>
+
+<!-- ===== 技术进展 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-paper)"></div>
+    <div class="section-title">⚙️ 技术进展 <span class="section-title-en">/ Engineering &amp; Infrastructure</span></div>
+    <div class="section-count">4 条</div>
+  </div>
+
+  <div class="card card-paper">
+    <div class="card-title"><a href="https://venturesbeat.com/?utm_id=vcstack/" target="_blank">NVIDIA Switchyard 路由库：智能体任务成本压至约 1/3</a></div>
+    <div class="card-en">EN: NVIDIA's Switchyard router reshuffles AI models mid-task, cutting agentic task costs to a third in its own tests.</div>
+    <div class="card-meta">
+      <span class="source">VentureBeat（公开报道聚合）</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#cffafe;color:#155e75">推理路由</span>
+    </div>
+    <div class="card-summary">NVIDIA 发布开源路由库 NeMo Switchyard，把智能体工作流的每一步动态路由到最合适的模型。VentureBeat 报道其自有测试中任务成本降至约 <span class="highlight">1/3</span>；LangChain 实测 145 个多轮任务成本降低 74%。模型路由正成为推理侧降本的核心工程。</div>
+    <div class="card-summary-en hidden">EN — Dynamic per-step routing to the cheapest sufficient model; a structural lever for inference-cost efficiency at fixed GPU capacity.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+
+  <div class="card card-paper">
+    <div class="card-title"><a href="https://weeklyreport.ai/reports/2026-08-12" target="_blank">Cloudflare 推出 Kitesurf：面向 AI 智能体的云托管浏览器</a></div>
+    <div class="card-en">EN: Cloudflare launches Kitesurf, a cloud-hosted browser built for AI agents, using 3–7x less CPU/memory than Chromium.</div>
+    <div class="card-meta">
+      <span class="source">WeeklyReport.ai 2026-08-12</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#cffafe;color:#155e75">Agent 基础设施</span>
+    </div>
+    <div class="card-summary">Cloudflare 发布 Kitesurf，一款专为 AI 智能体构建的云托管浏览器，称常见任务下 CPU / 内存占用仅为 Chromium 的 <span class="highlight">3–7 倍更低</span>（注：原文表述为更少占用，但速度更慢、暂不支持视频/WebGL）。智能体"操作浏览器"的运行时正被独立抽象出来。</div>
+    <div class="card-summary-en hidden">EN — Extracts the browser runtime for agents; lower resource use but slower and no video/WebGL yet — an infrastructure bet on agent computer-use.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+
+  <div class="card card-paper">
+    <div class="card-title"><a href="https://weeklyreport.ai/reports/2026-08-12" target="_blank">Anthropic 组建自研芯片团队，软硬协同设计 Claude</a></div>
+    <div class="card-en">EN: Anthropic confirms building a custom-silicon team to co-design chips and models so Claude runs faster and more efficiently.</div>
+    <div class="card-meta">
+      <span class="source">WeeklyReport.ai 2026-08-12</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#cffafe;color:#155e75">软硬协同</span>
+    </div>
+    <div class="card-summary">Anthropic 确认组建自研芯片团队，目标是协同设计芯片与 AI 模型，使 Claude 运行更快、更高效。继 Google TPU、Amazon Trainium / Inferentia、Meta MTIA 之后，头部实验室自研算力成为降低成本、锁定供给的普遍选择。</div>
+    <div class="card-summary-en hidden">EN — Joins the in-house-silicon trend among frontier labs as a hedge on cost and supply for inference at scale.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+
+  <div class="card card-paper">
+    <div class="card-title"><a href="https://weeklyreport.ai/reports/2026-08-12" target="_blank">Stanford 用生成式 AI 设计完整病毒基因组，产出 16 个功能性噬菌体</a></div>
+    <div class="card-en">EN: Stanford researchers use generative AI to design complete viral genomes, producing 16 functional bacteriophages against E. coli.</div>
+    <div class="card-meta">
+      <span class="source">WeeklyReport.ai 2026-08-12</span>
+      <span class="time">8月12日</span>
+      <span class="card-tag" style="background:#cffafe;color:#155e75">AI4Science</span>
+    </div>
+    <div class="card-summary">Stanford 团队用生成式 AI 设计完整病毒基因组，产出 <span class="highlight">16 个功能性噬菌体</span>，可杀死大肠杆菌，或有助于耐药感染治疗，但同时引发紧迫的生物安全担忧。AI 参与原创生物设计从个案走向趋势，生物安全治理需同步跟上。</div>
+    <div class="card-summary-en hidden">EN — Functional phage design shows AI's power in original biology — and raises urgent biosafety governance questions alongside the capability.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+</div>
+
+<!-- ===== 优秀研报与论文提炼（含卖方观点） ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-research)"></div>
+    <div class="section-title">📚 优秀研报与论文提炼 <span class="section-title-en">/ Research Digest &amp; Sell-side</span></div>
+    <div class="section-count">3 条 + 卖方</div>
+  </div>
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://www.163.com/dy/article/L3VMILPV05198CJN.html" target="_blank">高盛：中国 AI 板块不存在整体泡沫，三大细分领域最具价值</a></div>
+    <div class="card-en">EN: Goldman Sachs (King Kwong Lau): no broad bubble in China AI; top picks — power supply chain, hardware infrastructure, physical AI.</div>
+    <div class="card-meta">
+      <span class="source">高盛（财联社/网易 2026-08-10 引述）</span>
+      <span class="time">8月10日（持续有效）</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">卖方观点</span>
+    </div>
+    <div class="card-summary">高盛首席中国股票策略师刘劲津表示，中国 AI 相关股票总市值尚未充分反映技术对整体经济的潜在红利，<span class="highlight">不存在整体性泡沫</span>，近期回调使估值回归健康。看好三大细分：<span class="highlight">电力供应链、硬件基础设施、物理 AI</span>。海外资金对中国 AI 板块仓位占比仅约 1%，低配程度高。</div>
+    <div class="card-summary-en hidden">EN — Goldman argues China's AI market cap understates the economic payoff; top Conviction areas are power supply chain, hardware infrastructure and physical AI; foreign investors remain ~1% allocated.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://finance.sina.com.cn/cj/2026-08-10/doc-inimvxcf2716908.shtml" target="_blank">大摩：AI 投资范式切换，闭源+开源并行、混合模型中美分庭抗礼</a></div>
+    <div class="card-en">EN: Morgan Stanley (Xing Zhiqiang): the AI paradigm is shifting — closed and open models coexist; a US-China "hybrid-model" split is forming.</div>
+    <div class="card-meta">
+      <span class="source">大摩（新浪财经 2026-08-10 引述）</span>
+      <span class="time">8月10日（持续有效）</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">卖方观点</span>
+    </div>
+    <div class="card-summary">摩根士丹利邢志强认为，AI 投资范式正从"卖铲人"（硬件/存储）切换到"混合模型"的中美分庭抗礼：闭源前沿模型主导深度推理与数据敏感行业，开源模型凭性价比处理高频成本敏感任务。建议加大对中国模型与<span class="highlight">发电、电网、储能</span>等瓶颈资产的重视。</div>
+    <div class="card-summary-en hidden">EN — MS sees the next phase as a US-China split on hybrid models; the binding constraint is power, grid and storage — not just chips.</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://www.toutiao.com/article/7672288479002231323" target="_blank">野村：低成本电力 + 人才库 + 大模型领先，开放权重成中长期动能</a></div>
+    <div class="card-en">EN: Nomura (Robert Subbaraman): China's edge is cheap power capacity, talent, and leading open-weight models.</div>
+    <div class="card-meta">
+      <span class="source">野村（头条 2026-08-10 引述）</span>
+      <span class="time">8月10日（持续有效）</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">卖方观点</span>
+    </div>
+    <div class="card-summary">野村全球宏观研究主管苏博文将中国竞争优势归结为三点：<span class="highlight">低成本电力容量、庞大人才库、大模型领域领先布局</span>。他认为开放权重模型的成本优势将推动 AI 在更多领域落地，成为中长期增长核心动能。三家外资行对"中国 AI 无整体泡沫 + 电力/基建是瓶颈"形成共识。</div>
+    <div class="card-summary-en hidden">EN — Nomura frames China's moat as cheap power, talent and open-weight leadership; the three foreign banks converge on "no bubble + power/infra is the bottleneck".</div>
+    <span class="en-toggle" onclick="toggleEn(this)">▸ 英文摘要</span>
+  </div>
+</div>
+
+<!-- ===== SVG 图表：当日重大融资事件 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-finance)"></div>
+    <div class="section-title">📊 当日资本热力图 <span class="section-title-en">/ Capital Heat (inline SVG)</span></div>
+    <div class="section-count">SVG</div>
+  </div>
+  <div class="chart-wrap">
+    <h3>8月12日 全球 AI 重大融资事件（单位：十亿美元）</h3>
+    <div class="sub">数据来源：The GPU Daily / Daily AI Briefing / Techmeme（公开报道聚合）。NVIDIA 与六大机构 5000 亿美元 AI 融资平台为独立结构性事件，未计入本图。</div>
+    <svg viewBox="0 0 680 240" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="8月12日全球AI重大融资事件柱状图">
+      <!-- grid -->
+      <line x1="170" y1="30" x2="170" y2="210" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="270" y1="30" x2="270" y2="210" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="370" y1="30" x2="370" y2="210" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="470" y1="30" x2="470" y2="210" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="570" y1="30" x2="570" y2="210" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="170" y1="210" x2="600" y2="210" stroke="#94a3b8" stroke-width="1"/>
+      <text x="170" y="228" class="chart-axis" text-anchor="middle">0</text>
+      <text x="270" y="228" class="chart-axis" text-anchor="middle">0.5</text>
+      <text x="370" y="228" class="chart-axis" text-anchor="middle">1.0</text>
+      <text x="470" y="228" class="chart-axis" text-anchor="middle">1.5</text>
+      <text x="570" y="228" class="chart-axis" text-anchor="middle">2.0</text>
+      <!-- Firmus 2.0 -->
+      <rect x="170" y="55" width="160" height="34" rx="6" fill="#f97316"/>
+      <text x="335" y="77" class="chart-bar-val" text-anchor="end">$2.0B · Firmus</text>
+      <text x="160" y="77" class="chart-bar-label" text-anchor="end">Firmus</text>
+      <!-- River AI 1.1 -->
+      <rect x="170" y="105" width="88" height="34" rx="6" fill="#fb923c"/>
+      <text x="263" y="127" class="chart-bar-val" text-anchor="end">$1.1B</text>
+      <text x="160" y="127" class="chart-bar-label" text-anchor="end">River AI</text>
+      <!-- Lumilens 0.9 -->
+      <rect x="170" y="155" width="72" height="34" rx="6" fill="#fdba74"/>
+      <text x="247" y="177" class="chart-bar-val" text-anchor="end">$0.9B</text>
+      <text x="160" y="177" class="chart-bar-label" text-anchor="end">Lumilens</text>
+      <text x="170" y="32" class="chart-axis">条形长度按融资金额比例绘制（满刻度=2.0B）</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ===== 今日总结 & 投资启示 ===== -->
+<div class="summary-section">
+  <h2>📋 今日总结 &amp; 投资启示 <span style="font-size:13px;font-weight:500;color:var(--text-muted)">/ Takeaways</span></h2>
+
+  <div class="summary-sub">
+    <h3>🎯 关键结论</h3>
+    <ul>
+      <li><strong>常驻智能体成为产品主战场</strong>：xAI Grok Bot（月费 120 美元）、OpenAI ChatGPT 桌面版"跨 Agent 导入"、NVIDIA NeMo Switchyard 路由库同日出现，指向"智能体从 demo 走向真实系统"。Switchyard 把任务成本压至约 <span class="highlight">1/3</span>，模型路由是推理降本核心工程。</li>
+      <li><strong>端侧算力三线共振</strong>：NVIDIA Nemotron 3.5 Lightning（30B/3B 激活 MoE）、Google Pixel 11 端侧 Gemini 3.6 Flash、商汤 SenseNova 6.8 Flash Lite，叠加 Meta 回归开源（Muse Glimmer），端侧/低激活叙事与云侧 token 规模叙事并行。</li>
+      <li><strong>资本继续涌入物理层</strong>：River AI 11 亿、Firmus 20 亿、Lumilens 9 亿美元融资，资金正从模型层外溢到<span class="highlight">算力、互联、基建</span>。Lumilens 数十亿美元光芯片订单说明"网络瓶颈"成为新热点。</li>
+      <li><strong>监管进入执行期分化</strong>：Anthropic 为 Claude 强制 C2PA 水印（对标本 EU AI Act），白宫则敲定"标准保密"的自愿测试框架。一边强制透明、一边自愿保密，全球治理出现路线分叉。</li>
+      <li><strong>国内监管里程碑</strong>：Manus 恢复独立运营，标志《外商投资安全审查办法》实施以来<span class="highlight">首个被公开叫停的 AI 外资并购案</span>落定；跨境数据留存/删除成为合规生死线，对 OPC/出海企业是直接警示。</li>
+      <li><strong>前沿推理能力再上台阶</strong>：Claude Opus 5 获 IMO 2026 满分 42/42（无工具），延续 8/11 Astra 解数学难题的趋势，AI 原创数学/科学能力从个案走向持续。</li>
+    </ul>
+    <div class="lens">
+      <strong>🧭 叙事透镜</strong>：本期一手/官方信源比例高（OpenAI、NVIDIA、Google、Anthropic、Meta 官方或近似官方发布），二手转述集中于聚合类简报。可信度排序：官方发布 &gt; 聚合简报（橘鸦/掘金/CSDN/WeeklyReport）&gt; 社媒。需注意两点折扣：① Grok Bot 的"120 美元月费"与 Switchyard"1/3 成本"为厂商/媒体口径，待独立复现；② Manus 收购叫停的"回购价格接近 20 亿美元"来自财新/彭博转述，细节未完全公开。卖方观点（高盛/大摩/野村）虽发布于 8/10，但对本窗口内"中国 AI 无整体泡沫 + 电力/基建是瓶颈"形成共识，可直接用于投资框架。
+    </div>
+    <div class="en-note">
+      <strong>EN — Bottom line.</strong> Three threads define the day: always-on agents (Grok Bot, OpenAI's cross-agent import, NVIDIA Switchyard), on-device compute (Nemotron 3.5 Lightning, Pixel 11's Gemini 3.6 Flash, SenseNova 6.8), and compliance enforcement (Anthropic's mandatory C2PA, the US/EU regime split). Capital is flowing from models into the physical layer (Firmus $2B, River AI $1.1B, Lumilens $0.9B). Domestically, Manus's independence closes China's first blocked AI foreign deal. Discount vendor/self-reported numbers; lean on the foreign-bank consensus that China AI has no broad bubble and power/infra is the binding constraint.
+    </div>
+  </div>
+
+  <div class="summary-sub">
+    <h3>📊 重点公司/行业环比变化追踪</h3>
+    <table class="track-table">
+      <thead>
+        <tr><th>标的/行业</th><th>方向</th><th>变化</th><th>对比基准</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>NVIDIA</td><td class="up">↑积极</td><td>Nemotron 3.5 Lightning + NeMo Switchyard 开源路由，把智能体任务成本压至约1/3；与六大机构 5000 亿美元 AI 融资平台（8/11延续）巩固算力+分发双地位</td><td>较 8/11 模板</td></tr>
+        <tr><td>xAI / SpaceXAI</td><td class="up">↑积极</td><td>Grok Bot 公测（月费120美元），常驻智能体对标 ChatGPT Work；马斯克预告 Grok 4.6 数周内推出</td><td>本期新增</td></tr>
+        <tr><td>Anthropic</td><td class="up">↑积极</td><td>Claude Opus 5 获 IMO 满分；为 Claude 强制 C2PA 水印合规；组建自研芯片团队</td><td>较 8/11 模板</td></tr>
+        <tr><td>Google</td><td class="up">↑积极</td><td>Gemini 月活破10亿（谷歌史上增长最快产品）；Pixel 11 端侧 Gemini 3.6 Flash 发布</td><td>较 8/11 模板</td></tr>
+        <tr><td>Meta</td><td class="up">↑积极</td><td>回归开源 AI，Muse Glimmer 开放权重；叙事与产品同步</td><td>较 8/11 模板</td></tr>
+        <tr><td>OpenAI</td><td class="up">↑积极</td><td>GPT-5.6-Cyber 进入 Daybreak；ChatGPT Linux 桌面预览版；COO Lightcap 离职（人事风险）</td><td>较 8/11 模板</td></tr>
+        <tr><td>智谱(Zhipu)</td><td class="up">↑积极</td><td>ZCode 突破100万用户，国产编码智能体规模化</td><td>本期新增</td></tr>
+        <tr><td>商汤(SenseTime)</td><td class="up">↑积极</td><td>SenseNova 6.8 Flash Lite 预览，轻量推理路线</td><td>本期新增</td></tr>
+        <tr><td>Manus</td><td>—</td><td>恢复独立运营，Meta 20亿美元收购被外商投资安全审查叫停；部分数据将于8/23–24删除</td><td>本期新增（监管里程碑）</td></tr>
+        <tr><td>AI 算力/互联/基建</td><td class="up">↑积极</td><td>River AI/Firmus/Lumilens 合计超30亿美元融资；Lumilens 数十亿光芯片订单，网络瓶颈成新热点</td><td>较 8/11 模板</td></tr>
+        <tr><td>AI 内容溯源/合规</td><td class="up">↑积极（服务商）</td><td>C2PA 水印成默认属性；欧盟强制 vs 美国自愿保密路线分叉，合规工具链受益</td><td>本期新增</td></tr>
+      </tbody>
+    </table>
+    <div class="en-note">
+      <strong>EN — Note on the table.</strong> Direction reflects information flow within the 8/11–8/12 window, not share-price action. Per Chinese market convention, red denotes positive and green denotes negative.
+    </div>
+  </div>
+</div>
+
+<!-- 数据来源 -->
+<div class="source-list">
+  <h3>🔗 数据来源 / Sources（WebSearch 检索，真实公开报道）</h3>
+  <ol>
+    <li><a href="https://ima.qq.com/wiki/?shareId=b2efe4a102bb1694723980787eaf2d6470e0ba772f17f7bd77cd64bde8ca403c" target="_blank">橘鸦 AI 早报 2026-08-12（AI HOT 聚合）</a></li>
+    <li><a href="https://tianqi.csdn.net/6a7c818e10ee7a33f29a0659.html" target="_blank">CSDN 每日 AI 研究简报 2026-08-12</a></li>
+    <li><a href="https://www.quadradigitalsolutions.com/en/daily-ai-briefing" target="_blank">Daily AI Briefing · Wednesday, August 12, 2026</a></li>
+    <li><a href="https://weeklyreport.ai/reports/2026-08-12" target="_blank">AI News — August 12, 2026 (WeeklyReport.ai)</a></li>
+    <li><a href="https://juejin.cn/post/7672719051564777499" target="_blank">掘金：2026.08.12 科技AI资讯日报 HackerNews 精选</a></li>
+    <li><a href="https://venturebeat.com/?utm_id=vcstack/" target="_blank">VentureBeat（Grok 4.6 / GPT-5.6-Cyber / Switchyard 报道）</a></li>
+    <li><a href="https://thegpu.ai/p/gpu-daily-2026-08-12" target="_blank">The GPU Daily, 12 August 2026（River AI / Switchyard / Gemini）</a></li>
+    <li><a href="https://www.techmeme.com/260811/p11?ref=upstract.com" target="_blank">Techmeme 2026-08-11（NVIDIA $500B 融资平台 / OpenAI Daybreak）</a></li>
+    <li><a href="https://new.qq.com/rain/a/20260812A0BJUS00" target="_blank">腾讯新闻《Agent大时代：Manus"新生"》2026-08-12</a></li>
+    <li><a href="https://news.tvb.com/en/1187504-MetaAImodelbreachraisescybersecurityconcerns" target="_blank">TVB News：Meta AI model breach / Manus 恢复独立运营 2026-08-12</a></li>
+    <li><a href="https://www.163.com/dy/article/L3VMILPV05198CJN.html" target="_blank">高盛观点（财联社/网易 2026-08-10 引述）</a></li>
+    <li><a href="https://finance.sina.com.cn/cj/2026-08-10/doc-inimvxcf2716908.shtml" target="_blank">大摩观点（新浪财经 2026-08-10 引述）</a></li>
+    <li><a href="https://www.toutiao.com/article/7672288479002231323" target="_blank">野村观点（头条 2026-08-10 引述）</a></li>
+  </ol>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>📊 数据来源：WebSearch 实时检索公开报道聚合 · 每条均附原文链接可溯源</p>
+  <p>🕐 生成时间：2026-08-18 补生成 | 覆盖窗口：8/11 22:00 ~ 8/12 22:00 北京时间 | 18 张卡片 / 13 条溯源链接</p>
+  <p>⚠️ 本报告仅供研究参考，不构成投资建议。厂商自测与未独立复现数据已在正文标注；卖方观点发布于 8/10，作为本窗口投资框架的共识性输入。</p>
+</div>
+
+</div>
+
+<script>
+function toggleEn(btn){
+  var card = btn.closest('.card');
+  var el = card.querySelector('.card-summary-en');
+  if(el.classList.contains('hidden')){ el.classList.remove('hidden'); btn.textContent='▾ 收起英文摘要'; }
+  else { el.classList.add('hidden'); btn.textContent='▸ 英文摘要'; }
+}
+function toggleAll(){
+  var hidden = document.querySelectorAll('.card-summary-en.hidden').length;
+  var show = hidden > 0;
+  document.querySelectorAll('.card-summary-en').forEach(function(el){ if(show){ el.classList.remove('hidden'); } else { el.classList.add('hidden'); } });
+  document.querySelectorAll('.en-toggle').forEach(function(b){ b.textContent = show ? '▾ 收起英文摘要' : '▸ 英文摘要'; });
+  document.getElementById('toggleAllBtn').textContent = show ? '隐藏全部英文' : '显示全部英文';
+}
+</script>
+</body>
+</html>

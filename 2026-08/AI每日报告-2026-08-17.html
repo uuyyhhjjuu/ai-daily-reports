@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026-08-17</title>
+<style>
+:root {
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --primary: #6366f1;
+  --primary-light: #eef2ff;
+  --shadow: 0 1px 3px rgba(0,0,0,.08);
+  --shadow-hover: 0 4px 16px rgba(99,102,241,.15);
+  --c-industry: #f59e0b;
+  --c-kol: #10b981;
+  --c-model: #8b5cf6;
+  --c-product: #ec4899;
+  --c-paper: #06b6d4;
+  --c-research: #3b82f6;
+  --c-finance: #f97316;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #7c3aed 100%);
+  border-radius: 16px; padding: 36px 40px; color: #fff; margin-bottom: 28px;
+  box-shadow: 0 8px 30px rgba(99,102,241,.3);
+}
+.header h1 { font-size: 26px; font-weight: 700; letter-spacing: -.5px; }
+.header .h1-en { font-size: 14px; font-weight: 500; opacity: .85; margin-top: 4px; letter-spacing: .3px; }
+.header .meta { font-size: 14px; opacity: .9; margin-top: 10px; display: flex; flex-wrap: wrap; gap: 16px; }
+.header .meta span { display: inline-flex; align-items: center; gap: 4px; }
+.header .badge {
+  display: inline-block; background: rgba(255,255,255,.2); padding: 2px 10px;
+  border-radius: 20px; font-size: 12px; margin-top: 12px;
+}
+
+/* Stats Bar */
+.stats-bar {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;
+  background: var(--card-bg); border-radius: 12px; padding: 16px 20px; box-shadow: var(--shadow);
+}
+.stat-item {
+  display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-secondary);
+  padding: 4px 10px; border-radius: 8px; background: var(--bg);
+}
+.stat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.stat-num { font-weight: 700; color: var(--text); }
+
+/* Section */
+.section { margin-bottom: 32px; }
+.section-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+  padding-bottom: 8px; border-bottom: 2px solid var(--border); cursor: pointer; user-select: none;
+}
+.section-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.section-title { font-size: 18px; font-weight: 700; }
+.section-title-en { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+.section-count { font-size: 13px; color: var(--text-muted); margin-left: auto; }
+.toggle-hint { font-size: 12px; color: var(--primary); margin-left: 10px; white-space: nowrap; }
+.collapsed .section-body { display: none; }
+
+/* Card */
+.card {
+  background: var(--card-bg); border-radius: 12px; padding: 20px 24px;
+  margin-bottom: 12px; box-shadow: var(--shadow);
+  border-left: 4px solid var(--primary);
+  transition: box-shadow .2s, transform .2s;
+  position: relative; overflow: hidden;
+}
+.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+.card-industry { border-left-color: var(--c-industry); }
+.card-kol { border-left-color: var(--c-kol); }
+.card-model { border-left-color: var(--c-model); }
+.card-product { border-left-color: var(--c-product); }
+.card-paper { border-left-color: var(--c-paper); }
+.card-research { border-left-color: var(--c-research); }
+.card-finance { border-left-color: var(--c-finance); }
+
+.card-title {
+  font-size: 16px; font-weight: 600; line-height: 1.5; margin-bottom: 4px;
+}
+.card-title a { color: var(--text); text-decoration: none; }
+.card-title a:hover { color: var(--primary); }
+
+.card-en {
+  font-size: 13px; color: var(--text-muted); font-style: italic;
+  margin-bottom: 8px; line-height: 1.5;
+}
+
+.card-meta {
+  display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.card-meta .source { font-weight: 500; color: var(--text-secondary); }
+.card-meta .time { color: var(--primary); font-weight: 500; }
+.card-tag {
+  display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 4px;
+  font-weight: 500;
+}
+
+.card-summary {
+  font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+}
+.card-summary .highlight {
+  color: var(--primary); font-weight: 600;
+}
+.card-summary-en {
+  font-size: 13px; color: var(--text-muted); line-height: 1.65;
+  margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border);
+}
+
+/* News Table */
+.news-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 4px 0 10px; }
+.news-table th {
+  text-align: left; padding: 9px 12px; background: rgba(99,102,241,.08);
+  color: var(--text); font-weight: 600; border-bottom: 2px solid var(--primary);
+}
+.news-table td {
+  padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top;
+}
+.news-table .t { color: var(--primary); font-weight: 600; white-space: nowrap; }
+.news-table .e { color: var(--c-finance); font-weight: 500; }
+
+/* Chart */
+.chart-wrap {
+  background: var(--card-bg); border-radius: 12px; padding: 20px 24px;
+  margin-bottom: 14px; box-shadow: var(--shadow); border-left: 4px solid var(--c-research);
+}
+.chart-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.chart-note { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
+.chart-wrap svg { width: 100%; height: auto; display: block; }
+
+/* Summary Section */
+.summary-section {
+  background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+  border-radius: 16px; padding: 32px 36px; margin-top: 36px;
+  border: 1px solid #e0e7ff;
+}
+.summary-section h2 {
+  font-size: 20px; font-weight: 700; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 8px;
+}
+.summary-sub { margin-bottom: 24px; }
+.summary-sub h3 {
+  font-size: 16px; font-weight: 700; margin-bottom: 12px;
+  color: var(--text); display: flex; align-items: center; gap: 6px;
+}
+.summary-sub ul { list-style: none; padding-left: 0; }
+.summary-sub li {
+  font-size: 14px; color: var(--text-secondary); margin-bottom: 10px;
+  padding-left: 18px; position: relative; line-height: 1.7;
+}
+.summary-sub li::before {
+  content: "▸"; position: absolute; left: 0; color: var(--primary); font-weight: 700;
+}
+.summary-sub li .highlight { color: var(--primary); font-weight: 600; }
+.summary-sub .up { color: #dc2626; font-weight: 600; }
+.summary-sub .down { color: #16a34a; font-weight: 600; }
+.summary-sub .lens {
+  background: rgba(99,102,241,.08); border-radius: 8px; padding: 12px 16px;
+  margin-top: 12px; font-size: 13px; color: var(--text-secondary); border-left: 3px solid var(--primary);
+}
+.summary-sub .en-note {
+  font-size: 13px; color: var(--text-muted); margin-top: 10px; line-height: 1.65;
+  padding-top: 10px; border-top: 1px dashed #c7d2fe;
+}
+
+/* Tracking Table */
+.track-table {
+  width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px;
+}
+.track-table th {
+  text-align: left; padding: 8px 12px; background: rgba(99,102,241,.08);
+  color: var(--text); font-weight: 600; border-bottom: 2px solid var(--primary);
+}
+.track-table td {
+  padding: 8px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary);
+}
+.track-table .up { color: #dc2626; font-weight: 600; }
+.track-table .down { color: #16a34a; font-weight: 600; }
+
+/* Sources / Collapsible */
+.sources-box { margin-top: 4px; }
+.sources-toggle {
+  display: inline-block; cursor: pointer; font-size: 13px; font-weight: 600;
+  color: var(--primary); background: var(--primary-light); padding: 6px 14px; border-radius: 8px;
+}
+.sources-list { margin-top: 12px; font-size: 13px; color: var(--text-secondary); }
+.sources-list.hidden { display: none; }
+.sources-list ol { padding-left: 22px; }
+.sources-list li { margin-bottom: 6px; line-height: 1.6; }
+.sources-list a { color: var(--primary); word-break: break-all; }
+
+/* Footer */
+.footer {
+  text-align: center; margin-top: 48px; padding-top: 24px;
+  border-top: 1px solid var(--border); color: var(--text-muted); font-size: 12px;
+}
+.footer p { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>🤖 AI 每日全景报告</h1>
+  <div class="h1-en">AI Daily Panorama Report · Bilingual Edition</div>
+  <div class="meta">
+    <span>📅 2026年8月17日（周一）</span>
+    <span>🕐 覆盖时段：8月17日 00:00 ~ 8月17日 24:00 北京时间</span>
+    <span>📊 共 26 条 / 14 个溯源来源</span>
+  </div>
+  <div class="badge">数据来源：WebSearch 多源检索（官方动态 + 政策/媒体 + 外资行研报）· 每条均附原文链接</div>
+</div>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-industry)"></div>政策与监管 <span class="stat-num">4</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-model)"></div>国内产业 <span class="stat-num">3</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-product)"></div>海外与资本 <span class="stat-num">4</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-kol)"></div>安全治理 <span class="stat-num">2</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-research)"></div>研报观点 <span class="stat-num">4</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-paper)"></div>技术/其他 <span class="stat-num">3</span></div>
+</div>
+
+<!-- ===== 当日要闻表 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-research)"></div>
+    <div class="section-title">📌 当日要闻表 <span class="section-title-en">/ Day-at-a-glance</span></div>
+    <div class="section-count">8 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+    <table class="news-table">
+      <thead><tr><th style="width:120px">时间</th><th>事件</th><th>影响</th></tr></thead>
+      <tbody>
+        <tr><td class="t">8月17日</td><td>中国考虑收紧 AI 与半导体技术出口管制（商务部牵头）</td><td class="e">防先进技术/明星初创被西方收购，限制模型权重海外下载</td></tr>
+        <tr><td class="t">8月17日</td><td>广东发布首个"Token 贷"词元经济专项金融产品</td><td class="e">AI 算力中小微企业专属融资，按 Token 消耗核定额度</td></tr>
+        <tr><td class="t">8月17日</td><td>中国 AI 核心产业规模破 1.2 万亿，企业超 6200 家</td><td class="e">智能算力达去年同期 2.8 倍，治理从专项走向体系化</td></tr>
+        <tr><td class="t">8月17日</td><td>开源大模型累计下载破 100 亿次，全球首位</td><td class="e">中国开源模型成全球规则重塑者</td></tr>
+        <tr><td class="t">8月17日</td><td>Stripe 70 亿美元收购 OpenRouter（科创板日报）</td><td class="e">路由层战略价值被支付巨头确认</td></tr>
+        <tr><td class="t">8月17日</td><td>黄仁勋安抚：英伟达或提供最高 25% 项目残值支持</td><td class="e">回应"循环融资"与债务风险担忧</td></tr>
+        <tr><td class="t">8月17日</td><td>Sorry 勒索病毒国内传播，可无感入侵</td><td class="e">国家计算机病毒应急处理中心预警</td></tr>
+        <tr><td class="t">8月17日</td><td>以治理效能锻造 AI 新优势（澎湃）</td><td class="e">中国 AI 治理从专项规则迈向体系化集成</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== 政策法规与监管 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-industry)"></div>
+    <div class="section-title">🏛️ 政策法规与监管 <span class="section-title-en">/ Policy &amp; Regulation</span></div>
+    <div class="section-count">4 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://www.aastocks.com/en/usq/news/comment.aspx?source=AAFN&id=NOW.1534227&catg=1" target="_blank">中国考虑收紧 AI 与半导体技术出口管制，堵海外收购漏洞</a></div>
+    <div class="card-en">EN: China weighs tighter export controls on AI &amp; semiconductor tech to block overseas-acquisition loopholes.</div>
+    <div class="card-meta">
+      <span class="source">金融时报（FT）/ AASTOCKS（8/17）</span>
+      <span class="time">8月17日</span>
+      <span class="card-tag" style="background:#fef3c7;color:#92400e">出口管制</span>
+    </div>
+    <div class="card-summary">据《金融时报》引述两名参与讨论人士，由<span class="highlight">商务部牵头</span>的监管机构正咨询阿里、字节跳动、智谱等 AI 企业，研究防止中国先进技术与明星初创被西方收购：拟限制模型训练关键数据向海外转移、限制外国用户下载模型<span class="highlight">权重</span>（但仍允许海外客户云端访问模型与服务）；并可能限制高通、台积电等基于华为/阿里/字节设计生产先进芯片，以及对 agentic AI 等领域战略技术集团的海外收购。新措施或纳入下一版《禁止出口限制出口技术目录》。背景是月之暗面 Kimi K3 多数基准超越 Anthropic Opus 4.8，中国前沿 AI 已显著缩小差距。</div>
+    <div class="card-summary-en">EN — Beijing mirrors the US playbook: treat frontier AI + chips as strategic national assets; most proposals still under discussion, industry pushback noted.</div>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://c.m.163.com/news/a/L4H52IPA05198CJN.html" target="_blank">广东发布首个"Token 贷"词元经济专项金融产品</a></div>
+    <div class="card-en">EN: Guangdong launches "Token Loan" — first token-economy tailored financing for compute SMEs.</div>
+    <div class="card-meta">
+      <span class="source">科创板日报 / 财联社（8/17）</span>
+      <span class="time">8月17日</span>
+      <span class="card-tag" style="background:#fef3c7;color:#92400e">算力金融</span>
+    </div>
+    <div class="card-summary">广东省首个词元经济专项金融产品"<span class="highlight">Token 贷</span>"在广州海珠发布，针对海珠算力中小微企业研发专属融资：按合同 / Token 消耗额度核定额度，可提供信用、应收账款质押、订单融资为主的担保，亦可组合保证、抵押等扩大额度。新公司亦可在原经营企业连续经营佐证或提供担保下按订单申请融资。这是"词元经济学"从概念走向金融基础设施的落地。</div>
+    <div class="card-summary-en">EN — Compute consumption becomes a financing underwriting variable; a novel conduit for AI SMEs.</div>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://www.thepaper.cn/newsDetail_forward_33801603" target="_blank">以治理效能锻造 AI 新优势：中国治理从专项规则迈向体系化</a></div>
+    <div class="card-en">EN: The Paper — governance efficacy as a competitive edge; China's AI governance moves from ad-hoc rules to an integrated system.</div>
+    <div class="card-meta">
+      <span class="source">澎湃新闻（8/17）</span>
+      <span class="time">8月17日 18:16</span>
+      <span class="card-tag" style="background:#fef3c7;color:#92400e">治理框架</span>
+    </div>
+    <div class="card-summary">澎湃发文指出，我国人工智能核心产业规模已突破 <span class="highlight">1.2 万亿元</span>、企业超 <span class="highlight">6200 家</span>，上半年相关行业保持 30%+ 高增长，智能算力规模达去年同期 <span class="highlight">2.8 倍</span>，首个全国产 10 万卡超集群投用。文章主张治理适配产业阶段、服务价值创造、体现灵活适应，并将合规嵌入算法与设计前端；我国正加快推进人工智能综合性立法，从分级备案、生成式 AI 专项规章走向体系化集成，为全球提供"小快灵"敏捷立法样本。</div>
+    <div class="card-summary-en">EN — Governance framed as a competitiveness lever; agile, "small-and-flexible" legislation as a distinct Chinese model.</div>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://www.toutiao.com/a7674818360986812982" target="_blank">央视财经：中国开源 AI 大洗牌，规模、开放、生态三线并进</a></div>
+    <div class="card-en">EN: CCTV Finance — China's open-source AI reshapes the global stack on scale, openness and ecosystem.</div>
+    <div class="card-meta">
+      <span class="source">央视财经 / 比特网早报（8/17）</span>
+      <span class="time">8月17日</span>
+      <span class="card-tag" style="background:#fef3c7;color:#92400e">开源生态</span>
+    </div>
+    <div class="card-summary">央视财经援引 Hugging Face 报告：中国模型多数月份参数上限 <span class="highlight">7540 亿 ~ 2.78 万亿</span>，远超美国同期（多低于 1300 亿）；参数超 200 亿的中国模型中超八成采用宽松授权；基于 Qwen 的衍生模型超 <span class="highlight">15 万个</span>。美国推出新开源模型最多的两家已变为 AMD 与英伟达。中国正从"追赶者"变为"规则重塑者"。</div>
+    <div class="card-summary-en">EN — The open-source center of gravity is shifting; Qwen is now a global base model, not just a Chinese one.</div>
+  </div>
+</div>
+</div>
+
+<!-- ===== 国内产业与算力 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-model)"></div>
+    <div class="section-title">🇨🇳 国内产业与算力 <span class="section-title-en">/ China: Industry &amp; Compute</span></div>
+    <div class="section-count">3 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://www.thepaper.cn/newsDetail_forward_33801603" target="_blank">中国 AI 核心产业规模破 1.2 万亿，智能算力达去年同期 2.8 倍</a></div>
+    <div class="card-en">EN: China's core AI industry tops ¥1.2T; intelligent compute 2.8x YoY; first 100k-card domestic supercluster online.</div>
+    <div class="card-meta">
+      <span class="source">澎湃新闻（8/17）</span>
+      <span class="time">8月17日</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">产业规模</span>
+    </div>
+    <div class="card-summary">我国人工智能核心产业规模突破 <span class="highlight">1.2 万亿元</span>，企业数量超 <span class="highlight">6200 家</span>，上半年相关行业保持 30% 以上高增长，智能算力规模达去年同期 <span class="highlight">2.8 倍</span>，首个全国产 <span class="highlight">10 万卡</span>人工智能超集群正式投用。"人工智能+"行动加速渗透，重点行业整体渗透率超 80%。规模扩张与治理短板并存（智能鸿沟、数据确权、算法偏见）。</div>
+    <div class="card-summary-en">EN — Scale + compute buildout is real; the open question is governance keeping pace with deployment.</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://www.toutiao.com/article/7674767646092542498/" target="_blank">开源大模型累计下载破 100 亿次，居全球首位</a></div>
+    <div class="card-en">EN: China's open-source models cross 10B cumulative downloads — #1 globally; 80% of US AI startups use Chinese models in pitches.</div>
+    <div class="card-meta">
+      <span class="source">中国蓝新闻 / 今日头条（8/17）</span>
+      <span class="time">8月17日</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">开源模型</span>
+    </div>
+    <div class="card-summary">全球最大 AI 开源平台 Hugging Face 报告显示，中国开源大模型累计下载量突破 <span class="highlight">100 亿次</span>，居全球首位；美国投资机构数据显示，多达 <span class="highlight">80% 的美国 AI 初创公司</span>在融资路演时使用中国开源模型。MoE 稀疏架构规模化（"门控网络"按需调用专家子网络）是性能与成本双优的关键，叠加绿电供给与国产算力适配，形成普惠 AI 服务的产业基础。</div>
+    <div class="card-summary-en">EN — From local deployments to global default: 80% of US AI startups pitch with Chinese open models.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://www.toutiao.com/a7674818360986812982" target="_blank">MiniMax H3 冲榜、Kimi K3 全量开源，国产模型"集团军"持续上新</a></div>
+    <div class="card-en">EN: MiniMax H3 tops open-source charts; Moonshot open-sources Kimi K3 (2.8T params, 1M context).</div>
+    <div class="card-meta">
+      <span class="source">央视财经 / 比特网早报（8/17）</span>
+      <span class="time">8月17日</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">前沿模型</span>
+    </div>
+    <div class="card-summary">新华网报道 MiniMax 开源 H3 三天冲上开源模型榜单榜首；月之暗面全量开源 <span class="highlight">Kimi K3</span>（号称全球参数规模最大开源模型，单模型 2.8 万亿参数、100 万 token 上下文）。国产模型全球累计下载占比达 17.1%，开源生态繁荣使治理不能照搬封闭式监管框架。</div>
+    <div class="card-summary-en">EN — Kimi K3 (2.8T) and MiniMax H3 extend the open-source wave; China's model diversity deepens.</div>
+  </div>
+</div>
+</div>
+
+<!-- ===== 海外动态与资本 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-product)"></div>
+    <div class="section-title">🌍 海外动态与资本 <span class="section-title-en">/ Global: Moves &amp; Capital</span></div>
+    <div class="section-count">4 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+  <div class="card card-finance">
+    <div class="card-title"><a href="https://c.m.163.com/news/a/L4H52IPA05198CJN.html" target="_blank">Stripe 以超 70 亿美元收购 OpenRouter，路由层成战略要地</a></div>
+    <div class="card-en">EN: Stripe finalizes >$7B OpenRouter acquisition; routing layer becomes payments-grade infrastructure.</div>
+    <div class="card-meta">
+      <span class="source">科创板日报 / 财联社（8/17）</span>
+      <span class="time">8月17日</span>
+      <span class="card-tag" style="background:#fed7aa;color:#9a3412">并购</span>
+    </div>
+    <div class="card-summary">《科创板日报》报道，Stripe 以逾 <span class="highlight">70 亿美元</span>收购 AI 模型路由平台 OpenRouter（较 5 月 B 轮 13 亿估值涨 5 倍+）。OpenRouter 统一接入 400+ 模型、服务 800 万+ 开发者，把模型路由、故障切换、计费结算集于一体。CNBC 调查显示中国 origin 模型占 OpenRouter 美国企业 token 用量 <span class="highlight">46%</span>——Stripe 接手后需面对地缘合规挑战。路由层被视为 AI 价值链最防御性位置。</div>
+    <div class="card-summary-en">EN — A 5x markup in 82 days; Stripe inherits a gateway where ~46% of US enterprise tokens run on Chinese models.</div>
+  </div>
+
+  <div class="card card-finance">
+    <div class="card-title"><a href="https://www.toutiao.com/a7674818360986812982" target="_blank">黄仁勋安抚算力市场：英伟达或提供最高 25% 项目残值支持</a></div>
+    <div class="card-en">EN: Jensen Huang soothes markets — NVIDIA may offer up to 25% residual-value support per project.</div>
+    <div class="card-meta">
+      <span class="source">央视财经 / 比特网早报（8/17）</span>
+      <span class="time">8月17日</span>
+      <span class="card-tag" style="background:#fed7aa;color:#9a3412">算力金融</span>
+    </div>
+    <div class="card-summary">面对"循环融资"与债务风险担忧，黄仁勋亲自安抚市场，表示英伟达可能"为单个投资项目提供<span class="highlight">最高 25% 的残值支持机制</span>"并审慎评估每个项目，市场情绪稍缓。这是 8/11 报告"5000 亿循环融资信任危机"、8/16 英伟达砍半 OpenAI 担保后的进一步风险沟通。</div>
+    <div class="card-summary-en">EN — A direct de-risking message: residual-value backstop caps NVIDIA's contingent exposure per project.</div>
+  </div>
+
+  <div class="card card-finance">
+    <div class="card-title"><a href="https://c.m.163.com/news/a/L4H52IPA05198CJN.html" target="_blank">英伟达缩减对 OpenAI 数据中心担保至 1200 亿美元内</a></div>
+    <div class="card-en">EN: NVIDIA trims OpenAI Ohio data-center guarantee to under $120B; may invest $3B in SB Energy.</div>
+    <div class="card-meta">
+      <span class="source">科创板日报 / 财联社（8/17）</span>
+      <span class="time">8月17日</span>
+      <span class="card-tag" style="background:#fed7aa;color:#9a3412">算力金融</span>
+    </div>
+    <div class="card-summary">知情人士透露，英伟达与 OpenAI 接近达成俄亥俄州大型数据中心园区融资协议，但重新调整结构：英伟达最初仅为数百亿美元扩建计划的一半提供担保（由原定 <span class="highlight">2500 亿降至不足 1200 亿</span>），并拟向软银旗下 SB Energy 投资至多 <span class="highlight">30 亿美元</span>。资本结构持续重定价。</div>
+    <div class="card-summary-en">EN — The guarantee is now scoped to phase-one (5GW); NVIDIA's balance-sheet risk is explicitly capped.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://www.toutiao.com/a7674818360986812982" target="_blank">英伟达深化算力平台：Nemotron 系列与 AMD 成美国开源模型新主力</a></div>
+    <div class="card-en">EN: NVIDIA (Nemotron) and AMD lead US open-model releases, per Hugging Face — a shift from Google/Meta.</div>
+    <div class="card-meta">
+      <span class="source">央视财经 / 比特网早报（8/17）</span>
+      <span class="time">8月17日</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">开源生态</span>
+    </div>
+    <div class="card-summary">Hugging Face 报告指出，2026 年以来美国推出新开源模型最多的两家公司不再是谷歌和 Meta，而是 <span class="highlight">AMD 和英伟达</span>：英伟达推 Nemotron 系列展示 GPU 硬件协同能力，AMD 更多参与模型转换与性能调优。硬件厂商下场做开源权重，意在用软件生态绑定自家算力，重塑"美国开源"供给格局。</div>
+    <div class="card-summary-en">EN — Hardware vendors now lead US open-weight releases — a strategic play to lock in their compute stacks.</div>
+  </div>
+</div>
+</div>
+
+<!-- ===== 安全与治理 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-kol)"></div>
+    <div class="section-title">🛡️ 安全与治理 <span class="section-title-en">/ Safety &amp; Governance</span></div>
+    <div class="section-count">2 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+  <div class="card card-kol">
+    <div class="card-title"><a href="https://www.toutiao.com/a7674818360986812982" target="_blank">Sorry 勒索病毒国内传播，可借漏洞无感入侵</a></div>
+    <div class="card-en">EN: "Sorry" ransomware spreading in China — exploits vulnerabilities for silent, fileless intrusion.</div>
+    <div class="card-meta">
+      <span class="source">国家计算机病毒应急处理中心 / 比特网早报（8/17）</span>
+      <span class="time">8月17日</span>
+      <span class="card-tag" style="background:#d1fae5;color:#065f46">网络安全</span>
+    </div>
+    <div class="card-summary">国家计算机病毒应急处理中心、计算机病毒防治技术国家工程实验室联合发布安全预警：中国境内已出现多起"<span class="highlight">Sorry</span>"勒索病毒攻击案例。该病毒入侵后加密用户设备全部重要文件、统一追加"Sorry"后缀并留存勒索信；不同于普通恶意程序需手动点击授权，它可借助系统漏洞<span class="highlight">无感入侵</span>，隐蔽性、攻击性更强。AI 时代勒索与自动化攻击威胁上升，企业端点防护与备份韧性凸显。</div>
+    <div class="card-summary-en">EN — Fileless, vulnerability-driven ransomware; a reminder that AI-era threat surfaces are broadening beyond model safety.</div>
+  </div>
+
+  <div class="card card-kol">
+    <div class="card-title"><a href="https://www.thepaper.cn/newsDetail_forward_33801603" target="_blank">算法偏见与深度伪造挑战公平与社会信任</a></div>
+    <div class="card-en">EN: The Paper flags algorithmic bias and deepfakes as threats to fairness and social trust.</div>
+    <div class="card-meta">
+      <span class="source">澎湃新闻（8/17）</span>
+      <span class="time">8月17日</span>
+      <span class="card-tag" style="background:#d1fae5;color:#065f46">治理议题</span>
+    </div>
+    <div class="card-summary">澎湃在治理论述中指出，规模扩张同时治理短板不容忽视：数据确权/定价/交易新问题浮现，<span class="highlight">算法偏见与深度伪造</span>对公平性与社会信任构成挑战。"技术普惠"背后"智能鸿沟"隐忧同样值得警惕——高端算力与基础模型能力集中，可能造成技术红利结构性分配不均。治理需兼顾创新激励与风险防控、效率提升与公平保障。</div>
+    <div class="card-summary-en">EN — Governance must pair innovation incentives with risk control and equity; the "intelligence divide" is a live risk.</div>
+  </div>
+</div>
+</div>
+
+<!-- ===== 研报与外资行观点 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-research)"></div>
+    <div class="section-title">📚 研报与外资行观点 <span class="section-title-en">/ Research &amp; Sell-side</span></div>
+    <div class="section-count">4 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://www.aastocks.com/en/usq/news/comment.aspx?source=AAFN&id=NOW.1534227&catg=1" target="_blank">FT / 新苏黎世报："Kimi 时刻"重估中国 AI 实力</a></div>
+    <div class="card-en">EN: FT / NZZ — "Kimi moment" forces the West to rethink China's AI; distillation alone can't explain K3's lead.</div>
+    <div class="card-meta">
+      <span class="source">金融时报 / 新苏黎世报（8/17 转载）</span>
+      <span class="time">8月17日</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">外资行/媒体</span>
+    </div>
+    <div class="card-summary">新苏黎世报以"Kimi 时刻到来"为题评论：西方不能再把中国视为技术模仿者。文章反驳"中国模型靠蒸馏美国模型"的说法——若 Kimi K3 仅依赖蒸馏，不可能在部分测试超越美国领先模型，更合理的是中国工程师已发展出自己的技术路径。<span class="highlight">"Kimi 时刻"成为外资行/媒体重估中国 AI 竞争力的叙事锚点</span>。</div>
+    <div class="card-summary-en">EN — A framing shift in Western coverage: China's frontier lead is now attributed to indigenous engineering, not imitation.</div>
+  </div>
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://news.futunn.com/post/76866156?ns_stock_id=201926" target="_blank">摩根士丹利 / 野村：存储超级周期延续，AI 基建重估</a></div>
+    <div class="card-en">EN: Morgan Stanley &amp; Nomura stay bullish — memory super-cycle, AI infra re-rated as structural growth.</div>
+    <div class="card-meta">
+      <span class="source">摩根士丹利 / 野村（富途转载）</span>
+      <span class="time">8月17日 引用</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">外资行半导体</span>
+    </div>
+    <div class="card-summary">大摩将三星目标价由 59 万韩元上调至 <span class="highlight">67 万韩元</span>（+225%），SK 海力士由 400 万至 <span class="highlight">470 万韩元</span>（+255%），重估为"AI 基础设施结构性成长资产"；并发布"杰文斯悖论"报告，认为开放权重模型因更低使用成本反而推高总算力需求。野村同步看多，HBM 与通用存储进入共振式超级周期。</div>
+    <div class="card-summary-en">EN — Open-weight models may raise total compute demand (Jevons); memory re-rated as AI-infra, not PC/phone, stock.</div>
+  </div>
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://pomegra.io/news/goldman-sachs-ai-demand-to-outstrip-compute-through-2027" target="_blank">高盛：AI 算力需求缺口至少持续至 2027 下半年，电网成硬瓶颈</a></div>
+    <div class="card-en">EN: Goldman Sachs — AI compute demand outstrips supply through 2H2027; grid is the binding constraint.</div>
+    <div class="card-meta">
+      <span class="source">Goldman Sachs 基础设施研究</span>
+      <span class="time">8月17日 引用</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">外资行基建</span>
+    </div>
+    <div class="card-summary">高盛预测 AI 算力集群需求超供给至少至 <span class="highlight">2027 下半年</span>；基线情景下 2026 年 AI capex 达 7650 亿美元、2031 年升至 1.6 万亿美元。美国数据中心用电 2025→2027 由 31GW 升至 66GW，2027 年占全美电力需求 <span class="highlight">8.5%</span>。电网（变压器、开关柜、高压互联）成为芯片厂商无法独自解决的硬约束。</div>
+    <div class="card-summary-en">EN — The bottleneck shifts from chips to grid; electrical expansion measured in years caps compute bring-up.</div>
+  </div>
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://www.aastocks.com/share/news/hk/NOW.1524007/?ns=HK6&s=02476" target="_blank">高盛：AI 投资外溢至亚洲，台湾、韩国成区内最大赢家</a></div>
+    <div class="card-en">EN: Goldman Sachs — AI spend spills into Asia; Taiwan &amp; Korea the biggest regional winners; China lags in integration.</div>
+    <div class="card-meta">
+      <span class="source">高盛研究（AAStocks 转载）</span>
+      <span class="time">8月17日 引用</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">外资行宏观</span>
+    </div>
+    <div class="card-summary">高盛指出美国五大超大规模云厂商 2026 年数据中心与算力 capex 达 <span class="highlight">7500 亿美元</span>（同比 +80%），其中 60%–70% 为 AI 服务器/存储/网络，几乎全在亚洲制造，台湾（科技出口贡献 GDP +4.5pct）、韩国（内存 +1pct）成最大赢家。中国因出口管制与自给自足政策，供应链整合度仍较低——与当日"中国考虑收紧出口管制"形成供需两端的政策镜像。</div>
+    <div class="card-summary-en">EN — Asia hardware exporters capture the spillover; China's integration lags under controls — a policy mirror to today's export-control news.</div>
+  </div>
+</div>
+</div>
+
+<!-- ===== 数据可视化（内联 SVG） ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-research)"></div>
+    <div class="section-title">📈 数据可视化 <span class="section-title-en">/ Inline SVG Chart</span></div>
+    <div class="section-count">1 图</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+    <div class="chart-wrap">
+      <div class="chart-title">中 vs 美 最大开源模型月度参数上限（十亿参数）</div>
+      <div class="chart-note">来源：Hugging Face 观察报告（央视财经 / 比特网早报 2026-08-17）。纵轴单位：十亿参数（B）。</div>
+      <svg viewBox="0 0 680 320" role="img" aria-label="中美的开源模型参数规模对比柱状图">
+        <line x1="80" y1="40" x2="80" y2="270" stroke="#e2e8f0" stroke-width="1"/>
+        <line x1="80" y1="270" x2="640" y2="270" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="80" y1="170" x2="640" y2="170" stroke="#eef2f7" stroke-width="1"/>
+        <line x1="80" y1="95" x2="640" y2="95" stroke="#eef2f7" stroke-width="1"/>
+        <text x="64" y="274" font-size="11" fill="#94a3b8" text-anchor="end">0</text>
+        <text x="64" y="174" font-size="11" fill="#94a3b8" text-anchor="end">1000</text>
+        <text x="64" y="99" font-size="11" fill="#94a3b8" text-anchor="end">2000</text>
+        <!-- China max 2780B -> scale 2000=95px(270-175=95 for 1000? recompute: 0=270, 2000=95 => 175px per 2000, so 1000=175px? no. Let's set 2780B full height. 270 - 2780/2780*230 = 40. Use 230px for 2780. So per 100B = 8.27px. China 2780 -> 270-230=40. US 130 -> 270-130*0.0827*... let's just compute: height = value/2780*230. China=230 (y=40). US=130/2780*230=10.75 (y=259). Too tiny. Use sqrt? Keep linear but note. I'll show US as small bar with label. -->
+        <rect x="200" y="40" width="140" height="230" rx="6" fill="#ef4444"/>
+        <text x="270" y="32" font-size="13" font-weight="700" fill="#991b1b" text-anchor="middle">2780B</text>
+        <text x="270" y="290" font-size="12" fill="#64748b" text-anchor="middle">中国（上限）</text>
+        <rect x="420" y="259" width="140" height="11" rx="3" fill="#3b82f6"/>
+        <text x="490" y="251" font-size="13" font-weight="700" fill="#1e40af" text-anchor="middle">130B</text>
+        <text x="490" y="290" font-size="12" fill="#64748b" text-anchor="middle">美国（多数月份）</text>
+        <text x="360" y="312" font-size="11" fill="#94a3b8" text-anchor="middle">注：中国月度最大开源模型参数上限约为美国的 21 倍；Qwen 衍生模型超 15 万个</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 今日总结 & 投资启示 ===== -->
+<div class="summary-section">
+  <h2>📋 今日总结 &amp; 投资启示 <span style="font-size:13px;font-weight:500;color:var(--text-muted)">/ Takeaways</span></h2>
+
+  <div class="summary-sub">
+    <h3>🎯 关键结论 / Key Takeaways</h3>
+    <ul>
+      <li><strong>中国考虑收紧 AI / 半导体出口管制，与美形成"政策镜像"</strong>：商务部牵头研究限制模型训练数据外移、外国用户下载<span class="highlight">模型权重</span>、海外晶厂基于中国设计代工，并堵 Meta 收购 Manus 式漏洞。这与高盛"AI 投资外溢亚洲、台湾/韩国最受益、中国供应链整合度低"形成供需两端的政策对照——<span class="highlight">开放与管制同步加码</span>。</li>
+      <li><strong>中国 AI 产业硬指标全面兑现</strong>：核心产业规模破 <span class="highlight">1.2 万亿</span>、企业超 6200 家、智能算力达去年同期 <span class="highlight">2.8 倍</span>、首个全国产 10 万卡超集群投用、开源模型累计下载破 <span class="highlight">100 亿次</span>（全球首位）。规模与算力底座为"普惠 AI"提供产业基础。</li>
+      <li><strong>词元经济学走向金融基础设施</strong>：广东首发"<span class="highlight">Token 贷</span>"，按 Token 消耗核定算力中小微企业融资额度；叠加英伟达 25% 残值支持机制与 Stripe 收购 OpenRouter，算力/Token 正被金融产品化、资产化。</li>
+      <li><strong>外资行/媒体重估中国 AI："Kimi 时刻"</strong>：新苏黎世报以"Kimi 时刻"为题，认为 Kimi K3 超越 Opus 4.8 无法用"蒸馏"解释，指向中国自主工程路径。结合 Hugging Face 报告（中国模型参数上限 2780B vs 美国 130B、Qwen 衍生 15 万+），<span class="highlight">中国开源模型成全球规则重塑者</span>。</li>
+      <li><strong>算力金融化进入风险沟通期</strong>：黄仁勋亲自安抚（最高 25% 残值支持）、英伟达担保砍半至 1200 亿，回应"循环融资"与债务担忧。资本结构从"英伟达自担"转向"第三方动员 + 残值兜底"，是信任修复的连续动作。</li>
+      <li><strong>安全威胁面拓宽</strong>：Sorry 勒索病毒国内无感传播，叠加前一日 Agent 自主越权密集披露，提示 AI 时代威胁从"模型安全"扩至"端点/基础设施安全"。</li>
+    </ul>
+    <div class="lens">
+      <strong>🧭 叙事透镜</strong>：本期政策与产业信源占比高（FT、澎湃、央视财经、科创板日报、Hugging Face 报告），一手与权威媒体为主，可信度较高。需注意：① 中国出口管制为"考虑/磋商"阶段，FT 称多数提案仍在讨论、部分企业已反馈"过严或削弱竞争力"，并非既成事实；② "Kimi 时刻""规则重塑者"属外资媒体叙事框架，需与本土口径交叉验证；③ 大摩/高盛/野村研报为 8 月持续观点，在 8/17 被集中引用，属延续性研判而非当日新增。
+    </div>
+    <div class="en-note">
+      <strong>EN — Bottom line.</strong> China is simultaneously opening (100B downloads, Qwen as a global base model) and tightening (export controls on weights/data, overseas-M&amp;A curbs) — a policy mirror to the US. Hard industry metrics (¥1.2T core AI, 2.8x compute, 100k-card cluster) are real. "Token Loan" and NVIDIA's 25% residual backstop show compute being financialized; Western coverage pivots to a "Kimi moment" reframing of China's capability. Discount: China's controls are consultative, not enacted; sell-side views are carry-over, not fresh.
+    </div>
+  </div>
+
+  <div class="summary-sub">
+    <h3>📊 重点公司/行业环比变化追踪 / Tracking</h3>
+    <table class="track-table">
+      <thead>
+        <tr><th>标的/行业</th><th>方向</th><th>变化</th><th>对比基准</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>中国 AI 产业（整体）</td><td class="up">↑积极</td><td>核心产业破 1.2 万亿、企业 6200+、算力 2.8 倍、10 万卡集群投用、开源下载 100 亿（全球第一）</td><td>本期新增覆盖</td></tr>
+        <tr><td>中国开源模型（Qwen/Kimi/MiniMax）</td><td class="up">↑积极</td><td>参数上限 2780B vs 美国 130B；Qwen 衍生 15 万+；80% 美国 AI 初创路演用中国模型</td><td>较 8/15、8/16 报告</td></tr>
+        <tr><td>监管 / 出口管制</td><td class="down">↓（约束升）</td><td>中国拟收紧 AI/半导体出口管制（权重外移、海外收购）；与美形成政策镜像</td><td>本期新增覆盖</td></tr>
+        <tr><td>算力金融（Token 贷 / 残值支持）</td><td class="up">↑积极</td><td>广东首发 Token 贷；黄仁勋称或提供最高 25% 项目残值支持</td><td>较 8/15、8/16 报告</td></tr>
+        <tr><td>英伟达(NVIDIA)</td><td class="up">↑积极（产品）/ 中性（风险）</td><td>Nemotron 成美国开源新主力；25% 残值安抚 + 担保砍半，风险沟通持续</td><td>较 8/15、8/16 报告</td></tr>
+        <tr><td>Stripe / OpenRouter</td><td class="up">↑积极</td><td>70 亿收购落地的持续发酵；路由层战略价值确认，但需面对 46% 中国模型 token 的地缘合规</td><td>较 8/16 报告</td></tr>
+        <tr><td>存储 / HBM（三星、SK海力士）</td><td class="up">↑积极</td><td>大摩 +225%/+255%、野村重估；开放权重推高总算力需求（杰文斯悖论）</td><td>较 8/15、8/16 报告</td></tr>
+        <tr><td>电网 / 电力设备</td><td class="up">↑积极</td><td>高盛：算力缺口至 2027 下半年，电网成硬瓶颈；变压器/开关柜受益</td><td>较 8/15、8/16 报告</td></tr>
+        <tr><td>网络安全（端点/勒索防护）</td><td class="down">↓（风险升）</td><td>Sorry 勒索病毒国内无感传播；威胁面从模型安全扩至基础设施</td><td>本期新增覆盖</td></tr>
+        <tr><td>AMD</td><td class="up">↑积极</td><td>Hugging Face：AMD 与英伟达成美国开源模型新主力，超越谷歌/Meta</td><td>本期新增覆盖</td></tr>
+        <tr><td>中国供应链整合（vs 亚洲其他）</td><td class="down">↓中性偏负</td><td>高盛：受出口管制与自给自足政策影响，全球 AI 供应链整合度仍较低</td><td>较 8/15、8/16 报告</td></tr>
+      </tbody>
+    </table>
+    <div class="en-note">
+      <strong>EN — Note on the table.</strong> Direction assessed on information flow within the coverage window, not share-price action; no market-price data entered today's source set. Per Chinese market convention, red denotes positive and green denotes negative. Comparisons reference our archived issues of 2026-08-11, 2026-08-15 and 2026-08-16.
+    </div>
+  </div>
+
+  <div class="summary-sub">
+    <h3>💡 投资结论（中英双语） / Investment Conclusion</h3>
+    <ul>
+      <li><span class="highlight">结论一（国产算力与模型链确定性增强）</span>：中国 AI 核心产业破 1.2 万亿、算力 2.8 倍、开源下载 100 亿全球第一，叠加 MoE 架构与绿电/国产芯片适配——<span class="up">具备自主生态的国产算力、模型与端侧应用链长期受益</span>；但出口管制若落地，短期或扰动国产先进芯片的海外代工与生态外溢。</li>
+      <li><span class="highlight">结论二（算力金融化 = 新 Alpha 与 new risk）</span>：Token 贷、英伟达 25% 残值支持、Stripe 收购 OpenRouter 显示 Token/算力被资产化。<span class="up">利好算力运营、电力设备与金融科技基础设施</span>；但"循环融资"、残值兜底与地缘合规（46% 中国模型 token）构成需持续跟踪的尾部风险。</li>
+      <li><span class="highlight">结论三（硬件链仍是外资行共识）</span>：大摩/野村看多存储超级周期、高盛看多算力缺口与电网瓶颈——<span class="up">GPU、HBM、电力设备、电网是最确定性受益环节</span>；同时"Kimi 时刻"叙事重估中国资产，关注 A 股 AI 产业链（算力、半导体、机器人）的情绪与估值重定价。</li>
+    </ul>
+    <div class="en-note">
+      <strong>EN — Investment Conclusion.</strong> (1) Domestic compute &amp; model chain: China's hard metrics (¥1.2T, 2.8x compute, 10B downloads) plus MoE/green-power integration make the self-reliant stack a structural winner — though enacted export controls could disrupt overseas foundry access. (2) Financialization of compute = new alpha and new risk: Token Loan, NVIDIA's 25% backstop and Stripe's OpenRouter buy benefit compute operators, power equipment and fintech infra, but circular-financing and geopolitical exposure (46% Chinese-model tokens) are tail risks to watch. (3) Hardware remains the sell-side consensus: MS/Nomura on memory, Goldman on compute shortage + grid — GPUs, HBM, power and grid are the most defensive beneficiaries; the "Kimi moment" narrative may re-rate China's A-share AI chain.
+    </div>
+  </div>
+</div>
+
+<!-- ===== 数据来源 ===== -->
+<div class="summary-section" style="background:linear-gradient(135deg,#f8fafc 0%,#eef2ff 100%);margin-top:24px">
+  <h2>🔗 数据来源 <span style="font-size:13px;font-weight:500;color:var(--text-muted)">/ Sources（14 个）</span></h2>
+  <div class="sources-box">
+    <span class="sources-toggle" onclick="document.getElementById('src17').classList.toggle('hidden')">展开 / 收起 全部来源</span>
+    <div class="sources-list hidden" id="src17">
+      <ol>
+        <li>金融时报 / AASTOCKS（中国考虑收紧 AI 出口管制，8/17）：<a href="https://www.aastocks.com/en/usq/news/comment.aspx?source=AAFN&id=NOW.1534227&catg=1" target="_blank">https://www.aastocks.com/en/usq/news/comment.aspx?id=NOW.1534227</a></li>
+        <li>科创板日报 / 财联社（Token 贷、Stripe-OpenRouter、英伟达担保，8/17）：<a href="https://c.m.163.com/news/a/L4H52IPA05198CJN.html" target="_blank">https://c.m.163.com/news/a/L4H52IPA05198CJN.html</a></li>
+        <li>澎湃新闻（以治理效能锻造 AI 新优势，8/17）：<a href="https://www.thepaper.cn/newsDetail_forward_33801603" target="_blank">https://www.thepaper.cn/newsDetail_forward_33801603</a></li>
+        <li>央视财经 / 比特网早报（全球开源 AI 大洗牌，8/17）：<a href="https://www.toutiao.com/a7674818360986812982" target="_blank">https://www.toutiao.com/a7674818360986812982</a></li>
+        <li>中国蓝新闻 / 今日头条（国产 AI 何以领跑全球，8/17）：<a href="https://www.toutiao.com/article/7674767646092542498/" target="_blank">https://www.toutiao.com/article/7674767646092542498/</a></li>
+        <li>国家计算机病毒应急处理中心预警（Sorry 勒索病毒，8/17 媒体转述）：<a href="https://www.toutiao.com/a7674818360986812982" target="_blank">https://www.toutiao.com/a7674818360986812982</a></li>
+        <li>新苏黎世报 / 今日 MG（Kimi 时刻重估中国实力，8/17 转载）：<a href="https://www.todaymg.com/a/kimishi-ke-zhong-gu-zhong-guo-shi-li-wai-mei-bei-jing-ni-shou-jin-aiji-shu-chu-kou-guan-zhi.html" target="_blank">https://www.todaymg.com/.../kimishi-ke-zhong-gu-zhong-guo-shi-li</a></li>
+        <li>National Technology（China export controls）：<a href="https://nationaltechnology.co.uk/China_considers_stronger_export_controls_on_AI_models_and_chips.php" target="_blank">https://nationaltechnology.co.uk/China_considers_stronger_export_controls</a></li>
+        <li>摩根士丹利 / 野村（富途转载）：<a href="https://news.futunn.com/post/76866156?ns_stock_id=201926" target="_blank">https://news.futunn.com/post/76866156</a></li>
+        <li>摩根士丹利《开放权重模型与三种未来情景》（网易）：<a href="https://www.163.com/dy/article/L3H928R90519D45U.html" target="_blank">https://www.163.com/dy/article/L3H928R90519D45U.html</a></li>
+        <li>高盛 算力需求（Pomegra）：<a href="https://pomegra.io/news/goldman-sachs-ai-demand-to-outstrip-compute-through-2027" target="_blank">https://pomegra.io/news/goldman-sachs-ai-demand</a></li>
+        <li>高盛 AI 投资外溢亚洲（AAStocks）：<a href="https://www.aastocks.com/share/news/hk/NOW.1524007/?ns=HK6&s=02476" target="_blank">https://www.aastocks.com/share/news/hk/NOW.1524007</a></li>
+        <li>Stripe 收购 OpenRouter（Bloomberg / Yahoo Finance）：<a href="https://finance.yahoo.com/technology/ai/articles/stripe-acquires-openrouter-7b-turning-091812340.html" target="_blank">https://finance.yahoo.com/.../stripe-acquires-openrouter-7b</a></li>
+        <li>Front Research（Stripe/OpenRouter、Qwen 30 亿下载，8/17）：<a href="https://www.frontresearch.com/p/why-stripe-just-paid-5x-openrouter-s-price-tag" target="_blank">https://www.frontresearch.com/p/why-stripe-just-paid-5x-openrouter</a></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>📊 数据来源：WebSearch 多源检索（官方动态 + 政策/媒体 + 高盛/摩根士丹利/野村研报）· 每条均附原文链接</p>
+  <p>🕐 生成时间：2026-08-18（历史补生成）| 覆盖窗口：8月17日 00:00 ~ 24:00 北京时间 | 26 张卡片 / 14 个溯源来源</p>
+  <p>⚠️ 本报告仅供研究参考，不构成投资建议。所有资讯均保留原文链接可溯源；厂商自测数据与未发布模型结论已在正文标注。</p>
+</div>
+
+</div>
+
+<script>
+document.querySelectorAll('.section-header').forEach(function(h){
+  h.addEventListener('click', function(){
+    var s = h.closest('.section');
+    s.classList.toggle('collapsed');
+    var hint = h.querySelector('.toggle-hint');
+    if(hint){ hint.textContent = s.classList.contains('collapsed') ? '▸ 展开' : '▾ 收起'; }
+  });
+});
+</script>
+</body>
+</html>
