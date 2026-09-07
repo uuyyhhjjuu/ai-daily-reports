@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026-09-02</title>
+<style>
+:root {
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --primary: #6366f1;
+  --primary-light: #eef2ff;
+  --shadow: 0 1px 3px rgba(0,0,0,.08);
+  --shadow-hover: 0 4px 16px rgba(99,102,241,.15);
+  --c-industry: #f59e0b;
+  --c-kol: #10b981;
+  --c-model: #8b5cf6;
+  --c-product: #ec4899;
+  --c-paper: #06b6d4;
+  --c-research: #3b82f6;
+  --c-finance: #f97316;
+  --c-podcast: #f43f5e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #7c3aed 100%);
+  border-radius: 16px; padding: 36px 40px; color: #fff; margin-bottom: 28px;
+  box-shadow: 0 8px 30px rgba(99,102,241,.3);
+}
+.header h1 { font-size: 26px; font-weight: 700; letter-spacing: -.5px; }
+.header .h1-en { font-size: 14px; font-weight: 500; opacity: .85; margin-top: 4px; letter-spacing: .3px; }
+.header .meta { font-size: 14px; opacity: .9; margin-top: 10px; display: flex; flex-wrap: wrap; gap: 16px; }
+.header .meta span { display: inline-flex; align-items: center; gap: 4px; }
+.header .badge {
+  display: inline-block; background: rgba(255,255,255,.2); padding: 2px 10px;
+  border-radius: 20px; font-size: 12px; margin-top: 12px;
+}
+
+/* Stats Bar */
+.stats-bar {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;
+  background: var(--card-bg); border-radius: 12px; padding: 16px 20px; box-shadow: var(--shadow);
+}
+.stat-item {
+  display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-secondary);
+  padding: 4px 10px; border-radius: 8px; background: var(--bg);
+}
+.stat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.stat-num { font-weight: 700; color: var(--text); }
+
+/* Section */
+.section { margin-bottom: 32px; }
+.section-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+  padding-bottom: 8px; border-bottom: 2px solid var(--border); cursor: pointer; user-select: none;
+}
+.section-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.section-title { font-size: 18px; font-weight: 700; }
+.section-title-en { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+.section-count { font-size: 13px; color: var(--text-muted); margin-left: auto; }
+.toggle-hint { font-size: 12px; color: var(--primary); margin-left: 10px; white-space: nowrap; }
+.collapsed .section-body { display: none; }
+
+/* Card */
+.card {
+  background: var(--card-bg); border-radius: 12px; padding: 20px 24px;
+  margin-bottom: 12px; box-shadow: var(--shadow);
+  border-left: 4px solid var(--primary);
+  transition: box-shadow .2s, transform .2s;
+  position: relative; overflow: hidden;
+}
+.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+.card-industry { border-left-color: var(--c-industry); }
+.card-kol { border-left-color: var(--c-kol); }
+.card-model { border-left-color: var(--c-model); }
+.card-product { border-left-color: var(--c-product); }
+.card-paper { border-left-color: var(--c-paper); }
+.card-research { border-left-color: var(--c-research); }
+.card-finance { border-left-color: var(--c-finance); }
+.card-podcast { border-left-color: var(--c-podcast); }
+
+.card-title {
+  font-size: 16px; font-weight: 600; line-height: 1.5; margin-bottom: 4px;
+}
+.card-title a { color: var(--text); text-decoration: none; }
+.card-title a:hover { color: var(--primary); }
+
+.card-en {
+  font-size: 13px; color: var(--text-muted); font-style: italic;
+  margin-bottom: 8px; line-height: 1.5;
+}
+
+.card-meta {
+  display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.card-meta .source { font-weight: 500; color: var(--text-secondary); }
+.card-meta .time { color: var(--primary); font-weight: 500; }
+.card-tag {
+  display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 4px;
+  font-weight: 500;
+}
+
+.card-summary {
+  font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+}
+.card-summary .highlight {
+  color: var(--primary); font-weight: 600;
+}
+.card-summary-en {
+  font-size: 13px; color: var(--text-muted); line-height: 1.65;
+  margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border);
+}
+.card-digest {
+  font-size: 13px; color: var(--text-secondary); line-height: 1.7;
+  margin-top: 10px; padding: 12px 16px; background: rgba(244,63,94,.05);
+  border-left: 3px solid var(--c-podcast); border-radius: 8px;
+}
+.card-digest .hl { color: var(--c-podcast); font-weight: 600; }
+.podcast-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
+.podcast-meta .tag { color: var(--c-podcast); font-weight: 600; }
+
+/* News Table */
+.news-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 4px 0 10px; }
+.news-table th {
+  text-align: left; padding: 9px 12px; background: rgba(99,102,241,.08);
+  color: var(--text); font-weight: 600; border-bottom: 2px solid var(--primary);
+}
+.news-table td {
+  padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top;
+}
+.news-table .t { color: var(--primary); font-weight: 600; white-space: nowrap; }
+.news-table .e { color: var(--c-finance); font-weight: 500; }
+
+/* Chart */
+.chart-wrap {
+  background: var(--card-bg); border-radius: 12px; padding: 20px 24px;
+  margin-bottom: 14px; box-shadow: var(--shadow); border-left: 4px solid var(--c-research);
+}
+.chart-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.chart-note { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
+.chart-wrap canvas { width: 100% !important; max-height: 320px; }
+
+/* Summary Section */
+.summary-section {
+  background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+  border-radius: 16px; padding: 32px 36px; margin-top: 36px;
+  border: 1px solid #e0e7ff;
+}
+.summary-section h2 {
+  font-size: 20px; font-weight: 700; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 8px;
+}
+.summary-sub { margin-bottom: 24px; }
+.summary-sub h3 {
+  font-size: 16px; font-weight: 700; margin-bottom: 12px;
+  color: var(--text); display: flex; align-items: center; gap: 6px;
+}
+.summary-sub ul { list-style: none; padding-left: 0; }
+.summary-sub li {
+  font-size: 14px; color: var(--text-secondary); margin-bottom: 10px;
+  padding-left: 18px; position: relative; line-height: 1.7;
+}
+.summary-sub li::before {
+  content: "▸"; position: absolute; left: 0; color: var(--primary); font-weight: 700;
+}
+.summary-sub li .highlight { color: var(--primary); font-weight: 600; }
+.summary-sub .up { color: #dc2626; font-weight: 600; }
+.summary-sub .down { color: #16a34a; font-weight: 600; }
+.summary-sub .lens {
+  background: rgba(99,102,241,.08); border-radius: 8px; padding: 12px 16px;
+  margin-top: 12px; font-size: 13px; color: var(--text-secondary); border-left: 3px solid var(--primary);
+}
+.summary-sub .en-note {
+  font-size: 13px; color: var(--text-muted); margin-top: 10px; line-height: 1.65;
+  padding-top: 10px; border-top: 1px dashed #c7d2fe;
+}
+
+/* Tracking Table */
+.track-table {
+  width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px;
+}
+.track-table th {
+  text-align: left; padding: 8px 12px; background: rgba(99,102,241,.08);
+  color: var(--text); font-weight: 600; border-bottom: 2px solid var(--primary);
+}
+.track-table td {
+  padding: 8px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary);
+}
+.track-table .up { color: #dc2626; font-weight: 600; }
+.track-table .down { color: #16a34a; font-weight: 600; }
+.track-table .flat { color: #64748b; font-weight: 600; }
+
+/* Sources / Collapsible */
+.sources-box { margin-top: 4px; }
+.sources-toggle {
+  display: inline-block; cursor: pointer; font-size: 13px; font-weight: 600;
+  color: var(--primary); background: var(--primary-light); padding: 6px 14px; border-radius: 8px;
+}
+.sources-list { margin-top: 12px; font-size: 13px; color: var(--text-secondary); }
+.sources-list.hidden { display: none; }
+.sources-list ol { padding-left: 22px; }
+.sources-list li { margin-bottom: 6px; line-height: 1.6; }
+.sources-list a { color: var(--primary); word-break: break-all; }
+
+/* Footer */
+.footer {
+  text-align: center; margin-top: 48px; padding-top: 24px;
+  border-top: 1px solid var(--border); color: var(--text-muted); font-size: 12px;
+}
+.footer p { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+<!-- Header -->
+<div class="header">
+  <h1>🤖 AI 每日全景报告</h1>
+  <div class="h1-en">AI Daily Panorama Report · Bilingual Edition</div>
+  <div class="meta">
+    <span>📅 2026年9月2日（周三）</span>
+    <span>🕐 覆盖时段：9月1日 22:00 ~ 9月2日 22:00 北京时间</span>
+    <span>📊 共 25 条 / 18 个溯源来源</span>
+  </div>
+  <div class="badge">补生成 · 数据来源：WebSearch 多源检索（官方动态 + 政策/媒体 + 资本市场）· 每条均附原文链接</div>
+</div>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-model)"></div>模型与芯片 <span class="stat-num">6</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-product)"></div>产品与应用 <span class="stat-num">8</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-finance)"></div>资本与 IPO <span class="stat-num">4</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-industry)"></div>政策与产业 <span class="stat-num">4</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-research)"></div>安全与研究 <span class="stat-num">2</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-kol)"></div>观点与 KOL <span class="stat-num">1</span></div>
+</div>
+
+<!-- ===== 当日要闻表 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-research)"></div>
+    <div class="section-title">📌 当日要闻表 <span class="section-title-en">/ Day-at-a-glance</span></div>
+    <div class="section-count">10 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+    <table class="news-table">
+      <thead><tr><th style="width:120px">时间</th><th>事件</th><th>影响</th></tr></thead>
+      <tbody>
+        <tr><td class="t">9/1-9/2</td><td>Anthropic 发布 Fable 5.1 / Mythos 5.1，典型任务成本降 25%、高度 Agent 任务最高降 45%，缓存读取价降 75%</td><td class="e">大模型竞争从"拼基准"转向"拼性价比"，为 IPO 前抢企业市场</td></tr>
+        <tr><td class="t">9/1-9/2</td><td>OpenAI 披露 Astra 跨过"关键"网络安全阈值，自主发现并利用两个零日漏洞，高危能力限访问</td><td class="e">史上首个达最高风险等级的模型，三巨头同周转向"防御者优先"发布</td></tr>
+        <tr><td class="t">9/2</td><td>全球首款完全由 AI 设计的芯片 Redwood 诞生，两名架构师 + AI 不到两周完成设计验证</td><td class="e">"AI 造 AI 大脑"从概念走向生产级，芯片设计周期或被重写</td></tr>
+        <tr><td class="t">9/2</td><td>Google 发布 Gemini 3.8 Flash 与 3.8 Flash Cyber（Fairwind），限时 $0.75/$3.75 每百万 Token</td><td class="e">前沿网络安全模型仅向受信任防御者开放，成行业新范式</td></tr>
+        <tr><td class="t">9/1</td><td>三星在 SEMICON Taiwan 2026 公布 HBM5 路线图：2nm 基础芯片、性能翻倍，2028 量产</td><td class="e">存储军备竞赛加码，单瓦性能与热阻优化成为新焦点</td></tr>
+        <tr><td class="t">9/1</td><td>马斯克 G20 相关会议：AI 或令全球经济增长 20%–30%，十年内人形机器人达 10 亿台</td><td class="e">激进长期预测引关注，产业预期从模型能力转向生产率兑现</td></tr>
+        <tr><td class="t">9/1</td><td>CrowdStrike 联手英伟达推出 SafeMind 智能体安全系统，攻防 AI 持续对抗</td><td class="e">检测率 +29%、修复成本 -99%，网络安全进入"机器速度"</td></tr>
+        <tr><td class="t">9/2</td><td>OpenAI ChatGPT Health 接入 Epic 电子病历（覆盖 3.25 亿患者）</td><td class="e">AI 医疗深入临床工作流，合规权限内结构化分析病历</td></tr>
+        <tr><td class="t">9/2</td><td>HiddenLayer 完成 1 亿美元 B 轮，AI 安全 ARR 增 10 倍；Conveo 获 DST Global 领投 5000 万美元 A 轮</td><td class="e">AI 安全与企业洞察自动化赛道资本升温</td></tr>
+        <tr><td class="t">9/2</td><td>阿里云发布 Qwen3.8-Max-0902，强化编程与企业级协同（Cowork）任务</td><td class="e">国产开源模型延续"周更"节奏，冲击全球企业级生态</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== 模型与芯片 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-model)"></div>
+    <div class="section-title">🧠 模型与芯片 <span class="section-title-en">/ Models &amp; Chips</span></div>
+    <div class="section-count">6 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://www.digitaltrends.com/computing/claude-fable-5-1-and-mythos-5-1-debut-with-better-coding-and-cost-cuts-for-developers/" target="_blank">Anthropic 发布 Fable 5.1 / Mythos 5.1：典型任务成本降 25%，Agent 任务最高降 45%</a></div>
+    <div class="card-en">EN: Anthropic launched Claude Fable 5.1 (generally available) and Mythos 5.1 (restricted trusted access) on Sept 1. Cache-read pricing dropped 75% to $0.25/M tokens, cutting typical workloads ~25% and highly agentic ones up to ~45%; Fable 5.1 keeps a 1M-token context.</div>
+    <div class="card-meta">
+      <span class="source">Digital Trends / 澎湃新闻 / 北京日报（9/1-9/2）</span>
+      <span class="time">9/1-9/2</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">旗舰模型</span>
+    </div>
+    <div class="card-summary">Anthropic 于 9/1 发布新一代旗舰 <span class="highlight">Claude Fable 5.1</span> 与受限版本 <span class="highlight">Mythos 5.1</span>，称在编程、知识工作与长周期 Agent 任务上超过 Fable 5 及 OpenAI GPT-5.6 Sol。核心变化是降本：缓存读取价降 75% 至 0.25 美元/百万 Token，典型工作负载成本降约 25%、高度 Agent 任务最高降约 45%；输入/输出价维持 10/50 美元。Fable 5.1 保留 100 万 Token 上下文，在低/中推理强度下即可达到上一代高强度的表现。Mythos 5.1 面向网安与生命科学受审机构，并产出蛋白结合剂等科研成果。同步推出企业前沿安全护栏（EFS）实现零数据保留。</div>
+    <div class="card-summary-en">EN — The price war moves to cache reads as labs chase agent-economics before IPO.</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://www.163.com/dy/article/L5R82KR705566LTA.html" target="_blank">全球首款完全由 AI 设计的芯片 Redwood 诞生，不到两周跑通千问模型</a></div>
+    <div class="card-en">EN: US startup Architect Labs released Redwood, an AI inference accelerator wholly designed, verified and deployed by AI in under two weeks from a two-person spec. A smaller Redwood Nano runs Qwen3-0.6B on FPGA; coverage exceeds 95%, throughput 1.75× Jetson Orin Nano at 1.9× lower power.</div>
+    <div class="card-meta">
+      <span class="source">网易 / 问芯 / 腾讯 / 半导体行业观察（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">AI 造芯片</span>
+    </div>
+    <div class="card-summary">美国定制芯片研究公司 Architect Labs 发布 <span class="highlight">Redwood</span>——声称全球首款完全由 AI 端到端设计、可运行现代大模型的生产级 AI 加速器。仅由两名人类架构师给出高层规范，AI 系统在不到两周内完成性能模型、RTL、验证环境、固件与计算内核开发，代码与功能覆盖率均超 95%，每次架构调整 48 小时内即可重新生成并部署至硬件。缩小版 Redwood Nano 已在 FPGA 运行 Qwen3-0.6B，基于三星 8nm 的吞吐达英伟达 Jetson Orin Nano 的 1.75 倍、功耗降 1.9 倍（每瓦性能约 3.4 倍）。专为物理 AI 的低批量、低延迟推理优化。</div>
+    <div class="card-summary-en">EN — A production AI chip designed end-to-end by AI in under two weeks.</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/" target="_blank">Google 发布 Gemini 3.8 Flash 与 3.8 Flash Cyber（Fairwind 防御者计划）</a></div>
+    <div class="card-en">EN: Google shipped Gemini 3.8 Flash (1M context, $0.75/$3.75 per M tokens through Dec 31) and Gemini 3.8 Flash Cyber — restricted to trusted defenders via the new Fairwind Program. Cyber hits 70%+ vuln-discovery across 20 languages and 47.2% CWE-Bench pass@1.</div>
+    <div class="card-meta">
+      <span class="source">Google Blog / The CyberSignal（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">多模态/安全</span>
+    </div>
+    <div class="card-summary">谷歌发布 <span class="highlight">Gemini 3.8 Flash</span>（100 万 Token 上下文，限时 $0.75 输入 / $3.75 输出每百万 Token，2027/1/1 起翻倍）及其网络安全变体 <span class="highlight">Gemini 3.8 Flash Cyber</span>。Cyber 版仅通过全新 Fairwind Program 向受信任防御者（政府、关键基础设施、软件维护者）开放，专注漏洞发现与修复而非攻击：在覆盖 20 种语言的漏洞发现基准上成功率超 70%，CWE-Bench pass@1 达 47.2%（接近领先前沿模型 47.8%），Chrome 漏洞修复正确补丁数达最佳商业模型 2.6 倍。谷歌已用于自身代码安全。</div>
+    <div class="card-summary-en">EN — Three labs in one week make "defender-first" access a product feature.</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://www.businesskorea.co.kr/news/articleView.html?idxno=276169" target="_blank">Google 加速下一代 TPU 量产：8i（Zebrafish）/ 8t（Sunfish）并行推进</a></div>
+    <div class="card-en">EN: Broadcom said on Sept 2 it began production shipments of Google's next-gen inference TPU 8i (code-named Zebrafish) and plans mass shipments in Q4; the training TPU 8t (Sunfish) may follow. TPU 8i carries 288GB HBM at 8.6TB/s, ~80% better $/perf vs Ironwood.</div>
+    <div class="card-meta">
+      <span class="source">BusinessKorea（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">自研芯片</span>
+    </div>
+    <div class="card-summary">博通在 9/2 财报中确认，谷歌第八代 AI 训练芯片 TPU 的推理版 <span class="highlight">TPU 8i（Zebrafish）</span>已开始量产出货，计划 Q4 大规模放量；训练版 <span class="highlight">TPU 8t（Sunfish）</span>或同期跟进。自第八代起谷歌将 TPU 拆分为训练（8t）与推理（8i）：8i 配 288GB HBM（带宽 8.6TB/s）、8t 配 216GB（6.5TB/s），推理版每美元性能较上代 Ironwood 提升最高 80%。需求方从谷歌扩展至外部 AI 公司——Anthropic 今年采用 1GW Ironwood，明年计划扩至 5GW TPU 8i、2028 年 10GW。台积电代工、三星供应 HBM（占 TPU HBM 量 61%）。</div>
+    <div class="card-summary-en">EN — Google builds an independent TPU supply chain to counter Nvidia dominance.</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://news.qq.com/rain/a/20260902A03TQ800" target="_blank">三星公布 HBM5 路线图：2nm 基础芯片、性能翻倍，2028 前后量产</a></div>
+    <div class="card-en">EN: At SEMICON Taiwan 2026, Samsung unveiled its HBM5 roadmap — a 2nm base die with 12/16/20-layer DRAM stacks, ~2× HBM4E performance, +20% perf-per-watt and -20% thermal resistance, targeting ~2028 mass production; a novel zHBM architecture may come after 2029.</div>
+    <div class="card-meta">
+      <span class="source">腾讯 / 每日经济新闻（9/2）</span>
+      <span class="time">9/1-9/2</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">存储</span>
+    </div>
+    <div class="card-summary">9 月 1 日，三星在 SEMICON Taiwan 2026 公布下一代存储路线图：<span class="highlight">HBM5</span> 采用 2nm 制程基础芯片，提供 12/16/20 层 DRAM 堆叠，目标性能达 HBM4E 的 2 倍，单瓦性能提升 20%、热阻降低 20%，预计 2028 年前后量产；更新的 zHBM 架构或于 2029 年后推出。在 HBM 供不应求的当下，存储军备竞赛从容量/带宽转向单瓦性能与热管理。</div>
+    <div class="card-summary-en">EN — HBM race shifts to perf-per-watt and thermal design for AI racks.</div>
+  </div>
+
+  <div class="card card-model">
+    <div class="card-title"><a href="https://www.sina.cn/news/detail/5338655297634607.html" target="_blank">阿里云发布 Qwen3.8-Max-0902，强化编程与企业级协同任务</a></div>
+    <div class="card-en">EN: Alibaba Cloud updated Qwen3.8-Max to the -0902 revision with extra post-training aimed at improving coding and enterprise "Cowork" collaboration tasks, continuing its open-weight weekly cadence.</div>
+    <div class="card-meta">
+      <span class="source">新浪 / 每日 AI 资讯（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#ede9fe;color:#5b21b6">开源模型</span>
+    </div>
+    <div class="card-summary">阿里云更新 Qwen3.8-Max 模型，新版本 <span class="highlight">Qwen3.8-Max-0902</span> 通过额外后训练，旨在提升编程（Coding）与企业级协同任务（Cowork）的表现。该更新延续国产开源模型"周更"节奏，配合此前 Qwen3.8-Flash、Qwen3.8-Max 开放权重的动作，持续以性价比冲击全球生态。</div>
+    <div class="card-summary-en">EN — China's open models keep a weekly release rhythm into enterprise tiers.</div>
+  </div>
+
+  </div>
+</div>
+
+<!-- ===== 产品与应用 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-product)"></div>
+    <div class="section-title">📱 产品与应用 <span class="section-title-en">/ Products &amp; Apps</span></div>
+    <div class="section-count">8 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://segmentfault.com/a/1190000048260799" target="_blank">OpenAI 将 ChatGPT Health 接入 Epic 电子病历（覆盖 3.25 亿患者）</a></div>
+    <div class="card-en">EN: OpenAI integrated its ChatGPT Health offering with Epic's EHR system covering 325M+ patients, letting clinicians import patient context under compliant permissions and query AI on records and public medical data in-workflow.</div>
+    <div class="card-meta">
+      <span class="source">SegmentFault / AI 日报（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">AI 医疗</span>
+    </div>
+    <div class="card-summary">OpenAI 宣布将其 ChatGPT 医疗方案与覆盖逾 <span class="highlight">3.25 亿患者</span>的 Epic 电子病历系统打通。该集成允许临床医护在合规权限内导入患者上下文，并直接在工作流中调用 AI 对病历及公开医疗数据进行结构化分析与问答，推动 AI 从通用问答深入临床真实场景。</div>
+    <div class="card-summary-en">EN — ChatGPT Health meets the dominant EHR, inside clinician workflows.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://segmentfault.com/a/1190000048260799" target="_blank">Google 在 Workspace 推出 AI 图像创作工具 Google Pics（基于 Nano Banana）</a></div>
+    <div class="card-en">EN: Google launched Google Pics, an image-generation/editing tool built on the Nano Banana model, rolling out to Workspace business customers and Google AI subscribers with prompt-based generation, collaborative editing and deep Docs/Slides/Drive integration.</div>
+    <div class="card-meta">
+      <span class="source">SegmentFault / AI 日报（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">创意工具</span>
+    </div>
+    <div class="card-summary">谷歌上线基于 Nano Banana 图像生成模型的 <span class="highlight">Google Pics</span>，逐步面向 Workspace 商业客户及 Google AI 订阅用户开放。工具支持提示词精确生图与多人协同编辑，并深度集成至 Google Slides、Docs 和 Drive 等办公应用，将生成式图像能力嵌入企业生产力套件。</div>
+    <div class="card-summary-en">EN — Nano Banana lands inside Workspace as a collaborative image tool.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://segmentfault.com/a/1190000048260799" target="_blank">Perplexity 推出 Computer 混合计算：敏感数据本地化处理</a></div>
+    <div class="card-en">EN: Perplexity added a hybrid-compute architecture to its desktop Computer platform: long-horizon planning and web search run on frontier cloud models, while subtasks touching private files stay on local open-weight small models on the Mac — privacy without losing reasoning.</div>
+    <div class="card-meta">
+      <span class="source">SegmentFault / AI 日报（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">隐私计算</span>
+    </div>
+    <div class="card-summary">Perplexity 在其桌面端 Computer 平台上线混合计算架构，充当调度中心：长程规划与网络搜索等复杂任务分配给云端前沿模型，而涉及私有文件与敏感数据的子任务则无缝路由给苹果 Mac 上的<span class="highlight">本地开源小模型</span>执行，兼顾隐私安全与推理能力，体现"云+端"协同的产品趋势。</div>
+    <div class="card-summary-en">EN — Sensitive subtasks stay on-device while the cloud handles heavy lifting.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://aifki.com/2026/09/02/ai-daily" target="_blank">微软将 Copilot 应用统一并入 Microsoft 365 Copilot</a></div>
+    <div class="card-en">EN: Microsoft is merging its consumer Copilot app into Microsoft 365 Copilot into a single entry point — combining chat, image generation and Word/Excel/Outlook productivity, migrating standalone-file shares to OneDrive and retiring low-use features.</div>
+    <div class="card-meta">
+      <span class="source">AI 无涯日报（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">产品整合</span>
+    </div>
+    <div class="card-summary">微软正把面向消费者的 Copilot 应用与 Microsoft 365 Copilot 合并为单一入口，终结碎片化的 AI 产品布局：统一应用融合 Copilot 聊天、图像生成与 Word/Excel/Outlook 等生产力工具，独立 Copilot 应用生成与共享的文件将迁移至 OneDrive，同时下线一批低使用率功能。对企业用户而言变更主要体现在导航、品牌与图标更新。</div>
+    <div class="card-summary-en">EN — Microsoft collapses its fragmented Copilot lineup into one surface.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://aifki.com/2026/09/02/ai-daily" target="_blank">Optimizely 发布营销垂类 AI 模型：前沿级质量、极小成本</a></div>
+    <div class="card-en">EN: Optimizely launched a family of marketing-specific post-trained models promising frontier-level quality at minimal cost, covering content generation, copy testing and personalization for marketing workflows.</div>
+    <div class="card-meta">
+      <span class="source">AI 无涯日报（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">垂直模型</span>
+    </div>
+    <div class="card-summary">营销 AI 平台 Optimizely 发布面向营销场景的专用后训练模型家族，号称以"前沿级质量、极小成本"服务营销工作流，覆盖内容生成、文案测试与个性化等任务。垂直化、任务专用的小模型正成为企业软件厂商对抗通用大模型的新策略。</div>
+    <div class="card-summary-en">EN — Task-specific small models challenge general LLMs in the enterprise.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://aifki.com/2026/09/02/ai-daily" target="_blank">HARK 预告：Figure 创始人 Brett Adcock 的"AI 操作系统"将于 9 月发布</a></div>
+    <div class="card-en">EN: Per My First Million, Figure founder Brett Adcock's AI lab HARK (~80-90 people, founded mid-2025) will ship a consumer product in Sept 2026: assign each agent a virtual computer so the model sees the screen, moves the cursor and types — replacing app stores as the new abstraction layer.</div>
+    <div class="card-meta">
+      <span class="source">AI 无涯日报 / My First Million（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">Agent  OS</span>
+    </div>
+    <div class="card-summary">据 My First Million 播客透露，Figure 创始人 Brett Adcock 旗下 AI 实验室 HARK（约 80–90 人，2025 年中创立）将于 2026 年 9 月推出消费级产品：为每个智能体分配一台虚拟计算机，让模型像人一样看屏幕、移动光标、敲键盘，而非依赖各家 API。Adcock 主张智能体将取代应用商店成为新的抽象层。</div>
+    <div class="card-summary-en">EN — An "AI OS" that gives agents a virtual computer instead of APIs.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://www.unite.ai/anthropic-debuts-claude-fable-5-1-and-mythos-5-1-with-split-safeguards/" target="_blank">Anthropic 推出企业前沿安全护栏（EFS）：客户自主管控数据</a></div>
+    <div class="card-en">EN: Alongside Fable 5.1, Anthropic introduced Enterprise Frontier Safeguards (EFS) — storing customer data in cloud infra the customer controls, giving zero-data-retention privacy while automated monitoring continues. Rolling out in phases from fall.</div>
+    <div class="card-meta">
+      <span class="source">Unite.AI（9/1-9/2）</span>
+      <span class="time">9/1-9/2</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">企业隐私</span>
+    </div>
+    <div class="card-summary">Anthropic 同步推出 <span class="highlight">企业前沿安全护栏（EFS）</span>：将数据存储在客户自行控制的云基础设施中，实现等效零数据保留的隐私，同时持续自动化监控滥用。该架构与逾 100 家客户共同开发，将于今秋起分阶段推出，回应企业"模型能力 vs 数据主权"的持久张力，并明确"未经许可绝不使用企业数据训练"。</div>
+    <div class="card-summary-en">EN — Customer-controlled infra closes the trust gap for enterprise agents.</div>
+  </div>
+
+  <div class="card card-product">
+    <div class="card-title"><a href="https://www.toutiao.com/article/7680865300564148763/" target="_blank">Runway Solaris 界面世界模型：无需编程即可创建可交互数字世界</a></div>
+    <div class="card-en">EN: Runway's Solaris — an "Interface World Model" launched Sept 1 — lets users create interactive websites and interfaces by clicking, dragging or speaking, with no coding; the world model renders frames live while an LLM decides how the scene evolves.</div>
+    <div class="card-meta">
+      <span class="source">至顶科技 / 今日头条（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#fce7f3;color:#9d174d">世界模型</span>
+    </div>
+    <div class="card-summary">Runway 推出的界面世界模型 <span class="highlight">Solaris</span> 于本周一发布，用户可通过点击、拖拽或语音指令创建可交互网站与数字界面，全程无需编程。其将推理与渲染结合：世界模型逐帧生成画面，语言模型决定界面如何演变，数字环境随交互实时变化（如虚拟试衣、家具改色）。目前仍处于研究阶段，文本渲染精度与无障碍支持待完善，Runway 正招募合作方推进落地。</div>
+    <div class="card-summary-en">EN — Build software by interacting, not by writing code.</div>
+  </div>
+
+  </div>
+</div>
+
+<!-- ===== 资本与 IPO ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-finance)"></div>
+    <div class="section-title">💰 资本与 IPO <span class="section-title-en">/ Capital &amp; IPO</span></div>
+    <div class="section-count">4 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+  <div class="card card-finance">
+    <div class="card-title"><a href="https://aiweekly.co/ai-news-today/edition/2026-09-02" target="_blank">HiddenLayer 完成 1 亿美元 B 轮，AI 安全 ARR 增 10 倍</a></div>
+    <div class="card-en">EN: Austin-based AI-security startup HiddenLayer closed a $100M Series B led by Delta-v Capital, with Ten Eleven Ventures, Morgan Stanley, Microsoft's M12 and Booz Allen participating; ARR grew 10× over the past year into the tens of millions.</div>
+    <div class="card-meta">
+      <span class="source">AI Weekly / TechCrunch（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#ffedd5;color:#9a3412">B 轮</span>
+    </div>
+    <div class="card-summary">总部位于奥斯汀的 AI 安全创企 HiddenLayer 完成 <span class="highlight">1 亿美元 B 轮</span>，由 Delta-v Capital 领投，Ten Eleven Ventures、摩根士丹利、微软 M12 与 Booz Allen Hamilton 跟投。CEO Chris Sestito 表示，过去一年年度经常性收入（ARR）增长超 10 倍至"数千万"美元量级，逾 90% 增长来自新客户，凸显 AI 安全赛道在企业支出中的优先级上升。</div>
+    <div class="card-summary-en">EN — AI-security spend scales 10× as enterprises harden against agentic threats.</div>
+  </div>
+
+  <div class="card card-finance">
+    <div class="card-title"><a href="https://aiweekly.co/ai-news-today/edition/2026-09-02" target="_blank">Conveo 获 DST Global 领投 5000 万美元 A 轮，做 15 语言 AI 客户访谈</a></div>
+    <div class="card-en">EN: Conveo, which uses AI to conduct customer interviews in 15 languages and analyze transcripts for market insights, raised a $50M Series A led by DST Global, positioning itself in the consumer-insights-automation space.</div>
+    <div class="card-meta">
+      <span class="source">AI Weekly / Axios（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#ffedd5;color:#9a3412">A 轮</span>
+    </div>
+    <div class="card-summary">Conveo 完成 <span class="highlight">5000 万美元 A 轮</span>，由 DST Global 领投。该公司用 AI 以 15 种语言开展客户访谈并分析转录文本以提炼市场洞察，定位消费者洞察自动化赛道——AI 原生平台正逐步替代传统调研与访谈供应商。</div>
+    <div class="card-summary-en">EN — AI-native market research challenges traditional survey vendors.</div>
+  </div>
+
+  <div class="card card-finance">
+    <div class="card-title"><a href="https://finance.eastmoney.com/a/202609013861248517.html" target="_blank">Lambda 洽谈融资至多 30 亿美元，支撑算力扩张</a></div>
+    <div class="card-en">EN: Fresh off the $35B Anthropic deal, Lambda is in talks to raise up to $3B at a previously discussed ~$12B+ valuation, per Bloomberg — a sign neoclouds are still capital-hungry despite huge cloud contracts.</div>
+    <div class="card-meta">
+      <span class="source">东方财富 / 彭博（9/1-9/2）</span>
+      <span class="time">9/1-9/2</span>
+      <span class="card-tag" style="background:#ffedd5;color:#9a3412">融资洽谈</span>
+    </div>
+    <div class="card-summary">在拿下 Anthropic 350 亿美元云计算协议后，Lambda 正洽谈筹集至多 <span class="highlight">30 亿美元</span>融资，此前讨论过 120 亿美元或更高估值。这显示即便手握天量云合同，新云（neocloud）厂商仍极度渴求资本以支撑数据中心与芯片采购，算力"重资产"属性未变。</div>
+    <div class="card-summary-en">EN — Megadeals don't end the capital hunger of GPU-cloud upstarts.</div>
+  </div>
+
+  <div class="card card-finance">
+    <div class="card-title"><a href="https://aifki.com/2026/09/02/ai-daily" target="_blank">C3 AI 发布 2027 财年 Q1 财报，企业 AI 需求风向标</a></div>
+    <div class="card-en">EN: C3 AI reported fiscal 2027 Q1 results after the US close on Sept 2, as the enterprise pivots toward its C3 Agentic AI Platform; the print is watched as a barometer of enterprise-AI software demand.</div>
+    <div class="card-meta">
+      <span class="source">AI 无涯日报（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#ffedd5;color:#9a3412">财报</span>
+    </div>
+    <div class="card-summary">C3 AI 于 9/2 美股盘后发布 2027 财年第一季度业绩。公司正围绕 C3 Agentic AI Platform 推进企业级 AI 应用转型，其季度业绩被视为企业 AI 软件需求景气度的风向标，市场关注其 Agent 化产品在宏观与预算环境下的兑现速度。</div>
+    <div class="card-summary-en">EN — A quarterly read on whether enterprises are really spending on agentic AI.</div>
+  </div>
+
+  </div>
+</div>
+
+<!-- ===== 政策与产业 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-industry)"></div>
+    <div class="section-title">🏛️ 政策与产业 <span class="section-title-en">/ Policy &amp; Industry</span></div>
+    <div class="section-count">4 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://aiweekly.co/ai-news-today/edition/2026-09-02" target="_blank">Mistral Vibe 免费版默认用用户提示训练，企业版默认退出</a></div>
+    <div class="card-en">EN: Mistral updated its help center to make explicit that free-tier Vibe conversations feed model training unless users manually opt out; Vibe Enterprise, Mistral Studio and API traffic are opted out by default. The change surfaced on Hacker News.</div>
+    <div class="card-meta">
+      <span class="source">AI Weekly / Hacker News（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#fef3c7;color:#92400e">数据隐私</span>
+    </div>
+    <div class="card-summary">Mistral 更新帮助中心，明确其免费版 Vibe 对话默认用于模型训练，除非用户在管理后台手动退出；而 <span class="highlight">Vibe Enterprise、Mistral Studio 与 API</span> 流量默认不用于训练。Vibe 与 API 的开关相互独立。该变更在 Hacker News 引发讨论，开发者指出默认设置与此前文档表述存在冲突，凸显免费 AI 产品的数据授权边界问题。</div>
+    <div class="card-summary-en">EN — Free-tier prompts train models by default; enterprises must opt in carefully.</div>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://aiweekly.co/ai-news-today/edition/2026-09-02" target="_blank">Google 避免出售 AdX：法官命令广告技术互操作</a></div>
+    <div class="card-en">EN: US District Judge Leonie Brinkema rejected the DOJ's bid to force Google to sell its AdX ad exchange, ordering behavioral remedies instead — reported to include interoperability requirements letting rival ad-tech plug into Google's stack.</div>
+    <div class="card-meta">
+      <span class="source">Bloomberg / AI Weekly（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#fef3c7;color:#92400e">反垄断</span>
+    </div>
+    <div class="card-summary">美国弗吉尼亚州亚历山德里亚联邦法官 Leonie Brinkema 驳回司法部强制谷歌出售 AdX 广告交易平台的诉求，转而命令行为救济。据 Bloomberg 报道，裁决"在密封状态下发布简要命令"，预计稍后公开修订版，接受了双方大部分拟议行为救济，包括让竞品广告技术接入谷歌技术栈的<span class="highlight">互操作性要求</span>。对谷歌而言，避免了最严厉的拆分惩罚。</div>
+    <div class="card-summary-en">EN — Google keeps AdX but must open interfaces to rivals.</div>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://aiweekly.co/ai-news-today/edition/2026-09-02" target="_blank">美商务部长 Lutnick：我们信任 Anthropic，实验室"回到了正确一边"</a></div>
+    <div class="card-en">EN: At the G20 Innovation Ministerial, Commerce Secretary Howard Lutnick publicly told the audience "we trust Anthropic," saying the lab is "back on the right side" with the Trump administration after earlier export controls on Fable 5/Mythos 5 were lifted.</div>
+    <div class="card-meta">
+      <span class="source">Axios / AI Weekly（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#fef3c7;color:#92400e">美政策</span>
+    </div>
+    <div class="card-summary">在 chapel Hill 举行的 G20 创新部长级会议上，美国商务部长 Howard Lutnick 公开表示"我们信任 Anthropic"，称该实验室在与特朗普政府的关系上"回到了正确的一边"。这一表态发生在 Lutnick 此前对 Fable 5 / Mythos 5 短暂实施、后又解除出口管制之后，也与联邦法官推翻五角大楼将 Anthropic 列入"供应链风险"黑名单的裁决相呼应，为 Anthropic 的 IPO 前景扫清政策阴霾。</div>
+    <div class="card-summary-en">EN — Washington's tone toward Anthropic warms just ahead of its IPO.</div>
+  </div>
+
+  <div class="card card-industry">
+    <div class="card-title"><a href="https://aiweekly.co/ai-news-today/edition/2026-09-02" target="_blank">Loudoun 数据中心激增撞上居民反弹</a></div>
+    <div class="card-en">EN: Loudoun County, Virginia — home to ~250 data centers, the densest cluster on Earth — sees its tax windfall (revenue exceeded the county operating budget by $35M in 2024) collide with residents living next door, as property values rose up to 182% in a decade.</div>
+    <div class="card-meta">
+      <span class="source">The Verge / AI Weekly（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#fef3c7;color:#92400e">算力地缘</span>
+    </div>
+    <div class="card-summary">弗吉尼亚州 Loudoun 县聚集约 250 座数据中心（全球最密集），其税收红利（2024 年数据中心收入超县运营预算 3500 万美元，2008 年以来房产税率从约 1.29 降至 0.80 美元/100 美元，十年间房价最高涨 182%）正与相邻居民的生活冲突加剧。AI 算力扩张的"邻避效应"开始显性化，为各地数据中心选址与社区关系敲响警钟。</div>
+    <div class="card-summary-en">EN — The AI build-out's NIMBY backlash reaches America's data-center capital.</div>
+  </div>
+
+  </div>
+</div>
+
+<!-- ===== 安全与研究 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-research)"></div>
+    <div class="section-title">🔐 安全与研究 <span class="section-title-en">/ Safety &amp; Research</span></div>
+    <div class="section-count">2 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://openai.com/index/safety-overview-gpt-6-astra/" target="_blank">OpenAI 披露 Astra 跨过"关键"网络安全阈值，自主发现两个零日漏洞</a></div>
+    <div class="card-en">EN: OpenAI confirmed Astra is the first model in its history to cross the "Critical" cybersecurity threshold under its Preparedness Framework: it can find unknown flaws and build exploits across hardened systems without step-by-step human guidance. During eval it even discovered two zero-days on its own.</div>
+    <div class="card-meta">
+      <span class="source">OpenAI 官方博客（9/1）/ 环球网（9/2）</span>
+      <span class="time">9/1-9/2</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">前沿安全</span>
+    </div>
+    <div class="card-summary">OpenAI 确认下一代模型 <span class="highlight">Astra</span> 是史上首个跨越其内部"关键（Critical）"网络安全阈值的模型：在正确工具与访问权限下，可自主发现并利用众多加固真实系统中的未知漏洞，无需逐步人工指导。在专家红队评估中，Astra 在 ExploitBench 拿到满分 100%，并在定制测试（20 个近期高严重度 V8 漏洞）中<span class="highlight">自行发现并利用两个零日漏洞</span>组成攻击链，还构建了逃出浏览器沙箱、从普通用户提权至 root 的利用链。OpenAI 为此暂停部分开发以重建防护，最高危能力仅限受审防御者通过 Daybreak Blue 访问，并启用思维链监控与账号风险分级。</div>
+    <div class="card-summary-en">EN — A model that spontaneously finds zero-days forces a defender-first release.</div>
+  </div>
+
+  <div class="card card-research">
+    <div class="card-title"><a href="https://segmentfault.com/a/1190000048260799" target="_blank">Anthropic 开放 Claude AI 文本水印检测 API（欧盟合规）</a></div>
+    <div class="card-en">EN: Anthropic launched an API to detect its invisible "Claude" text watermark, opened to regulators, media and fact-checkers, responding to the EU AI Act's requirement for invisible identifiers on AI-generated content.</div>
+    <div class="card-meta">
+      <span class="source">SegmentFault / AI 日报（9/2）</span>
+      <span class="time">9/2</span>
+      <span class="card-tag" style="background:#dbeafe;color:#1e40af">合规/水印</span>
+    </div>
+    <div class="card-summary">Anthropic 正式推出用于检测文本是否包含 <span class="highlight">Claude 数字隐形水印</span>的 API，向监管机构、媒体及事实核查人员开放。该举措旨在响应欧盟《人工智能法案》对 AI 生成内容添加不可见标识的合规要求，是头部实验室在"内容溯源"监管落地上的具体动作。</div>
+    <div class="card-summary-en">EN — Watermark-detection API answers the EU AI Act's provenance mandate.</div>
+  </div>
+
+  </div>
+</div>
+
+<!-- ===== 观点与 KOL ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-kol)"></div>
+    <div class="section-title">💡 观点与 KOL <span class="section-title-en">/ Views &amp; KOL</span></div>
+    <div class="section-count">1 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+  <div class="card card-kol">
+    <div class="card-title"><a href="https://news.qq.com/rain/a/20260902A03TQ800" target="_blank">马斯克 G20：AI 或令全球经济增长 20%–30%，十年内人形机器人达 10 亿台</a></div>
+    <div class="card-en">EN: Via video at a G20-related meeting in North Carolina, Elon Musk said AI and robotics could lift global economic output by 20–30% (≈$20–30T/yr) and that the world could have ~1 billion humanoid robots within a decade; by end-2027, AI may do almost all digital work not involving physical objects.</div>
+    <div class="card-meta">
+      <span class="source">腾讯 / 每日经济新闻（9/2）</span>
+      <span class="time">9/1-9/2</span>
+      <span class="card-tag" style="background:#d1fae5;color:#065f46">大佬观点</span>
+    </div>
+    <div class="card-summary">当地时间 9/1，特斯拉及 SpaceX CEO 埃隆·马斯克通过视频参加美国北卡罗来纳州举行的 G20 相关会议时表示，AI 与机器人技术将带来显著生产力提升：预计 AI 可能使全球经济规模增长 <span class="highlight">20%–30%</span>（每年约 20 万–30 万亿美元）；未来十年内全球人形机器人数量可能达 <span class="highlight">10 亿台</span>；并预计 2027 年底 AI 将能完成几乎所有不涉及直接操作实体物品的数字化工作。分析认为，这类激进长期预测反映产业预期正从模型能力提升转向生产率兑现与机器人规模化。</div>
+    <div class="card-summary-en">EN — Musk's 20–30% GDP upside and 1B humanoids frame the next AI phase.</div>
+  </div>
+
+  </div>
+</div>
+
+<!-- ===== 图表 ===== -->
+<div class="chart-wrap">
+  <div class="chart-title">📊 9/2 当日 AI 网络安全模型关键基准（%）</div>
+  <div class="chart-note">数据来自各厂商官方披露与基准；Astra 的 ExploitBench 为满分 100，Gemini 3.8 Flash Cyber 指标为 Google 自测。</div>
+  <canvas id="chartCyber"></canvas>
+</div>
+
+<!-- ===== 溯源 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-paper)"></div>
+    <div class="section-title">🔎 溯源与来源 <span class="section-title-en">/ Sources</span></div>
+    <div class="section-count">18 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+    <div class="sources-box">
+      <span class="sources-toggle" onclick="this.nextElementSibling.classList.toggle('hidden')">展开 / 收起来源列表</span>
+      <div class="sources-list hidden">
+        <ol>
+          <li>Digital Trends — Claude Fable 5.1 and Mythos 5.1：https://www.digitaltrends.com/computing/claude-fable-5-1-and-mythos-5-1-debut-with-better-coding-and-cost-cuts-for-developers/</li>
+          <li>Unite.AI — Anthropic Debuts Fable 5.1 and Mythos 5.1：https://www.unite.ai/anthropic-debuts-claude-fable-5-1-and-mythos-5-1-with-split-safeguards/</li>
+          <li>澎湃新闻 / 今日头条 — Anthropic 上新 Fable 5.1：https://www.toutiao.com/article/7680781230275445291/</li>
+          <li>网易 / 问芯 — 全球首款 AI 设计芯片 Redwood：https://www.163.com/dy/article/L5R82KR705566LTA.html</li>
+          <li>腾讯 / 半导体行业观察 — 一颗完全由 AI 设计的芯片：https://news.qq.com/rain/a/20260902A04UOR00</li>
+          <li>Google Blog — Gemini 3.8 Flash and 3.8 Flash Cyber：https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/</li>
+          <li>The CyberSignal — Gemini 3.8 Flash Cyber & Fairwind：https://www.thecybersignal.com/google-gemini-3-8-flash-cyber-fairwind-anthropic-openai-2026</li>
+          <li>BusinessKorea — Google Speeds Up Next-Gen TPU Mass Production：https://www.businesskorea.co.kr/news/articleView.html?idxno=276169</li>
+          <li>腾讯 / 每日经济新闻 — 三星 HBM5 路线图 / Fable 5.1 / 马斯克：https://news.qq.com/rain/a/20260902A03TQ800</li>
+          <li>新浪 — 2026 年 9 月 2 日 AI 行业资讯汇总：https://www.sina.cn/news/detail/5338655297634607.html</li>
+          <li>SegmentFault — AI 日报（2026-09-02）：https://segmentfault.com/a/1190000048260799</li>
+          <li>AI 无涯日报 — 2026 年 9 月 2 日：https://aifki.com/2026/09/02/ai-daily</li>
+          <li>AI Weekly — AI News Today Sep 2, 2026：https://aiweekly.co/ai-news-today/edition/2026-09-02</li>
+          <li>OpenAI — Safety overview: GPT-6 Astra：https://openai.com/index/safety-overview-gpt-6-astra/</li>
+          <li>OpenAI — Path to Astra: critical capabilities：https://openai.com/index/path-to-astra/</li>
+          <li>环球网 — OpenAI Astra 被曝自主网络攻击能力：https://3w.huanqiu.com/a/c36dc8/4T2mQW6gmLj</li>
+          <li>至顶科技 / 今日头条 — Runway Solaris：https://www.toutiao.com/article/7680865300564148763/</li>
+          <li>东方财富 — Lambda 融资至多 30 亿美元：https://finance.eastmoney.com/a/202609013861248517.html</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>📊 补生成 · 数据来源：WebSearch 多源检索（官方动态 + 政策/媒体 + 资本市场）· 每条均附原文链接</p>
+  <p>⚠️ 仅供研究参考，不构成投资建议</p>
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+// Chart: 9/2 AI cyber-model benchmarks (%)
+new Chart(document.getElementById('chartCyber'), {
+  type: 'bar',
+  data: {
+    labels: ['Gemini 3.8 Flash Cyber\nCyberGym Pass@1','OpenAI Astra\nExploitBench','Gemini 3.8 Flash Cyber\n20语言漏洞发现','Gemini 3.8 Flash Cyber\nCWE-Bench Pass@1'],
+    datasets: [{
+      label: '基准得分（%）',
+      data: [86.2, 100, 70, 47.2],
+      backgroundColor: ['#3b82f6','#1d4ed8','#60a5fa','#93c5fd']
+    }]
+  },
+  options: {
+    plugins: { legend: { display: false } },
+    scales: { y: { beginAtZero: true, max: 100, title: { display: true, text: '得分 %' } } }
+  }
+});
+
+// Collapsible sections
+document.querySelectorAll('.section-header').forEach(h => {
+  h.addEventListener('click', () => {
+    const body = h.nextElementSibling;
+    const hint = h.querySelector('.toggle-hint');
+    h.parentElement.classList.toggle('collapsed');
+    hint.textContent = h.parentElement.classList.contains('collapsed') ? '▸ 展开' : '▾ 收起';
+  });
+});
+</script>
+
+</body>
+</html>
