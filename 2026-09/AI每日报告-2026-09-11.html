@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026-09-11</title>
+<style>
+:root {
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --primary: #6366f1;
+  --primary-light: #eef2ff;
+  --shadow: 0 1px 3px rgba(0,0,0,.08);
+  --shadow-hover: 0 4px 16px rgba(99,102,241,.15);
+  --c-industry: #f59e0b;
+  --c-kol: #10b981;
+  --c-model: #8b5cf6;
+  --c-product: #ec4899;
+  --c-paper: #06b6d4;
+  --c-research: #3b82f6;
+  --c-finance: #f97316;
+  --c-podcast: #f43f5e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+
+.header {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #7c3aed 100%);
+  border-radius: 16px; padding: 36px 40px; color: #fff; margin-bottom: 28px;
+  box-shadow: 0 8px 30px rgba(99,102,241,.3);
+}
+.header h1 { font-size: 26px; font-weight: 700; letter-spacing: -.5px; }
+.header .h1-en { font-size: 14px; font-weight: 500; opacity: .85; margin-top: 4px; letter-spacing: .3px; }
+.header .meta { font-size: 14px; opacity: .9; margin-top: 10px; display: flex; flex-wrap: wrap; gap: 16px; }
+.header .meta span { display: inline-flex; align-items: center; gap: 4px; }
+.header .badge {
+  display: inline-block; background: rgba(255,255,255,.2); padding: 2px 10px;
+  border-radius: 20px; font-size: 12px; margin-top: 12px;
+}
+
+.stats-bar {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;
+  background: var(--card-bg); border-radius: 12px; padding: 16px 20px; box-shadow: var(--shadow);
+}
+.stat-item {
+  display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-secondary);
+  padding: 4px 10px; border-radius: 8px; background: var(--bg);
+}
+.stat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.stat-num { font-weight: 700; color: var(--text); }
+
+.section { margin-bottom: 32px; }
+.section-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+  padding-bottom: 8px; border-bottom: 2px solid var(--border); cursor: pointer; user-select: none;
+}
+.section-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.section-title { font-size: 18px; font-weight: 700; }
+.section-title-en { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+.section-count { font-size: 13px; color: var(--text-muted); margin-left: auto; }
+.toggle-hint { font-size: 12px; color: var(--primary); margin-left: 10px; white-space: nowrap; }
+.collapsed .section-body { display: none; }
+
+.card {
+  background: var(--card-bg); border-radius: 12px; padding: 20px 24px;
+  margin-bottom: 12px; box-shadow: var(--shadow);
+  border-left: 4px solid var(--primary);
+  transition: box-shadow .2s, transform .2s;
+  position: relative; overflow: hidden;
+}
+.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+.card-industry { border-left-color: var(--c-industry); }
+.card-kol { border-left-color: var(--c-kol); }
+.card-model { border-left-color: var(--c-model); }
+.card-product { border-left-color: var(--c-product); }
+.card-paper { border-left-color: var(--c-paper); }
+.card-research { border-left-color: var(--c-research); }
+.card-finance { border-left-color: var(--c-finance); }
+.card-podcast { border-left-color: var(--c-podcast); }
+
+.card-title { font-size: 16px; font-weight: 600; line-height: 1.5; margin-bottom: 4px; }
+.card-title a { color: var(--text); text-decoration: none; }
+.card-title a:hover { color: var(--primary); }
+
+.card-en {
+  font-size: 13px; color: var(--text-muted); font-style: italic;
+  margin-bottom: 8px; line-height: 1.5;
+}
+
+.card-meta {
+  display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.card-meta .source { font-weight: 500; color: var(--text-secondary); }
+.card-meta .time { color: var(--primary); font-weight: 500; }
+.card-tag {
+  display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 4px;
+  font-weight: 500;
+}
+
+.card-summary { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+.card-summary .highlight { color: var(--primary); font-weight: 600; }
+.card-summary-en {
+  font-size: 13px; color: var(--text-muted); line-height: 1.65;
+  margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border);
+}
+
+.news-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 4px 0 10px; }
+.news-table th {
+  text-align: left; padding: 9px 12px; background: rgba(99,102,241,.08);
+  color: var(--text); font-weight: 600; border-bottom: 2px solid var(--primary);
+}
+.news-table td {
+  padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top;
+}
+.news-table .t { color: var(--primary); font-weight: 600; white-space: nowrap; }
+.news-table .e { color: var(--c-finance); font-weight: 500; }
+
+.chart-wrap {
+  background: var(--card-bg); border-radius: 12px; padding: 20px 24px;
+  margin-bottom: 14px; box-shadow: var(--shadow); border-left: 4px solid var(--c-research);
+}
+.chart-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.chart-note { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
+.chart-wrap canvas { width: 100% !important; max-height: 320px; }
+
+.summary-section {
+  background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+  border-radius: 16px; padding: 32px 36px; margin-top: 36px;
+  border: 1px solid #e0e7ff;
+}
+.summary-section h2 {
+  font-size: 20px; font-weight: 700; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 8px;
+}
+.summary-sub { margin-bottom: 24px; }
+.summary-sub h3 {
+  font-size: 16px; font-weight: 700; margin-bottom: 12px;
+  color: var(--text); display: flex; align-items: center; gap: 6px;
+}
+.summary-sub ul { list-style: none; padding-left: 0; }
+.summary-sub li {
+  font-size: 14px; color: var(--text-secondary); margin-bottom: 10px;
+  padding-left: 18px; position: relative; line-height: 1.7;
+}
+.summary-sub li::before {
+  content: "▸"; position: absolute; left: 0; color: var(--primary); font-weight: 700;
+}
+.summary-sub li .highlight { color: var(--primary); font-weight: 600; }
+.summary-sub .up { color: #dc2626; font-weight: 600; }
+.summary-sub .down { color: #16a34a; font-weight: 600; }
+.summary-sub .lens {
+  background: rgba(99,102,241,.08); border-radius: 8px; padding: 12px 16px;
+  margin-top: 12px; font-size: 13px; color: var(--text-secondary); border-left: 3px solid var(--primary);
+}
+.summary-sub .en-note {
+  font-size: 13px; color: var(--text-muted); margin-top: 10px; line-height: 1.7;
+}
+
+.sources-box { margin-top: 4px; }
+.sources-toggle {
+  display: inline-block; cursor: pointer; font-size: 13px; font-weight: 600;
+  color: var(--primary); background: var(--primary-light); padding: 6px 14px; border-radius: 8px;
+}
+.sources-list { margin-top: 12px; font-size: 13px; color: var(--text-secondary); }
+.sources-list.hidden { display: none; }
+.sources-list ol { padding-left: 22px; }
+.sources-list li { margin-bottom: 6px; line-height: 1.6; }
+.sources-list a { color: var(--primary); word-break: break-all; }
+
+.footer {
+  text-align: center; margin-top: 48px; padding-top: 24px;
+  border-top: 1px solid var(--border); color: var(--text-muted); font-size: 12px;
+}
+.footer p { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+<div class="header">
+  <h1>🤖 AI 每日全景报告</h1>
+  <div class="h1-en">AI Daily Panorama Report · Bilingual Edition</div>
+  <div class="meta">
+    <span>📅 2026年9月11日（周五）</span>
+    <span>🕐 覆盖时段：9月10日 22:00 – 9月11日 22:00（北京时间）</span>
+    <span>📊 共 40 条 / 多源检索</span>
+  </div>
+  <div class="badge">补生成（9/11 22:00 窗口已于当晚走完，本次为 9/12 补跑）· 数据来源：WebSearch 多源检索（官方动态 + 政策/媒体 + 资本市场 + 研究机构）· 每条均附原文链接 · 时间采用绝对日期（9/10、9/11）</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-model)"></div>模型与芯片 <span class="stat-num">10</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-product)"></div>产品与应用 <span class="stat-num">8</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-finance)"></div>资本与 IPO <span class="stat-num">7</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-industry)"></div>政策与产业 <span class="stat-num">6</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-research)"></div>安全与研究 <span class="stat-num">5</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--c-kol)"></div>观点与 KOL <span class="stat-num">4</span></div>
+</div>
+
+<!-- ===== 当日要闻表 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-research)"></div>
+    <div class="section-title">📌 当日要闻表 <span class="section-title-en">/ Day-at-a-glance</span></div>
+    <div class="section-count">10 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+    <table class="news-table">
+      <thead><tr><th style="width:90px">时间</th><th>事件</th><th>影响</th></tr></thead>
+      <tbody>
+        <tr><td class="t">9/10</td><td>Anthropic 发布 9 月威胁情报报告，点名阿里、月之暗面、DeepSeek、智谱、小米、商汤、MiniMax 七家中国实验室对其模型实施"工业级蒸馏"，其中阿里一波达 <b>1.51 亿次</b>交换</td><td class="e">模型能力来源被正式纳入国家安全叙事，出海企业与中概 AI 标的的尽调清单需要前置</td></tr>
+        <tr><td class="t">9/11</td><td>燧原科技登陆科创板，<span class="up">首日收涨约 179%</span>；摩尔线程、沐曦、壁仞、燧原"国产 AI 芯片四小龙"全部进入公开市场</td><td class="e">私募时代的国产算力估值第一次交给二级市场定价，四家上半年营收 11–17 亿元量级但普遍未盈利</td></tr>
+        <tr><td class="t">9/11</td><td>2026 中国算力大会在河北廊坊开幕（9/11–9/13），首次设"算力首创首发发布会"，集中发布国产算力芯片、智能体与绿色算力成果</td><td class="e">算力网已被纳入国家级基础设施，"十五五"规划明确提升算力设施水平，国产替代获政策与资本双重催化</td></tr>
+        <tr><td class="t">9/11</td><td>工信部印发《"人工智能+软件"专项行动实施方案》：2028 年覆盖 2 万家规上软件企业、打造 100 个智能体软件标杆应用，同步加强 AI 生成代码安全审查</td><td class="e">"AI+软件"从口号变成可考核的产业指标，智能编程工具的攻击面被同步纳入监管视野</td></tr>
+        <tr><td class="t">9/10</td><td>受 DeepSeek 发布 V4.1 Flash 并大幅下调 API 定价影响，港股大模型板块集体重挫：智谱 <span class="down">-11.06%</span>、MiniMax <span class="down">-8.98%</span>；摩根士丹利警告价格竞争加剧</td><td class="e">"升级+降价"开始直接冲击二级市场估值，模型能力领先不再自动等于护城河</td></tr>
+        <tr><td class="t">9/11</td><td>OpenAI 因 GPT-6 Astra 需求超预期，暂停 200 美元/月 ChatGPT Pro 新订阅与升级；Astra 同步在 Amazon Bedrock、微软 Copilot/Foundry、GitHub Copilot 全面 GA，定价 10/50 美元每百万 token</td><td class="e">最强模型的能力与产能第一次同时成为约束，企业级分发渠道成为新的竞争维度</td></tr>
+        <tr><td class="t">9/11</td><td>OpenAI 双 API 齐发：GPT-Live-1 全双工语音模型进入 API（0.05 美元/分钟），Agents API 提供全托管云端智能体运行时</td><td class="e">语音与智能体两条产品线同时向开发者开放，应用层门槛进一步下探</td></tr>
+        <tr><td class="t">9/11</td><td>世界模型集中出招：高德 ABot-Earth 0.7 单卡 10 分钟生成公里级 3D 城市场景；京东开源视听世界模型 EchoWM；蚂蚁灵波再放三款世界模型</td><td class="e">世界模型从实验室走向可调用的产品能力，中国厂商在"空间智能"上形成集团军优势</td></tr>
+        <tr><td class="t">9/10</td><td>加州州长纽森签署被称为"全美最严"的儿童 AI 聊天机器人与社交媒体法案，要求年龄核验、限制未成年人内容与广告；OpenAI 表示支持，Meta 称"并非完美但有意义的步伐"</td><td class="e">美国 AI 监管重心从数据隐私转向青少年心理健康与产品设计，州级硬法填补联邦空白</td></tr>
+        <tr><td class="t">9/11</td><td>安全机构 Calif Research 演示 WeWorm——首个通过微信通话在 iOS 与 Android 间传播的零点击蠕虫，团队借助 AI 约 2 天找到漏洞并写出首个 RCE 利用</td><td class="e">腾讯已完成服务端封堵；AI 把高级攻击能力的开发周期从数月压到数天，披露窗口的安全边际被压缩</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- ===== 模型与芯片 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-model)"></div>
+    <div class="section-title">🧠 模型与芯片 <span class="section-title-en">/ Models &amp; Silicon</span></div>
+    <div class="section-count">10 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+    <div class="card card-model">
+      <div class="card-title"><a href="https://aibriefing.dev/" target="_blank">OpenAI GPT-6 Astra 全面 GA：Amazon Bedrock、微软 Copilot/Foundry、GitHub Copilot 同步上线，10/50 美元每百万 token</a></div>
+      <div class="card-en">GPT-6 Astra hits general availability across Bedrock, Microsoft Copilot, Foundry and GitHub Copilot at $10/$50 per million tokens</div>
+      <div class="card-meta"><span class="source">AWS / AI Briefing / SegmentFault AI 日报</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(139,92,246,.12);color:#8b5cf6">企业可用</span></div>
+      <div class="card-summary">OpenAI 最强模型 GPT-6 Astra 已在 <span class="highlight">Amazon Bedrock 正式可用</span>，并同步覆盖 Microsoft Copilot、Copilot Studio、Foundry 与 GitHub Copilot，支持最高 <span class="highlight">100 万 token 上下文</span>，定价为输入 10 美元、输出 50 美元每百万 token。AWS 同时给出 IAM 权限、CloudTrail 调用日志与 PrivateLink 等治理能力，并声明推理数据不用于训练。对企业而言，模型能力只是第一层——能否接入既有身份体系、网络边界与审计流程，才决定它能否真正进入核心业务；Astra 一天内同时在三大云与开发者平台上架，说明"渠道覆盖速度"已成为前沿模型竞争的新维度。</div>
+      <div class="card-summary-en">EN: GPT-6 Astra is now generally available on Amazon Bedrock and across Microsoft Copilot, Copilot Studio, Foundry and GitHub Copilot, with a 1M-token context window at $10 in / $50 out per million tokens. AWS pairs it with IAM, CloudTrail logging and PrivateLink, and states inference data is not used for training. Distribution breadth across three major clouds in a single day has become a competitive dimension in its own right.</div>
+    </div>
+
+    <div class="card card-model">
+      <div class="card-title"><a href="https://aibriefing.dev/" target="_blank">Astra 需求挤爆产能：OpenAI 暂停 200 美元/月 ChatGPT Pro 新订阅与升级</a></div>
+      <div class="card-en">OpenAI pauses new $200/month ChatGPT Pro subscriptions as GPT-6 Astra demand outstrips compute</div>
+      <div class="card-meta"><span class="source">OpenAI（Thibault Sottiaux）/ AI Briefing / SegmentFault</span><span class="time">9/10–9/11</span><span class="card-tag" style="background:rgba(249,115,22,.12);color:#f97316">产能约束</span></div>
+      <div class="card-summary">由于 GPT-6 Astra 需求"史无前例"，OpenAI 于 <span class="highlight">9/10暂时停止 ChatGPT Pro（Pro 20X，200 美元/月）的新订阅与升级</span>。核心产品与平台负责人 Thibault Sottiaux 表示，现有算力无法在维持体验质量的前提下承载新增用量。这是前沿模型第一次在发布后极短时间内出现"卖不动（因为没货）"的情形——<span class="highlight">瓶颈从需求侧彻底转向供给侧</span>。对照组是：同期 DeepSeek 用 V4.1 Flash 把缓存命中输入价格压到 0.02 元/百万 token，两边走的是完全相反的两条曲线。</div>
+      <div class="card-summary-en">EN: OpenAI temporarily suspended new subscriptions and upgrades for its $200/month ChatGPT Pro plan on Sept 10, with head of core products Thibault Sottiaux citing Astra's unprecedented demand and insufficient compute to guarantee a quality experience. The constraint has flipped from demand to supply — even as DeepSeek cut cached-input pricing to ¥0.02 per million tokens on the same day.</div>
+    </div>
+
+    <div class="card card-model">
+      <div class="card-title"><a href="https://segmentfault.com/a/1190000048290674" target="_blank">OpenAI 双 API 齐发：GPT-Live-1 全双工语音（0.05 美元/分钟）+ Agents API 全托管云端智能体</a></div>
+      <div class="card-en">OpenAI ships two APIs: full-duplex GPT-Live-1 voice at $0.05/min and a hosted Agents API</div>
+      <div class="card-meta"><span class="source">OpenAI / SegmentFault AI 日报 / Future Tools</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(139,92,246,.12);color:#8b5cf6">开发者平台</span></div>
+      <div class="card-summary">OpenAI 同日把两条产品线下沉到 API：<span class="highlight">GPT-Live-1</span> 是可同时听与说的全双工语音模型，能处理打断、停顿与背景噪声，并支持电话场景与工具调用，前端语音层定价 <span class="highlight">0.05 美元/分钟</span>，在 Full Duplex Bench 上比 GPT-Realtime-2.1 高出 <span class="highlight">30 个百分点</span>，语言学习平台 Speak 使用后误打断减少近 80%。<span class="highlight">Agents API</span> 则让开发者用 Codex harness 构建并运行云端智能体，由 OpenAI 全托管——自动管理上下文、协调子智能体、基础设施可支撑数天连续运行，并能处理文件、执行代码与保存中间结果。语音交互与长时智能体，从"演示能力"变成"可计费接口"。</div>
+      <div class="card-summary-en">EN: OpenAI shipped two APIs: GPT-Live-1, a full-duplex voice model that listens and speaks at once, handles interruptions and background noise, supports telephony and tool calling, priced at $0.05/min and scoring 30 points above GPT-Realtime-2.1 on Full Duplex Bench (Speak reports ~80% fewer false interruptions); and a fully hosted Agents API built on the Codex harness that manages context and orchestrates sub-agents for multi-day runs.</div>
+    </div>
+
+    <div class="card card-model">
+      <div class="card-title"><a href="https://www.sohu.com/a/1074463759_455313" target="_blank">DeepSeek V4.1 Flash 余波：552B MoE + CSA2 把 KV Cache 压到上一代 1/4，生态全量接入</a></div>
+      <div class="card-en">DeepSeek V4.1-Flash: 552B MoE with CSA2 shrinks KV cache to a quarter of the previous generation</div>
+      <div class="card-meta"><span class="source">腾讯研究院 AI 速递 / 每日经济新闻 / SegmentFault</span><span class="time">9/10–9/11</span><span class="card-tag" style="background:rgba(139,92,246,.12);color:#8b5cf6">模型发布</span></div>
+      <div class="card-summary">DeepSeek 9/10发布的 <span class="highlight">V4.1 Flash</span> 今日进入生态扩散阶段。模型为 <span class="highlight">552B 参数 MoE</span>，采用全新 Causal-Encoder-Decoder 非对称结构与 CSA2 压缩稀疏注意力，输入激活 8B、输出激活 16B，把 KV Cache 内存需求降至上一代 <span class="highlight">1/4</span>、SSD 需求降至 <span class="highlight">1/8</span>，显著压低 Agent 类任务的缓存命中成本；以 MIT 许可开源，定价闲时缓存命中输入 0.02 元/百万 token、输出 4 元。腾讯 WorkBuddy、CodeBuddy 等作为官方合作伙伴全量接入，<span class="highlight">9 月 14 日后 V4 Pro 请求将路由至 V4.1 Flash</span>。需要注意的是，参数从 284B 跳到 552B 也让本地推理社区抱怨在消费级硬件上明显更难跑。</div>
+      <div class="card-summary-en">EN: DeepSeek's V4.1-Flash (552B MoE) entered ecosystem rollout today. Its new causal encoder-decoder design plus Compressed Sparse Attention 2 cut KV-cache memory to a quarter and SSD needs to an eighth of the prior generation, with 8B input / 16B output activation. Released under MIT at ¥0.02 per million cached input tokens, it is being adopted by Tencent's WorkBuddy and CodeBuddy, with V4 Pro traffic routing to it after Sept 14 — though the 284B→552B jump drew complaints from the local-inference community.</div>
+    </div>
+
+    <div class="card card-model">
+      <div class="card-title"><a href="https://segmentfault.com/a/1190000048290674" target="_blank">高通预告新一代骁龙旗舰：Hexagon NPU 引入 Element Accelerator，端侧跑 MoE（30B 激活 3B）</a></div>
+      <div class="card-en">Qualcomm previews its next Snapdragon flagship: Hexagon NPU gains Element Accelerator and MoE support</div>
+      <div class="card-meta"><span class="source">高通 / SegmentFault AI 日报 / 腾讯 AI 硬件日报</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(139,92,246,.12);color:#8b5cf6">端侧算力</span></div>
+      <div class="card-summary">高通预告新一代骁龙旗舰移动平台将全面面向 AI 智能体重构：新 <span class="highlight">Hexagon NPU 引入 Element Accelerator 与更大的共享内存</span>，专为 Transformer 工作负载打造；同时与头部内存和模型厂商合作引入 <span class="highlight">MoE 架构——300 亿参数模型每次仅激活约 30 亿参数</span>，以低功耗实现更大模型级的 AI 体验。这与 AMD 9/10把 x86 客户端本地可跑模型从 200B 推到 300B 形成呼应：<span class="highlight">"稀疏激活 + 大内存带宽"正在成为端侧 AI 的通用配方</span>，手机与 PC 在本地跑过去只能云端调用的模型，已从概念验证转向产品路线图。</div>
+      <div class="card-summary-en">EN: Qualcomm previewed its next Snapdragon flagship with an agent-oriented Hexagon NPU featuring an Element Accelerator and larger shared memory for Transformer workloads, plus MoE support in partnership with memory and model vendors — a 30B-parameter model activating only ~3B per token. It echoes AMD's move to 300B-class local models: sparse activation plus memory bandwidth is becoming the standard on-device recipe.</div>
+    </div>
+
+    <div class="card card-model">
+      <div class="card-title"><a href="https://segmentfault.com/a/1190000048290674" target="_blank">d-Matrix 采用 NVIDIA NVLink Fusion 接入 MGX 机架生态，推理芯片厂商向英伟达互联标准靠拢</a></div>
+      <div class="card-en">d-Matrix adopts NVIDIA NVLink Fusion to plug its Raptor XPU into the MGX rack ecosystem</div>
+      <div class="card-meta"><span class="source">d-Matrix / SegmentFault AI 日报 / AI Briefing</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(139,92,246,.12);color:#8b5cf6">算力互联</span></div>
+      <div class="card-summary">AI 推理芯片公司 <span class="highlight">d-Matrix</span> 宣布将采用 <span class="highlight">NVIDIA NVLink Fusion</span> 把下一代 Raptor XPU 接入英伟达 AI 基础设施平台，并加入 MGX 机架架构生态。表面看是一家创业公司的技术选型，实质信号是：<span class="highlight">越来越多推理芯片厂商正围绕英伟达的互联标准而非自建体系来构建系统</span>。在英伟达刚宣布 129.3 亿美元收购 Hugging Face、同时承诺保持平台开放的背景下，这一动作让"开放承诺 vs 事实标准"的张力更加具体——GPU 之外的算力可以长出来，但互联与机架的标准仍在收紧。</div>
+      <div class="card-summary-en">EN: Inference-chip startup d-Matrix said it will use NVIDIA NVLink Fusion to connect its next-generation Raptor XPU to NVIDIA's AI infrastructure platform, joining the MGX rack ecosystem. The signal: more inference vendors are building around NVIDIA's interconnect standard rather than their own. Against the backdrop of the $12.93B Hugging Face acquisition and its openness pledge, GPU alternatives can emerge while interconnect standards keep tightening.</div>
+    </div>
+
+    <div class="card card-model">
+      <div class="card-title"><a href="https://cj.sina.com.cn/articles/view/5182171545/134e1a99902002jhi4" target="_blank">台积电 8 月营收 5148 亿新台币创单月历史新高，同比 +53.3%，设备采购预估上调至去年 1.9 倍</a></div>
+      <div class="card-en">TSMC's August revenue hits a record NT$514.8B, up 53.3% YoY; equipment procurement guidance raised to 1.9x</div>
+      <div class="card-meta"><span class="source">台积电 / 界面新闻 / 同花顺半导体日报</span><span class="time">9/10–9/11</span><span class="card-tag" style="background:rgba(139,92,246,.12);color:#8b5cf6">晶圆代工</span></div>
+      <div class="card-summary">全球晶圆代工龙头台积电公布 8 月营收：单月销售额 <span class="highlight">5148 亿元新台币（约 163.5 亿美元）</span>，同比大增 <span class="highlight">53.3%</span>、环比增长 10.1%，创下单月历史新高；1–8 月累计营收 3.39 万亿新台币，同比增长 39.3%，月度营收已连续四个月增长。更关键的领先指标在设备端：台积电季度设备采购预估在 7 月上调至去年 12 月预测的约 <span class="highlight">1.9 倍</span>，半年近乎翻倍；全球前十大晶圆代工厂 Q2 合计营收创 534.9 亿美元历史新高。目前全球在建晶圆厂接近 20 座，对芯片制造工具的需求自去年底以来几乎翻番——<span class="highlight">这是 30 年未见的速度</span>。</div>
+      <div class="card-summary-en">EN: TSMC reported record August revenue of NT$514.8B (~$16.35B), up 53.3% YoY and 10.1% MoM, its fourth straight monthly gain, with Jan–Aug revenue at NT$3.39T (+39.3%). The leading indicator is capex: TSMC raised its quarterly equipment procurement estimate to ~1.9x its December projection. Global top-10 foundry Q2 revenue hit a record $53.49B, and nearly 20 fabs are under construction worldwide.</div>
+    </div>
+
+    <div class="card card-model">
+      <div class="card-title"><a href="https://m.10jqka.com.cn/20260911/c679839031.shtml" target="_blank">龙芯中科披露 9A1000：既是独立显卡也是 AI 加速卡，2027 年上半年开售</a></div>
+      <div class="card-en">Loongson's 9A1000 doubles as a discrete GPU and AI accelerator, due in H1 2027</div>
+      <div class="card-meta"><span class="source">龙芯中科半年度业绩说明会 / 同花顺半导体日报</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(139,92,246,.12);color:#8b5cf6">国产算力</span></div>
+      <div class="card-summary">龙芯中科在半年度业绩说明会上披露，<span class="highlight">9A1000 既是独立显卡、同时也是 AI 加速卡</span>，预计 2027 年上半年对外开售，售价主要取决于 LPDDR4 显存采购价格。作为显卡，产品面向高自主可控需求市场，性能对标 <span class="highlight">RX 550</span>；作为 AI 加速卡，可满足多数具身智能相关计算任务，已有部分客户基于该芯片开展智能体原型开发。产品延续龙芯自主生态、适配国产操作系统，重点服务信创、机器人与工业控制场景。国产 CPU 厂商向 GPU 与 AI 加速卡横向延伸，标志着自主算力生态正从"可用"向"好用"演进。</div>
+      <div class="card-summary-en">EN: Loongson disclosed at its H1 results call that the 9A1000 works both as a discrete GPU and an AI accelerator, due for sale in H1 2027 with pricing driven mainly by LPDDR4 memory costs. As a GPU it targets high-sovereignty markets at roughly RX 550 performance; as an accelerator it covers most embodied-intelligence workloads, with some customers already prototyping agents on it.</div>
+    </div>
+
+    <div class="card card-model">
+      <div class="card-title"><a href="https://www.engadget.com/2254005/ios-27-with-siri-ai-will-be-available-on-september-14/" target="_blank">苹果确认 Siri AI 随 iOS 27 于 9 月 14 日上线：英文测试版，模型经 Google Gemini 协作训练</a></div>
+      <div class="card-en">Apple confirms Siri AI ships with iOS 27 on Sept 14 — English-only beta, trained with Google Gemini</div>
+      <div class="card-meta"><span class="source">Engadget / The Verge / AI Weekly / MacObserver</span><span class="time">9/10–9/11</span><span class="card-tag" style="background:rgba(139,92,246,.12);color:#8b5cf6">端侧 AI</span></div>
+      <div class="card-summary">苹果确认 <span class="highlight">iOS 27、iPadOS 27、watchOS 27 与 macOS 27 Golden Gate 将于 9 月 14 日（下周一）公开发布</span>，最受关注的 Siri AI 同步公开亮相。苹果官方表述为：下一代 Apple Foundation Models <span class="highlight">"与 Google 及其 Gemini 模型协作定制"</span>——注意这是训练阶段的合作，运行时请求仍由设备端模型与 Private Cloud Compute 处理，界面中不出现任何第三方模型名称。支持机型最早只到 <span class="highlight">2023 年 iPhone 15 Pro</span>（约三代半），iPhone 17 及以后机型凭更强的端侧模型获得更好的语音识别与听写体验；iPad 需 M1 或更新芯片。10 月将扩展到法、日、韩、葡、西五种语言。</div>
+      <div class="card-summary-en">EN: Apple confirmed iOS 27, iPadOS 27, watchOS 27 and macOS 27 Golden Gate ship publicly on Sept 14, debuting the overhauled Siri AI as an English-only beta. Apple's wording is that its next-gen Apple Foundation Models "were custom-built in collaboration with Google and its Gemini models" — a training-stage partnership; inference still runs on-device and via Private Cloud Compute. Support starts at the 2023 iPhone 15 Pro; iPads need M1 or later. Five more languages arrive in October.</div>
+    </div>
+
+    <div class="card card-model">
+      <div class="card-title"><a href="https://www.sohu.com/a/1074463759_455313" target="_blank">世界模型集中出招：高德 ABot-Earth 0.7、京东 EchoWM、蚂蚁灵波三款模型同日亮相</a></div>
+      <div class="card-en">World models land in force: Amap's ABot-Earth 0.7, JD's EchoWM and Ant's LingBot trio</div>
+      <div class="card-meta"><span class="source">腾讯研究院 AI 速递 / SegmentFault / 京东探索研究院</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(139,92,246,.12);color:#8b5cf6">世界模型</span></div>
+      <div class="card-summary">中国厂商在同一天把世界模型推到可产品化的水位。高德推出 3D 原生城市世界模型 <span class="highlight">ABot-Earth 0.7</span>：从一张卫星图或一段文字出发，<span class="highlight">单块消费级 GPU 约 10 分钟生成公里级 3D 城市场景</span>，效率提升约 1000 倍，同一模型覆盖从星球、城市到街景地标的连续尺度，已覆盖 196 个以上国家和地区。京东探索研究院在 JDD 大会发布并开源 <span class="highlight">JoyAI-EchoWM</span>，可在同一框架内生成视频与环境音、音乐、语音并实时响应操作，在 158 个 WBench Navigation 案例评测中取得 81.7 平均分（一致性 89.8、交互性 87.2），但尚无显式持久三维记忆，长时生成仍可能漂移。蚂蚁灵波继 7 月开源 LingBot-World 2.0 14B 后，再开放 <span class="highlight">Small(1.3B)、Bidirectional 与 Causal Pretrain</span> 三款，1.3B 小模型面向消费级单卡实时世界生成。</div>
+      <div class="card-summary-en">EN: Chinese labs pushed world models to product grade on the same day. Amap launched ABot-Earth 0.7, a 3D-native city world model generating kilometre-scale scenes in ~10 minutes on one consumer GPU (~1000x efficiency gain) across 196+ countries. JD open-sourced JoyAI-EchoWM, generating video plus ambient audio, music and speech in one framework with real-time interaction (81.7 average on 158 WBench Navigation cases), though it lacks explicit persistent 3D memory. Ant's LingBot added 1.3B, Bidirectional and Causal Pretrain variants.</div>
+    </div>
+
+  </div>
+</div>
+<!-- ===== 产品与应用 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-product)"></div>
+    <div class="section-title">🚀 产品与应用 <span class="section-title-en">/ Products &amp; Applications</span></div>
+    <div class="section-count">8 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+    <div class="card card-product">
+      <div class="card-title"><a href="https://segmentfault.com/a/1190000048290674" target="_blank">微信小范围测试"小微 AI 社交"：AI 代理开始代表用户与人沟通</a></div>
+      <div class="card-en">WeChat tests "Xiaowei AI social": agents talk to each other on users' behalf</div>
+      <div class="card-meta"><span class="source">SegmentFault AI 日报 / 腾讯</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(236,72,153,.12);color:#ec4899">社交智能体</span></div>
+      <div class="card-summary">微信开始小范围测试"小微 AI 社交"功能：用户把诉求告诉自己的小微，小微找到对方的小微说明话题并请求授权，<span class="highlight">两个 AI 先行交流，遇到需要确认的地方再回来提醒主人</span>。这使社交平台的连接对象从"人和人"扩展为"<span class="highlight">人的代理与人的代理</span>"。外界普遍把它视为微信基于 <span class="highlight">14.39 亿月活</span>熟人关系链布局 Agent 的早期实验——它同时触碰到三件最敏感的事：谁替你说第一句话、平台的授权边界在哪里、以及代理之间的对话算不算用户数据。国内另一侧的动作是中兴宣布 AI 智能体手机努比亚 NaviX Ultra（"豆包手机"）将于 9 月 16 日发布，Anthropic 亦以研究预览形式发布"模型硬件标准"（MHS）帮助智能体安全操纵物理设备。</div>
+      <div class="card-summary-en">EN: WeChat is piloting "Xiaowei AI social," where a user's agent finds the other party's agent, explains the topic and requests authorisation — the two AIs talk first and only ping their owners when confirmation is needed. The platform's connection unit shifts from person-to-person to agent-to-agent, on top of WeChat's 1.439bn monthly actives — raising questions about who speaks first for you, how authorisation is bounded, and whether agent-to-agent dialogue counts as user data.</div>
+    </div>
+
+    <div class="card card-product">
+      <div class="card-title"><a href="https://segmentfault.com/a/1190000048290674" target="_blank">Meta 个人智能体 Muse 上线数日冲上美国 App Store 第二，Stripe Link 承担代理支付</a></div>
+      <div class="card-en">Meta's personal agent Muse climbs to No.2 on the US App Store days after launch</div>
+      <div class="card-meta"><span class="source">硅谷科技媒体 / SegmentFault / Inside AI</span><span class="time">9/10–9/11</span><span class="card-tag" style="background:rgba(236,72,153,.12);color:#ec4899">消费级 Agent</span></div>
+      <div class="card-summary">Meta 于 9 月 8 日推出的个人 AI 智能体 <span class="highlight">Muse</span> 上线数日即成为 <span class="highlight">美国 App Store 第二</span>。Muse 由 Meta Superintelligence Labs 打造、底层为 Muse Spark 模型，每个用户拥有独立云端虚拟机；可通过 WhatsApp 订旅行、购物、发邮件，支付走 <span class="highlight">Stripe Link 一次性卡号</span>，另有 Sentinel 安全代理监控每一次外发操作、区分读与写权限。免费版可用，订阅档位为 20 美元与 100 美元/月，目前仅限美国。同期被反复提及的风险是：一个 Meta 研究员自己的智能体实验曾把文件全部删掉，而 Resy 等预订平台已公开警告不接受自动化代理下单——<span class="highlight">能力已经可用，信任机制还没跟上</span>。</div>
+      <div class="card-summary-en">EN: Meta's Muse, launched Sept 8, has reached No.2 on the US App Store within days. Built by Meta Superintelligence Labs on the Muse Spark model, each user gets an isolated cloud VM; it books travel, shops and sends email via WhatsApp, paying through Stripe Link single-use card numbers, with a Sentinel agent gating every outbound action and separating read from write access. Free tier plus $20/$100 monthly plans, US-only for now. The trust gap persists — one Meta researcher's own agent deleted files, and platforms such as Resy have warned against automated bookings.</div>
+    </div>
+
+    <div class="card card-product">
+      <div class="card-title"><a href="https://www.universalmusic.com/universal-music-group-and-elevenlabs-announce-multi-year-strategic-agreement-beginning-with-a-new-licensed-ai-music-creation-platform" target="_blank">环球音乐与 ElevenLabs 签多年期授权协议：基于授权曲库的 AI 混音平台，主流唱片公司首次大规模开放曲库</a></div>
+      <div class="card-en">Universal Music and ElevenLabs sign a multi-year licensing deal for a licensed AI remix platform</div>
+      <div class="card-meta"><span class="source">Universal Music Group / Unite.AI / MusicNews</span><span class="time">9/10</span><span class="card-tag" style="background:rgba(236,72,153,.12);color:#ec4899">内容授权</span></div>
+      <div class="card-summary">环球音乐集团（UMG）与 AI 音频公司 <span class="highlight">ElevenLabs</span> 宣布多年期授权协议与战略合作，首个产品是<span class="highlight">基于授权曲库与艺人参与的 AI 音乐创作平台</span>，让粉丝对参与艺人的作品做混音、拼接、新演绎与个性化人声体验——这是 ElevenLabs 首次与主流唱片公司达成授权合作。平台仍在开发中，且明确<span class="highlight">与 ElevenLabs 现有的 Music API、ElevenMusic 应用相互独立</span>，以避免未授权素材外溢到开放式模型；参与采取艺人自愿加入（opt-in）机制，收益按授权结构回流权利人。背景是行业路线已整体转向：一天前 Suno 与华纳音乐、BMG、Believe 合作发布 v6 模型家族，而环球与索尼仍是 2024 年针对 Suno 版权案中的原告——<span class="highlight">同一批 AI 公司可以同时是授权伙伴和诉讼对象</span>。</div>
+      <div class="card-summary-en">EN: Universal Music Group and ElevenLabs announced a multi-year licensing and strategic agreement whose first product is a licensed AI music platform letting fans remix, mash up and re-interpret tracks by participating artists — ElevenLabs' first major-label deal. The platform stays separate from ElevenLabs' Music API and ElevenMusic app to keep unlicensed material out of open-ended models; artist participation is opt-in with royalties flowing back through the licensing structure. It lands one day after Suno shipped its v6 family with Warner, BMG and Believe, while UMG and Sony remain plaintiffs against Suno.</div>
+    </div>
+
+    <div class="card card-product">
+      <div class="card-title"><a href="https://segmentfault.com/a/1190000048290674" target="_blank">AWS SageMaker 推出前缀感知路由：LLM 首 token 延迟最高降低 77%，KV 缓存命中率从 25% 升至 80%+</a></div>
+      <div class="card-en">AWS SageMaker ships prefix-aware routing: up to 77% lower time-to-first-token, KV hit rate 25%→80%+</div>
+      <div class="card-meta"><span class="source">AWS / SegmentFault AI 日报</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(6,182,212,.12);color:#06b6d4">推理基础设施</span></div>
+      <div class="card-summary">Amazon SageMaker Inference 推出 <span class="highlight">前缀感知路由（prefix-aware routing）</span>：把共享相同提示前缀的请求发送到同一实例，以保持 KV 缓存在热状态。在 Llama 3.1 70B 基准测试中，<span class="highlight">P50 首 token 延迟降低最多 77%</span>，KV 缓存命中率从约 <span class="highlight">25% 提升到 80% 以上</span>。这项改动的意义在于它不依赖任何模型侧创新：多轮对话、长系统提示、RAG 检索片段等真实负载天然具有高前缀重复率，路由策略一变就能把已有 GPU 的有效服务容量显著抬高。同期 vLLM 也在博客中介绍<span class="highlight">分层 KV 缓存卸载</span>（加速器内存满时把被驱逐的 KV 数据保留在主机内存、存储与远程节点，下次请求从低层重载而非重新计算）。<span class="highlight">算力紧张的年份里，调度与缓存比参数规模更能决定单位成本。</span></div>
+      <div class="card-summary-en">EN: Amazon SageMaker Inference introduced prefix-aware routing, sending requests that share a prompt prefix to the same instance to keep KV cache warm. On a Llama 3.1 70B benchmark it cut P50 time-to-first-token by up to 77% and lifted KV cache hit rate from ~25% to over 80%. No model-side change is needed — real workloads with long system prompts, multi-turn context and RAG chunks have high prefix overlap, so a routing change alone raises effective serving capacity. vLLM separately detailed tiered KV cache offloading.</div>
+    </div>
+
+    <div class="card card-product">
+      <div class="card-title"><a href="https://segmentfault.com/a/1190000048290674" target="_blank">Shopify 从 React Native 迁回原生 Swift/Kotlin：AI Agent 改变了跨平台框架的成本公式</a></div>
+      <div class="card-en">Shopify moves back from React Native to native Swift/Kotlin as AI agents rebalance the cost equation</div>
+      <div class="card-meta"><span class="source">Shopify 工程博客 / SegmentFault AI 日报</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(236,72,153,.12);color:#ec4899">技术架构</span></div>
+      <div class="card-summary">Shopify 宣布将移动应用从 React Native <span class="highlight">迁移回独立的 Swift 与 Kotlin 原生代码库</span>。核心原因在于：<span class="highlight">AI Agent 已能承担足够的实现、翻译、测试与审查工作</span>，使"跨平台框架省下一份开发成本"这一传统优势不再是决定性因素。这是一个值得放进长期档案的案例——十年来移动端技术选型的天平一直压在跨平台方案一侧，而它被压住的那个理由（人力成本）正在被智能体直接改写。真正的分水岭不是"AI 能不能写代码"，而是当重复实现的边际成本趋近于零时，<span class="highlight">组织会更愿意为原生体验买单</span>。</div>
+      <div class="card-summary-en">EN: Shopify is migrating its mobile app from React Native back to separate native Swift and Kotlin codebases, arguing that AI agents now handle enough implementation, translation, testing and review work that cross-platform frameworks' "write it once" cost advantage is no longer decisive. It is a case worth keeping: the decade-long tilt toward cross-platform mobile was driven by labour cost, and that constraint is being rewritten directly by agents. The turning point isn't whether AI can write code, but that near-zero marginal cost of duplicate implementation makes teams more willing to pay for native quality.</div>
+    </div>
+
+    <div class="card card-product">
+      <div class="card-title"><a href="https://segmentfault.com/a/1190000048290674" target="_blank">蚂蚁数科推出 Agentar 金融版：预置十大金融智能体专家团，2000+ 专项评测工具</a></div>
+      <div class="card-en">Ant Digital launches Agentar for finance with ten pre-built agent specialists and 2,000+ evaluation tools</div>
+      <div class="card-meta"><span class="source">蚂蚁数科（外滩大会）/ SegmentFault AI 日报</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(236,72,153,.12);color:#ec4899">垂直智能体</span></div>
+      <div class="card-summary">蚂蚁数科在外滩大会推出 <span class="highlight">Agentar 金融版</span>，预置<span class="highlight">十大金融智能体专家团</span>，覆盖智能投顾、财富管理、客户经营等场景，并提供 <span class="highlight">2000 余项金融专属评测工具</span>用于衡量智能体在真实业务口径下的表现。已披露的试点结果：数字客户经理帮助试点客群<span class="highlight">客户总资产提升 10%、活跃度提升 15%、服务客户数提升 5 倍以上</span>。这条与 Shopify 的案例正好构成一组对照：一个是通用能力下沉到工具层，一个是垂直场景把"评测集 + 专家分工"做成产品本体。<span class="highlight">金融、工业、政务、医疗等高价值场景的重心正在从轻量办公转向垂直交付</span>。</div>
+      <div class="card-summary-en">EN: Ant Digital launched Agentar for finance at the Bund Conference, bundling ten pre-built financial agent specialists across robo-advisory, wealth management and client operations, plus 2,000+ finance-specific evaluation tools. Disclosed pilot results: digital client managers lifted pilot-cohort total assets 10%, activity 15%, and clients served more than 5x. Paired with the Shopify case, it shows the two directions at once — general capability sinking into tooling, and vertical scenarios turning evaluation sets and role division into the product itself.</div>
+    </div>
+
+    <div class="card card-product">
+      <div class="card-title"><a href="https://segmentfault.com/a/1190000048290674" target="_blank">京东物流推出"超脑 3.0"大模型群与"狼族"机器人集群，异狼已越过单位经济模型转正门槛</a></div>
+      <div class="card-en">JD Logistics launches SuperBrain 3.0 model cluster and Wolf Pack robots, with unit economics turning positive</div>
+      <div class="card-meta"><span class="source">京东物流 / SegmentFault AI 日报</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(236,72,153,.12);color:#ec4899">具身智能</span></div>
+      <div class="card-summary">京东物流推出一套软硬协同的工业级 AI 系统：以 <span class="highlight">"超脑 3.0"大模型群</span>驱动 <span class="highlight">"狼族"机器人集群</span>，覆盖全链路物流场景并突破非标件处理瓶颈。"狼族"机器人在拣选、理货等柔性环节的成本已低于人工，其中 <span class="highlight">异狼等产品已越过单位经济模型转正门槛，3 年回本、具备商业化验证条件</span>。这条信息的价值不在参数，而在它给出了具身智能落地的关键判据——<span class="highlight">不是"能不能动"，而是"单件成本能不能低于人工、多久回本"</span>。同一天中国算力大会也把"具身智能"列为重点分论坛方向，说明产业侧已从演示阶段进入算账阶段。</div>
+      <div class="card-summary-en">EN: JD Logistics unveiled an industrial AI stack pairing its SuperBrain 3.0 model cluster with Wolf Pack robots across the full logistics chain, breaking through non-standard item handling. In flexible tasks such as picking and arranging, robot cost is already below manual labour, with the Yilang line crossing the unit-economics threshold at a three-year payback — commercially validatable. The metric that matters for embodied AI is not whether the robot can move, but cost per item versus labour and payback period.</div>
+    </div>
+
+    <div class="card card-product">
+      <div class="card-title"><a href="https://segmentfault.com/a/1190000048290674" target="_blank">英伟达与 Palantir 合作以 AI 管理供应链，首个部署对象是英伟达自己（单个 Vera Rubin 机架 130 万组件）</a></div>
+      <div class="card-en">NVIDIA and Palantir bring AI to supply-chain management, starting with NVIDIA's own — 1.3M components per Vera Rubin rack</div>
+      <div class="card-meta"><span class="source">NVIDIA / SegmentFault AI 日报</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(236,72,153,.12);color:#ec4899">产业智能体</span></div>
+      <div class="card-summary">英伟达与 Palantir 合作用 AI 管理供应链，<span class="highlight">首个部署目标就是英伟达自己的供应链</span>——涵盖数百万零部件、数千家供应商。据英伟达披露，<span class="highlight">单个 Vera Rubin 机架包含 130 万个组件</span>，这正是超大规模 AI 硬件供应链复杂度的直观刻度。三方对照起来看，同一天的信息流其实在描述同一件事：台积电设备采购预估上调至去年 1.9 倍、刻蚀与薄膜设备交期从约 6 个月延长到 12 个月、全球在建晶圆厂接近 20 座——<span class="highlight">当供给链条长到 130 万个零件的时候，"谁来调度"本身就成了一个 AI 用例</span>。</div>
+      <div class="card-summary-en">EN: NVIDIA and Palantir are applying AI to supply-chain management, starting with NVIDIA's own — spanning millions of parts and thousands of suppliers. A single Vera Rubin rack contains 1.3 million components, a vivid measure of hyperscale AI hardware complexity. It fits the day's other datapoints: TSMC's equipment procurement estimate raised to 1.9x, etch and deposition lead times stretching from ~6 to 12 months, and nearly 20 fabs under construction worldwide — when a supply chain runs to 1.3 million parts, scheduling it is itself an AI use case.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 资本与 IPO ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-finance)"></div>
+    <div class="section-title">💰 资本与 IPO <span class="section-title-en">/ Capital &amp; IPO</span></div>
+    <div class="section-count">7 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+    <div class="card card-finance">
+      <div class="card-title"><a href="https://m.10jqka.com.cn/20260911/c679839031.shtml" target="_blank">燧原科技科创板上市首日大涨约 179%，募资约 61.19 亿元投向第五、六代 AI 芯片</a></div>
+      <div class="card-en">Enflame Technology surges ~179% on its STAR Market debut, raising ~RMB 6.12B</div>
+      <div class="card-meta"><span class="source">同花顺半导体日报 / CCTV+ / 第一财经</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(249,115,22,.12);color:#f97316">IPO</span></div>
+      <div class="card-summary">燧原科技（688801.SH）今天正式登陆科创板，<span class="up">上市首日大涨约 179%</span>。公司本次 IPO 发行 <span class="highlight">43,035,173 股</span>，发行价 142.18 元/股，募资约 <span class="highlight">61.19 亿元</span>，资金将投向<span class="highlight">第五、六代 AI 芯片产品系列的研发与商业化</span>以及一项先进 AI 软硬件协同创新项目。燧原聚焦云端 AI 芯片，产品组合覆盖 AI 芯片、加速卡与模组、智算系统与集群，以及 AI 计算与编程软件平台；2026 年上半年营业收入 <span class="highlight">11.2 亿元，同比增长 279%</span>。第三代产品燧原 S60 已在互联网客户与各地智算中心大批量出货，累计出货 <span class="highlight">16 万片</span>。公司 2018 年成立之初即获腾讯投资，腾讯累计投资额超过 20 亿元，并附带"产品性价比须显著优于同类竞品"的商业条件。</div>
+      <div class="card-summary-en">EN: Enflame Technology (688801.SH) listed on Shanghai's STAR Market today with a first-day gain of roughly 179%. It issued 43,035,173 shares at ¥142.18, raising about RMB 6.12bn for R&D and commercialisation of its fifth- and sixth-generation AI chip lines plus an advanced hardware-software co-innovation project. Focused on cloud AI chips, it reported H1 2026 revenue of RMB 1.12bn (+279% YoY), with its third-generation S60 having shipped 160,000 units cumulatively. Tencent has invested over RMB 2bn since 2018, conditioned on materially better price-performance than rivals.</div>
+    </div>
+
+    <div class="card card-finance">
+      <div class="card-title"><a href="https://www.toutiao.com/article/7684031467449598470/" target="_blank">"国产 AI 芯片四小龙"齐聚资本市场：上半年营收 11–17 亿元、普遍未盈利，估值较年内高点回撤约四五成</a></div>
+      <div class="card-en">China's four GPU challengers all reach public markets — H1 revenue RMB 1.1–1.7B, still unprofitable, valuations down 40–50% from peaks</div>
+      <div class="card-meta"><span class="source">证券时报 / 今日头条</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(249,115,22,.12);color:#f97316">行业格局</span></div>
+      <div class="card-summary">随着燧原科技今天上市，摩尔线程、沐曦股份、壁仞科技、燧原科技"<span class="highlight">AI 芯片四小龙</span>"全部进入资本市场，完成初步技术验证与资本化，竞争进入新阶段。上半年营收：<span class="highlight">摩尔线程 17.36 亿元（+147.42%）、沐曦股份 13.24 亿元（+44.67%）、壁仞科技 12.355 亿元（+1997.6%）、燧原科技 11.2 亿元（+279%）</span>。截至 9/10 收盘，摩尔线程、沐曦、壁仞（港股）市值分别为 <span class="highlight">1711 亿元、1975 亿元、971 亿港元</span>，普遍较年内高点回撤约四到五成。中国信通院数据显示，<span class="highlight">2026 年一季度国内 AI 算力需求同比增长 417%，而有效供给增速为 128%</span>——缺口仍在拉大。减亏已有进展：摩尔线程上半年扣非归母净利润 -1.51 亿元（去年同期 -3.17 亿元），沐曦 -0.49 亿元、同比减亏 75.83%，且二季度单季扣非转正 0.54 亿元。</div>
+      <div class="card-summary-en">EN: With Enflame's listing today, all four Chinese GPU challengers — Moore Threads, MetaX, Biren and Enflame — are on public markets. H1 revenue: RMB 1.736bn (+147.4%), 1.324bn (+44.7%), 1.2355bn (+1997.6%) and 1.12bn (+279%) respectively. As of Sept 10 close, Moore Threads, MetaX and Biren (HK) were valued at RMB 171.1B, RMB 197.5B and HK$97.1B, down 40–50% from year highs. CAICT data shows Q1 2026 domestic AI compute demand up 417% YoY versus 128% supply growth — the gap is still widening.</div>
+    </div>
+
+    <div class="card card-finance">
+      <div class="card-title"><a href="https://www.toutiao.com/article/7684259491344417332/" target="_blank">DeepSeek 筹备科创板 IPO 传闻重挫港股大模型板块：智谱 -11.06%、MiniMax -8.98%，摩根士丹利警告价格战</a></div>
+      <div class="card-en">DeepSeek IPO talk and pricing cut slam HK model stocks: Zhipu -11.06%, MiniMax -8.98%; Morgan Stanley warns on price war</div>
+      <div class="card-meta"><span class="source">湖北日报 / 今日头条 / 智谱·MiniMax 行情</span><span class="time">9/10–9/11</span><span class="card-tag" style="background:rgba(249,115,22,.12);color:#f97316">二级市场</span></div>
+      <div class="card-summary">市场消息称 <span class="highlight">DeepSeek 已正式筹备科创板 IPO</span>，计划年内启动上市流程，保荐机构（据路透为中信证券）已进入尽职调查阶段，上市时间、募资规模与目标估值尚未确定。<span class="highlight">9 月 10 日港股大模型板块集体重挫</span>：智谱收盘报 <span class="down">812.5 港元，单日 -11.06%</span>，总市值回落至 <span class="down">3783 亿港元</span>；MiniMax 收盘报 292 港元、<span class="down">-8.98%</span>，市值勉强守住千亿关口。市场把下跌归因于 DeepSeek 同日发布 V4.1 Flash 并大幅下调 API 定价，<span class="highlight">摩根士丹利随后警告大模型价格竞争可能加剧</span>。业务面上，DeepSeek 2026 年前 7 个月营收约 <span class="highlight">4.75 亿元</span>（约为 2025 年全年的 10 倍），API 业务毛利率高达 <span class="highlight">82.9%</span>，净亏损收窄至 7.15 亿元；对照标的智谱上半年营收 9.54 亿元、同比增长近 400%，其中 API 收入暴增 27 倍至 8.25 亿元、占总收入 86.5%。</div>
+      <div class="card-summary-en">EN: Reports say DeepSeek is formally preparing a STAR Market IPO, aiming to start the process within the year with CITIC Securities (per Reuters) in due diligence; timing, size and target valuation remain undetermined. Hong Kong's model sector sold off on Sept 10 — Zhipu closed at HK$812.5, down 11.06%, with market cap falling to HK$378.3bn, and MiniMax dropped 8.98% to HK$292. The selloff was attributed to DeepSeek's V4.1 Flash launch and API price cuts, after which Morgan Stanley warned of intensifying price competition.</div>
+    </div>
+
+    <div class="card card-finance">
+      <div class="card-title"><a href="https://www.163.com/dy/article/L6I915HR05317SYF.html" target="_blank">月之暗面研究香港上市后登陆科创板，此前已秘密递交港交所申请、据报寻求募资约 30 亿美元</a></div>
+      <div class="card-en">Moonshot weighs a Shanghai listing after Hong Kong; reports point to a ~$3B raise</div>
+      <div class="card-meta"><span class="source">路透社 / 南华早报 / 港股研究社</span><span class="time">9/10–9/11</span><span class="card-tag" style="background:rgba(249,115,22,.12);color:#f97316">IPO</span></div>
+      <div class="card-summary">在 DeepSeek 被曝筹备科创板 IPO 一天后，<span class="highlight">月之暗面被曝正在研究香港上市后登陆科创板的可能性</span>。路透社此前报道，月之暗面<span class="highlight">已秘密递交香港上市申请</span>，其中一位消息人士给出的募资目标约为 <span class="highlight">30 亿美元</span>。公司尚未确认双重上市计划，因此现阶段更宜理解为融资方案的扩容，而非已确定的上市安排。同期已上市标的的再融资节奏更能说明行业的资金饥渴：Z.AI 今年 1 月港股 IPO 净募资约 48.96 亿港元，截至 6 月底已用掉约 45.88 亿港元，7 月又按每股 1588 港元配售新股、净募资约 <span class="highlight">313.75 亿港元</span>（55% 投向通用 AI 研发）；MiniMax 7 月完成新股配售与零息可转债，净募资分别约 <span class="highlight">94.44 亿与 64.33 亿港元</span>。</div>
+      <div class="card-summary-en">EN: A day after DeepSeek's STAR Market IPO reports, Moonshot AI was reported to be studying a Shanghai listing following its Hong Kong debut. Reuters had reported Moonshot confidentially filed for a Hong Kong listing, with one source putting the target raise at about $3bn; the company has not confirmed dual-listing plans. The refinancing pace of already-listed peers shows the funding appetite — Z.AI used roughly HK$4.588bn of its HK$4.896bn IPO net proceeds by end-June and raised a further HK$31.375bn in a July share placement; MiniMax raised about HK$9.444bn and HK$6.433bn via placement and zero-coupon convertible bonds.</div>
+    </div>
+
+    <div class="card card-finance">
+      <div class="card-title"><a href="https://finance.eastmoney.com/a/202609113871718724.html" target="_blank">AI 基础设施软件商星环科技今日启动港股招股：发售价 49–61 港元，9 月 21 日挂牌，A+H 双重上市</a></div>
+      <div class="card-en">AI infrastructure software firm Transwarp opens Hong Kong IPO at HK$49–61, listing Sept 21 in an A+H structure</div>
+      <div class="card-meta"><span class="source">东方财富 / 财联社</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(249,115,22,.12);color:#f97316">IPO</span></div>
+      <div class="card-summary">星环科技（06727.HK）从今天起至 9 月 16 日招股，拟全球发售 <span class="highlight">1401.08 万股 H 股</span>（香港公开发售占 5%，国际发售占 95%），发售价区间 <span class="highlight">每股 49.00–61.00 港元</span>，每手 100 股，一手入场费 6,161.51 港元，预期 <span class="highlight">9 月 21 日</span>在联交所开始买卖，无绿鞋机制。星环科技是中国领先的 AI 基础设施软件提供商，按 2025 年收入计为<span class="highlight">中国第五大 AI 基础设施软件提供商、市场份额 2.7%，且为最大的纯 AI 基础设施软件提供商</span>；A 股科创板代码 688031，此次为"A+H"双重上市，A 股最新价 110.17 元/股（折合约 128.82 港元），<span class="highlight">AH 溢价率 +111.18%</span>。基石投资者 Electronic Channel Limited 与洛阳科创已同意认购约 941 万美元（约 7382 万港元）发售股份。</div>
+      <div class="card-summary-en">EN: Transwarp (06727.HK) opened its Hong Kong offering today through Sept 16, selling 14.0108m H shares (5% public, 95% international) at HK$49.00–61.00 per share, 100 shares per lot with a HK$6,161.51 entry cost, expected to begin trading Sept 21 with no greenshoe. It is China's fifth-largest AI infrastructure software provider by 2025 revenue (2.7% share) and the largest pure-play one. Its A-share (688031) last traded at RMB 110.17, an A/H premium of +111.18%. Cornerstones Electronic Channel and Luoyang Kechuang have committed about $9.41m.</div>
+    </div>
+
+    <div class="card card-finance">
+      <div class="card-title"><a href="https://sergeytereshkin.ca/publications/startup-and-venture-capital-news-september-11-2026" target="_blank">Anthropic 将 IPO 路演推迟至不早于 10 月中旬，估值 9650 亿美元；二级市场报价已达 1.05–1.15 万亿美元</a></div>
+      <div class="card-en">Anthropic pushes IPO marketing to no earlier than mid-October at a $965B valuation, with secondary marks at $1.05–1.15T</div>
+      <div class="card-meta"><span class="source">风投周报 / 路透背景报道</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(249,115,22,.12);color:#f97316">IPO</span></div>
+      <div class="card-summary">已完成 650 亿美元 H 轮、估值 <span class="highlight">9650 亿美元</span>的 Anthropic，其 6 月 1 日秘密递交的 S-1 至今未进入路演，公司现计划<span class="highlight">不早于 10 月中旬启动配售营销</span>，秋季大型科技上市窗口因此收窄。延迟对创投生态有直接影响：<span class="highlight">LP 流动性被推后</span>，从红杉、Coatue 到 Altimeter、D1 的股东分配将晚于其三季度模型的预期；中等规模公司也在观望，等市场先"消化"AI 巨型 IPO 并看清承接力。二级市场仍把 Anthropic 定价在 <span class="highlight">1.05–1.15 万亿美元</span>区间——这既反映投资人对发行成功的信心，也意味着公开市场若要承接，估值起点已经很高。<span class="highlight">OpenAI 则明确把上市瞄准 2027 年</span>，其 CFO 已告知员工 IPO 计划在明年、与竞争对手的竞速并非优先项。</div>
+      <div class="card-summary-en">EN: Anthropic — valued at $965B after a $65B Series H — has not yet begun marketing its June 1 confidential S-1, and now plans to start the placement no earlier than mid-October, narrowing autumn's mega-listing window. The delay pushes LP liquidity out for shareholders from Sequoia and Coatue to Altimeter and D1, and mid-cap issuers are waiting until the market digests the AI mega-listing. Secondary markets still mark Anthropic at $1.05–1.15T, implying a high public-market starting point. OpenAI is targeting 2027, its CFO has told staff.</div>
+    </div>
+
+    <div class="card card-finance">
+      <div class="card-title"><a href="https://sergeytereshkin.ca/publications/startup-and-venture-capital-news-september-11-2026" target="_blank">资本集中度继续上升：Mistral 30 亿欧元刷新欧洲纪录，Gimlet Labs 融 3 亿美元，8 月全球 420 亿美元</a></div>
+      <div class="card-en">Capital keeps concentrating: Mistral's €3B European record, Gimlet Labs' $300M, and $42B globally in August</div>
+      <div class="card-meta"><span class="source">风投周报 / Inside Telecom / N24</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(249,115,22,.12);color:#f97316">一级市场</span></div>
+      <div class="card-summary">本周一级市场的关键词是"集中"。<span class="highlight">Mistral 完成 30 亿欧元 D 轮</span>（约 35 亿美元），投后估值超 <span class="highlight">210 亿欧元（约 243.6 亿美元）</span>，为欧洲科技公司史上最大股权融资，由三星电子领投、EQT 旗下 Scaleup Europe Fund 与 PSG Equity 联合领投，ASML、英伟达、a16z、BlackRock 旗下基金等参与；公司已服务 20 个国家 125 家以上企业客户（含 Airbus、ASML、HSBC），并承诺 2030 年前建成最高 1GW 的 AI 算力。AI 基础设施继续是最大吸金池：<span class="highlight">Gimlet Labs 融 3 亿美元、估值 30 亿美元</span>。8 月全球风险投资 <span class="highlight">420 亿美元</span>（1500 余家公司），较 7 月的 560 亿下降 25%，但同比大增 <span class="highlight">122%</span>，其中 7 笔十亿美元级轮次，最大为 Databricks 的 50 亿美元（估值 1900 亿美元）。</div>
+      <div class="card-summary-en">EN: This week's theme is concentration. Mistral closed a €3B Series D (~$3.5B) at a post-money valuation above €21B (~$24.36B) — Europe's largest equity round ever — led by Samsung Electronics with EQT's Scaleup Europe Fund and PSG Equity co-leading, joined by ASML, NVIDIA, a16z and BlackRock-managed funds; it serves 125+ enterprises across 20 countries and targets up to 1GW of AI compute by 2030. AI infrastructure remains the main magnet, with Gimlet Labs raising $300M at a $3B valuation. August saw $42B in global venture funding across 1,500+ startups — down 25% MoM but up 122% YoY — including seven billion-dollar rounds, the largest being Databricks' $5B at a $190B valuation.</div>
+    </div>
+
+  </div>
+</div>
+<!-- ===== 政策与产业 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-industry)"></div>
+    <div class="section-title">🏛️ 政策与产业 <span class="section-title-en">/ Policy &amp; Industry</span></div>
+    <div class="section-count">6 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+    <div class="card card-industry">
+      <div class="card-title"><a href="https://new.qq.com/rain/a/20260911A04B1D00" target="_blank">工信部印发《"人工智能+软件"专项行动实施方案》：2028 年覆盖 2 万家规上软件企业，2030 年关键软件全面智能化</a></div>
+      <div class="card-en">MIIT issues an "AI + Software" action plan: 20,000 large software firms by 2028, full intelligent upgrade by 2030</div>
+      <div class="card-meta"><span class="source">工信微报 / 腾讯网全球 AI 动态</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(245,158,11,.12);color:#f59e0b">产业政策</span></div>
+      <div class="card-summary">工信部今天正式印发《"人工智能+软件"专项行动实施方案》，给出可考核的时间表：<span class="highlight">到 2028 年培育一批高水平智能编程工具和智能开发平台，推广应用覆盖 2 万家规模以上软件企业，打造 100 个智能体软件标杆应用，孵化 5 个以上优质开源项目；到 2030 年关键软件全面实现智能化升级</span>。方案同时明确将<span class="highlight">加强 AI 生成代码安全审查、建立智能体安全管理规范</span>。这份文件的特殊之处在于它把"AI 改软件"从企业自发行为变成了产业指标——覆盖对象是"规上软件企业"这一统计口径内的存量主体，而不是新创公司，意味着落地压力会通过既有产业体系传导。</div>
+      <div class="card-summary-en">EN: MIIT formally issued its "AI + Software" action plan with measurable targets: by 2028, cultivate high-end AI coding tools and platforms covering 20,000 above-scale software enterprises, build 100 benchmark agent-software applications and incubate 5+ quality open-source projects; by 2030, fully intelligent upgrade of key software. It also mandates stronger security review of AI-generated code and safety rules for agents. Notably, the targets are framed around existing above-scale software firms rather than startups, so implementation pressure flows through the incumbent industry.</div>
+    </div>
+
+    <div class="card card-industry">
+      <div class="card-title"><a href="https://new.qq.com/rain/a/20260911A04B1D00" target="_blank">工信部加强 AI 生成代码安全审查，重点防范智能编程工具恶意指令注入</a></div>
+      <div class="card-en">MIIT tightens security review of AI-generated code, targeting prompt-injection attacks on coding tools</div>
+      <div class="card-meta"><span class="source">热点中台 / 腾讯网全球 AI 动态</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(245,158,11,.12);color:#f59e0b">安全监管</span></div>
+      <div class="card-summary">工信部就<span class="highlight">人工智能生成代码安全审查</span>提出新要求，重点防范<span class="highlight">智能编程工具恶意指令注入等新型攻击</span>，并强化开发工具与代码库的访问控制。该举措与同日印发的"AI+软件"专项行动形成配套，意在为软件智能化升级筑牢安全底座。这条与安全侧的研究刚好对得上：Check Point 此前确认的 GitSpawn 漏洞类同时影响 Claude Code、Codex、Cursor 等七个 AI 编程智能体，使"仓库信任"成为系统性企业控制缺口。<span class="highlight">当编码智能体被要求大规模进入企业代码库时，访问控制与指令注入就不再是研究话题，而是合规前置条件</span>。</div>
+      <div class="card-summary-en">EN: MIIT issued new requirements for security review of AI-generated code, focusing on malicious instruction injection against AI coding tools and strengthening access control over dev tools and code repositories. It pairs with the same-day "AI + Software" plan as a safety foundation for software intelligence. It aligns with security research: Check Point's GitSpawn vulnerability class affects seven AI coding agents at once, making repository trust a systemic enterprise control gap — access control and injection defence become compliance prerequisites, not research topics.</div>
+    </div>
+
+    <div class="card card-industry">
+      <div class="card-title"><a href="https://i.ifeng.com/c/8wJOo1gMGa6" target="_blank">2026 中国算力大会在廊坊开幕：算力网纳入国家级基础设施，首设"算力首创首发发布会"</a></div>
+      <div class="card-en">2026 China Computing Power Conference opens in Langfang: compute network enters national infrastructure, with a first-ever launch showcase</div>
+      <div class="card-meta"><span class="source">财联社 / 凤凰网 / 百度百科词条</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(245,158,11,.12);color:#f59e0b">算力基建</span></div>
+      <div class="card-summary">2026 中国算力大会今天至 9 月 13 日在河北廊坊举行，主题"共织算力网 智启新未来"，采用"1+2+X+Y"架构（1 场开幕式、2 场主论坛、10 余场分论坛及特色活动）。本届<span class="highlight">首创"算力首创首发发布会"</span>，设技术与产业两大单元，集中发布国产算力芯片、智能体、绿色算力等突破性成果。政策背景是今年 4 月中共中央政治局会议部署加强"六张网"建设，<span class="highlight">算力网正式被纳入国家级基础设施行列</span>；同期工信部印发《信息通信行业发展"十五五"规划》，强调提升算力设施发展水平、推进算力传输通道建设。举办地廊坊已累计建成 <span class="highlight">36 个数据中心、智能算力总规模突破 20 万 P</span>，城市算力分指数连续两年全国第一。嘉宾阵容包括中国工程院院士邬贺铨、刘韵洁，以及华为、中兴通讯、润泽科技、曙光信息、秦淮数据、软通动力、超聚变、科大讯飞、银河航天等企业代表。</div>
+      <div class="card-summary-en">EN: The 2026 China Computing Power Conference runs Sept 11–13 in Langfang under the theme "weaving the compute network." It introduced a first-ever launch showcase for domestically developed compute chips, agents and green computing. The policy backdrop: an April Politburo meeting added the compute network to national infrastructure, and MIIT's 15th Five-Year ICT plan stresses raising compute facility standards and building transmission corridors. Host city Langfang has 36 data centres and over 200,000P of intelligent compute, ranking first nationally on the city compute index for two straight years.</div>
+    </div>
+
+    <div class="card card-industry">
+      <div class="card-title"><a href="https://cn.wicinternet.org/2026-09/11/content_38997008.htm" target="_blank">加州签署被称"全美最严"的儿童 AI 与社交媒体法案：强制年龄核验、限制未成年人广告，OpenAI 表示支持</a></div>
+      <div class="card-en">California signs what's called America's strictest child AI and social media laws, mandating age verification; OpenAI backs it</div>
+      <div class="card-meta"><span class="source">世界互联网大会 / 加州州长办公室背景报道</span><span class="time">9/10–9/11</span><span class="card-tag" style="background:rgba(245,158,11,.12);color:#f59e0b">AI 监管</span></div>
+      <div class="card-summary">美国加州州长纽森于 9 月 10 日签署一系列针对青少年网络安全与隐私保护的法案，被媒体称为"<span class="highlight">全美最严格的儿童安全聊天机器人和社交媒体法案</span>"。针对 AI 聊天机器人的一项法案要求 <span class="highlight">AI 公司核实用户年龄、限制儿童接触不当内容、限制对未成年人进行广告宣传</span>；针对社交媒体的另一项法案将<span class="highlight">禁止向 16 岁以下儿童提供个性化信息流</span>。法案起草者称这些保护措施是对近期一系列诉讼的回应——诉讼指控聊天机器人加剧了青少年伤害事件。OpenAI 全球政策主管表示支持，称这满足了父母的迫切需求；Meta 评论称法案"并非完美"，但已朝着平衡 AI 风险与收益迈出"有意义的步伐"。Anthropic 与 OpenAI 的研究人员则同期警告，若不加以控制，AI 技术可能对人类构成生存威胁。</div>
+      <div class="card-summary-en">EN: California Governor Newsom signed a package of youth online safety and privacy laws on Sept 10, described as the nation's strictest for child-facing chatbots and social media. One bill requires AI companies to verify user age, limit minors' exposure to harmful content and restrict advertising to minors; another bars personalised feeds for under-16s. Drafters frame it as a response to lawsuits alleging chatbots aggravated harm to teenagers. OpenAI's global policy lead backed it; Meta called it "not perfect" but a meaningful step. Researchers at both labs separately warned of existential risk if AI is left unchecked.</div>
+    </div>
+
+    <div class="card card-industry">
+      <div class="card-title"><a href="https://new.qq.com/rain/a/20260911A04B1D00" target="_blank">外交部回应美在巴拿马建全球首个 AI 供应链认证与溯源平台试点：反对设置封闭排他"小圈子"</a></div>
+      <div class="card-en">China's MFA responds to a US AI supply-chain certification pilot in Panama, opposing exclusive "small circles"</div>
+      <div class="card-meta"><span class="source">央视网 / 腾讯网全球 AI 动态</span><span class="time">9/10–9/11</span><span class="card-tag" style="background:rgba(245,158,11,.12);color:#f59e0b">国际治理</span></div>
+      <div class="card-summary">外交部发言人郭嘉昆 9 月 10 日回应美国在巴拿马建设<span class="highlight">全球首个 AI 供应链认证与溯源平台试点</span>，指出该项目<span class="highlight">实质是服务美国控制科技产供链、对华科技围堵</span>，中方反对设置封闭排他"小圈子"，愿同拉美和加勒比国家携手构建公正合理的 AI 全球治理体系。这类"认证与溯源"机制的产业含义值得单独标注：一旦落地，出口管制与合规审查会从"卖给谁"延伸到"这条链上的每一个环节是谁"——与 Anthropic 报告、CISA/NSA/FBI 联合公告指向的是同一件事，只是工具从出口清单换成了溯源标准。</div>
+      <div class="card-summary-en">EN: MFA spokesperson Guo Jiakun responded on Sept 10 to a US pilot building the world's first AI supply-chain certification and traceability platform in Panama, saying it in substance serves US efforts to control tech supply chains and contain China, that Beijing opposes exclusive "small circles," and that China is ready to work with Latin American and Caribbean countries on a fair AI governance system. The industrial implication: certification and traceability push compliance from "who you sell to" to "who every link in the chain is" — the same direction as the Anthropic report and the CISA/NSA/FBI advisory, with tracing standards replacing export lists as the instrument.</div>
+    </div>
+
+    <div class="card card-industry">
+      <div class="card-title"><a href="https://new.qq.com/rain/a/20260911A04B1D00" target="_blank">人大发布《人工智能治理全球合作进展研究报告(2026年)》：治理已升级为规则竞争与产业重组并行</a></div>
+      <div class="card-en">Renmin University report: AI governance has escalated into rule competition running parallel to industrial restructuring</div>
+      <div class="card-meta"><span class="source">中国人民大学人工智能治理研究院 / WM 数智工坊</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(245,158,11,.12);color:#f59e0b">治理研究</span></div>
+      <div class="card-summary">中国人民大学人工智能治理研究院今天发布《<span class="highlight">人工智能治理全球合作进展研究报告（2026 年）</span>》，从八大维度解析全球 AI 治理现状，核心判断是<span class="highlight">治理已从技术监管升级为"规则竞争、制度协调与产业重组并行"的复杂议题</span>，并研判未来五大发展方向。同期中国工程院院士吴世忠在《大模型系统安全的观察与思考》中给出更具体的图景：大模型安全正<span class="highlight">从"模型本体安全"进入"系统安全"阶段</span>，并指出四条主线——数据主权与跨境监管（境外 API 直连、未备案模型中转、"套壳"沉淀数据被纳入灰色链路监管）、"AI 工厂"自主可控（建立在他人全栈技术上的"主权 AI"本质是"租来的主权"）、<span class="highlight">智能体身份治理成为标准与规则建设新前沿</span>（我国 2026 年已发布《人工智能 智能体互联》系列国家标准化指导性技术文件，覆盖总体架构、身份码、身份管理等环节），以及算力—数据—模型—智能体—应用生态—治理规则的系统性竞争。</div>
+      <div class="card-summary-en">EN: Renmin University's AI governance institute released its 2026 report on global cooperation, analysing governance across eight dimensions and concluding it has escalated from technical regulation into rule competition, institutional coordination and industrial restructuring running in parallel. Separately, CAE academician Wu Shizhong argues large-model security has moved from model-level to system-level risk, outlining four axes: data sovereignty and cross-border oversight (direct foreign API access, unregistered model relays and "shell" apps now formally grey), self-controlled "AI factories" (calling sovereign AI built on others' full stack "rented sovereignty"), agent identity governance as the new standards frontier (China published 2026 national guidance on agent interconnection covering architecture, identity codes and identity management), and systemic competition across compute, data, models, agents, ecosystem and governance rules.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 安全与研究 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-research)"></div>
+    <div class="section-title">🔬 安全与研究 <span class="section-title-en">/ Security &amp; Research</span></div>
+    <div class="section-count">5 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+    <div class="card card-research">
+      <div class="card-title"><a href="https://asapai.co.kr/en/anthropic-distillation-seven-prc-labs" target="_blank">Anthropic 9 月威胁报告点名七家中国实验室：阿里 1.51 亿次交换为史上最大蒸馏攻击，另披露俄方间谍与自主零日挖掘</a></div>
+      <div class="card-en">Anthropic's September threat report names seven China-based labs; Alibaba's 151M exchanges is its largest distillation campaign ever measured</div>
+      <div class="card-meta"><span class="source">Anthropic《Detecting and countering misuse of AI: September 2026》/ ASAPAI / DQ India / The Register 背景</span><span class="time">9/10–9/11</span><span class="card-tag" style="background:rgba(59,130,246,.12);color:#3b82f6">模型安全</span></div>
+      <div class="card-summary">Anthropic 于 9 月 10 日发布迄今最详细的威胁情报报告，覆盖 2025 年 12 月至 2026 年 8 月被其查处的七类滥用（网络攻击、影响力行动、监控、诈骗、生物武器、常规武器、蒸馏），并首次<span class="highlight">直接写出公司名而非匿名代号</span>。蒸馏部分点名七家中国实验室：阿里巴巴、月之暗面、DeepSeek、智谱、小米、商汤、MiniMax。规模最大的<span class="highlight">阿里一波（编号 GTG-16005）在 2026 年 5–7 月达 1.51 亿次交换，峰值近 300 万次/天，动用 3500+ 虚假账号</span>；其手法是用固定提示强制 Claude Opus 4.6/4.7 在正文中写出思维链，再把转录转为监督微调数据，用于 Qwen 3.5/3.6/3.7。月之暗面（GTG-16002）被指<span class="highlight">静默把自家客户请求转发给 Claude 再展示给用户</span>，10 天内约 30 万次请求、绝大多数打向 Opus，并通过"跨会话重放"绕过 thinking signature 控制；DeepSeek（GTG-16001）14 天内 12.1 万次→<span class="highlight">1210 万次交换</span>，被指其中包含俄政府数据库实时凭据与中国警方案件管理系统的信息。<span class="highlight">需要保留的判断是：这些数字均为 Anthropic 单方观测与归因，报告本身亦声明不代表独立核实</span>；其开源情报之外的可信度仍在讨论中（HN 上最尖锐的质疑包括"Anthropic 为何能看见这么多国家级行为"）。报告另披露：俄罗斯间谍组织 GTG-20006 用 AI 开发自主恶意软件，针对 20 余个乌克兰与欧洲目标；ShinyHunters 关联者从 180 万个 Android APK 中提取凭据；长沙一中文团伙（GTG-10007，含两名被识别为本科生的操作者）对约 50 家机构运行自动化漏洞挖掘，单月产出"十余个可能的零日发现"。Anthropic 的对策包括元数据归因、提取检测分类器、<span class="highlight">让 Claude 在回答前先概括内部推理</span>（使被盗转录对训练价值下降）、以及对来自中国、俄罗斯、伊朗等不支持地区的账号强制身份验证。</div>
+      <div class="card-summary-en">EN: Anthropic published its most detailed threat intelligence report on Sept 10, covering seven harm areas disrupted between Dec 2025 and Aug 2026 and, for the first time, naming companies rather than anonymous actors. Seven China-based labs are named for illicit distillation: Alibaba, Moonshot, DeepSeek, Zhipu, Xiaomi, SenseTime and MiniMax. Alibaba's campaign (GTG-16005) is the largest Anthropic has measured — over 151M exchanges between May and July 2026, peaking near 3M/day from 3,500+ fraudulent accounts — using a fixed prompt to force Opus 4.6/4.7 to write chain-of-thought inline, with transcripts used to train Qwen 3.5/3.6/3.7. Moonshot allegedly silently relayed ~300,000 customer requests to Claude over ten days and used cross-session replay against the thinking signature; DeepSeek is said to have run 12.1M exchanges in 14 days. Attribution figures are Anthropic's own observations, not independently verified. The report also details a Russian espionage group (GTG-20006) using AI for autonomous malware, ShinyHunters harvesting credentials from 1.8M Android APKs, and a Changsha-based group running automated zero-day foundries against ~50 organisations.</div>
+    </div>
+
+    <div class="card card-research">
+      <div class="card-title"><a href="https://www.secrss.com/articles/93828" target="_blank">WeWorm：首个通过微信通话传播的零点击跨平台蠕虫，AI 用约 2 天写出首个 RCE 利用</a></div>
+      <div class="card-en">WeWorm: the first zero-click worm spreading via WeChat calls, with AI writing the first RCE exploit in about two days</div>
+      <div class="card-meta"><span class="source">Calif Research / 安全内参 / The Register / Tech Times</span><span class="time">9/10–9/11</span><span class="card-tag" style="background:rgba(59,130,246,.12);color:#3b82f6">漏洞与攻击面</span></div>
+      <div class="card-summary">安全研究机构 Calif Research 公布 WeWorm——首个可跨 iOS 与 Android 传播、通过微信通话实现的<span class="highlight">零点击蠕虫</span>。攻击者只需在受害者好友列表中，<span class="highlight">拨出通话即可在响铃阶段触发微信 VoIP 协议栈的内存损坏漏洞</span>，数秒内接管账号；受害者无需接听，即便接听也听不到声音，挂断仅能拦截单次尝试（攻击者可反复拨打，例如趁用户睡眠）。得手后攻击者可读写消息、发起通话、以账号主人身份行事，并<span class="highlight">自动呼叫该账号的好友实现链式传播</span>；结合其他已报备的 Android/iOS 漏洞可进一步拿到整机权限。腾讯已在 8 月 21 日发布 Android 8.0.77 与 iOS 8.0.76，并于 <span class="highlight">8 月 28 日完成服务端封堵</span>——用户无需更新 App 即已受保护，且<span class="highlight">无证据表明该漏洞被真实利用</span>。真正值得记录的是时间线：Calif 借助 AI 在<span class="highlight">约两天内找到漏洞并写出首个 RCE 利用，一周内完成跨平台蠕虫演示</span>；而从上报（7/24）到服务端缓解（8/28）用了 35 天。行业惯用的 90 天披露窗口建立在"把漏洞变成武器需要数月"的前提上，<span class="highlight">WeWorm 把这个前提压缩到了天级</span>。</div>
+      <div class="card-summary-en">EN: Calif Research disclosed WeWorm, the first zero-click worm spreading through WeChat calls across iOS and Android. An attacker on the victim's friend list only needs to place a call: a memory-corruption bug in WeChat's VoIP stack triggers during ringing, seizing the account in seconds. The victim need not answer, hears nothing if they do, and declining only blocks one attempt. The compromised account then auto-dials its own contacts to propagate, and chaining other reported OS bugs can yield full device control. Tencent shipped Android 8.0.77 and iOS 8.0.76 on Aug 21 and mitigated server-side by Aug 28 with no evidence of exploitation. The headline is the timeline: AI helped find the bug and build the first RCE in ~2 days and a cross-platform worm within a week, versus 35 days from report to mitigation — collapsing the safety margin the 90-day disclosure convention assumes.</div>
+    </div>
+
+    <div class="card card-research">
+      <div class="card-title"><a href="https://segmentfault.com/a/1190000048290674" target="_blank">Clearview AI 测试新工具：帮警方挖掘目标人物的网络足迹、关系与住址</a></div>
+      <div class="card-en">Clearview AI tests a tool that maps a target's online footprint, associates and whereabouts for police</div>
+      <div class="card-meta"><span class="source">SegmentFault AI 日报 / 隐私报道</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(59,130,246,.12);color:#3b82f6">隐私与执法</span></div>
+      <div class="card-summary">面部识别公司 <span class="highlight">Clearview AI</span> 正在测试一款 AI 工具，可帮助执法部门挖掘目标人物的网络足迹——<span class="highlight">他们是谁、认识谁、住在哪里、在网上留下过什么</span>。该公司 2020 年曾因抓取 30 亿张照片而声名狼藉，此举再度引发隐私担忧。把它放进今天的信息流里看，特征是一致的：一端是州级立法在给未成年人加防护栏，另一端是执法技术把公开足迹整合成可检索的关系图谱，而中间那层"什么算合理使用"的规则仍然缺位。<span class="highlight">能力已经就绪，边界还在谈判。</span></div>
+      <div class="card-summary-en">EN: Facial-recognition firm Clearview AI is testing a tool that helps law enforcement map a target's online footprint — who they are, who they know, where they live and what they have left online. The company became notorious in 2020 for scraping three billion photos, and the move has revived privacy concerns. Set against the same day's state-level push to protect minors, the pattern is consistent: capability is ready while the rules for legitimate use remain under negotiation.</div>
+    </div>
+
+    <div class="card card-research">
+      <div class="card-title"><a href="https://segmentfault.com/a/1190000048290674" target="_blank">HSImul3R：首个可仿真人—场景交互重建框架被 ECCV 2026 接收，三维穿模率从 69.51% 降至 22.90%</a></div>
+      <div class="card-en">HSImul3R — the first simulatable human-scene interaction reconstruction framework — accepted at ECCV 2026</div>
+      <div class="card-meta"><span class="source">大晓机器人 / 南洋理工大学 S-Lab / 上海人工智能实验室 / ECCV 2026</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(59,130,246,.12);color:#3b82f6">3D 与具身</span></div>
+      <div class="card-summary">大晓机器人联合南洋理工大学 S-Lab 与上海人工智能实验室发布 <span class="highlight">HSImul3R</span>，这是首个面向<span class="highlight">非标定稀疏视角输入</span>、实现稳定可仿真人—场景交互重建的框架，已被 ECCV 2026 接收。在 Easy / Medium / Hard 三档任务中，交互稳定率分别达 <span class="highlight">53.68% / 30.56% / 13.92%</span>，显著高于基线，并将<span class="highlight">三维穿模率从 69.51% 降至 22.90%</span>。这类工作的价值在于它是具身智能与仿真训练的上游供给：只有先把真实场景重建到"可仿真"（不会穿模、能稳定交互），机器人在仿真环境里学到的东西才有可能迁移到物理世界。</div>
+      <div class="card-summary-en">EN: HSImul3R, from Daxiao Robotics with NTU S-Lab and Shanghai AI Lab, is the first framework to achieve stable, simulatable human-scene interaction reconstruction from uncalibrated sparse views, accepted at ECCV 2026. Interaction stability reaches 53.68% / 30.56% / 13.92% across Easy, Medium and Hard tiers, well above baselines, while the 3D mesh-interpenetration rate drops from 69.51% to 22.90%. Its significance is upstream: only once real scenes are reconstructable to a simulatable standard can robot policies learned in simulation transfer to the physical world.</div>
+    </div>
+
+    <div class="card card-research">
+      <div class="card-title"><a href="https://segmentfault.com/a/1190000048290674" target="_blank">arXiv 提出 JarvisGUI：跨设备 GUI 智能体动态基准，暴露状态迁移与长程依赖短板</a></div>
+      <div class="card-en">JarvisGUI: a cross-device GUI agent benchmark that exposes gaps in state-transfer and long-horizon reasoning</div>
+      <div class="card-meta"><span class="source">arXiv / SegmentFault AI 日报 / 研究论文</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(59,130,246,.12);color:#3b82f6">智能体评测</span></div>
+      <div class="card-summary">论文提出 <span class="highlight">JarvisGUI</span>，一个跨设备 GUI 智能体动态基准，评估在 <span class="highlight">Android、Windows、Ubuntu 之间协调交互</span>的工作流。结果显示，SOTA 开源 GUI 智能体在<span class="highlight">状态迁移感知、跨平台上下文推理与长程依赖管理</span>上存在明显短板，暴露出既有单设备基准无法覆盖的能力缺口。这条对产业判断有用：今天发布的大量智能体产品（Muse、小微、Agents API）都假设智能体能在多个应用之间保持状态，而评测给出的答案是——<span class="highlight">跨设备的状态连续性恰恰是当前最弱的一环</span>。同批论文中还有把世界状态演化与视觉生成解耦的 Programmable World Model，在 CombatStateBench 上实现 94% 计数准确率与 98% 状态准确率。</div>
+      <div class="card-summary-en">EN: JarvisGUI is proposed as a dynamic cross-device GUI agent benchmark evaluating workflows coordinated across Android, Windows and Ubuntu. Results show state-of-the-art open GUI agents fall short on state-transfer awareness, cross-platform context reasoning and long-horizon dependency management — gaps single-device benchmarks cannot expose. That matters commercially: most agents shipping today (Muse, WeChat's Xiaowei, the Agents API) assume state continuity across apps, yet evaluation says cross-device state continuity is the weakest link. A companion paper, Programmable World Model, decouples world-state evolution from visual generation, reaching 94% counting and 98% state accuracy on CombatStateBench.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 观点与 KOL ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-kol)"></div>
+    <div class="section-title">💬 观点与 KOL <span class="section-title-en">/ Voices &amp; KOLs</span></div>
+    <div class="section-count">4 条</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+    <div class="card card-kol">
+      <div class="card-title"><a href="https://news.qq.com/rain/a/20260910A0CLIW00" target="_blank">王坚外滩大会演讲：AI 应该帮人类用 10% 的资源活得更好，"方向盘的最终握在年青人手上"</a></div>
+      <div class="card-en">Wang Jian at the Bund Conference: AI should let cities live well on 10% of today's resources</div>
+      <div class="card-meta"><span class="source">之江实验室 / 腾讯新闻 / 中华网 / 潮新闻</span><span class="time">9/10–9/11</span><span class="card-tag" style="background:rgba(16,185,129,.12);color:#10b981">大佬观点</span></div>
+      <div class="card-summary">之江实验室主任、阿里云创始人王坚在外滩大会露天广场的分享，把话题从"模型更大、算力更强"拉回到<span class="highlight">资源与可持续</span>这条更慢的线索上。他给出的数字不轻松：联合国报告显示十年前定下的可持续发展目标<span class="highlight">只有约 15% 大致推进，另有对称的 15% 不进反退</span>，而距 2030 年不足五年；秘书长的判断是"实现这些目标唯一的手段是技术"。由此重提十年前的"城市大脑之问"，如今被联合国人居署改称"未来城市之问"：<span class="highlight">未来的城市，能不能只用今天人均资源消耗的 10%，就让人活得很好？</span>他举爱尔兰为例——2018 年调查显示城市管网中<span class="highlight">超过 45% 的自来水在悄悄漏掉</span>，而该国到 2030 年的目标也只是把漏损率压到 25% 以下。他的核心命题是：数据是数字时代的自然资源，AI 是最有机会用好数据的工具，<span class="highlight">"在人工智能上投入一度电，世界或许能在别处少用十度电"</span>。面对"AI 自身耗电占全球 4%"的追问，他以早期灯泡与 LED 的能效演进作答，认为模型效率会持续迭代。他还特意把"年轻人"写作"年青人"——"年青人的方式，就是下雨了也不愿意打伞"；并用贝多芬《第五交响曲》说明真正的创新没有现成需求清单。<span class="highlight">值得记住的一句是：他今天说的不是"AI 能做什么"，而是"AI 应该替人类省下什么"。</span></div>
+      <div class="card-summary-en">EN: Wang Jian, director of Zhejiang Lab and Alibaba Cloud's founder, pulled the Bund Conference conversation away from bigger models toward resources and sustainability. He cited UN data showing only ~15% of the 2010 sustainability goals are broadly on track and a symmetric 15% have gone backwards, with under five years to 2030 — and the UN Secretary-General's conclusion that technology is the only means. He revived his 2016 "City Brain question," now renamed the "Future City Question" by UN-Habitat: can a future city let people live well on just 10% of today's per-capita resource use? Ireland, he noted, loses over 45% of municipal water in its pipe network, and its 2030 target is merely to get leakage below 25%. His thesis: data is the natural resource of the digital age and AI the tool best placed to use it — "put one kilowatt-hour into AI and the world may save ten elsewhere." Asked about AI's own power draw, he pointed to the efficiency path from early bulbs to LEDs. He deliberately wrote "年青人" (youth) rather than "年轻人": the youthful way, he said, is refusing an umbrella in the rain. The line worth keeping: he asked not what AI can do, but what it should save us.</div>
+    </div>
+
+    <div class="card card-kol">
+      <div class="card-title"><a href="https://www.abc.net.au/news/2026-09-11/racing-to-solve-maths-problems-pointless-tristan-buckmaster-says/107141628" target="_blank">Buckmaster 首度公开发声：与 OpenAI 的摩擦是"一场深蓝—卡斯帕罗夫时刻"，呼吁制定产学研合作规则</a></div>
+      <div class="card-en">Buckmaster speaks out: the clash is "a Deep Blue–Kasparov moment," and academia and labs need ground rules</div>
+      <div class="card-meta"><span class="source">ABC News（澳大利亚广播公司）/ 环球时报 / Hindustan Times / 光明网</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(16,185,129,.12);color:#10b981">学界与产业</span></div>
+      <div class="card-summary">在 OpenAI 宣称解决纳维—斯托克斯千禧年难题并引发署名争议数日后，纽约大学数学家 <span class="highlight">Tristan Buckmaster</span> 于今天接受 ABC 采访时首度系统发声。他强调自己<span class="highlight">"没有指控任何人做错了什么"</span>，也不知模型究竟做了什么、双方数据是否被使用；但他透露，在与 OpenAI 的通话中被提出两个方案——其一是两人先发欧拉方程结果、OpenAI 次日发布纳维—斯托克斯结果；其二是<span class="highlight">由他单独撰写论文呈现纳维—斯托克斯结果，署名致谢 OpenAI 内部模型，但不列其合作者 Levent Alpöge（因其受雇于 Anthropic）</span>。他拒绝了两个方案，并表示如果说出来就威胁毁掉其职业生涯。OpenAI 首席研究员 Sébastien Bubeck 承认"进行了不希望与 Anthropic 员工联合署名"的表达，但称从未要求把 Alpöge 从他自己工作的署名中移除，并为"措辞极差"致歉；OpenAI 声明称研究者和智能体在对方公开发布前未见其成果、未访问特定用户数据，但<span class="highlight">"虽然不太可能，我们无法排除由其产品使用衍生的去标识化数据帮助改进了我们的模型"</span>。Buckmaster 把这件事称为"一场深蓝—卡斯帕罗夫时刻"，认为更大的故事是前沿模型现在能做到的事有多大规模；他披露<span class="highlight">部分数学家已停止公开自己的工作方向以免向 AI 公司泄露意图</span>，并呼吁学界与 OpenAI、Anthropic、DeepMind 坐下来讨论合作规则。他还提到其自费购买 token 推进研究，以及"我认为 Luis Martínez-Zoroa 值得一枚菲尔兹奖"。</div>
+      <div class="card-summary-en">EN: Days after OpenAI claimed a Navier–Stokes solution and a credit dispute followed, NYU mathematician Tristan Buckmaster spoke at length to the ABC. He stressed he is not accusing anyone, and does not know what the model did or whether their data was used — but said he was offered two arrangements: that the pair post their Euler result with OpenAI following the next day, or that he alone write up the Navier–Stokes result crediting an internal OpenAI model while leaving out his collaborator Levent Alpöge, because Alpöge works at Anthropic. He declined both, saying he was told going public would ruin his career. OpenAI's Sébastien Bubeck acknowledged expressing reluctance to co-author with an Anthropic employee but denied asking for Alpöge's removal, apologising for "extremely poor choice of words." OpenAI says no researcher or agent saw the pair's work pre-publication and no specific user data was accessed, but that it "cannot rule out that de-identified data derived from their usage" helped improve its models. Buckmaster called it "a Deep Blue–Kasparov moment," said some mathematicians have stopped sharing what they work on to avoid tipping off AI labs, and called for ground rules between academia and the labs.</div>
+    </div>
+
+    <div class="card card-kol">
+      <div class="card-title"><a href="https://malpass.co/top-ai-stories-2026-09-11" target="_blank">Raschka 深度解读 GPT-6 Astra："我用过最好的模型"，looped transformers 与隐藏思维链传闻</a></div>
+      <div class="card-en">Raschka's deep dive on GPT-6 Astra: "the best model I've used," plus looped transformers and hidden chain-of-thought</div>
+      <div class="card-meta"><span class="source">Sebastian Raschka《Ahead of AI》/ Malpass Top AI Stories / The Information 引述</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(16,185,129,.12);color:#10b981">技术解读</span></div>
+      <div class="card-summary">Sebastian Raschka 关于 GPT-6 Astra 的《Ahead of AI》长文成为今天技术圈被引用最多的解读。他称这是<span class="highlight">"我用过的最好的模型"</span>，认为它<span class="highlight">"在几乎所有类别上都跳过了前任 GPT-5.6"</span>，尤其在 3D 渲染、动画与计算机操作上，并以 <span class="highlight">ARC-AGI-3 上 99.9% 对 GPT-5.6 Sol 的 7.8%</span> 为例。文章最有信息量的部分是架构推测：依循 The Information 的报道，他拆解了 <span class="highlight">"looped transformers"与"recurrent depth"</span>——即 Astra 在推理时重复应用同一组 transformer 块，<span class="highlight">在不增加新权重的前提下把有效深度由 22 层应用提升到 44 层</span>。这一循环设计与"<span class="highlight">Astra 隐藏思维链、在内部推理而不输出可读轨迹</span>"的长期传闻直接相关。Raschka 还把线索接到另一则报道上：OpenAI 购入数万台 Mac Mini 与 Mac Studio，<span class="highlight">不是用来在 GPU 上训练，而是为了在强化学习中把 macOS 暴露给模型，让 Astra 在真实操作系统上学会计算机操作</span>。<span class="highlight">需要标注的是，上述架构细节来自二手报道与推断，非 OpenAI 官方披露。</span></div>
+      <div class="card-summary-en">EN: Sebastian Raschka's "Ahead of AI" essay on GPT-6 Astra became the day's most-cited technical read. He calls it "the best model I've used," leapfrogging its GPT-5.6 predecessor in practically all categories — 3D rendering, animation and computer use especially — citing 99.9% on ARC-AGI-3 versus 7.8% for GPT-5.6 Sol. The meatiest part is architecture gossip: following The Information, he unpacks "looped transformers" and "recurrent depth," the idea that Astra re-applies the same transformer blocks at inference, effectively doubling depth from 22 to 44 block applications without new weights — tied to the long-standing rumour that Astra hides its chain of thought. He also connects reporting that OpenAI bought tens of thousands of Mac Minis and Mac Studios not to train on GPUs but to expose macOS to the model during RL. These details come from secondary reporting and inference, not official OpenAI disclosure.</div>
+    </div>
+
+    <div class="card card-kol">
+      <div class="card-title"><a href="https://aibriefing.dev/" target="_blank">黄仁勋称"AGI 已经到来"，同时给出 40 万块新增 GPU 上线、Grace/Blackwell/NVLink 环比 +27%</a></div>
+      <div class="card-en">Jensen Huang declares "AGI has arrived," alongside 400K more GPUs coming online and 27% MoM growth in Grace/Blackwell/NVLink</div>
+      <div class="card-meta"><span class="source">AI Briefing 汇总（NVIDIA 公告与公开表态）</span><span class="time">9/11</span><span class="card-tag" style="background:rgba(16,185,129,.12);color:#10b981">大佬观点</span></div>
+      <div class="card-summary">在英伟达宣布收购 Hugging Face 的同一场表态中，CEO 黄仁勋祝贺 OpenAI 发布 Astra，并称 <span class="highlight">"AGI 已经到来"</span>，同时给出产能侧的数字：<span class="highlight">另有 40 万块 GPU 正在上线</span>，Grace、Blackwell 与 NVLink 系统<span class="highlight">环比增长 27%</span>。把它与另外三条今天的信号并置会更有意思——OpenAI 首席科学家 Pachocki 在《An Alien Mind》里说"<span class="highlight">没有任何实验室把对齐与监控解决到足以继续以最高速度扩展的程度</span>"，并预期"自愿减速"会变得常见；Anthropic 的威胁报告展示了自主智能体在真实系统中已完成的两到三小时入侵；而 OpenAI 因 Astra 需求暂停 200 美元档订阅。<span class="highlight">"AGI 已到"与"没人准备好"在同一天被两位最有权势的从业者分别说出，这个分歧本身就是今天最重要的信息。</span></div>
+      <div class="card-summary-en">EN: In the same set of remarks around NVIDIA's Hugging Face acquisition, CEO Jensen Huang congratulated OpenAI on Astra and declared "AGI has arrived," citing production numbers: 400,000 additional GPUs coming online and 27% month-over-month growth in Grace, Blackwell and NVLink systems. Set against the day's other signals, the contrast is the story: OpenAI chief scientist Jakub Pachocki wrote in "An Alien Mind" that no lab has solved alignment and monitoring sufficiently to keep scaling at maximum speed, and expects "voluntary slowdowns" to become commonplace; Anthropic's threat report documents autonomous agents completing real intrusions in two to three hours; and OpenAI paused its $200 tier because Astra demand outstripped supply. "AGI has arrived" and "no one is prepared" were said on the same day by two of the most powerful people in the field.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 数据图表 ===== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-research)"></div>
+    <div class="section-title">📊 数据图表 <span class="section-title-en">/ Charts</span></div>
+    <div class="section-count">3 张</div>
+    <div class="toggle-hint">▾ 收起</div>
+  </div>
+  <div class="section-body">
+
+  <div class="chart-wrap">
+    <div class="chart-title">图一 · Anthropic 9 月报告披露的各实验室蒸馏交换量（百万次）</div>
+    <div class="chart-note">数据来自 Anthropic《Detecting and countering misuse of AI: September 2026》（9/10 发布）。阿里为 2026 年 5–7 月累计 1.51 亿次；DeepSeek 为 7 月 14 天内 1210 万次；智谱为 17 天内 340 万次以上（另有来源给出"GLM 5.3 发布前 10 天 77 万次"的口径，此处采用报告相关报道中与其他条目同类的累计口径）；小米为 20 天内 40 万次以上、涉及 1500+ 账号。所有数字均为 Anthropic 单方观测与归因，报告本身声明不代表独立核实，且各条目统计窗口长度不一（14–92 天），不宜直接按日均横向比较。月之暗面一案报告未给出交换总量，故未入图。</div>
+    <canvas id="chartDistill"></canvas>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">图二 · 国产 AI 芯片"四小龙"2026 年上半年营业收入（亿元人民币）</div>
+    <div class="chart-note">数据来自各公司半年报（经证券时报 9/11 汇总）。摩尔线程 17.36 亿元、同比 +147.42%；沐曦股份 13.24 亿元、同比 +44.67%；壁仞科技 12.355 亿元、同比 +1997.6%；燧原科技 11.2 亿元、同比 +279%。四家合计约 54.16 亿元，均尚未整体跨过盈利线，但亏损幅度普遍收窄（摩尔线程扣非归母净利润 -1.51 亿元，去年同期 -3.17 亿元；沐曦 -0.49 亿元、同比减亏 75.83%，且二季度单季扣非转正 0.54 亿元）。同比增速差异极大主要源于基数效应，壁仞与燧原去年同期基数极低。</div>
+    <canvas id="chartChips"></canvas>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">图三 · AWS SageMaker 前缀感知路由的实测效果（Llama 3.1 70B）</div>
+    <div class="chart-note">数据来自 AWS 官方博客（9/11 经 AI 日报汇总）。左侧两根柱为 <b>KV 缓存命中率</b>（优化前约 25%、优化后 80% 以上），右侧一根柱为 <b>P50 首 token 延迟降幅</b>（最高 77%）。注意三个数值口径不同：前两者是命中率水平（%），后者是相对降幅（%），此处仅作量级对照，不可相加或直接比较高低。区间值为厂商基准测试结果，非第三方复现。</div>
+    <canvas id="chartRouting"></canvas>
+  </div>
+
+  </div>
+</div>
+
+<!-- ===== 结尾综述 ===== -->
+<div class="summary-section">
+  <h2>🔭 9/11 全景速览 · 一句话总结</h2>
+
+  <div class="summary-sub">
+    <h3>🧩 今日主线</h3>
+    <ul>
+      <li><span class="highlight">"降价"第一次直接打到二级市场的估值上</span>：DeepSeek 昨天发布 V4.1 Flash 并把缓存命中输入价压到 0.02 元/百万 token，今天港股大模型板块应声重挫——智谱 -11.06%、MiniMax -8.98%，摩根士丹利随即警告价格竞争加剧。同一天，OpenAI 走的却是完全相反的路：因 Astra 需求超预期，暂停 200 美元/月的 Pro 新订阅。两家最强模型公司一头降不动（没货）、一头降到底，价格与产能第一次同时成为约束。</li>
+      <li><span class="highlight">中国 AI 资本化在一周内完成三级跳</span>：燧原科技今天挂牌、首日大涨约 179%，"AI 芯片四小龙"全部进入公开市场；DeepSeek 被曝聘任中信证券筹备科创板；月之暗面研究港股后转科创板，据报寻求募资约 30 亿美元。过去所有关于"AI 估值是否合理"的争论都发生在私募市场，接下来要由二级市场逐一定价——而四小龙上半年营收 11–17 亿元、普遍未盈利，估值已较年内高点回撤四到五成，这就是定价过程的第一轮答案。</li>
+      <li><span class="highlight">"世界模型"成为中国厂商的集团军战场</span>：高德 ABot-Earth 0.7（单卡 10 分钟生成公里级 3D 城市）、京东开源 EchoWM（视频+音效+语音同一框架）、蚂蚁灵波再放三款（含消费级单卡可跑的 1.3B）。三家在同一天发布，说明这条路线已从论文竞争进入产品与开源生态竞争，而它的下游正是具身智能与仿真训练。</li>
+      <li><span class="highlight">AI 把高级攻击的开发周期压到了"天"</span>：Calif Research 借 AI 约 2 天找到微信 VoIP 漏洞并写出首个 RCE，一周内做出跨平台的零点击蠕虫 WeWorm；而从上报到服务端缓解用了 35 天。行业惯用的 90 天披露窗口，前提是"把漏洞变成武器需要数月"——这个前提已经不成立。同一时间，Anthropic 的威胁报告显示自主智能体已能在 2–3 小时内完成真实入侵、单个操作者并行处理数十个受害者。</li>
+      <li><span class="highlight">治理重心从"要不要管"转向"管产品设计与身份"</span>：加州签署被称"全美最严"的儿童 AI 与社交媒体法案（年龄核验、限制个性化信息流）；工信部在印发"AI+软件"专项行动的同时，专门就 AI 生成代码安全审查提出要求；人大报告判断治理已升级为"规则竞争、制度协调与产业重组并行"；吴世忠则把"智能体身份治理"点为下一阶段标准建设的新前沿——我国 2026 年已发布《人工智能 智能体互联》系列国家标准化指导性技术文件。</li>
+      <li><span class="highlight">关于 AI 的两句话在同一天被同时说出</span>：黄仁勋称"AGI 已经到来"并给出 40 万块 GPU 上线的产能证据；OpenAI 首席科学家 Pachocki 在《An Alien Mind》中写"没有任何实验室把对齐与监控解决到足以继续以最高速度扩展的程度"，并预期自愿减速会变得常见。一个是供给侧的乐观，一个是安全侧的警告，而它们的差距正是这个行业当前的真实状态。</li>
+    </ul>
+    <div class="lens">📌 透镜：9/11 的关键词是<span class="highlight">"价格、产能与安全的三角校准"</span>——中国用降价与开源把模型成本推向地板（DeepSeek 0.02 元、四小龙上市、世界模型集体开源），美国用产能约束把最强模型留在天花板（Astra 暂停订阅、40 万块 GPU 排队上线），而安全侧则在记录这两条曲线的侧面效应：蒸馏规模达到 1.51 亿次、零点击蠕虫的开发周期缩到两天、未成年人的产品护栏开始被写进州法。当能力与成本同时剧烈变化时，真正稀缺的东西是<span class="highlight">可被信任的验证机制</span>——这也是为什么今天最重要的几条政策新闻，都在谈"谁来审、怎么溯源"。</div>
+  </div>
+
+  <div class="summary-sub">
+    <h3>🌐 EN Note</h3>
+    <div class="en-note">September 11, 2026 in one line: price and capacity moved in opposite directions as DeepSeek's V4.1-Flash cut cached input to ¥0.02 per million tokens and sent Hong Kong model stocks down (Zhipu -11.06%, MiniMax -8.98%) while OpenAI paused $200/month Pro signups because Astra demand outran compute; China's AI capital-markets queue moved three steps in a week as Enflame debuted up ~179%, DeepSeek was reported to be preparing a STAR Market IPO and Moonshot studied a Shanghai listing after Hong Kong; world models became a group race with Amap's ABot-Earth 0.7, JD's open-sourced EchoWM and three more LingBot variants landing the same day; and AI compressed offensive timelines to days, with Calif's AI-assisted WeWorm taking about two days from bug to first RCE against a 35-day patch cycle, while Anthropic's September threat report named seven China-based labs and measured its largest distillation campaign at 151M exchanges. Governance tilted from whether to regulate toward product design and identity — California's child-safety package, MIIT's code-review requirements, and agent identity standards. And on the same day, Jensen Huang said "AGI has arrived" while OpenAI's chief scientist wrote that no lab has solved alignment well enough to keep scaling at maximum speed.</div>
+  </div>
+</div>
+
+<!-- Sources -->
+<div class="sources-box">
+  <span class="sources-toggle" onclick="document.getElementById('srcList').classList.toggle('hidden')">▸ 展开溯源链接（53 条）</span>
+  <div class="sources-list hidden" id="srcList">
+    <ol>
+      <li>腾讯研究院 · AI 速递 20260911（DeepSeek V4.1 Flash / 京东 EchoWM / 高德 ABot-Earth 0.7 / 蚂蚁三款世界模型）：https://www.sohu.com/a/1074463759_455313</li>
+      <li>SegmentFault · AI 日报（2026 年 9 月 11 日）：https://segmentfault.com/a/1190000048290674</li>
+      <li>每日经济新闻 · 数智早参 9/11（DeepSeek V4.1 Flash / 苹果 iPhone Duo / OpenAI 广告政策）：https://www.toutiao.com/article/7684045598206525952</li>
+      <li>AI Briefing · AI News Today 2026-09-11（Astra GA / Pro 暂停 / 英伟达与 Hugging Face / 黄仁勋）：https://aibriefing.dev/</li>
+      <li>Malpass · Top AI Stories – September 11, 2026（V4.1 Flash / 纳维-斯托克斯 / Raschka 解读）：https://malpass.co/top-ai-stories-2026-09-11</li>
+      <li>证券时报 · 国产 AI 芯片四小龙齐聚资本市场：https://www.toutiao.com/article/7684031467449598470/</li>
+      <li>第一财经 · 上海又一 AI 芯片企业登陆科创板（燧原科技）：https://www.toutiao.com/article/7684069498665206272/</li>
+      <li>CCTV+ · Chinese AI chipmaker Enflame goes public at Shanghai Stock Exchange：https://www.cctvplus.com/archive/20260911/8498658.shtml</li>
+      <li>同花顺财经 · 半导体日报 9/11（燧原首日 +179% / 算力大会 / 龙芯 9A1000）：https://m.10jqka.com.cn/20260911/c679839031.shtml</li>
+      <li>界面新闻 · 2026 中国算力大会今日开幕（台积电 8 月营收）：https://cj.sina.com.cn/articles/view/5182171545/134e1a99902002jhi4</li>
+      <li>财联社/凤凰网 · 国家级算力盛会来了！2026 中国算力大会明日启幕：https://i.ifeng.com/c/8wJOo1gMGa6</li>
+      <li>百度百科 · 2026 中国算力大会（议程与架构）：https://baike.baidu.com/item/2026%E4%B8%AD%E5%9B%BD%E7%AE%97%E5%8A%9B%E5%A4%A7%E4%BC%9A/68498652</li>
+      <li>腾讯网 · 全球 AI 动态 9/11（工信部 AI+软件 / 代码安全审查 / 人大报告 / 外交部 / OpenRouter 调用量）：https://new.qq.com/rain/a/20260911A04B1D00</li>
+      <li>世界互联网大会 · 关乎儿童使用 AI，美国加州签署"最严新规"：https://cn.wicinternet.org/2026-09/11/content_38997008.htm</li>
+      <li>中国社会科学网 · 吴世忠：大模型系统安全的观察与思考：https://www.cssn.cn/gjaqx/202609/t20260911_6066999.shtml</li>
+      <li>中国人民大学人工智能治理研究院 · 《人工智能治理全球合作进展研究报告(2026 年)》（经 WM 数智工坊转述）：https://new.qq.com/rain/a/20260911A04B1D00</li>
+      <li>ABC News · 'The game is up': Aussie professor at centre of AI maths controversy speaks out：https://www.abc.net.au/news/2026-09-11/racing-to-solve-maths-problems-pointless-tristan-buckmaster-says/107141628</li>
+      <li>ABC News · Controversy erupts as OpenAI claims solution to Navier Stokes maths problem：https://www.abc.net.au/news/2026-09-10/openai-navier-stokes-millennium-problem-claims/107132242</li>
+      <li>环球时报 · 被数学家质疑"截胡"成果，OpenAI 承认对方领先：https://www.toutiao.com/article/7683685066089808422/</li>
+      <li>光明网/科技日报 · AI 用 88 小时解出了千禧年难题？（166 页论文与 Lean 验证细节）：https://www.toutiao.com/article/7683819636521943579/</li>
+      <li>Hindustan Times · Prof, OpenAI spar as headway made in Millennium Problem：https://origin-pre-prod.hindustantimes.com/editors-pick/prof-openai-spar-as-headway-made-in-millennium-problem-101789002754455-amp.html</li>
+      <li>Anthropic · Detecting and countering misuse of AI: September 2026（威胁情报报告）：https://www.anthropic.com/threat-intelligence-report-september-2026</li>
+      <li>ASAPAI · Anthropic Names Seven PRC Labs Behind Illicit Distillation Attacks on Claude：https://asapai.co.kr/en/anthropic-distillation-seven-prc-labs</li>
+      <li>DQ India · AI cybersecurity threats: From assistant to orchestrator in Anthropic report：https://www.dqindia.com/cybersecurity/ai-shifts-from-assistant-to-orchestrator-in-anthropic-report-12520326</li>
+      <li>Sovereign Magazine · Anthropic Accuses Kimi and DeepSeek of Sending Users' Prompts to Claude：https://sovereignmagazine.com/article/kimi-deepseek-claude-prompts-anthropic</li>
+      <li>Pivot News · Anthropic ties lone operators to state-scale hacking in new threat report：https://pivotnews.ai/security/anthropic-ties-lone-operators-to-state-scale-hacking-in</li>
+      <li>安全内参 · 零点击入侵！新型微信蠕虫可无感知盗号，无需接打电话：https://www.secrss.com/articles/93828</li>
+      <li>The Register · WeChat worm could pwn a friend before they even answered the call：https://theregister.com/security/2026/09/09/wechat-worm-could-pwn-a-friend-before-they-even-answered-the-call/5295234</li>
+      <li>SecurityExpress · WeWorm: AI-Assisted Zero-Click Worm Hijacks WeChat Accounts：https://securityexpress.info/weworm-wechat-zero-click-worm</li>
+      <li>Tech Times · WeChat Zero-Click Worm Built by AI in Days：https://techtimes.com/articles/327153/20260910/wechat-zero-click-worm-built-ai-days-voip-bug-put-billion-accounts-risk.htm</li>
+      <li>Universal Music Group · UMG 与 ElevenLabs 多年期战略协议官方公告：https://www.universalmusic.com/universal-music-group-and-elevenlabs-announce-multi-year-strategic-agreement-beginning-with-a-new-licensed-ai-music-creation-platform</li>
+      <li>GenAI Daily · ElevenLabs signs first major-label licensing deal with Universal Music：https://genaidaily.com/elevenlabs-signs-first-major-label-licensing-deal-with-universal-music</li>
+      <li>Unite.AI · Universal Music Group, ElevenLabs Enter Multi-Year AI Music Agreement：https://www.unite.ai/universal-music-group-elevenlabs-enter-multi-year-ai-music-agreement</li>
+      <li>MusicNews · UMG and ElevenLabs Announce Multi-Year AI Music Licensing Deal：https://www.musicnews.com/news/2026-09-11-universal-music-group-and-elevenlabs-announce-multi-year-ai-music-licensing-deal</li>
+      <li>SiliconANGLE · Meta debuts its 'secure by design' personal AI agent Muse：https://siliconangle.com/2026/09/08/meta-debuts-its-secure-by-design-personal-ai-agent-muse/</li>
+      <li>Inside AI · Meta Debuts Muse, a Personal AI Agent for Real-World Tasks：https://insideai.news/news/agentic-ai/meta-muse-personal-ai-agent/10147</li>
+      <li>The Intelligent · Meta launches Muse personal AI agent for WhatsApp and Instagram：https://www.theintelligent.se/technology/2026/meta-launches-muse-personal-ai-agent-whatsapp-and-instagram</li>
+      <li>Engadget · iOS 27 with Siri AI will be available on September 14：https://www.engadget.com/2254005/ios-27-with-siri-ai-will-be-available-on-september-14/</li>
+      <li>The Mac Observer · Does Siri AI Use Google Gemini? What Apple Actually Says：https://www.macobserver.com/tips/round-ups/does-siri-ai-use-google-gemini/</li>
+      <li>Silicon Report · Apple announces next iOS version will arrive on September 14：https://www.siliconreport.com/apple-announces-next-ios-version-will-arrive-on-september-14</li>
+      <li>AI Weekly · Apple's Siri AI Ships Sept 14 on iOS 27, Trained on Gemini：https://aiweekly.co/alerts/apples-siri-ai-ships-sept-14-on-ios-27-trained-on-gemini</li>
+      <li>财联社/东方财富 · 港股 IPO 早播报：AI 基础设施软件商星环科技开启招股：https://finance.eastmoney.com/a/202609113871718724.html</li>
+      <li>港股研究社/网易 · DeepSeek、Moonshot 排队上市，AI 大模型进入资本耐力赛：https://www.163.com/dy/article/L6I915HR05317SYF.html</li>
+      <li>湖北日报 · IPO 还没敲定，DeepSeek 先把同行股价打下来了：https://www.toutiao.com/article/7684259491344417332/</li>
+      <li>Sergey Tereshkin · Startup and Venture Capital News — Friday, September 11, 2026（Mistral / Anthropic IPO / Gimlet Labs / 8 月统计）：https://sergeytereshkin.ca/publications/startup-and-venture-capital-news-september-11-2026</li>
+      <li>Inside Telecom · Mistral's $24 Billion Valuation Proves Europe Can Build Its Own AI Future：https://insidetelecom.com/european-digital-sovereignty-from-paris-to-warsaw</li>
+      <li>N24 · Samsung Leads Mistral €3B Funding Round at €21B Valuation：https://n24.com.tr/en/technology/samsung-leads-mistral-3b-funding-round-at-21b-valuation</li>
+      <li>Telecom Review Europe · Mistral Raises EUR 3B to Advance Sovereign, Open-Weight AI：https://www.telecomrevieweurope.com/articles/reports-and-coverage/mistral-raises-eur-3b-to-advance-sovereign-open-weight-ai</li>
+      <li>腾讯新闻 · 王坚：如何用"城市大脑"将资源消耗降到 10%？难题留给"年青人"：https://news.qq.com/rain/a/20260910A0CLIW00</li>
+      <li>中华网 · 阿里云创始人王坚：人工智能时代的挑战会由充满热爱的年青人解决：https://news.china.com/socialgd/10000169/20260911/49735116.html</li>
+      <li>The Agent Times · OpenAI Chief Scientist Calls for Voluntary Slowdowns in 'Alien Mind' Essay（Pachocki）：https://theagenttimes.com/agents/article/openai-chief-scientist-calls-for-voluntary-slowdowns-in-alie-debc8aee</li>
+      <li>N24 · OpenAI Chief Scientist Warns AI Safety Controls May Fall Behind：https://n24.com.tr/en/technology/openai-chief-scientist-warns-ai-safety-controls-may-fall-behind</li>
+      <li>Storyboard18 · OpenAI Chief Scientist calls for AI slowdowns, global safety coordination：https://www.storyboard18.com/amp/digital/openai-chief-scientist-calls-for-ai-slowdowns-global-safety-coordination-says-no-one-is-prepared-ws-lo-110260.htm</li>
+    </ol>
+  </div>
+</div>
+
+<div class="footer">
+  <p>AI 每日全景报告 · 2026-09-11（9/12 补生成） · 数据来源 WebSearch 多源检索，每条均附原文链接</p>
+  <p>本报告为自动化生成，内容仅供参考，不构成投资建议</p>
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+// Chart 1: Anthropic Sept 2026 report — distillation exchanges (millions)
+new Chart(document.getElementById('chartDistill'), {
+  type: 'bar',
+  data: {
+    labels: ['阿里巴巴 (5–7月)','DeepSeek (7月14天)','智谱 (17天)','小米 (20天)'],
+    datasets: [{
+      label: '蒸馏交换量（百万次）',
+      data: [151, 12.1, 3.4, 0.4],
+      backgroundColor: ['#ef4444','#f97316','#8b5cf6','#94a3b8']
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    plugins: { legend: { display: false } },
+    scales: { x: { beginAtZero: true, title: { display: true, text: '交换量（百万次，窗口长度不一，仅作量级对照）' } } }
+  }
+});
+
+// Chart 2: China's four GPU challengers — H1 2026 revenue (RMB 100M)
+new Chart(document.getElementById('chartChips'), {
+  type: 'bar',
+  data: {
+    labels: ['摩尔线程','沐曦股份','壁仞科技','燧原科技'],
+    datasets: [{
+      label: '2026H1 营业收入（亿元）',
+      data: [17.36, 13.24, 12.355, 11.2],
+      backgroundColor: ['#6366f1','#06b6d4','#8b5cf6','#f59e0b']
+    }]
+  },
+  options: {
+    plugins: { legend: { display: false } },
+    scales: { y: { beginAtZero: true, title: { display: true, text: '2026 年上半年营业收入（亿元人民币）' } } }
+  }
+});
+
+// Chart 3: SageMaker prefix-aware routing effect
+new Chart(document.getElementById('chartRouting'), {
+  type: 'bar',
+  data: {
+    labels: ['KV 缓存命中率（优化前）','KV 缓存命中率（优化后）','P50 首 token 延迟降幅'],
+    datasets: [{
+      label: '%',
+      data: [25, 80, 77],
+      backgroundColor: ['#94a3b8','#10b981','#6366f1']
+    }]
+  },
+  options: {
+    plugins: { legend: { display: false } },
+    scales: { y: { beginAtZero: true, title: { display: true, text: '%（前两项为命中率水平，第三项为相对降幅，口径不同）' } } }
+  }
+});
+
+// Collapsible sections
+document.querySelectorAll('.section-header').forEach(h => {
+  h.addEventListener('click', () => {
+    const hint = h.querySelector('.toggle-hint');
+    h.parentElement.classList.toggle('collapsed');
+    hint.textContent = h.parentElement.classList.contains('collapsed') ? '▸ 展开' : '▾ 收起';
+  });
+});
+</script>
+
+</body>
+</html>
