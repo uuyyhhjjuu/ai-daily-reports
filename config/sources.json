@@ -1,0 +1,51 @@
+{
+  "_comment": "AI每日全景报告 · 信源分级清单。自动化每晚 22:00 运行时先读本文件：T1 逐条必扫（检索或访问），T2 覆盖主要新闻，T3 时间允许时补充。改信源只改这个文件，不用改自动化 prompt。生成报告前用 WebSearch 按各源 search_hint 检索当日内容。",
+  "version": "1.0",
+  "updated": "2026-09-30",
+  "scan_policy": {
+    "T1": "必扫：每个源都要检索当日（或过去24h）动态，无产出也要在过程记录中留痕",
+    "T2": "覆盖主要新闻：确保当日重磅事件至少被其中一家覆盖，重要事件两源交叉验证",
+    "T3": "补充视角与早期信号，发现独家线索后回 T1/T2 求证"
+  },
+  "tiers": {
+    "T1_official": [
+      { "name": "OpenAI", "url": "https://openai.com/news/", "search_hint": "OpenAI announcement news today" },
+      { "name": "Anthropic", "url": "https://www.anthropic.com/news", "search_hint": "Anthropic announcement Claude news" },
+      { "name": "Google DeepMind", "url": "https://deepmind.google/discover/blog/", "search_hint": "Google DeepMind Gemini announcement" },
+      { "name": "Meta AI", "url": "https://ai.meta.com/blog/", "search_hint": "Meta AI Llama announcement" },
+      { "name": "NVIDIA", "url": "https://nvidianews.nvidia.com/", "search_hint": "NVIDIA GPU announcement earnings" },
+      { "name": "Microsoft AI", "url": "https://www.microsoft.com/en-us/research/blog/", "search_hint": "Microsoft AI Copilot OpenAI announcement" },
+      { "name": "Hugging Face", "url": "https://huggingface.co/blog", "search_hint": "Hugging Face release open source model" },
+      { "name": "xAI", "url": "https://x.ai/news", "search_hint": "xAI Grok announcement" },
+      { "name": "Mistral", "url": "https://mistral.ai/news", "search_hint": "Mistral AI announcement" },
+      { "name": "智谱 Z.ai / GLM", "url": "https://z.ai", "search_hint": "智谱 GLM 开源 发布" },
+      { "name": "阿里通义 Qwen", "url": "https://github.com/QwenLM", "search_hint": "Qwen 通义千问 开源 发布" },
+      { "name": "DeepSeek", "url": "https://api-docs.deepseek.com/news/", "search_hint": "DeepSeek 发布 开源 更新" },
+      { "name": "月之暗面 Kimi", "url": "https://www.moonshot.cn", "search_hint": "月之暗面 Kimi 发布" },
+      { "name": "字节 Seed / 豆包", "url": "https://team.doubao.com", "search_hint": "豆包 字节跳动 Seed 模型 发布" },
+      { "name": "腾讯混元", "url": "https://llm.hunyuan.tencent.com", "search_hint": "腾讯混元 开源 发布" },
+      { "name": "MiniMax", "url": "https://www.minimaxi.com", "search_hint": "MiniMax 发布 开源" }
+    ],
+    "T2_media": [
+      { "name": "机器之心", "search_hint": "机器之心 今日 AI" },
+      { "name": "量子位", "search_hint": "量子位 AI 新闻" },
+      { "name": "新智元", "search_hint": "新智元 AI" },
+      { "name": "智东西", "search_hint": "智东西 AI 芯片" },
+      { "name": "36氪", "search_hint": "36氪 AI 融资" },
+      { "name": "财联社", "search_hint": "财联社 AI 算力" },
+      { "name": "晚点 LatePost", "search_hint": "晚点 AI 独家" },
+      { "name": "TechCrunch", "search_hint": "TechCrunch AI funding launch" },
+      { "name": "The Verge", "search_hint": "The Verge AI news" },
+      { "name": "Reuters", "search_hint": "Reuters AI artificial intelligence" },
+      { "name": "Bloomberg", "search_hint": "Bloomberg AI chip datacenter" },
+      { "name": "The Information", "search_hint": "The Information AI exclusive" }
+    ],
+    "T3_community": [
+      { "name": "Hacker News", "search_hint": "Hacker News AI today" },
+      { "name": "Reddit r/LocalLLaMA", "search_hint": "LocalLLaMA open source model" },
+      { "name": "X 关键账号", "search_hint": "Karpathy OR sama OR \"Jim Fan\" OR LeCun AI announcement" },
+      { "name": "数字生命卡兹克", "search_hint": "数字生命卡兹克 AIHOT" },
+      { "name": "aihot.news（行业热点站）", "url": "https://aihot.news/", "search_hint": "aihot.news 今日热点" }
+    ]
+  }
+}
