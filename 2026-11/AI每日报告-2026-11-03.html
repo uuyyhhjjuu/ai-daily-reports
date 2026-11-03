@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 每日全景报告 · 2026-11-03</title>
+<style>:root {
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --primary: #6366f1;
+  --primary-light: #eef2ff;
+  --shadow: 0 1px 3px rgba(0,0,0,.08);
+  --shadow-hover: 0 4px 16px rgba(99,102,241,.15);
+  --c-industry: #f59e0b;
+  --c-kol: #10b981;
+  --c-model: #8b5cf6;
+  --c-product: #ec4899;
+  --c-paper: #06b6d4;
+  --c-research: #3b82f6;
+  --c-finance: #f97316;
+  --c-podcast: #f43f5e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+
+.header {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #7c3aed 100%);
+  border-radius: 16px; padding: 36px 40px; color: #fff; margin-bottom: 28px;
+  box-shadow: 0 8px 30px rgba(99,102,241,.3);
+}
+.header h1 { font-size: 26px; font-weight: 700; letter-spacing: -.5px; }
+.header .h1-en { font-size: 14px; font-weight: 500; opacity: .85; margin-top: 4px; letter-spacing: .3px; }
+.header .meta { font-size: 14px; opacity: .9; margin-top: 10px; display: flex; flex-wrap: wrap; gap: 16px; }
+.header .meta span { display: inline-flex; align-items: center; gap: 4px; }
+.header .badge {
+  display: inline-block; background: rgba(255,255,255,.2); padding: 2px 10px;
+  border-radius: 20px; font-size: 12px; margin-top: 12px; line-height: 1.6;
+}
+
+.stats-bar {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;
+  background: var(--card-bg); border-radius: 12px; padding: 16px 20px; box-shadow: var(--shadow);
+}
+.stat-item {
+  display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-secondary);
+  padding: 4px 10px; border-radius: 8px; background: var(--bg);
+}
+.stat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.stat-num { font-weight: 700; color: var(--text); }
+
+.filter-bar {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;
+  position: sticky; top: 0; z-index: 20; background: var(--bg); padding: 10px 0;
+}
+.filter-btn {
+  font-size: 13px; padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border);
+  background: var(--card-bg); color: var(--text-secondary); cursor: pointer; transition: all .15s;
+}
+.filter-btn:hover { border-color: var(--primary); color: var(--primary); }
+.filter-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+.section { margin-bottom: 32px; }
+.section-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+  padding-bottom: 8px; border-bottom: 2px solid var(--border); cursor: pointer; user-select: none;
+}
+.section-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.section-title { font-size: 18px; font-weight: 700; }
+.section-title-en { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+.section-count { font-size: 13px; color: var(--text-muted); margin-left: auto; }
+.toggle-hint { font-size: 12px; color: var(--primary); margin-left: 10px; white-space: nowrap; }
+.collapsed .section-body { display: none; }
+
+.card {
+  background: var(--card-bg); border-radius: 12px; padding: 20px 24px;
+  margin-bottom: 12px; box-shadow: var(--shadow);
+  border-left: 4px solid var(--primary);
+  transition: box-shadow .2s, transform .2s;
+  position: relative; overflow: hidden;
+}
+.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+.card-industry { border-left-color: var(--c-industry); }
+.card-kol { border-left-color: var(--c-kol); }
+.card-model { border-left-color: var(--c-model); }
+.card-product { border-left-color: var(--c-product); }
+.card-paper { border-left-color: var(--c-paper); }
+.card-research { border-left-color: var(--c-research); }
+.card-finance { border-left-color: var(--c-finance); }
+.card-podcast { border-left-color: var(--c-podcast); }
+
+.card-title { font-size: 16px; font-weight: 600; line-height: 1.5; margin-bottom: 4px; }
+.card-title a { color: var(--text); text-decoration: none; }
+.card-title a:hover { color: var(--primary); }
+
+.card-en {
+  font-size: 13px; color: var(--text-muted); font-style: italic;
+  margin-bottom: 8px; line-height: 1.5;
+}
+
+.card-meta {
+  display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.card-meta .source { font-weight: 500; color: var(--text-secondary); }
+.card-meta .time { color: var(--primary); font-weight: 500; }
+.card-tag {
+  display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 4px;
+  font-weight: 500;
+}
+
+.card-summary { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+.card-summary .highlight { color: var(--primary); font-weight: 600; }
+.card-summary-en {
+  font-size: 13px; color: var(--text-muted); line-height: 1.65;
+  margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border);
+}
+
+.news-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 4px 0 10px; }
+.news-table th {
+  text-align: left; padding: 9px 12px; background: rgba(99,102,241,.08);
+  color: var(--text); font-weight: 600; border-bottom: 2px solid var(--primary);
+}
+.news-table td {
+  padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top;
+}
+.news-table .t { color: var(--primary); font-weight: 600; white-space: nowrap; }
+.news-table .e { color: var(--c-finance); font-weight: 500; }
+
+.chart-wrap {
+  background: var(--card-bg); border-radius: 12px; padding: 20px 24px;
+  margin-bottom: 14px; box-shadow: var(--shadow); border-left: 4px solid var(--c-research);
+}
+.chart-wrap h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.chart-wrap .chart-en { font-size: 12px; color: var(--text-muted); font-style: italic; margin-bottom: 10px; }
+.chart-wrap .chart-note { font-size: 12px; color: var(--text-muted); margin-top: 8px; }
+.chart-canvas-box { position: relative; height: 320px; }
+
+.conclusion {
+  background: linear-gradient(135deg, #fff7ed 0%, #fef2f2 100%);
+  border-radius: 12px; padding: 24px 28px; margin-bottom: 14px;
+  box-shadow: var(--shadow); border-left: 4px solid var(--c-finance);
+}
+.conclusion h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+.conclusion ul { margin-left: 18px; }
+.conclusion li { font-size: 14px; color: var(--text-secondary); margin-bottom: 8px; line-height: 1.65; }
+.conclusion li b { color: var(--text); }
+
+.sources {
+  background: var(--card-bg); border-radius: 12px; padding: 20px 24px;
+  box-shadow: var(--shadow); font-size: 13px; color: var(--text-secondary); line-height: 1.75;
+}
+.sources h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+.sources code { background: var(--bg); padding: 1px 6px; border-radius: 4px; font-size: 12px; }
+
+.footer {
+  text-align: center; margin-top: 40px; padding-top: 20px;
+  border-top: 1px solid var(--border); color: var(--text-muted); font-size: 12px;
+}</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <h1>AI 每日全景报告 · 2026-11-03（周二）</h1>
+  <div class="h1-en">AI Daily Panorama Report · Nov 3, 2026 (Tue)</div>
+  <div class="meta">
+    <span>📅 窗口：11/2 22:00 – 11/3 22:00（北京时间）</span>
+    <span>🌐 国内 + 海外并重</span>
+    <span>🈯 中英双语</span>
+    <span>🔗 数据全量覆盖 · 可追溯</span>
+  </div>
+  <div class="badge">完整版（22:00 窗口收口，覆盖 11/2 22:00 – 11/3 22:00 全窗口）· 时间标注严格采用「今天HH:MM / 昨天HH:MM / X小时前」格式 · 31 条主卡 + 当日要闻表 + 3 张图表 + 投资结论 · 播客情报板块因 BidClub 暂不可用而跳过（见来源说明）</div>
+</div>
+<div class="stats-bar">
+<div class="stat-item"><span class="stat-dot" style="background:var(--c-model)"></span>模型与芯片 <span class="stat-num">6</span></div>
+<div class="stat-item"><span class="stat-dot" style="background:var(--c-product)"></span>产品与应用 <span class="stat-num">5</span></div>
+<div class="stat-item"><span class="stat-dot" style="background:var(--c-finance)"></span>资本与 IPO <span class="stat-num">7</span></div>
+<div class="stat-item"><span class="stat-dot" style="background:var(--c-industry)"></span>政策与产业 <span class="stat-num">5</span></div>
+<div class="stat-item"><span class="stat-dot" style="background:var(--c-research)"></span>安全与研究 <span class="stat-num">5</span></div>
+<div class="stat-item"><span class="stat-dot" style="background:var(--c-kol)"></span>观点与 KOL <span class="stat-num">3</span></div>
+<div class="stat-item"><span class="stat-dot" style="background:var(--c-podcast)"></span>播客情报 <span class="stat-num">跳过</span></div>
+<div class="stat-item">📊 图表 <span class="stat-num">3</span></div>
+</div>
+<div class="filter-bar">
+<button class="filter-btn active" data-filter="all">全部</button>
+<button class="filter-btn" data-filter="model">模型与芯片</button>
+<button class="filter-btn" data-filter="product">产品与应用</button>
+<button class="filter-btn" data-filter="finance">资本与 IPO</button>
+<button class="filter-btn" data-filter="industry">政策与产业</button>
+<button class="filter-btn" data-filter="research">安全与研究</button>
+<button class="filter-btn" data-filter="kol">观点与 KOL</button>
+</div>
+<div class="section" id="sec-overview">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-research)"></div>
+    <div class="section-title">📌 当日要闻表 <span class="section-title-en">/ Day-at-a-glance</span></div>
+    <div class="section-count">12 条</div>
+    <div class="toggle-hint">点击折叠 ▾</div>
+  </div>
+  <div class="section-body">
+    <table class="news-table">
+      <thead><tr><th>#</th><th>要闻 Headline</th><th>板块</th><th>时间</th><th>影响 Impact</th></tr></thead>
+      <tbody>
+<tr><td>1</td><td><b>OpenAI 与 Anthropic 同步设立「选举作战室」，严防美国中期选举 AI 虚假信息</b></td><td>安全</td><td class="t">今天 13:11</td><td class="e">史上首次两家 AI 巨头选举期设专门作战室，AI 治理从事后追责转向实时防御</td></tr>
+<tr><td>2</td><td><b>Anthropic 更新 S-1：Q3 营收 169.56 亿(+1127%)、净亏 232.91 亿、算力承诺约 8954 亿</b></td><td>IPO</td><td class="t">今天</td><td class="e">史上最大 IPO 成色接受市场检验；单季由盈转亏 + 8954 亿锁死承诺成估值命门</td></tr>
+<tr><td>3</td><td><b>OpenAI 抢 Claude 客户：六折报价 + 送额度 + 配工程师，拿下 Replit 超 6.7 亿年单</b></td><td>资本</td><td class="t">今天 20:21</td><td class="e">价格战白热化，Replit 数小时完成切换；Agent 商业化为双巨头新战场</td></tr>
+<tr><td>4</td><td><b>奥特曼赴阿布扎比锁能源与资本：Stargate 集群规划 1GW、甲骨文拟采 400 亿 GB200</b></td><td>资本</td><td class="t">今天</td><td class="e">AI 竞赛瓶颈由芯片转向电力，「谁掌握电网谁掌握上限」成新叙事</td></tr>
+<tr><td>5</td><td><b>谷歌 DeepMind SynthID Detector 全球上线：一站式多厂商 AI 生成水印检测</b></td><td>安全</td><td class="t">今天</td><td class="e">跨 GPT/OpenAI/NVIDIA/Kakao 水印鉴伪统一入口，内容治理工具化加速</td></tr>
+<tr><td>6</td><td><b>马斯克削减 Grok Bot 额度：Agent 推理成本「过高且不可持续」</b></td><td>产品</td><td class="t">今天</td><td class="e">高频工具调用推高推理成本成行业共性，单位经济重估提上日程</td></tr>
+<tr><td>7</td><td><b>国家发改委 15五 AI 治理：加快基础综合性立法、监管沙盒、就业影响监测</b></td><td>政策</td><td class="t">今天</td><td class="e">新兴支柱产业 15五末产值望翻番至 10 万亿+；制度供给成 AI+ 落地底座</td></tr>
+<tr><td>8</td><td><b>阿里 Qoder 获世界互联网大会领先科技奖：全球 800 万用户、10 万+ 企业接入</b></td><td>模型</td><td class="t">今天</td><td class="e">国产编程/通用智能体平台获国际峰会背书，企业 Agent 落地提速</td></tr>
+<tr><td>9</td><td><b>DeepSeek 二轮融资细节浮现：募 1055 亿、投后 6155 亿、国资占 27%</b></td><td>资本</td><td class="t">今天</td><td class="e">近 30 家参投、腾讯/宁德时代领投，国产大模型「国家队+产业资本」格局成型</td></tr>
+<tr><td>10</td><td><b>Anthropic 在 S-1 警告：或很快达到「AI 显著加速自身发展（RSI）」阈值</b></td><td>安全</td><td class="t">昨天</td><td class="e">自研模型能力跃迁曾未被即时识别，安全叙事与商业加速的结构性矛盾显性化</td></tr>
+<tr><td>11</td><td><b>Claude Code 收紧「复刻游戏」：Opus 5.5 提示词加两句，误伤开发者</b></td><td>安全</td><td class="t">昨天</td><td class="e">IP 护栏外溢至正常开发，Digital Sun 取消 ReVamp 公测，开发者反弹</td></tr>
+<tr><td>12</td><td><b>未来两周中美九款旗舰扎堆：GPT-6.2 Sol / DeepSeek V4.1 Pro / Qwen4 Max 等</b></td><td>模型</td><td class="t">今天</td><td class="e">11 月模型大战迎最密档期，现有能力座次或全面改写</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="section" id="sec-model" data-cat="model">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-model)"></div>
+    <div class="section-title">模型与芯片 <span class="section-title-en">/ Models & Chips</span></div>
+    <div class="section-count">6 条</div>
+    <div class="toggle-hint">点击折叠 ▾</div>
+  </div>
+  <div class="section-body">
+    <div class="card card-model" data-cat="model">
+      <div class="card-title">OpenAI 内部全面上线 Pando：面向超大单体仓库的 Git 后端，支撑 Codex 智能体高并发读写</div>
+      <div class="card-en">OpenAI rolls out Pando — a Git backend for mega-monorepos that absorbs Codex agents' concurrent commits</div>
+      <div class="card-meta">
+        <span class="source">📰 SegmentFault / OpenAI 工程博客</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">工程基建</span>
+      </div>
+      <div class="card-summary">OpenAI 披露面向超大单体代码库（Monorepo）的 Git 后端存储系统 <span class="highlight">Pando</span>，现已承载其内部全部代码开发。面对 Codex 等编程智能体带来的并发提交激增，Pando 重点实现水平扩展的高并发分支推送，并最大化读取吞吐量以跑满客户端带宽。系统在<span class="highlight">不中断日常工程、保持 Git 使用习惯不变</span>的前提下平滑落地——这是大模型公司把「Agent 高并发协作」沉淀为底层基础设施的标志性一步。</div>
+      <div class="card-summary-en">Pando lets OpenAI's internal monorepo survive Codex agents' concurrent commits at scale — a sign that agent-native engineering infra is becoming table stakes for frontier labs.</div>
+    </div>
+    <div class="card card-model" data-cat="model">
+      <div class="card-title">Anthropic Messages API 公测 Message threads：长程 Agent 会话仅传增量，降 TTFT</div>
+      <div class="card-en">Anthropic previews Message threads for the Messages API — long agents send only deltas, slashing TTFT</div>
+      <div class="card-meta">
+        <span class="source">📰 SegmentFault / Anthropic 公告</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">API</span>
+      </div>
+      <div class="card-summary">Anthropic 在 Claude 平台开启 <span class="highlight">Message threads</span> 公开测试。该特性支持智能体在多轮长会话中仅发送最新增量内容，避免反复回传几十万 Token 的历史对话，显著压低首字响应时间（TTFT）。此更新特别针对涉及<span class="highlight">数百次工具调用的长程编程与 Agent 执行</span>场景提供延迟优化，是 Claude 与 OpenAI 在「长程 Agent 服务效率」上的直接对标。</div>
+      <div class="card-summary-en">Message threads cut TTFT for long-agent scenarios by not resending full context — Anthropic's answer to OpenAI's shared-quota, agent-centric consolidation.</div>
+    </div>
+    <div class="card card-model" data-cat="model">
+      <div class="card-title">马斯克削减 Grok Bot 使用限额：Agent 推理成本「过高且不可持续」</div>
+      <div class="card-en">Musk slashes Grok Bot limits — agent inference cost 'too high and unsustainable'</div>
+      <div class="card-meta">
+        <span class="source">📰 SegmentFault / X（马斯克）</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">成本</span>
+      </div>
+      <div class="card-summary">SpaceX 旗下 AI 产品 <span class="highlight">Grok Bot</span> 近期遭遇每周额度大幅削减，部分用户出现未调用即显示配额用尽。马斯克在 X 上证实此举并非系统故障，而是由于该智能体的运营服务成本相对收入而言「<span class="highlight">过高且不可持续</span>」。当前 OpenAI 与 Anthropic 等厂商同样面临智能体高频工具调用引发的计算成本压力——Agent 的单位经济首次成为产品存续的硬约束。</div>
+      <div class="card-summary-en">Musk's Grok Bot cut is a rare public admission that agent inference cost can outrun revenue — the 'agent unit economics' problem is now industry-wide, not just a frontier-lab issue.</div>
+    </div>
+    <div class="card card-model" data-cat="model">
+      <div class="card-title">未来两周中美九款旗舰扎堆登场：GPT-6.2 Sol / DeepSeek V4.1 Pro / GLM-5.4 / Qwen4 Max 等或重写能力座次</div>
+      <div class="card-en">Next two weeks: nine US-China flagships line up — GPT-6.2 Sol, DeepSeek V4.1 Pro, GLM-5.4, Qwen4 Max may reshuffle the leaderboard</div>
+      <div class="card-meta">
+        <span class="source">📰 deepseek.club / llm-countdowns</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">展望</span>
+      </div>
+      <div class="card-summary">11 月进入全年最拥挤的「神仙打架」档期：海外侧 <span class="highlight">GPT-6.2 Sol（11/10）、GPT-6.1 Luna/Astra（11/19）、Grok 4.8（11/19）、Claude Fable 5.5（11/30）</span>；国内侧 <span class="highlight">DeepSeek V4.1 Pro（11/12）、GLM-5.4（11/12）、Qwen4 Max（11/16）、Qwen4 Flash（11/23）</span>。当前跑出来的能力排名与性能座次，很可能在未来两周被直接刷新，算力/推理芯片与 Agent 框架需求弹性再获支撑。</div>
+      <div class="card-summary-en">A once-in-a-year release cluster: nine flagships from both sides of the Pacific could reshuffle the AA Intelligence Index within two weeks — a catalyst window for compute and agent-framework sentiment.</div>
+    </div>
+    <div class="card card-model" data-cat="model">
+      <div class="card-title">阿里 Qoder 获世界互联网大会领先科技奖：全球 800 万用户、10 万+ 企业接入</div>
+      <div class="card-en">Alibaba's Qoder wins WIC Leading Sci-Tech Award — 8M users, 100K+ enterprises onboarded</div>
+      <div class="card-meta">
+        <span class="source">📰 SegmentFault / 世界互联网大会</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">国产平台</span>
+      </div>
+      <div class="card-summary">阿里巴巴旗下 AI 编程与通用智能体平台 <span class="highlight">Qoder</span> 荣获 2026 世界互联网大会领先科技奖。官方数据：Qoder 已覆盖桌面端、AI 原生 IDE、CLI 及云端 Agents 等形态，全球服务用户超 <span class="highlight">800 万</span>，中国移动、东航、吉利等超 <span class="highlight">10 万家企业</span>已接入开发流程；近期新增桌面端多设备互联功能，支持跨终端调度与任务进度协同。国产 Agent 平台获国际峰会背书，企业级落地进入规模化阶段。</div>
+      <div class="card-summary-en">Qoder's WIC award and 100K-enterprise footprint signal Chinese agent platforms are moving from demo to production — a template for domestic enterprise-AI distribution.</div>
+    </div>
+    <div class="card card-model" data-cat="model">
+      <div class="card-title">OpenAI 把激活分类器用于前沿模型监控：逐 token 检测并中止违规 + 推理模型复审</div>
+      <div class="card-en">OpenAI deploys activation classifiers for frontier-model monitoring — per-token abort plus reasoning-model review</div>
+      <div class="card-meta">
+        <span class="source">📰 今日头条·AI 日报 / OpenAI</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">安全</span>
+      </div>
+      <div class="card-summary">OpenAI 将<span class="highlight">激活分类器（activation classifier）</span>用于前沿模型实时监控：逐 token 检测并中止违规回复或工具调用，再交推理模型复审。这是继「选举作战室」「RSI 阈值预警」之后，头部实验室把对齐/安全机制从「训练后」前移到「推理中」的又一实证——把安全从一次性评估变成实时回路。</div>
+      <div class="card-summary-en">Per-token activation classifiers with a reasoning-model review loop move safety from post-training into inference — a real-time alignment circuit rather than a one-off eval.</div>
+    </div>
+  </div>
+</div>
+<div class="section" id="sec-product" data-cat="product">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-product)"></div>
+    <div class="section-title">产品与应用 <span class="section-title-en">/ Products & Applications</span></div>
+    <div class="section-count">5 条</div>
+    <div class="toggle-hint">点击折叠 ▾</div>
+  </div>
+  <div class="section-body">
+    <div class="card card-product" data-cat="product">
+      <div class="card-title">OpenAI 抢 Claude 客户：六折报价 + 送额度 + 配工程师，拿下 Replit 超 6.7 亿年单</div>
+      <div class="card-en">OpenAI steals Claude's customers — 30%+ discount, free credits, embedded engineers; lands Replit's >$670M annual deal</div>
+      <div class="card-meta">
+        <span class="source">📰 智东西 / 网易 / The Information</span>
+        <span class="time">🕒 今天 20:21</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">价格战</span>
+      </div>
+      <div class="card-summary">OpenAI 与 Anthropic 为抢企业客户杠上：10/30 OpenAI 将部分 Pro 套餐 Codex 额度翻倍，次日 Anthropic 取消已验证 Ultra 账户 5 小时用量限制。在给出<span class="highlight">超 30% 模型价格折扣</span>后，美国 AI 编程平台 <span class="highlight">Replit</span> 将大部分 AI 支出从 Anthropic 转向 OpenAI，合同年价值超 1 亿美元（约 6.71 亿元），仅数小时完成代码切换。Rippling、Atomicwork 等老客户也不同程度「弃 Anthropic 投 OpenAI」——Agent 商业化成双巨头新战场。</div>
+      <div class="card-summary-en">OpenAI's 30%+ discount pulled Replit's ~$670M annual spend from Anthropic in hours; Rippling and others are following. Enterprise agent spending is now a direct price war.</div>
+    </div>
+    <div class="card card-product" data-cat="product">
+      <div class="card-title">Meta × 傅里叶家用机器人 Max 原型落地：3 个月完成、Jetson Thor、表情屏</div>
+      <div class="card-en">Meta × Fourier build home humanoid 'Max' — 3 months, Jetson Thor, expression screen</div>
+      <div class="card-meta">
+        <span class="source">📰 今日头条·AI 日报 / 腾讯新闻</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">具身</span>
+      </div>
+      <div class="card-summary">Meta 联合傅里叶做出家用机器人原型 <span class="highlight">Max</span>：高约 1.5 米、重 48 公斤，搭载英伟达 Jetson Thor，带表情屏与扬声器；二代 Max 2 已于 9 月启动，新增投影模块、强化上下楼梯。Meta CTO 将人形机器人定位为旗下 AI 智能体 Muse 的「物理化身」，把消费级 AI 从屏幕延伸到家庭实体——具身智能从展示走向可交互原型。</div>
+      <div class="card-summary-en">Meta pairs its Muse agent with a Fourier-built humanoid 'Max' (Jetson Thor, expression screen) — consumer AI's physical-embodiment play, though still pre-commercial.</div>
+    </div>
+    <div class="card card-product" data-cat="product">
+      <div class="card-title">Hume 推 Audio Decision API：不经转写直接从音频判情绪/说话人数/笑声</div>
+      <div class="card-en">Hume launches Audio Decision API — emotion, speaker count, laughter straight from audio, no transcription</div>
+      <div class="card-meta">
+        <span class="source">📰 今日头条·AI 日报 / Hume</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">语音</span>
+      </div>
+      <div class="card-summary">Hume 推出 <span class="highlight">Audio Decision API</span>：不经转写，直接从音频判断情绪、说话人数与笑声并返回概率，支持实时流与长录音。这代表语音 AI 从「听懂字」走向「读懂情绪与社交信号」，为客服质检、陪伴机器人、会议分析等场景提供低延迟、低成本的情感理解层，避开 ASR 转写的信息损耗与延迟。</div>
+      <div class="card-summary-en">Hume's Audio Decision API skips ASR and reads emotion/speaker-count/laughter directly from audio — a low-latency affective layer for call centers, companions and meeting analytics.</div>
+    </div>
+    <div class="card card-product" data-cat="product">
+      <div class="card-title">OpenAI 将 Chat 与 Work 合并、ChatGPT/Codex 12 月起共享额度</div>
+      <div class="card-en">OpenAI folds Work into Chat and shares ChatGPT–Codex quota from December</div>
+      <div class="card-meta">
+        <span class="source">📰 智东西 / 每经·数智早参 / OpenAI 公告</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">战略</span>
+      </div>
+      <div class="card-summary">OpenAI 公告：自 12 月起，ChatGPT Plus/Pro/Business 套餐的使用额度将在 ChatGPT 与 Codex 之间<span class="highlight">共享</span>，把分散的产品线收拢为统一入口；用量以 Token 统计，复杂任务消耗更高，即时对话不占用共享额度。实质是把 Work 智能体的能力并入主交互界面——表面计费调整，背后是「对话+编程+智能体」统一消耗体系的战略整合，也直接对标 Anthropic 的企业 Agent 攻势。</div>
+      <div class="card-summary-en">OpenAI collapses ChatGPT and Codex into one metered quota and folds Work agents into the main UI — a strategic consolidation directly answering Anthropic's enterprise-agent push.</div>
+    </div>
+    <div class="card card-product" data-cat="product">
+      <div class="card-title">Anthropic 收紧 Claude Code「复刻游戏」：Opus 5.5 提示词加两句，禁复刻现有游戏</div>
+      <div class="card-en">Anthropic clamps down on Claude's game clones — two sentences added to Opus 5.5 prompt</div>
+      <div class="card-meta">
+        <span class="source">📰 The Verge / Ars Technica / TechCrunch</span>
+        <span class="time">🕒 昨天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">IP 护栏</span>
+      </div>
+      <div class="card-summary">Anthropic 在编程工具 Claude Code 的系统提示中加入两句引导，禁止其<span class="highlight">复刻特定现有游戏</span>（改名或称原创同样受限），称使用 Claude 侵犯 IP 违反使用政策。Ars Technica 指出效果有限——复刻者可切到其他模型或开放权重模型；GitHub 上亦有开发者抱怨误伤正常开发。Digital Sun 已因此取消《ReVamp》公测、YNOT 撤下试玩版。Anthropic 称将持续迭代以平衡。</div>
+      <div class="card-summary-en">Anthropic drew an IP line inside Claude Code, but the clampback hit legitimate devs (Digital Sun canceled a beta). It's a first skirmish in vendor-level AI-IP policing — easily bypassed, hard to scope.</div>
+    </div>
+  </div>
+</div>
+<div class="section" id="sec-finance" data-cat="finance">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-finance)"></div>
+    <div class="section-title">资本与 IPO <span class="section-title-en">/ Capital & IPO</span></div>
+    <div class="section-count">7 条</div>
+    <div class="toggle-hint">点击折叠 ▾</div>
+  </div>
+  <div class="section-body">
+    <div class="card card-finance" data-cat="finance">
+      <div class="card-title">Anthropic 更新 S-1：Q3 营收 169.56 亿(+1127%)、净亏 232.91 亿、算力承诺约 8954 亿</div>
+      <div class="card-en">Anthropic amends S-1: Q3 revenue $16.96B (+1127% YoY), net loss $23.29B, compute commitments ~$895B</div>
+      <div class="card-meta">
+        <span class="source">📰 DigiTimes / 彭博 / 金融时报 / CGTN</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">IPO</span>
+      </div>
+      <div class="card-summary">代号 <span class="highlight">ANT</span> 的 Anthropic 在修订版 S-1 中首度披露：2026 Q3 营收达 <span class="highlight">169.56 亿美元</span>（同比 +1127%），但受算力与基建支出激增、短期采购协议增加及价格战冲击，<span class="highlight">单季由盈转亏</span>，净亏损 232.91 亿美元（同比扩大约 92%）；已签算力采购与租赁承诺约 <span class="highlight">8954 亿美元</span>（约 8.95 万亿）。这是史上最大 IPO 接受市场检验的「成色单」——增长亮眼，但刚性支出与评级约束成估值命门。</div>
+      <div class="card-summary-en">Anthropic's amended S-1 shows explosive Q3 growth but a return to quarterly loss and ~$895B of locked-in compute commitments — the real test of the largest-ever IPO's pricing power.</div>
+    </div>
+    <div class="card card-finance" data-cat="finance">
+      <div class="card-title">奥特曼赴阿布扎比锁能源与资本：Stargate 集群 1GW、甲骨文拟采 400 亿 GB200</div>
+      <div class="card-en">Altman to Abu Dhabi — locks energy & capital; Stargate cluster 1GW, Oracle may buy $40B of GB200</div>
+      <div class="card-meta">
+        <span class="source">📰 腾讯证券·Edge AI Daily / 金融时报</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">基建</span>
+      </div>
+      <div class="card-summary">11 月，OpenAI CEO 奥特曼赴阿布扎比，签署涵盖能源、投资、政务的多项协议，将主权资本与其电网深度绑定；其位于阿布扎比的 <span class="highlight">Stargate 集群</span>规划装机容量 1GW，预计 2026 年率先上线 200MW。资本层面：OpenAI 与软银各承诺 180 亿、甲骨文与 MGX 各出资 70 亿；据 FT，甲骨文拟采购约 <span class="highlight">400 亿美元英伟达 GB200</span>（约 40 万颗），以 15 年协议把算力租给 OpenAI。文章判断 AI 竞赛瓶颈正由芯片转向电力——「谁掌握电网，谁就掌握 AI 的上限」。</div>
+      <div class="card-summary-en">Altman ties OpenAI's expansion to Abu Dhabi's sovereign capital and grid (Stargate 1GW); Oracle's ~$40B GB200 buy underscores the shift from chips to power as the real bottleneck.</div>
+    </div>
+    <div class="card card-finance" data-cat="finance">
+      <div class="card-title">DeepSeek 二轮融资细节浮现：募 1055 亿、投后 6155 亿、国资占 27%</div>
+      <div class="card-en">DeepSeek's Series B details surface: ¥105.5B raised, ¥615.5B post-money, state capital 27%</div>
+      <div class="card-meta">
+        <span class="source">📰 今日头条·AI 日报 / 财联社</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">融资</span>
+      </div>
+      <div class="card-summary">DeepSeek 二轮融资细节浮现：本轮募资 <span class="highlight">1055 亿元人民币</span>、投后估值 <span class="highlight">6155 亿元</span>，近 30 家投资者参与；腾讯、宁德时代为主要出资方，长鑫及朱一明、中芯国际、vivo、美团、美的、立讯、吉利、携程、小红书在列，<span class="highlight">国资合计占 27%</span>。国产大模型「国家队 + 产业资本」格局成型，与 Anthropic/OpenAI 的美元融资体系形成对照——低成本、高国产算力自给率成其核心叙事。</div>
+      <div class="card-summary-en">DeepSeek's ¥105.5B round (¥615.5B post-money, 27% state capital) cements a 'national team + industrial capital' model — a RMB-denominated counterweight to USD-funded frontier labs.</div>
+    </div>
+    <div class="card card-finance" data-cat="finance">
+      <div class="card-title">可灵 AI 完成 198 亿元增资交割，赴港 IPO 预期升温</div>
+      <div class="card-en">Kling AI closes ¥19.8B top-up; Hong Kong IPO rumored for 2027</div>
+      <div class="card-meta">
+        <span class="source">📰 钱江晚报 / 证券时报 / 快手公告</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">融资</span>
+      </div>
+      <div class="card-summary">快手公告旗下视频生成大模型可灵 AI 完成本轮增资交割，实际到账约 <span class="highlight">198.02 亿元</span>（约 29 亿美元），投后估值约 180 亿美元；两家中东资方未按期缴款终止，份额由金蝶、沐曦数智（首度入股）、温州睿达等承接。已选定中金、高盛、瑞银担任港交所 IPO 承销商，计划最早 2027 年赴港、募资至少 10 亿美元；设 8% 年化单利回购兜底。产品端 Kling 4.0 已支持 30 秒视频、10-bit HDR——视频生成龙头资本化提速。</div>
+      <div class="card-summary-en">Kling AI locked in ¥19.8B at a $18B post-money valuation (Kingdee and GPU-maker Montage joining); a HK IPO as early as 2027 is rumored, with an 8% annual回购 backstop.</div>
+    </div>
+    <div class="card card-finance" data-cat="finance">
+      <div class="card-title">云巨头财报周检验资本开支成色：微软 Azure +48%、谷歌 capex 不及预期、英伟达密集出手</div>
+      <div class="card-en">Cloud earnings week tests capex payoff: Azure +48%, Alphabet capex misses, NVIDIA deploys capital</div>
+      <div class="card-meta">
+        <span class="source">📰 开源证券电子行业报告 / 网易 / 新浪财经</span>
+        <span class="time">🕒 今天 03:05</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">宏观</span>
+      </div>
+      <div class="card-summary">开源证券指出，本周云巨头财报密集披露、焦点在 AI 资本开支回报：微软 FY2027Q1 全面超预期，<span class="highlight">Azure 营收同比 +48%</span>、资本支出 +30% 至 452 亿、全年 capex 预计 1750 亿；谷歌母公司 Alphabet Q3 营收 1275.8 亿、经营利润 405.8 亿、capex 513.6 亿均不及预期，市场关注回报节奏。英伟达密集出手：向 Meta 投资 30 亿、后者扩大 VeraRubin 部署；与甲骨文合作将 VeraRubin 扩展至多吉瓦级。AI 产业持续催化，但「投入—回报」剪刀差成估值新锚。</div>
+      <div class="card-summary-en">Azure +48% vs Alphabet's capex miss frames the AI-payback debate; NVIDIA's $3B into Meta and multi-GW Oracle deals show the build-out continues even as the market prices the ROI gap.</div>
+    </div>
+    <div class="card card-finance" data-cat="finance">
+      <div class="card-title">AI 资本定价博弈延续：OpenAI 融资目标下调至 200 亿/1.25 万亿 + 黑石预警 Anthropic 上市后或仅 BB 级</div>
+      <div class="card-en">AI capital pricing tug-of-war: OpenAI trims raise to ~$20B/$1.25T; Blackstone warns Anthropic may land BB post-IPO</div>
+      <div class="card-meta">
+        <span class="source">📰 财联社 / 南方财经 / DigiTimes</span>
+        <span class="time">🕒 今天（持续发酵）</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">定价</span>
+      </div>
+      <div class="card-summary">一级市场首现 AI 龙头「估值折扣」：OpenAI 本轮目标从 300 亿（估值 1.4 万亿）下调至约 <span class="highlight">200 亿（估值 1.25 万亿）</span>，部分投资者削减出资承诺，受 AI 股抛售、Anthropic 即将上市分流资金影响。黑石（曾牵头 630 亿「北极星」算力融资）近期预警，Anthropic 上市后或仅获 <span class="highlight">BB 区间（投机级较高档）</span>信用评级——信贷成本首次成 AI 龙头命门，IPO 定价与评级落地成为 AI 资本周期风向标。</div>
+      <div class="card-summary-en">OpenAI's first real valuation discount and Blackstone's BB-rating warning on Anthropic show the AI-capital market is repricing risk: credit cost, not just growth, now gates the leaders.</div>
+    </div>
+    <div class="card card-finance" data-cat="finance">
+      <div class="card-title">AI 债务占美国投资级 14%、「廉价资金」退潮：高杠杆云厂商再融资风险抬升</div>
+      <div class="card-en">AI-linked debt = 14% of US IG market; 'cheap money' retreat raises refinancing risk for leveraged clouds</div>
+      <div class="card-meta">
+        <span class="source">📰 经济参考报 / 新华网 / 摩根大通 / 标普</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">债务</span>
+      </div>
+      <div class="card-summary">摩根大通测算，截至 2025/10 AI 相关债务约 <span class="highlight">1.2 万亿美元</span>、占美国投资级公司债 14%（超银行业 11.7%）；摩根士丹利预测 2026 全球 AI 债券发行或近 5700 亿；标普测算到 2030 年 AI 建设需额外 4–5 万亿资本开支。软银发 1 万亿日元零售债 + 111 亿美元高收益债投 OpenAI；CoreWeave 欧元高收益债收益率达 8.5%。期限错配与 GPU 抵押品随代际贬值是脆弱点——「廉价资金」退潮下，高杠杆 AI 云的再融资风险显性化。</div>
+      <div class="card-summary-en">~$1.2T of AI-linked debt is 14% of the US IG market; with GPU collateral depreciating per generation, leveraged AI clouds (CoreWeave-class) face a refinancing squeeze if demand slips.</div>
+    </div>
+  </div>
+</div>
+<div class="section" id="sec-industry" data-cat="industry">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-industry)"></div>
+    <div class="section-title">政策与产业 <span class="section-title-en">/ Policy & Industry</span></div>
+    <div class="section-count">5 条</div>
+    <div class="toggle-hint">点击折叠 ▾</div>
+  </div>
+  <div class="section-body">
+    <div class="card card-industry" data-cat="industry">
+      <div class="card-title">国家发改委 15五 AI 治理：加快基础综合性立法、监管沙盒、就业影响监测</div>
+      <div class="card-en">NDRC 15th FYP AI governance: foundational comprehensive legislation, regulatory sandboxes, job-impact monitoring</div>
+      <div class="card-meta">
+        <span class="source">📰 中宏网 / 金融时报 / 时代周报 / 中国网</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">立法</span>
+      </div>
+      <div class="card-summary">11/3 国家发改委举行奋进「十五五」系列新闻发布会，明确 AI 治理四抓手：① 推进<span class="highlight">人工智能基础性综合性立法</span>，构建全生命周期安全标准与伦理准则；② 优化监管、建面向不同领域的「<span class="highlight">监管沙盒</span>」并健全申请/测试/退出机制；③ 多元主体协同共治，企业主动上报安全事件与漏洞；④ 监测 AI 对就业结构影响，推动模型训练师、数据标注员纳入国家职业分类。同日提出「十五五」末新兴支柱产业产值望翻番至 <span class="highlight">10 万亿元以上</span>，深化「人工智能+」行动。</div>
+      <div class="card-summary-en">China's NDRC laid out a 15th-FYP AI-governance frame: comprehensive legislation, sector sandboxes, multi-party co-governance, and job-impact monitoring — with emerging-pillar output targeted above ¥10T by 2030.</div>
+    </div>
+    <div class="card card-industry" data-cat="industry">
+      <div class="card-title">浙江五部门印发 AI「OPC」先行先试十条：工位注册、算力券与 Token 券补贴、沙盒监管</div>
+      <div class="card-en">Zhejiang's five departments issue 10 AI 'OPC' (one-person company) pilot measures</div>
+      <div class="card-meta">
+        <span class="source">📰 今日头条·AI 日报 / 浙江发布</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">地方</span>
+      </div>
+      <div class="card-summary">浙江五部门印发支持 AI「<span class="highlight">OPC</span>」（一人公司）先行先试十条：在杭州、宁波、温州、嘉兴试点「工位注册」、发放<span class="highlight">算力券与 Token 券补贴</span>、建设沙盒监管，并建立轻微违法不予处罚清单。这是地方政府以制度供给直接降低 AI 个体创业者门槛的试水，呼应「人工智能+」行动对场景落地与小微创新的扶持导向。</div>
+      <div class="card-summary-en">Zhejiang's 10 'OPC' measures (desk-registration, compute/token vouchers, sandbox regulation) lower the barrier for solo AI founders — a local lab for China's AI+ entrepreneurship push.</div>
+    </div>
+    <div class="card card-industry" data-cat="industry">
+      <div class="card-title">美国民主党：若赢众议院将推动对 AI 实验室严格审查</div>
+      <div class="card-en">US Democrats: if they win the House, push strict AI-lab scrutiny</div>
+      <div class="card-meta">
+        <span class="source">📰 今日头条·AI 日报 / 政治新闻</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">地缘</span>
+      </div>
+      <div class="card-summary">美国民主党议员表示，若在下周中期选举中赢得众议院多数，将推动对 AI 实验室的<span class="highlight">严格审查</span>。叠加同日 OpenAI/Anthropic 设立「选举作战室」防 AI 虚假信息，美国 AI 监管在中期选举窗口进入「平台自律 + 潜在立法」双轨——政策不确定性成为头部实验室 IPO 与融资的隐性折价因子。</div>
+      <div class="card-summary-en">A Democratic House win could trigger stricter AI-lab oversight — adding regulatory uncertainty as a hidden discount factor to Anthropic's IPO and the sector's funding.</div>
+    </div>
+    <div class="card card-industry" data-cat="industry">
+      <div class="card-title">中国 AI 技术出口管制目录修订：大模型/智能体/算力集群 23 项技术拟纳入</div>
+      <div class="card-en">China's export-control catalogue revision: 23 AI technologies (LLMs, agents, compute clusters) proposed</div>
+      <div class="card-meta">
+        <span class="source">📰 中国经济网 / Lexology / 商务部·科技部</span>
+        <span class="time">🕒 此前（持续发酵）</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">出口管制</span>
+      </div>
+      <div class="card-summary">商务部、科技部 10/16 发布 2026 年第 48 号公告，就修订《中国禁止出口限制出口技术目录》征求意见（截至 11/15），拟将 AI 大模型、智能体、算力集群、信息处理相关 <span class="highlight">23 项关键技术</span>增列。限制类含训练算力 ≥10²⁶ FLOPs、参数 ≥2 万亿或全球前十能力的模型；但对<span class="highlight">开源、境外自有云部署、API/App/SaaS 交互等情形适用自动许可</span>，基本实现「即报即出」，绝大部分 AI 技术仍可自由出口。精准有限的管理凸显「安全可控 + 鼓励开源合作」平衡。</div>
+      <div class="card-summary-en">China's draft export-control update adds 23 AI technologies but carves out open-source and overseas-self-cloud/API access via automatic licensing — a calibrated 'secure yet open' stance.</div>
+    </div>
+    <div class="card card-industry" data-cat="industry">
+      <div class="card-title">具身智能产业化提速：上海 2028 年 8000 台机器人进工厂 + 首批 6 项国标 2027.4 实施</div>
+      <div class="card-en">Embodied-AI industrialization: Shanghai targets 8,000 robots in factories by 2028; first 6 national standards by Apr 2027</div>
+      <div class="card-meta">
+        <span class="source">📰 开源证券电子行业报告 / 上海智能制造方案</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">机器人</span>
+      </div>
+      <div class="card-summary">开源证券援引上海智能制造行动方案：目标 2028 年实现 <span class="highlight">8000 台人形机器人进工厂</span>、AI 制造场景突破 2000 个；<span class="highlight">首批 6 项人形机器人国标</span>确认 2027 年 4 月实施。结合 Meta×傅里叶 Max、小鹏图灵 V2 等原型进展，具身智能从展示走向「标准 + 场景 + 量产」三件套，上游执行器、传感器、端侧 SoC 与机器人操作系统受益明确。</div>
+      <div class="card-summary-en">Shanghai's 8,000-factory-robot target and the first 6 national humanoid standards (Apr 2027) turn embodied AI from demos into a standards-scenarios-volume stack — bullish for actuators, sensors and edge SoCs.</div>
+    </div>
+  </div>
+</div>
+<div class="section" id="sec-research" data-cat="research">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-research)"></div>
+    <div class="section-title">安全与研究 <span class="section-title-en">/ Safety & Research</span></div>
+    <div class="section-count">5 条</div>
+    <div class="toggle-hint">点击折叠 ▾</div>
+  </div>
+  <div class="section-body">
+    <div class="card card-research" data-cat="research">
+      <div class="card-title">OpenAI 与 Anthropic 同步设「选举作战室」，严防美国中期选举 AI 虚假信息</div>
+      <div class="card-en">OpenAI & Anthropic stand up 'election war rooms' against US midterm AI disinformation</div>
+      <div class="card-meta">
+        <span class="source">📰 澎湃新闻 / 新华社 / Politico / Semafor</span>
+        <span class="time">🕒 今天 13:11</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">选举安全</span>
+      </div>
+      <div class="card-summary">美国中期选举 11/3 正式开跑，被称「史上首场有相当数量选民使用 AI 的选举」。OpenAI 于选前一周启动「<span class="highlight">选举运营中心</span>」，运行至选票统计完毕，识别虚假信息传播；内置「卡通化」处理（要求生成投票站长队图时返回卡通而非逼真照片）。Anthropic 亦设专门作战室监控平台滥用、快速响应突发事件。Meta、微软等同步采取措施——AI 治理从「事后追责」转向「实时防御」。</div>
+      <div class="card-summary-en">Both OpenAI and Anthropic ran dedicated 'election war rooms' for the US midterms — a first for either company, marking a shift from post-hoc takedown to real-time abuse defense.</div>
+    </div>
+    <div class="card card-research" data-cat="research">
+      <div class="card-title">Anthropic 在 S-1 警告：或很快达到「AI 显著加速自身发展（RSI）」阈值</div>
+      <div class="card-en">Anthropic warns in S-1 it may soon meet the 'Rapid Self-Improvement' threshold</div>
+      <div class="card-meta">
+        <span class="source">📰 TechCrunch / The Verge / Anthropic S-1</span>
+        <span class="time">🕒 昨天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">前沿安全</span>
+      </div>
+      <div class="card-summary">Anthropic 在 S-1 中披露，内部估计未来模型可能<span class="highlight">很快达到「AI 显著加速自身发展（RSI）」</span>的阈值，触发其《负责任扩展政策》的更高安全层级；并承认曾用 AI 构建出能力跃迁当时未被识别的模型。TechCrunch 指出，风险提示写于法律追责下，比营销话术更可信；Anthropic 称不预期让 AI 在无人工监督下设计 successive 前沿模型，正考虑修订政策以保留人类控制。安全叙事与商业加速的矛盾被正式写入招股书。</div>
+      <div class="card-summary-en">Anthropic put an RSI-capability warning into its S-1 under legal liability — a rare case of safety risk disclosed as a material factor, not just a blog post.</div>
+    </div>
+    <div class="card card-research" data-cat="research">
+      <div class="card-title">OpenAI 激活分类器用于前沿模型监控：逐 token 检测并中止违规 + 推理模型复审</div>
+      <div class="card-en">OpenAI deploys activation classifiers for frontier-model monitoring</div>
+      <div class="card-meta">
+        <span class="source">📰 今日头条·AI 日报 / OpenAI</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">监控</span>
+      </div>
+      <div class="card-summary">OpenAI 将<span class="highlight">激活分类器</span>用于前沿模型实时监控：逐 token 检测并中止违规回复或工具调用，再交推理模型复审。把对齐机制从「训练后评估」前移到「推理中回路」，与「选举作战室」「RSI 阈值预警」共同构成头部实验室安全体系的「实时化」转向，也为监管沙盒与审计提供了可观测接口。</div>
+      <div class="card-summary-en">Per-token activation classifiers with reasoning-model review move safety into the inference loop — observable, auditable, and a natural fit for regulatory sandboxes.</div>
+    </div>
+    <div class="card card-research" data-cat="research">
+      <div class="card-title">Claude Code 收紧「复刻游戏」：Opus 5.5 提示词加两句，误伤正常开发</div>
+      <div class="card-en">Claude Code's game-clone clampdown hits legitimate devs</div>
+      <div class="card-meta">
+        <span class="source">📰 The Verge / Ars Technica / GitHub 反馈</span>
+        <span class="time">🕒 昨天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">IP 护栏</span>
+      </div>
+      <div class="card-summary">Anthropic 在 Claude Code 系统提示中加入两句引导，禁止<span class="highlight">复刻特定现有游戏</span>（改名或称原创同样受限）。GitHub 反馈显示规则误伤了自有项目与逆向工程：Digital Sun 取消《ReVamp》公测、YNOT 撤下试玩版。Ars Technica 认为效果有限——复刻者可切到其他模型或开放权重模型。这是厂商级 AI-IP 治理的首次正面交锋，难点在「特定复刻」与「受启发作品」的边界划分。</div>
+      <div class="card-summary-en">Anthropic's IP clamp inside Claude Code over-reached into legitimate dev work — a first, messy skirmish in vendor-level AI copyright policing with no clean boundary yet.</div>
+    </div>
+    <div class="card card-research" data-cat="research">
+      <div class="card-title">布伦南中心测试：仅 OpenAI 显著加强选举虚假信息防范，Gemini/Meta AI 更易生成</div>
+      <div class="card-en">Brennan Center test: only OpenAI sharply tightened election-misinfo defenses; Gemini/Meta AI easier to fool</div>
+      <div class="card-meta">
+        <span class="source">📰 澎湃新闻 / 布伦南司法中心</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">治理</span>
+      </div>
+      <div class="card-summary">布伦南司法中心 10/22 报告测试显示，仅 <span class="highlight">OpenAI 一家显著加强了选举虚假信息防范</span>；谷歌 Gemini 与 Meta AI 反而「变得更容易生成逼真的虚假选举图像」，其他工具几乎无变化。中心策略师提醒：投票是个人自主决策，交由聊天机器人决定令人担忧——AI 选举防御水平参差，平台自律标准亟待统一与独立评测。</div>
+      <div class="card-summary-en">An independent test found only OpenAI materially hardened election defenses; Gemini and Meta AI got easier to fool — proof that platform self-policing is uneven and needs standardized eval.</div>
+    </div>
+  </div>
+</div>
+<div class="section" id="sec-kol" data-cat="kol">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-kol)"></div>
+    <div class="section-title">观点与 KOL <span class="section-title-en">/ Opinions & KOLs</span></div>
+    <div class="section-count">3 条</div>
+    <div class="toggle-hint">点击折叠 ▾</div>
+  </div>
+  <div class="section-body">
+    <div class="card card-kol" data-cat="kol">
+      <div class="card-title">中新网：史上最大 IPO 先别急着鼓掌（算力承诺锁死风险）</div>
+      <div class="card-en">Chinanews: don't applaud the largest IPO yet — the locked-in compute bill</div>
+      <div class="card-meta">
+        <span class="source">📰 中国新闻网 / 三里河</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">观点</span>
+      </div>
+      <div class="card-summary">中新网提醒对 Anthropic IPO 保持冷静：增长曲线亮眼（营收 4100 万→162.86 亿仅用 3.5 年、Q2 率先营业利润转正），但未来十年与六家伙伴投入至少 <span class="highlight">5180 亿基建、多不可取消</span>，相当于「即使模型卖不出去，千亿房租也提前锁死」。更新 S-1 后 Q3 单季转亏、算力承诺升至约 8954 亿。对投资者而言，需穿透「营收神话」看「刚性支出与评级约束」。</div>
+      <div class="card-summary-en">Beneath Anthropic's IPO hype sits a ~$895B non-cancelable compute commitment — 'rent locked in even if models don't sell.' The piece urges investors to see through revenue fireworks to rigid opex and rating constraints.</div>
+    </div>
+    <div class="card card-kol" data-cat="kol">
+      <div class="card-title">经济参考报：AI 支出负担加大，美科技股担忧「廉价资金」退潮</div>
+      <div class="card-en">Economic Information Daily: AI spending burden sparks worry as 'cheap money' retreats</div>
+      <div class="card-meta">
+        <span class="source">📰 经济参考报（新华社）</span>
+        <span class="time">🕒 今天</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">观点</span>
+      </div>
+      <div class="card-summary">经济参考报将 AI 资本周期置于显微镜：一级市场收缩（OpenAI 下调融资目标）+ 二级市场担忧（科技股财报关注算力指标）+ 表外隐性负债膨胀（五大巨头四年增 8 倍至 1.65 万亿，超表内 1.35 万亿）。核心判断：<span class="highlight">「廉价资金」退潮下，GPU 抵押品随代际折损，需求一旦放缓将触发「抵押品—信贷—投资」负反馈</span>。这与「AI 泡沫破灭论」不同——是定价重估，而非需求崩塌。</div>
+      <div class="card-summary-en">The paper frames AI as a refinancing-risk story, not a demand-collapse: $1.65T of off-balance-sheet 'hidden debt' at the five giants, GPU collateral depreciating with each generation — a collateral-credit-investment feedback loop if demand slips.</div>
+    </div>
+    <div class="card card-kol" data-cat="kol">
+      <div class="card-title">开源证券：云巨头财报周检验资本开支成色，存储/先进封装景气持续强化</div>
+      <div class="card-en">Kaiyuan Securities: cloud earnings week tests capex payoff; memory & advanced-packaging upcycle intact</div>
+      <div class="card-meta">
+        <span class="source">📰 开源证券电子行业研究报告</span>
+        <span class="time">🕒 今天 03:05</span>
+        <span class="card-tag" style="background:var(--primary-light);color:var(--primary);">观点</span>
+      </div>
+      <div class="card-summary">开源证券指出，云巨头财报周聚焦 AI 资本开支回报：微软 Azure +48% 验证需求，谷歌 capex 不及预期引发回报节奏担忧；算力侧英伟达密集出手（投 Meta 30 亿、与甲骨文多吉瓦级 VeraRubin）。行业结论：<span class="highlight">存储与先进封装景气持续强化</span>，AI 产业长期催化不变，但短期需关注「投入—回报」剪刀差对估值锚的扰动；终端侧折叠屏、人形机器人密集催化。</div>
+      <div class="card-summary-en">Kaiyuan sees the AI build-out thesis intact (Azure +48%, NVIDIA deploying capital) but flags the capex-payback gap and memory/advanced-packaging upcycle as the near-term alpha.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sec-charts">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-research)"></div>
+    <div class="section-title">📊 数据图表 <span class="section-title-en">/ Charts</span></div>
+    <div class="section-count">3 张</div>
+    <div class="toggle-hint">点击折叠 ▾</div>
+  </div>
+  <div class="section-body">
+
+    <div class="chart-wrap">
+      <h3>① Anthropic S-1 关键财务对照（十亿美元）</h3>
+      <div class="chart-en">Anthropic S-1 key financials (US$ bn)</div>
+      <div class="chart-canvas-box"><canvas id="chartCap"></canvas></div>
+      <div class="chart-note">Q3 营收 16.96、净亏损 23.29，但算力采购与租赁承诺高达 895.4（约为单季营收的 53 倍）。增长叙事之外，刚性支出与 BB 级评级预期成估值真实约束。数据：DigiTimes / 彭博 / 金融时报 / CGTN。</div>
+    </div>
+
+    <div class="chart-wrap">
+      <h3>② Anthropic 流动性 vs 锁死承诺（十亿美元）</h3>
+      <div class="chart-en">Anthropic liquidity vs locked-in commitments (US$ bn)</div>
+      <div class="chart-canvas-box"><canvas id="chartDebt"></canvas></div>
+      <div class="chart-note">截至 2026/6/30，现金及短期投资约 131.7（CGTN），但未来算力采购与租赁承诺约 895.4——流动性 « 锁死义务，差额靠持续融资与经营现金流转正（Q2 经营现金流 +39.3）弥补，IPO 募资上限约 1000 亿仍不足覆盖。</div>
+    </div>
+
+    <div class="chart-wrap">
+      <h3>③ 未来两周中美旗舰发布窗口（11 月，按日）</h3>
+      <div class="chart-en">Next-two-weeks flagship release window (November, by day)</div>
+      <div class="chart-canvas-box"><canvas id="chartModel"></canvas></div>
+      <div class="chart-note">11/10 GPT-6.2 Sol → 11/12 DeepSeek V4.1 Pro + GLM-5.4 → 11/16 Qwen4 Max + Anthropic IPO → 11/19 GPT-6.1 Luna/Astra + Grok 4.8 → 11/23 Qwen4 Flash → 11/30 Claude Fable 5.5。能力座次或全面改写，算力/推理芯片与 Agent 框架需求弹性再获支撑。数据源：llm-countdowns / deepseek.club。</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section" id="sec-conclusion">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--c-finance)"></div>
+    <div class="section-title">💡 投资结论 <span class="section-title-en">/ Investment Takeaways</span></div>
+    <div class="section-count">6 条</div>
+    <div class="toggle-hint">点击折叠 ▾</div>
+  </div>
+  <div class="section-body">
+    <div class="conclusion">
+      <h3>📌 本窗口核心判断（仅供研究，不构成投资建议）</h3>
+      <ul>
+<li><strong>Anthropic S-1 成色检验，AI 资本周期风向标：</strong>Q3 营收 +1127% 但单季由盈转亏、算力承诺约 8954 亿锁死。11/16 IPO 定价与 BB 级信用评级落地，将成为检验「AI 泡沫定价重估 vs 需求崩塌」的关键观测点；关注高收益债利差与「廉价资金」退潮对高杠杆云厂商（类 CoreWeave/Nscale）的再融资风险。</li>
+<li><strong>Agent 成本现实，单位经济重估：</strong>马斯克削减 Grok Bot 额度、OpenAI/Anthropic 均承压，印证高频工具调用推高推理成本。利好推理成本优化（模型压缩/国产算力）与「按结果付费」模式；应用层需重估单位经济，盲目堆 Agent 调用或侵蚀毛利。</li>
+<li><strong>国产模型/Agent 商业化提速：</strong>Qoder 10 万+ 企业接入、DeepSeek 二轮 1055 亿（国资 27%）、可灵 198 亿增资赴港 IPO，标志国产「国芯国模 + 产业资本」格局成型。利好国产算力链（寒武纪/昇腾/沐曦）与金融/本地生活/编程应用落地。</li>
+<li><strong>AI 治理上移，合规赛道受益：</strong>中国 15五 基础立法 + 监管沙盒 + 就业监测、浙江 OPC 十条、出口管制目录（开源/境外自有云自动许可）、四大厂训练退出信号——制度供给密集。利好合规数据、安全、审计赛道；中国开源生态叙事强化，长期降低中小内容方合规成本。</li>
+<li><strong>选举安全产品化，内容鉴伪成刚需：</strong>OpenAI/Anthropic 作战室、SynthID Detector 全球上线（多厂商水印）、激活分类器实时监控——AI 内容鉴伪/安全监控从议题走向产品。利好水印、检测、治理工具厂商，亦抬升「自主 Agent」的合规与保险成本。</li>
+<li><strong>配置结论（仅供研究，非投资建议）：</strong>增持/关注：国产算力链、Agent 安全与内容鉴伪、开源模型与应用、金融/本地生活 AI 落地、存储与先进封装；谨慎：高估值纯应用层、依赖廉价债务扩张的 AI 云、存储/HBM 紧缺下的中小云；跟踪：Anthropic 11/16 IPO 定价与评级、千问国行 11/4 Beta 体验、未来两周旗舰密集发布对算力/芯片的催化、国家发改委 15五 AI 立法细则。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="section" id="sec-sources">
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--text-muted)"></div>
+    <div class="section-title">📚 数据来源 <span class="section-title-en">/ Sources</span></div>
+    <div class="section-count">12 项</div>
+    <div class="toggle-hint">点击折叠 ▾</div>
+  </div>
+  <div class="section-body">
+    <div class="sources">
+      <h3>🔗 来源标注（按板块）</h3>
+      <ul style="margin-left:18px;">
+<li>SegmentFault AI 日报 / OpenAI 工程博客（Pando Git 后端、Message threads、SynthID Detector、Grok Bot 限额、Qoder 获奖、Hume Audio API、Meta×傅里叶 Max）</li>
+<li>智东西 / 网易 / The Information（OpenAI 抢 Replit 超 6.7 亿年单、Chat+Work+Codex 共享额度）</li>
+<li>DigiTimes / 彭博 / 金融时报 / CGTN（Anthropic 更新 S-1：Q3 营收 169.56 亿、净亏 232.91 亿、算力承诺 8954 亿）</li>
+<li>腾讯证券·Edge AI Daily / 金融时报（奥特曼赴阿布扎比锁能源与资本、Stargate 1GW、甲骨文 400 亿 GB200）</li>
+<li>今日头条·AI 日报 / 财联社（DeepSeek 二轮融资 1055 亿、投后 6155 亿、国资 27%；激活分类器监控；Claude Code 复刻游戏）</li>
+<li>钱江晚报 / 证券时报 / 快手公告（可灵 AI 198 亿增资交割、赴港 IPO）</li>
+<li>开源证券电子行业报告 / 网易 / 新浪财经（云巨头财报周检验 capex、Azure +48%、英伟达投 Meta 30 亿、人形机器人 8000 台进工厂）</li>
+<li>中宏网 / 金融时报 / 时代周报 / 中国网（国家发改委 15五 AI 治理、基础立法、监管沙盒、就业监测、10 万亿新兴支柱）</li>
+<li>浙江发布 / 今日头条·AI 日报（浙江 AI「OPC」十条）；政治新闻（美国民主党 AI 实验室审查）</li>
+<li>中国经济网 / Lexology / 商务部·科技部（AI 技术出口管制目录修订 23 项、自动许可）</li>
+<li>澎湃新闻 / 新华社 / Politico / Semafor / 布伦南司法中心（OpenAI&Anthropic 选举作战室、选举虚假信息防御测试）</li>
+<li>TechCrunch / The Verge / Ars Technica / Anthropic S-1（RSI 自改进阈值预警、Claude Code 游戏复刻收紧）</li>
+<li>中国新闻网 / 经济参考报（Anthropic IPO 算力锁死风险、AI 债务占投资级 14%/廉价资金退潮）；deepseek.club / llm-countdowns（未来两周旗舰发布窗口）</li>
+<li>⚠️ 播客情报板块：本次运行 <strong>BidClub 暂不可用</strong>（MCP 未连接 / ToolSearch 无 bidclub_latest/search/episode 工具），按规范跳过本板块；若后续连接恢复，将补入「播客情报 / Podcast Intelligence」并标注 BidClub 来源。</li>
+      </ul>
+      <p style="margin-top:10px;">⏱ 时间标注严格采用「今天HH:MM / 昨天HH:MM / X小时前」格式；窗口为 <code>11/2 22:00 – 11/3 22:00（北京时间）</code>。本报告为增量更新，不重写历史。</p>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <p>📊 每日 22:00（北京时间）自动生成 · 来源：AI HOT + 全球多渠道 + 中文财经媒体交叉验证</p>
+  <p style="margin-top:4px;">⚠️ 仅供研究参考，不构成投资建议</p>
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+// Filter
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.section[data-cat]').forEach(sec => {
+      if (f === 'all') { sec.style.display = ''; }
+      else { sec.style.display = (sec.dataset.cat === f) ? '' : 'none'; }
+    });
+  });
+});
+// Collapse
+document.querySelectorAll('.section-header').forEach(h => {
+  h.addEventListener('click', () => {
+    const sec = h.closest('.section');
+    sec.classList.toggle('collapsed');
+    const hint = h.querySelector('.toggle-hint');
+    if (hint) hint.textContent = sec.classList.contains('collapsed') ? '点击展开 ▸' : '点击折叠 ▾';
+  });
+});
+// Charts
+const C = (id, type, labels, datasets, opts) => {
+  const el = document.getElementById(id);
+  if (!el || typeof Chart === 'undefined') return;
+  new Chart(el, { type, data: { labels, datasets }, options: Object.assign({
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'top', labels: { font: { size: 12 } } } }
+  }, opts) });
+};
+C('chartCap', 'bar',
+  ['Q3 营收', 'Q3 净亏损', '算力采购与租赁承诺'],
+  [
+    { label: '金额 (十亿$)', data: [16.96, 23.29, 895.4], backgroundColor: ['#10b981','#ef4444','#f97316'] }
+  ],
+  { scales: { y: { beginAtZero: true, title: { display: true, text: 'US$ bn' }, type: 'logarithmic' } } }
+);
+C('chartDebt', 'bar',
+  ['现金及短期投资', '算力采购与租赁承诺'],
+  [
+    { label: '金额 (十亿$)', data: [131.7, 895.4], backgroundColor: ['#6366f1','#f97316'] }
+  ],
+  { scales: { y: { beginAtZero: true, title: { display: true, text: 'US$ bn' }, type: 'logarithmic' } } }
+);
+C('chartModel', 'bar',
+  ['GPT-6.2 Sol', 'DeepSeek V4.1 Pro', 'GLM-5.4', 'Qwen4 Max', 'GPT-6.1 Luna', 'Grok 4.8', 'Qwen4 Flash', 'Claude Fable 5.5'],
+  [
+    { label: '预计发布日（11 月）', data: [10, 12, 12, 16, 19, 19, 23, 30], backgroundColor: ['#8b5cf6','#6366f1','#ec4899','#10b981','#8b5cf6','#f59e0b','#ec4899','#3b82f6'] }
+  ],
+  { indexAxis: 'y', scales: { x: { beginAtZero: true, title: { display: true, text: '11 月日期' }, max: 32 } } }
+);
+</script>
+</body>
+</html>
